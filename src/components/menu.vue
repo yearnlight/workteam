@@ -1,0 +1,266 @@
+<template>
+  <div class="doc">
+    <div :class="[{'hidden':isInFrame},'docHeader']">
+      <div class="docHeader-title">工作任务管理系统</div>
+      <div class="docHeader-items">
+        <el-dropdown class="userInfo-container mr-20" trigger="click" @command="handleCommand">
+          <span class="el-dropdown-link">
+            <img v-if="avatar" :src="avatar" class="user-avatar" />
+            <span class="user-nickname">
+              {{ name }}
+              <i class="el-icon-caret-bottom el-icon--right" />
+            </span>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item command="userInfo">
+              <span class="el-icon-user" />个人信息
+            </el-dropdown-item>
+            <el-dropdown-item command="logout" divided>
+              <span class="el-icon-switch-button" />退出登录
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </div>
+    </div>
+    <div :class="[{'in-frame':isInFrame},'docMenu']">
+      <div :class="[{'hidden':isInFrame},'docMenu-content']">
+        <!-- <div class="docMenu-content-title">工地管理系统</div> -->
+        <el-menu :default-active="$route.path" :router="true" background-color="#304156" text-color="#bfcbd9" active-text-color="#00a4ff">
+          <el-submenu v-for="(item,index) in leftmenus.filter(m=>m.children)" :index="item.path" :key="index">
+            <template slot="title">
+              <i :class="item.icon"></i>
+              <span>{{item.title}}</span>
+            </template>
+            <el-menu-item :index="citem.path" v-for="(citem,cindex) in item.children" :key="cindex">
+              <span slot="title">{{citem.title}}</span>
+            </el-menu-item>
+          </el-submenu>
+
+          <el-menu-item :index="item.path" v-for="(item,index) in leftmenus.filter(m=>!m.children)" :key="index">
+            <i :class="item.icon"></i>
+            <span slot="title">{{item.title}}</span>
+          </el-menu-item>
+        </el-menu>
+      </div>
+
+      <div :class="[{'in-frame':isInFrame},'docMenu-main']">
+        <router-view></router-view>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import menus from "@/menu.js";
+export default {
+  data() {
+    return {
+      activeItem: "/site/project_view",
+      avatar: require("@/assets/logo.png"),
+      name: "杨明翔",
+      isInFrame: false,
+    };
+  },
+  created() {
+    this.leftmenus = menus;
+    this.setRoute();
+  },
+  mounted() {
+    if (window.self !== window.top) {
+      this.isInFrame = true;
+    }
+  },
+  methods: {
+    setRoute() {
+      console.log(this.$router);
+    },
+    handleCommand(command) {
+      if (command == "logout") {
+        this.$confirm("你确定退出当前系统 ?", "退出").then(() => {
+          this.$router.push("/login");
+        });
+      }
+    },
+  },
+};
+</script>
+
+<style lang="scss">
+%addBorder {
+  border-radius: 5px;
+  padding: 12px;
+  border: 1px solid #ebeef5;
+  margin-bottom: 12px;
+}
+.hidden {
+  display: none !important;
+}
+.doc {
+  height: 100%;
+  .docHeader {
+    height: 50px;
+    background-color: #2b303b;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    &-title {
+      font-size: 16px;
+      height: 21px;
+      line-height: 21px;
+      color: #fff;
+    }
+    &-items {
+      margin-left: auto;
+      .userInfo-container {
+        color: #fff;
+        .user-avatar {
+          margin-right: 10px;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+  .docMenu {
+    display: flex;
+    height: calc(100% - 50px);
+    &.in-frame {
+      height: 100%;
+    }
+    .add-operate {
+      @extend %addBorder;
+      text-align: right;
+    }
+    &-content {
+      &-title {
+        padding: 5px;
+        color: #a1a6ab;
+        font-size: 14px;
+      }
+      background-color: rgb(48, 65, 86);
+      width: 200px;
+      .el-menu {
+        border-right: 0;
+        .el-submenu {
+          .el-menu {
+            background-color: #1f2d3d !important;
+          }
+        }
+        .el-submenu__title {
+          margin-bottom: 12px;
+          line-height: 36px;
+          height: 36px;
+          padding: 0;
+        }
+        .el-menu-item {
+          &.is-active {
+            background-color: #00a4ff !important;
+            color: #ffffff !important;
+          }
+          // &.is-active::after {
+          //   content: "";
+          //   position: absolute;
+          //   right: 0;
+          //   top: 0;
+          //   width: 2px;
+          //   background-color: #00a4ff;
+          //   bottom: 0;
+          //   z-index: 1;
+          //   height: 100%;
+          // }
+          height: 36px;
+          line-height: 36px;
+        }
+      }
+    }
+    &-main {
+      overflow-y: auto;
+      height: calc(100% - 20px);
+      width: calc(100% - 220px);
+      padding: 10px;
+      &.in-frame {
+        height: 100%;
+        width: 100%;
+        padding: 0;
+      }
+      background-color: rgb(240, 242, 245);
+      .add {
+        &-base {
+          &-header {
+            font-weight: 600;
+            border-bottom: 1px solid #e6e6e6;
+            height: 40px;
+            line-height: 40px;
+            padding-left: 20px;
+            font-size: 16px;
+          }
+          &-content {
+            padding: 20px;
+            &-table {
+              margin-top: 10px;
+              width: 70%;
+            }
+          }
+          @extend %addBorder;
+          padding: 0px;
+          .el-form {
+            &-item {
+              .el-input,
+              .el-alert,
+              .el-textarea,
+              .el-date-editor,
+              .el-select {
+                width: 50%;
+                .el-input {
+                  width: 100%;
+                }
+              }
+              .el-col {
+                .el-input {
+                  width: 100%;
+                }
+              }
+            }
+          }
+        }
+        &-operate {
+          @extend %addBorder;
+          text-align: right;
+        }
+
+        &.cell3 {
+          .add-base {
+            &-content {
+              display: flex !important;
+              flex-wrap: wrap;
+              .el-form-item {
+                width: 33.33% !important;
+              }
+            }
+          }
+        }
+
+        &.cell2 {
+          .add-base {
+            &-content {
+              display: flex !important;
+              flex-wrap: wrap;
+              .el-form-item {
+                width: 50% !important;
+              }
+            }
+          }
+        }
+      }
+      & > div:first-child {
+        background-color: #fff;
+        height: calc(100% - 20px);
+        padding: 10px;
+        overflow-y: auto;
+      }
+    }
+  }
+}
+</style>
