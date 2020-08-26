@@ -8,7 +8,18 @@
             <div class="name">{{item.name}}</div>
             <span class="status" :style="`background-color: ${$util.displayEnum($enum.statusList,item.status).color};`">{{$util.displayEnum($enum.statusList,item.status).label}}</span>
           </div>
-          <div class="duration">预期：{{item.estimatedTime}}</div>
+          <div class="floor">
+            <el-popover placement="top-start" width="160" v-model="visible">
+              <p>分配任务</p>
+              <div style="text-align: right; margin: 0">
+                <el-button size="mini" type="text" @click="visible = false">取消</el-button>
+                <el-button type="primary" size="mini" @click="visible = false">确定</el-button>
+              </div>
+              <el-button slot="reference" @click="allocate(item)" type="text">分配</el-button>
+            </el-popover>
+
+            <div class="duration">预期：{{item.estimatedTime}}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -45,6 +56,7 @@ export default {
     return {
       backlogList: [],
       memberList: [],
+      visible: false,
     };
   },
   created() {
@@ -88,16 +100,21 @@ export default {
         }
       });
     },
+    allocate() {
+      this.visible = true;
+    },
     getTaskList() {
-      return this.$axios.post("/task/list", {}).then((res) => {
-        if (res.status == 200) {
-          this.taskList = res.data.filter(
-            (n) => n.status != "shelve" && n.status !== "waitAssign"
-          );
-        } else {
-          this.$message.error(res.msg);
-        }
-      });
+      return this.$axios
+        .post("/task/list", {
+          status: ["demanding", "designing", "coding", "testing"],
+        })
+        .then((res) => {
+          if (res.status == 200) {
+            this.taskList = res.data;
+          } else {
+            this.$message.error(res.msg);
+          }
+        });
     },
   },
 };
@@ -135,11 +152,14 @@ export default {
             padding-bottom: 10px;
           }
         }
-        .duration {
-          flex: 1;
-          text-align: right;
-          font-size: 12px;
-          color: #999;
+        .floor {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .duration {
+            font-size: 12px;
+            color: #999;
+          }
         }
       }
     }
