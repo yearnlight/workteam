@@ -8,7 +8,7 @@
             <div class="name">{{item.name}}</div>
             <span class="status" :style="`background-color: ${$util.displayEnum($enum.statusList,item.status).color};`">{{$util.displayEnum($enum.statusList,item.status).label}}</span>
           </div>
-          <div class="duration">预期：{{item.duration}}</div>
+          <div class="duration">预期：{{item.estimatedTime}}</div>
         </div>
       </div>
     </div>
@@ -24,7 +24,7 @@
             <el-col :span="8">
               <span class="item-sum">
                 <el-button type="text">{{pitem.name}}</el-button>
-                (预期:{{pitem.duration}})
+                (预期:{{pitem.estimatedTime}})
               </span>
             </el-col>
           </div>
@@ -43,61 +43,62 @@ export default {
   components: { vTable },
   data() {
     return {
-      backlogList: [
-        { name: "门户网站单点登录", status: "shelve", duration: "2d" },
-        { name: "配额扩展", status: "waitAssign", duration: "5d" },
-        { name: "门户网站单点登录", status: "shelve", duration: "2d" },
-        { name: "回收站二期", status: "waitAssign", duration: "3d" },
-      ],
-      memberList: [
-        {
-          owner: "杨明翔",
-          tasks: [
-            {
-              name: "路由整改",
-              status: "testing",
-              duration: "12d",
-              finished: 50,
-            },
-            {
-              name: "易用性重构",
-              status: "waitAssign",
-              duration: "2d",
-              finished: 0,
-            },
-            {
-              name: "在线帮助优化",
-              status: "waitAssign",
-              duration: "2d",
-              finished: 0,
-            },
-          ],
-        },
-        {
-          owner: "王彩丽",
-          tasks: [
-            {
-              name: "路由整改",
-              status: "testing",
-              duration: "12d",
-              finished: 30,
-            },
-            {
-              name: "易用性重构",
-              status: "waitAssign",
-              duration: "2d",
-              finished: 0,
-            },
-            {
-              name: "在线帮助优化",
-              status: "waitAssign",
-              duration: "2d",
-              finished: 0,
-            },
-          ],
-        },
-      ],
+      backlogList: [],
+      memberList: [],
     };
+  },
+  created() {
+    this.getbacklogList();
+    this.getUserList().then(() => {
+      this.getTaskList().then(() => {
+        this.doMemberList();
+      });
+    });
+  },
+  methods: {
+    doMemberList() {
+      let runList = [];
+      this.userList.forEach((u) => {
+        let temp = {
+          owner: u.name,
+          tasks: this.taskList.filter((t) => t.owner.includes(u.name)),
+        };
+        runList.push(temp);
+      });
+      console.info(runList);
+      this.memberList = runList;
+    },
+    getbacklogList() {
+      this.$axios
+        .post("/task/list", { status: ["waitAssign", "shelve"] })
+        .then((res) => {
+          if (res.status == 200) {
+            this.backlogList = res.data;
+          } else {
+            this.$message.error(res.msg);
+          }
+        });
+    },
+    getUserList() {
+      return this.$axios.get("/task/user/list", {}).then((res) => {
+        if (res.status == 200) {
+          this.userList = res.data;
+        } else {
+          this.$message.error(res.msg);
+        }
+      });
+    },
+    getTaskList() {
+      return this.$axios.post("/task/list", {}).then((res) => {
+        if (res.status == 200) {
+          this.taskList = res.data.filter(
+            (n) => n.status != "shelve" && n.status !== "waitAssign"
+          );
+        } else {
+          this.$message.error(res.msg);
+        }
+      });
+    },
   },
 };
 </script>

@@ -1,12 +1,19 @@
 export default {
   statusList: [
-    { label: "待分配", value: "waitAssign", color: "#409EFF" },
-    { label: "搁置", value: "shelve", color: "#909399" },
+    { label: "待分配", value: "waitAssign", color: "#409EFF", isInit: true },
+    { label: "搁置", value: "shelve", color: "#909399", isInit: true },
     { label: "需求分析中", value: "demanding", color: "#E6A23C" },
     { label: "设计中", value: "designing", color: "#E6A23C" },
     { label: "编码中", value: "coding", color: "#E6A23C" },
     { label: "测试中", value: "testing", color: "#E6A23C" },
     { label: "完结", value: "end", color: "#67C23A" }
+  ],
+  userList: [
+    { label: "杨明翔", value: "yangmx" },
+    { label: "李辉", value: "lihui" },
+    { label: "师志花", value: "shizh" },
+    { label: "王彩丽", value: "wangcl" },
+    { label: "李盼", value: "lipan" }
   ],
   prioritys: [
     {

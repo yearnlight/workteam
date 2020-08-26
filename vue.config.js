@@ -4,8 +4,8 @@ module.exports = {
     devServer: {
         https: false,
         proxy: {
-            '^/(sys)': {
-                target: 'http://139.155.203.208:8080/',//订单接口
+            '^/(task)': {
+                target: 'http://localhost:4001/',//订单接口
                 ws: true,
                 changOrigin: true,
             }

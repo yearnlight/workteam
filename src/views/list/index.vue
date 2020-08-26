@@ -1,6 +1,6 @@
 <template>
   <div class="list">
-    <v-table name="list" :data="list" @info="info" @del="del" @edit="edit" @link="link" @search="search">
+    <v-table name="list" :data="list" @info="info" @del="del" @edit="edit">
       <el-button type="primary" icon="el-icon-plus" @click="add">创建任务</el-button>
       <template #progress="slotProps">
         <el-progress :percentage="slotProps.rowData.finished"></el-progress>
@@ -22,40 +22,46 @@ export default {
   data() {
     return {
       list: {
-        records: [
-          {
-            taskName: "订单详情优化",
-            finished: 50,
-            owner: "杨明翔",
-            startTime: "2020-08-24 09:00:00",
-            endTime: "2020-08-26 09:00:00",
-            duration: "2d",
-            priority: "high",
-            creator: "杨明翔",
-            status: "testing",
-          },
-          {
-            taskName: "tags拉通",
-            finished: 100,
-            owner: "杨明翔",
-            startTime: "2020-08-21 09:00:00",
-            endTime: "2020-08-23 09:00:00",
-            duration: "2d",
-            priority: "high",
-            creator: "杨明翔",
-            status: "end",
-          },
-        ],
+        records: [],
         total: 2,
       },
     };
   },
+  created() {
+    this.getList();
+  },
   methods: {
+    getList() {
+      this.$axios.post("/task/list", {}).then((res) => {
+        if (res.status == 200) {
+          this.list.records = res.data;
+        } else {
+          this.$message.error(res.msg);
+        }
+      });
+    },
     add() {
       this.$router.push("/work/tasklistAdd");
     },
     del(item) {
-      this.$confirm(`你确定删除任务${item.taskName} ?`, "删除").then(() => {});
+      this.$confirm(`你确定删除任务${item.name} ?`, "删除").then(() => {
+        this.$axios.post("/task/delete", { id: item.id }).then((res) => {
+          if (res.status == 200) {
+            this.$message.success(res.msg);
+            this.getList();
+          } else {
+            this.$message.error(res.msg);
+          }
+        });
+      });
+    },
+    edit(item) {
+      this.$router.push({
+        path: "/work/tasklistAdd",
+        query: {
+          id: item.id,
+        },
+      });
     },
   },
 };

@@ -30,6 +30,16 @@ const routes = [
         path: "/work/tasklistAdd",
         component: () => import("@/views/list/add.vue"),
         name: "tasklistAdd"
+      },
+      {
+        path: "/work/userlist",
+        component: () => import("@/views/user/list.vue"),
+        name: "userlist"
+      },
+      {
+        path: "/work/userlistAdd",
+        component: () => import("@/views/user/add.vue"),
+        name: "userlistAdd"
       }
     ]
   }
