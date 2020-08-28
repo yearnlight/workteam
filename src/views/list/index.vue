@@ -5,6 +5,14 @@
       <template #progress="slotProps">
         <el-progress :percentage="slotProps.rowData.finished"></el-progress>
       </template>
+      <template #overtime="slotProps">
+        <span v-if="slotProps.rowData.overtime">
+          <span class="red">{{$util.formatTime(slotProps.rowData.overtime)}}</span>
+        </span>
+      </template>
+      <template #estimatedTime="slotProps">
+        <span>{{slotProps.rowData.estimatedTime | formatDur}}</span>
+      </template>
       <template #priority="slotProps">
         <span class="priority" :style="`border-left: 3px solid ${$util.displayEnum($enum.prioritys,slotProps.rowData.priority).color};`">{{$util.displayEnum($enum.prioritys,slotProps.rowData.priority).label}}</span>
       </template>
@@ -58,6 +66,14 @@ export default {
     edit(item) {
       this.$router.push({
         path: "/work/tasklistAdd",
+        query: {
+          id: item.id,
+        },
+      });
+    },
+    info(item) {
+      this.$router.push({
+        path: "/work/tasklistInfo",
         query: {
           id: item.id,
         },

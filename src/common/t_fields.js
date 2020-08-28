@@ -15,7 +15,8 @@ export default {
       {
         prop: "status",
         label: "状态",
-        renderPage: "status"
+        renderPage: "status",
+        width: "120"
       },
       {
         prop: "label",
@@ -23,14 +24,25 @@ export default {
       },
       { prop: "startTime", label: "开始时间" },
       { prop: "endTime", label: "到期时间" },
-      { prop: "estimatedTime", label: "预期时间" },
-      { prop: "priority", label: "优先级", renderPage: "priority" },
-      { prop: "creator", label: "创建者" },
+      { prop: "estimatedTime", label: "预期时间", width: "110",renderPage:"estimatedTime" },
+      {
+        prop: "overtime",
+        label: "超时时间",
+        renderPage: "overtime",
+        width: "110"
+      },
+      {
+        prop: "priority",
+        label: "优先级",
+        renderPage: "priority",
+        width: "90"
+      },
+      { prop: "creator", label: "创建者", width: "90" },
       { prop: "finished", label: "%已完成", renderPage: "progress" },
       {
         prop: "operate",
         label: "操作",
-        width: "220",
+        width: "140",
         operateFun: [
           {
             label: "编辑",

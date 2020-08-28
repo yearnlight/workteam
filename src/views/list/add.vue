@@ -34,24 +34,49 @@
           <el-radio v-for="(item, index) in $enum.prioritys" :key="index" :label="item.value" :disabled="item.disabled">{{item.label}}</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="预估日期范围" prop="startEndTime">
-        <el-date-picker
-          type="datetimerange"
-          v-model="formData.startEndTime"
-          format="yyyy-MM-dd HH:mm:ss"
-          value-format="yyyy-MM-dd HH:mm:ss"
-          :style="{width: '100%'}"
-          start-placeholder="开始日期"
-          end-placeholder="到期日期"
-          range-separator="至"
-          clearable
-        ></el-date-picker>
-      </el-form-item>
+      <el-row>
+        <el-col :span="6">
+          <el-form-item label="预估开始时间" prop="startDate">
+            <el-date-picker v-model="formData.startDate" format="yyyy-MM-dd" value-format="yyyy-MM-dd" type="date" placeholder="开始日期"></el-date-picker>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item label-width="10px" prop="startSmallTime">
+            <el-time-select v-model="formData.startSmallTime" :picker-options="{
+          start: '09:00',
+          step: '00:60',
+          end: '18:00'
+        }" placeholder="选择时间"></el-time-select>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="6">
+          <el-form-item label="预估完结时间" prop="endDate">
+            <el-date-picker v-model="formData.endDate" format="yyyy-MM-dd" value-format="yyyy-MM-dd" type="date" placeholder="开始日期"></el-date-picker>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item label-width="10px" prop="endSmallTime">
+            <el-time-select v-model="formData.endSmallTime" :picker-options="{
+          start: '09:00',
+          step: '00:60',
+          end: '18:00'
+        }" placeholder="选择时间"></el-time-select>
+          </el-form-item>
+        </el-col>
+      </el-row>
+
       <el-form-item label="预估时间" prop="estimatedTime">
         <el-input :disabled="true" v-model="formData.estimatedTime" placeholder="请输入预估时间" clearable :style="{width: '100%'}"></el-input>
+        <el-popover placement="right" trigger="hover" popper-class="reminder">
+          预估时间：根据预估开始时间 - 预估完结时间 = 预估时间
+          <span class="reminder-high">（每天工作时间9小时计算）</span>
+          <el-button class="reminderBtn" type="text" slot="reference" icon="el-icon-question"></el-button>
+        </el-popover>
       </el-form-item>
       <el-form-item label="预估说明" prop="estimatedInfo">
-        <el-input type="textarea" v-model="formData.estimatedInfo" placeholder="请输入预估时间说明信息" clearable :style="{width: '100%'}"></el-input>
+        <el-input type="textarea" :autosize="{ minRows: 6, maxRows: 10}" v-model="formData.estimatedInfo" placeholder="请输入预估时间说明信息" clearable :style="{width: '100%'}"></el-input>
       </el-form-item>
       <el-form-item label="创建者" prop="creator">
         <el-select v-model="formData.creator" placeholder="请选择创建者" clearable :style="{width: '100%'}">
@@ -84,6 +109,9 @@ export default {
   props: [],
   data() {
     return {
+      pickerOptions: {
+        disabledDate(time) {},
+      },
       userList: [],
       isAdd: true,
       formData: {
@@ -91,7 +119,6 @@ export default {
         owner: [],
         status: "waitAssign",
         priority: "low",
-        startEndTime: [],
       },
       rules: {
         name: [
@@ -122,10 +149,31 @@ export default {
             trigger: "blur",
           },
         ],
-        startEndTime: [
+        startDate: [
           {
             required: true,
-            message: "日期范围不能为空",
+            message: "开始日期不能为空",
+            trigger: "change",
+          },
+        ],
+        startSmallTime: [
+          {
+            required: true,
+            message: "开始时间不能为空",
+            trigger: "change",
+          },
+        ],
+        endDate: [
+          {
+            required: true,
+            message: "完结日期不能为空",
+            trigger: "change",
+          },
+        ],
+        endSmallDate: [
+          {
+            required: true,
+            message: "完结时间不能为空",
             trigger: "change",
           },
         ],
@@ -139,8 +187,8 @@ export default {
         creator: [
           {
             required: true,
-            message: "请输入创建者",
-            trigger: "blur",
+            message: "请选择创建者",
+            trigger: "change",
           },
         ],
       },
@@ -149,13 +197,34 @@ export default {
   computed: {},
   watch: {},
   watch: {
-    "formData.startEndTime": {
+    "formData.startDate": {
       handler(n, o) {
         if (n && n.length) {
-          let dur = new Date(n[1]) - new Date(n[0]);
-          this.formData.estimatedTime = `${parseInt(
-            dur / 1000 / 60 / 60 / 24
-          )}天 ${parseInt((dur / 1000 / 60 / 60) % 24)}时`;
+          this.calcDur();
+        }
+      },
+      deep: true,
+    },
+    "formData.startSmallTime": {
+      handler(n, o) {
+        if (n && n.length) {
+          this.calcDur();
+        }
+      },
+      deep: true,
+    },
+    "formData.endDate": {
+      handler(n, o) {
+        if (n && n.length) {
+          this.calcDur();
+        }
+      },
+      deep: true,
+    },
+    "formData.endSmallTime": {
+      handler(n, o) {
+        if (n && n.length) {
+          this.calcDur();
         }
       },
       deep: true,
@@ -170,6 +239,21 @@ export default {
   },
   mounted() {},
   methods: {
+    calcDur() {
+      if (
+        this.formData.endDate &&
+        this.formData.endSmallTime &&
+        this.formData.startDate &&
+        this.formData.startSmallTime
+      ) {
+        let dur =
+          new Date(`${this.formData.endDate} ${this.formData.endSmallTime}`) -
+          new Date(
+            `${this.formData.startDate} ${this.formData.startSmallTime}`
+          );
+        this.formData.estimatedTime = this.$util.formatTime(dur);
+      }
+    },
     getUserList() {
       this.$axios.get("/task/user/list", {}).then((res) => {
         if (res.status == 200) {
@@ -183,8 +267,14 @@ export default {
       this.$axios.post("/task/info", { id: id }).then((res) => {
         if (res.status == 200) {
           let formData = res.data;
-          formData.startEndTime = [formData.startTime, formData.endTime];
+          let startTime = formData.startTime.split(" ");
+          let endTime = formData.endTime.split(" ");
+          formData.startDate = startTime[0];
+          formData.startSmallTime = startTime[1];
+          formData.endDate = endTime[0];
+          formData.endSmallTime = endTime[1];
           formData.owner = formData.owner.split(",");
+          formData.owner = formData.owner ? formData.owner : [];
           this.formData = formData;
         }
       });
@@ -192,8 +282,8 @@ export default {
     submitForm() {
       this.$refs["elForm"].validate((valid) => {
         if (!valid) return;
-        this.formData.startTime = this.formData.startEndTime[0];
-        this.formData.endTime = this.formData.startEndTime[1];
+        this.formData.startTime = `${this.formData.startDate} ${this.formData.startSmallTime}`;
+        this.formData.endTime = `${this.formData.endDate} ${this.formData.endSmallTime}`;
         if (this.isAdd) {
           this.$axios.post("/task/create", this.formData).then((res) => {
             if (res.status == 200) {
@@ -239,6 +329,12 @@ export default {
         .el-input {
           width: 100% !important;
         }
+      }
+    }
+
+    .el-col {
+      .el-input.el-date-editor {
+        width: 100% !important;
       }
     }
   }

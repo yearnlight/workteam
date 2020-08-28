@@ -89,6 +89,21 @@ router.post("/task/list", async ctx => {
     )}`;
   }
   res = await query(selectStr, values);
+  // 添加超时时间
+  res.forEach(item => {
+    let curTime = new Date();
+    let overtime = curTime - new Date(item.endTime);
+    if (overtime > 0) {
+      // 运行态任务
+      if (
+        item.status != "shelve" &&
+        item.status != "waitAssign" &&
+        item.status != "end"
+      ) {
+        item.overtime = overtime;
+      }
+    }
+  });
   ctx.response.body = { status: 200, msg: "", data: res };
 });
 
@@ -97,6 +112,21 @@ router.post("/task/info", async ctx => {
   let params = ctx.request.body;
   let selectStr = "select * from worktask where isDel = 0 and `id` = ?";
   res = await query(selectStr, [params.id]);
+  // 添加超时时间
+  res.forEach(item => {
+    let curTime = new Date();
+    let overtime = curTime - new Date(item.endTime);
+    if (overtime > 0) {
+      // 运行态任务
+      if (
+        item.status != "shelve" &&
+        item.status != "waitAssign" &&
+        item.status != "end"
+      ) {
+        item.overtime = overtime;
+      }
+    }
+  });
   ctx.response.body = { status: 200, msg: "", data: res[0] };
 });
 

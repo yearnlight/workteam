@@ -1,0 +1,39 @@
+{
+    "name": "worktask",
+    "version": "0.0.2",
+    "description": "工作任务",
+    "main": "dist/app.js",
+    "scripts": {
+      "dev": "wepy build --watch",
+      "build": "cross-env NODE_ENV=production wepy build --no-cache",
+      "dev:web": "wepy build --output web",
+      "clean": "find ./dist -maxdepth 1 -not -name 'project.config.json' -not -name 'dist' | xargs rm -rf",
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "wall": "node server/main.js"
+    },
+    "wepy": {
+      "module-a": false,
+      "./src/components/list": "./src/components/wepy-list.wpy"
+    },
+    "author": "yangmingxiang <yangmingxiang@imeduplus.com>",
+    "license": "MIT",
+    "dependencies": {
+      "koa": "^2.7.0",
+      "koa-body": "^4.1.0",
+      "koa-bodyparser": "^4.2.1",
+      "koa-router": "^7.4.0",
+      "moment": "^2.24.0",
+      "multiparty": "^4.2.1",
+      "mysql": "^2.17.1",
+      "node-uuid": "^1.4.8"
+    },
+    "devDependencies": {
+      "babel-eslint": "^7.2.1",
+      "babel-plugin-transform-class-properties": "^6.24.1",
+      "babel-plugin-transform-decorators-legacy": "^1.3.4",
+      "babel-plugin-transform-export-extensions": "^6.22.0",
+      "babel-plugin-transform-object-rest-spread": "^6.26.0",
+      "babel-preset-env": "^1.6.1",
+      "cross-env": "^5.1.3"
+    }
+  }

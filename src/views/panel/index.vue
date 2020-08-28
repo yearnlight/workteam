@@ -1,23 +1,15 @@
 <template>
-  <div class="panel">
+  <div class="panel" v-loading="loading">
     <div class="panel-backlog">
       <div class="header">待办项</div>
       <div class="panel-backlog-items">
         <div class="item" v-for="(item,index) in backlogList" :key="index">
           <div class="content">
-            <div class="name">{{item.name}}</div>
+            <div class="name" @click="info(item)">{{item.name|strCutOut(8)}}</div>
             <span class="status" :style="`background-color: ${$util.displayEnum($enum.statusList,item.status).color};`">{{$util.displayEnum($enum.statusList,item.status).label}}</span>
           </div>
           <div class="floor">
-            <el-popover placement="top-start" width="160" v-model="visible">
-              <p>分配任务</p>
-              <div style="text-align: right; margin: 0">
-                <el-button size="mini" type="text" @click="visible = false">取消</el-button>
-                <el-button type="primary" size="mini" @click="visible = false">确定</el-button>
-              </div>
-              <el-button slot="reference" @click="allocate(item)" type="text">分配</el-button>
-            </el-popover>
-
+            <el-button @click="allocate(item)" type="text">分配</el-button>
             <div class="duration">预期：{{item.estimatedTime}}</div>
           </div>
         </div>
@@ -29,14 +21,20 @@
         <div class="item" v-for="(item,index) in memberList" :key="index">
           <span>{{item.owner}}:</span>
           <div class="item-progress" v-for="(pitem,pindex) in item.tasks" :key="pindex">
-            <el-col :span="16">
-              <el-progress :style="`width:${parseInt(pitem.duration)*20}px`" :text-inside="true" :stroke-width="18" :percentage="pitem.finished"></el-progress>
+            <el-col :span="12">
+              <el-progress :style="`width:${parseInt(pitem.estimatedTime)*20}px;min-width:80px;max-width:240px;`" :text-inside="true" :stroke-width="18" :percentage="pitem.finished"></el-progress>
             </el-col>
-            <el-col :span="8">
-              <span class="item-sum">
-                <el-button type="text">{{pitem.name}}</el-button>
-                (预期:{{pitem.estimatedTime}})
-              </span>
+            <el-col :span="12">
+              <div class="item-operate">
+                <span class="item-sum">
+                  <el-button type="text" @click="info(pitem)">{{pitem.name|strCutOut(6)}}</el-button>
+                  (预期:{{pitem.estimatedTime}})
+                  <el-badge v-if="pitem.overtime" :value="`超时：${$util.formatTime(pitem.overtime)}`" class="item">
+                    <span class="el-icon-alarm-clock"></span>
+                  </el-badge>
+                </span>
+                <span class="el-icon-delete red" @click="remove(pitem,item.owner)"></span>
+              </div>
             </el-col>
           </div>
         </div>
@@ -45,6 +43,22 @@
     <div class="panel-run">
       <div class="header">统计</div>
     </div>
+
+    <el-dialog title="分配任务" :visible.sync="isAllocate">
+      <el-form :model="allocateForm" ref="allocateForm" :rules="rules" label-width="120px">
+        <el-form-item label="所有者" prop="owner">
+          <el-select filterable multiple v-model="allocateForm.owner" placeholder="请选择所有者" clearable :style="{width: '100%'}">
+            <el-option v-for="(item, index) in userList" :key="index" :label="item.name" :value="item.name" :disabled="item.disabled">
+              <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`">{{item.name}}</span>
+            </el-option>
+          </el-select>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="isAllocate = false">取 消</el-button>
+        <el-button type="primary" @click="saveAllocate('allocateForm')">确 定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -54,20 +68,47 @@ export default {
   components: { vTable },
   data() {
     return {
+      loading: false,
       backlogList: [],
       memberList: [],
-      visible: false,
+      isAllocate: false,
+      selectTaskItem: null,
+      allocateForm: { owner: [] },
+      rules: {
+        owner: [
+          {
+            required: true,
+            message: "请选择所有者",
+            trigger: "change",
+          },
+        ],
+      },
     };
   },
   created() {
-    this.getbacklogList();
-    this.getUserList().then(() => {
-      this.getTaskList().then(() => {
-        this.doMemberList();
-      });
-    });
+    this.loading = true;
+    this.loadBacklog();
+    this.loadRun();
   },
   methods: {
+    info(item) {
+      this.$router.push({
+        path: "/work/tasklistInfo",
+        query: {
+          id: item.id,
+        },
+      });
+    },
+    loadBacklog() {
+      this.getbacklogList();
+    },
+    loadRun() {
+      this.getUserList().then(() => {
+        this.getTaskList().then(() => {
+          this.doMemberList();
+        });
+      });
+    },
     doMemberList() {
       let runList = [];
       this.userList.forEach((u) => {
@@ -79,6 +120,7 @@ export default {
       });
       console.info(runList);
       this.memberList = runList;
+      this.loading = false;
     },
     getbacklogList() {
       this.$axios
@@ -100,8 +142,55 @@ export default {
         }
       });
     },
-    allocate() {
-      this.visible = true;
+    allocate(item) {
+      this.isAllocate = true;
+      this.selectTaskItem = this.$util.deepCopy(item);
+      this.allocateForm = { owner: [] };
+    },
+    remove(item, curOwer) {
+      this.$confirm(`你确定移除任务【${item.name}】`, "移除任务").then(() => {
+        let owners = item.owner.split(",");
+        let curIndex = owners.indexOf(curOwer);
+        let status = item.status;
+        owners.splice(curIndex, 1);
+        if (!(owners && owners.length)) {
+          status = "waitAssign";
+        }
+        this.$axios
+          .post("/task/update", {
+            id: item.id,
+            owner: owners.join(","),
+            status: status,
+          })
+          .then((res) => {
+            if (res.status == 200) {
+              this.loadBacklog();
+              this.loadRun();
+            } else {
+              this.$message.error(res.msg);
+            }
+          });
+      });
+    },
+    saveAllocate(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (!valid) return;
+        this.$axios
+          .post("/task/update", {
+            id: this.selectTaskItem.id,
+            owner: this.allocateForm.owner.join(","),
+            status: "demanding",
+          })
+          .then((res) => {
+            if (res.status == 200) {
+              this.loadBacklog();
+              this.loadRun();
+              this.isAllocate = false;
+            } else {
+              this.$message.error(res.msg);
+            }
+          });
+      });
     },
     getTaskList() {
       return this.$axios
@@ -128,7 +217,7 @@ export default {
     padding: 10px;
   }
   &-backlog {
-    flex: 1;
+    flex: 3;
     border-left: 1px solid #ebebeb;
     border-top: 1px solid #ebebeb;
     border-bottom: 1px solid #ebebeb;
@@ -150,6 +239,8 @@ export default {
           flex: 3;
           .name {
             padding-bottom: 10px;
+            cursor: pointer;
+            font-weight: 600;
           }
         }
         .floor {
@@ -166,14 +257,14 @@ export default {
   }
 
   &-run {
-    flex: 1;
+    flex: 2;
     border-right: 1px solid #ebebeb;
     border-top: 1px solid #ebebeb;
     border-bottom: 1px solid #ebebeb;
   }
 
   &-member {
-    flex: 1;
+    flex: 3;
     border: 1px solid #ebebeb;
     &-items {
       padding: 10px;
@@ -188,6 +279,22 @@ export default {
         &-sum {
           font-size: 12px;
           color: #999;
+        }
+        &-operate {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .red {
+            font-size: 14px;
+          }
+          .el-badge {
+            border: none;
+            padding: 3px;
+            margin-bottom: 0;
+            &__content {
+              right: 8px;
+            }
+          }
         }
         &-progress {
           clear: both;

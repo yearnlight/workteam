@@ -32,6 +32,11 @@ const routes = [
         name: "tasklistAdd"
       },
       {
+        path: "/work/tasklistInfo",
+        component: () => import("@/views/list/info.vue"),
+        name: "tasklistInfo"
+      },
+      {
         path: "/work/userlist",
         component: () => import("@/views/user/list.vue"),
         name: "userlist"

@@ -21,6 +21,10 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #333333;
+    .red {
+      color: #f56c6c;
+      cursor: pointer;
+    }
     .priority {
       padding: 2px 5px !important;
     }
@@ -42,6 +46,27 @@ body {
       }
       .high {
         color: #f39800;
+      }
+    }
+
+    pre {
+      font-family: Menlo, Monaco, Consolas, Courier New, monospace !important;
+      line-height: 1.45em;
+      font-size: 1em;
+      width: 70%;
+      margin: 0;
+      code {
+        font-size: 0.8em;
+        padding: 0.5em 1em;
+        margin: 0;
+        word-break: normal;
+        font-family: Menlo, Monaco, Consolas, Courier New, monospace !important;
+        display: block;
+        color: #333;
+        overflow: auto;
+        max-height: 400px;
+        background-color: #f8f8f8;
+        border-radius: 2px;
       }
     }
     .el-button,

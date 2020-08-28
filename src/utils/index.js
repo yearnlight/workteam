@@ -30,8 +30,28 @@ let displayEnum = (enums, value) => {
   return res;
 };
 
+let formatDur = dur => {
+  let dayHour = dur.split(" ");
+  let day = parseInt(dayHour[0]);
+  if (parseInt(dayHour[1]) == 9) {
+    day = day + 1;
+    return `${day}天`;
+  } else {
+    return dur;
+  }
+};
+
+let formatTime = dur => {
+  return formatDur(
+    `${parseInt(dur / 1000 / 60 / 60 / 24)}天 ${parseInt(
+      (dur / 1000 / 60 / 60) % 24
+    )}时`
+  );
+};
+
 export default {
   deepCopy: deepCopy,
   jointQuery: jointQuery,
-  displayEnum:displayEnum
+  displayEnum: displayEnum,
+  formatTime: formatTime
 };
