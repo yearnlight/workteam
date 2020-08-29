@@ -46,10 +46,10 @@ body {
       font-size: 12px;
       color: #999;
       &-high {
-        color: #f39800;
+        color: #f39800 !important;
       }
       .high {
-        color: #f39800;
+        color: #f39800 !important;
       }
     }
 

@@ -28,6 +28,10 @@
             <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${$util.displayEnum($enum.statusList,item.value).color};`">{{item.label}}</span>
           </el-option>
         </el-select>
+        <el-popover placement="right" trigger="hover" popper-class="reminder">
+          <span class="reminder-high">待分配、搁置状态的任务</span>才可以修改预估时间，任务一旦开始运行暂时不允许修改预估时间。
+          <el-button class="reminderBtn" type="text" slot="reference" icon="el-icon-question"></el-button>
+        </el-popover>
       </el-form-item>
       <el-form-item label="优先级" prop="priority">
         <el-radio-group v-model="formData.priority" size="medium">
@@ -37,12 +41,12 @@
       <el-row>
         <el-col :span="6">
           <el-form-item label="预估开始时间" prop="startDate">
-            <el-date-picker v-model="formData.startDate" format="yyyy-MM-dd" value-format="yyyy-MM-dd" type="date" placeholder="开始日期"></el-date-picker>
+            <el-date-picker :disabled="!(formData.status == 'shelve' || formData.status == 'waitAssign')" v-model="formData.startDate" format="yyyy-MM-dd" value-format="yyyy-MM-dd" type="date" placeholder="开始日期"></el-date-picker>
           </el-form-item>
         </el-col>
         <el-col :span="6">
           <el-form-item label-width="10px" prop="startSmallTime">
-            <el-time-select v-model="formData.startSmallTime" :picker-options="{
+            <el-time-select :disabled="!(formData.status == 'shelve' || formData.status == 'waitAssign')" v-model="formData.startSmallTime" :picker-options="{
           start: '09:00',
           step: '00:60',
           end: '18:00'
@@ -53,12 +57,12 @@
       <el-row>
         <el-col :span="6">
           <el-form-item label="预估完结时间" prop="endDate">
-            <el-date-picker v-model="formData.endDate" format="yyyy-MM-dd" value-format="yyyy-MM-dd" type="date" placeholder="开始日期"></el-date-picker>
+            <el-date-picker :disabled="!(formData.status == 'shelve' || formData.status == 'waitAssign')" v-model="formData.endDate" format="yyyy-MM-dd" value-format="yyyy-MM-dd" type="date" placeholder="开始日期"></el-date-picker>
           </el-form-item>
         </el-col>
         <el-col :span="6">
           <el-form-item label-width="10px" prop="endSmallTime">
-            <el-time-select v-model="formData.endSmallTime" :picker-options="{
+            <el-time-select :disabled="!(formData.status == 'shelve' || formData.status == 'waitAssign')" v-model="formData.endSmallTime" :picker-options="{
           start: '09:00',
           step: '00:60',
           end: '18:00'
