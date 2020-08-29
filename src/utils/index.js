@@ -43,8 +43,8 @@ let formatDur = dur => {
 
 let formatTime = dur => {
   return formatDur(
-    `${parseInt(dur / 1000 / 60 / 60 / 24)}天 ${parseInt(
-      (dur / 1000 / 60 / 60) % 24
+    `${Math.abs(parseInt(dur / 1000 / 60 / 60 / 24))}天 ${Math.abs(
+      parseInt((dur / 1000 / 60 / 60) % 24)
     )}时`
   );
 };

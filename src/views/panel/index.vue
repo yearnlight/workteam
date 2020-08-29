@@ -29,7 +29,7 @@
                 <span class="item-sum">
                   <el-button type="text" @click="info(pitem)">{{pitem.name|strCutOut(6)}}</el-button>
                   (预期:{{pitem.estimatedTime}})
-                  <el-badge v-if="pitem.overtime" :value="`超时：${$util.formatTime(pitem.overtime)}`" class="item">
+                  <el-badge :type="pitem.overtime>0?'error':'warning'" v-if="pitem.overtime" :value="`${pitem.overtime>0?'超时':'剩余'}：${$util.formatTime(pitem.overtime)}`" class="item">
                     <span class="el-icon-alarm-clock"></span>
                   </el-badge>
                 </span>
@@ -42,10 +42,19 @@
     </div>
     <div class="panel-run">
       <div class="header">统计</div>
+      <div class="panel-run-content">
+        <v-chart :options="polar" />
+      </div>
     </div>
 
     <el-dialog title="分配任务" :visible.sync="isAllocate">
       <el-form :model="allocateForm" ref="allocateForm" :rules="rules" label-width="120px">
+        <el-form-item label>
+          <div class="reminder">
+            任务分配时，如果多人承担，请及时修改
+            <span class="high">预估时间</span>，暂不支持自动调整。
+          </div>
+        </el-form-item>
         <el-form-item label="所有者" prop="owner">
           <el-select filterable multiple v-model="allocateForm.owner" placeholder="请选择所有者" clearable :style="{width: '100%'}">
             <el-option v-for="(item, index) in userList" :key="index" :label="item.name" :value="item.name" :disabled="item.disabled">
@@ -63,9 +72,11 @@
 </template>
 
 <script>
+import VChart from "vue-echarts/components/ECharts.vue";
 import vTable from "@/components/vTable";
+import ECharts from "echarts";
 export default {
-  components: { vTable },
+  components: { vTable, VChart },
   data() {
     return {
       loading: false,
@@ -83,12 +94,56 @@ export default {
           },
         ],
       },
+      polar: {
+        title: {
+          text: "任务状态统计",
+          x: "center",
+        },
+        tooltip: {
+          trigger: "item",
+          formatter: "{a} <br/>{b} : {c} ({d}%)",
+        },
+        legend: {
+          show: true,
+          bottom: 0,
+          data: [],
+        },
+        color: [
+          "#409EFF",
+          "#909399",
+          "#E6A23C",
+          "#9764e0",
+          "#e06ab7",
+          "#fa9600",
+          "#67C23A",
+        ],
+        series: [
+          {
+            name: "任务状态",
+            type: "pie",
+            radius: ["35%", "55%"],
+            // center: ["50%", "60%"],
+            label: {
+              formatter: "{b} {c}",
+            },
+            data: [],
+            itemStyle: {
+              emphasis: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: "rgba(0, 0, 0, 0.5)",
+              },
+            },
+          },
+        ],
+      },
     };
   },
   created() {
     this.loading = true;
     this.loadBacklog();
     this.loadRun();
+    this.loadStatistics();
   },
   methods: {
     info(item) {
@@ -109,6 +164,14 @@ export default {
         });
       });
     },
+    loadStatistics() {
+      this.$axios.post("/task/statistics").then((res) => {
+        if (res.status == 200) {
+          this.polar.legend.data = res.data.legend;
+          this.polar.series[0].data = res.data.series;
+        }
+      });
+    },
     doMemberList() {
       let runList = [];
       this.userList.forEach((u) => {
@@ -118,7 +181,6 @@ export default {
         };
         runList.push(temp);
       });
-      console.info(runList);
       this.memberList = runList;
       this.loading = false;
     },
@@ -261,12 +323,20 @@ export default {
     border-right: 1px solid #ebebeb;
     border-top: 1px solid #ebebeb;
     border-bottom: 1px solid #ebebeb;
+    &-content {
+      padding: 20px;
+      .echarts {
+        width: calc(100%);
+        height: 280px;
+      }
+    }
   }
 
   &-member {
     flex: 3;
     border: 1px solid #ebebeb;
     &-items {
+      overflow-y: auto;
       padding: 10px;
       .item {
         &:hover {

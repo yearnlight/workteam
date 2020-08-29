@@ -6,7 +6,6 @@ export default {
         prop: "name",
         label: "任务",
         operateFun: { function: "info" },
-        "show-overflow-tooltip": true
       },
       {
         prop: "owner",
@@ -23,13 +22,18 @@ export default {
         label: "标签"
       },
       { prop: "startTime", label: "开始时间" },
-      { prop: "endTime", label: "到期时间" },
-      { prop: "estimatedTime", label: "预期时间", width: "110",renderPage:"estimatedTime" },
+      { prop: "endTime", label: "到期时间", renderPage: "endTime" },
+      {
+        prop: "estimatedTime",
+        label: "预期时间",
+        width: "110",
+        renderPage: "estimatedTime"
+      },
       {
         prop: "overtime",
-        label: "超时时间",
+        label: "剩余/超时时间",
         renderPage: "overtime",
-        width: "110"
+        width: "120"
       },
       {
         prop: "priority",

@@ -1,7 +1,10 @@
 <template>
   <div class="doc">
     <div :class="[{'hidden':isInFrame},'docHeader']">
-      <div class="docHeader-title">工作任务管理系统</div>
+      <div class="docHeader-title">
+        工作任务管理系统
+        <span @click="isCollapse = !isCollapse" :class="[{'el-icon-d-arrow-left':!isCollapse,'el-icon-d-arrow-right':isCollapse},'collapse']"></span>
+      </div>
       <div class="docHeader-items">
         <el-dropdown class="userInfo-container mr-20" trigger="click" @command="handleCommand">
           <span class="el-dropdown-link">
@@ -23,9 +26,8 @@
       </div>
     </div>
     <div :class="[{'in-frame':isInFrame},'docMenu']">
-      <div :class="[{'hidden':isInFrame},'docMenu-content']">
-        <!-- <div class="docMenu-content-title">工地管理系统</div> -->
-        <el-menu :default-active="$route.path" :router="true" background-color="#304156" text-color="#bfcbd9" active-text-color="#00a4ff">
+      <div :class="[{'maxWidth':!isCollapse,'minWidth':isCollapse},'docMenu-content']">
+        <el-menu :collapse="isCollapse" :default-active="$route.path" :router="true" background-color="#304156" text-color="#bfcbd9" active-text-color="#00a4ff">
           <el-submenu v-for="(item,index) in leftmenus.filter(m=>m.children)" :index="item.path" :key="index">
             <template slot="title">
               <i :class="item.icon"></i>
@@ -43,7 +45,7 @@
         </el-menu>
       </div>
 
-      <div :class="[{'in-frame':isInFrame},'docMenu-main']">
+      <div :class="[{'maxWidth':!isCollapse,'minWidth':isCollapse},'docMenu-main']">
         <router-view></router-view>
       </div>
     </div>
@@ -55,10 +57,10 @@ import menus from "@/menu.js";
 export default {
   data() {
     return {
-      activeItem: "/site/project_view",
       avatar: require("@/assets/logo.png"),
       name: "杨明翔",
       isInFrame: false,
+      isCollapse: false,
     };
   },
   created() {
@@ -91,6 +93,10 @@ export default {
   padding: 12px;
   border: 1px solid #ebeef5;
   margin-bottom: 12px;
+}
+.collapse {
+  margin-left: 40px;
+  cursor: pointer;
 }
 .hidden {
   display: none !important;
@@ -134,6 +140,12 @@ export default {
       text-align: right;
     }
     &-content {
+      &.maxWidth {
+        width: 200px;
+      }
+      &.minWidth {
+        width: 64px;
+      }
       &-title {
         padding: 5px;
         color: #a1a6ab;
@@ -178,7 +190,13 @@ export default {
     &-main {
       overflow-y: auto;
       height: calc(100% - 20px);
-      width: calc(100% - 220px);
+      &.maxWidth {
+        width: calc(100% - 220px);
+      }
+      &.minWidth {
+        width: 64px;
+        width: calc(100% - 84px);
+      }
       padding: 10px;
       &.in-frame {
         height: 100%;

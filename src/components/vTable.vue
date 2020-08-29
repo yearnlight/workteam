@@ -446,6 +446,7 @@ export default {
     justify-content: space-between;
     padding-bottom: 10px;
     .operate-left {
+      width: calc(100% - 90px);
     }
     .operate {
       width: 70px;

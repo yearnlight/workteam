@@ -25,6 +25,10 @@ body {
       color: #f56c6c;
       cursor: pointer;
     }
+    .warn {
+      color: #f39800;
+      cursor: pointer;
+    }
     .priority {
       padding: 2px 5px !important;
     }

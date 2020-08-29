@@ -25,8 +25,8 @@
       <el-form-item label="预估时间" prop="estimatedTime">
         <span>{{formData.estimatedTime | formatDur}}</span>
       </el-form-item>
-      <el-form-item label="超时时间" prop="overtime">
-        <span class="red" v-if="formData.overtime">{{$util.formatTime(formData.overtime)}}</span>
+      <el-form-item :label="formData.overtime>0?'超时时间':'剩余时间'" prop="overtime">
+        <span :class="{'red':formData.overtime>0,'warn':formData.overtime<0}" v-if="formData.overtime">{{$util.formatTime(formData.overtime)}}</span>
       </el-form-item>
       <el-form-item label="预估说明" prop="estimatedInfo">
         <pre>

@@ -82,29 +82,62 @@ router.post("/task/list", async ctx => {
       }
     }
   }
-  let selectStr = `select * from worktask where isDel = 0`;
+  let selectStr = `select * from worktask where isDel = 0 order by startTime desc`;
   if (selectParams && selectParams.length) {
     selectStr = `select * from worktask where isDel = 0 and ${selectParams.join(
       " and "
-    )}`;
+    )} order by startTime desc`;
+  } else {
+    // 查询时间范围内
+    if (params.startTime) {
+      selectStr = `select * from worktask where isDel = 0 and startTime > '${params.startTime}' and startTime < '${params.endTime}' order by startTime desc`;
+    }
   }
+
   res = await query(selectStr, values);
   // 添加超时时间
   res.forEach(item => {
     let curTime = new Date();
     let overtime = curTime - new Date(item.endTime);
-    if (overtime > 0) {
-      // 运行态任务
-      if (
-        item.status != "shelve" &&
-        item.status != "waitAssign" &&
-        item.status != "end"
-      ) {
-        item.overtime = overtime;
-      }
+    // 运行态任务
+    if (
+      item.status != "shelve" &&
+      item.status != "waitAssign" &&
+      item.status != "end"
+    ) {
+      item.overtime = overtime;
     }
   });
   ctx.response.body = { status: 200, msg: "", data: res };
+});
+
+// 任务统计
+router.post("/task/statistics", async ctx => {
+  let response = {
+    legend: [],
+    series: []
+  };
+  let selectStr = `select * from worktask where isDel = 0`;
+  res = await query(selectStr);
+  // 统计
+  let waitAssignList = res.filter(item => item.status == "waitAssign");
+  let shelveList = res.filter(item => item.status == "shelve");
+  let demandingList = res.filter(item => item.status == "demanding");
+  let designingList = res.filter(item => item.status == "designing");
+  let codingList = res.filter(item => item.status == "coding");
+  let testingList = res.filter(item => item.status == "testing");
+  let endList = res.filter(item => item.status == "end");
+
+  response.series.push({ name: "待分配", value: waitAssignList.length });
+  response.series.push({ name: "搁置", value: shelveList.length });
+  response.series.push({ name: "需求分析中", value: demandingList.length });
+  response.series.push({ name: "设计中", value: designingList.length });
+  response.series.push({ name: "编码中", value: codingList.length });
+  response.series.push({ name: "测试中", value: testingList.length });
+  response.series.push({ name: "完结", value: endList.length });
+  response.legend = response.series.map(m => m.name);
+
+  ctx.response.body = { status: 200, msg: "", data: response };
 });
 
 router.post("/task/info", async ctx => {
@@ -116,15 +149,13 @@ router.post("/task/info", async ctx => {
   res.forEach(item => {
     let curTime = new Date();
     let overtime = curTime - new Date(item.endTime);
-    if (overtime > 0) {
-      // 运行态任务
-      if (
-        item.status != "shelve" &&
-        item.status != "waitAssign" &&
-        item.status != "end"
-      ) {
-        item.overtime = overtime;
-      }
+    // 运行态任务
+    if (
+      item.status != "shelve" &&
+      item.status != "waitAssign" &&
+      item.status != "end"
+    ) {
+      item.overtime = overtime;
     }
   });
   ctx.response.body = { status: 200, msg: "", data: res[0] };
@@ -134,8 +165,6 @@ let fields = [
   "name",
   "owner",
   "status",
-  "startTime",
-  "endTime",
   "priority",
   "estimatedTime",
   "estimatedInfo",
