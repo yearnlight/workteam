@@ -11,11 +11,40 @@ let http = require("http");
 
 const app = new Koa();
 
+
+router.post("/task/login", async ctx => {
+  let { account, pass } = ctx.request.body;
+  let queryStr = "select * from user where `key` = ?";
+  res = await query(queryStr, [account]);
+  if (res && res.length) {
+    let userInfo = res[0];
+    if (userInfo.pass != pass) {
+      ctx.response.body = { status: 400, msg: "密码错误", data: null };
+    }
+    else {
+      let token = Uuid.v1();
+      ctx.response.body = { status: 200, msg: "登录成功", data: Object.assign(userInfo, { token: token }) };
+    }
+  }
+  else {
+    ctx.response.body = { status: 400, msg: "用户不存在", data: null };
+  }
+
+});
+
 router.get("/task/user/list", async ctx => {
   let res = [];
   let selectStr = `select * from user`;
   res = await query(selectStr);
   ctx.response.body = { status: 200, msg: "", data: res };
+});
+
+router.post("/task/user/info", async ctx => {
+  let { id } = ctx.request.body;
+  let res = [];
+  let selectStr = `select * from user where id = ?`;
+  res = await query(selectStr, [id]);
+  ctx.response.body = { status: 200, msg: "", data: res[0] };
 });
 
 router.post("/task/user/delete", async ctx => {
@@ -25,6 +54,50 @@ router.post("/task/user/delete", async ctx => {
   ctx.response.body = { status: 200, msg: "删除用户成功", data: null };
 });
 
+router.post("/task/user/update", async ctx => {
+  let params = ctx.request.body;
+  if (params.oldPass) {
+    let selectStr = `select * from user where id = ?`;
+    let userInfo = await query(selectStr, [params.id]);
+    if (userInfo && userInfo[0]) {
+      if (userInfo[0].pass != params.oldPass) {
+        ctx.response.body = { status: 400, msg: "旧密码不正确", data: null };
+      }
+      else {
+        let updateParams = [];
+        let values = [];
+        let whitefields = ["name", "key", "department", "group", "team", "remark", "pass"];
+        for (let key in params) {
+          if (whitefields.includes(key)) {
+            updateParams.push(`\`${key}\` = ?`);
+            values.push(params[key]);
+          }
+        }
+        values.concat(params.id);
+        let updateStr = `update user SET ${updateParams.join(",")} where id = ?`;
+        res = await query(updateStr, values.concat(params.id));
+        ctx.response.body = { status: 200, msg: "更新用户成功", data: null };
+      }
+    }
+  }
+  else {
+    let updateParams = [];
+    let values = [];
+    let whitefields = ["name", "key", "department", "group", "team", "remark", "pass"];
+    for (let key in params) {
+      if (whitefields.includes(key)) {
+        updateParams.push(`\`${key}\` = ?`);
+        values.push(params[key]);
+      }
+    }
+    values.concat(params.id);
+    let updateStr = `update user SET ${updateParams.join(",")} where id = ?`;
+    res = await query(updateStr, values.concat(params.id));
+    ctx.response.body = { status: 200, msg: "更新用户成功", data: null };
+  }
+
+
+})
 router.post("/task/user/add", async ctx => {
   let params = ctx.request.body;
   let uuid = Uuid.v1();
@@ -38,12 +111,13 @@ router.post("/task/user/add", async ctx => {
       params.group,
       params.team,
       params.remark,
-      createtime
+      createtime,
+      params.pass
     ]
   ];
   let insertStr =
-    "insert into user(id,name,`key`,department,`group`,`team`,remark,createtime) values ?";
-  res = await query(insertStr, [inputParams], function(err, result) {
+    "insert into user(id,name,`key`,department,`group`,`team`,remark,createtime,pass) values ?";
+  res = await query(insertStr, [inputParams], function (err, result) {
     if (err) {
       console.log("[INSERT ERROR] - ", err.message);
       return;
@@ -233,7 +307,7 @@ router.post("/task/create", async ctx => {
     ]
   ];
   let insertStr = `insert into worktask(id,name,owner,status,startTime,endTime,priority,estimatedTime,estimatedInfo,creator,finished,createtime,isDel) values ?`;
-  res = await query(insertStr, [inputParams], function(err, result) {
+  res = await query(insertStr, [inputParams], function (err, result) {
     if (err) {
       console.log("[INSERT ERROR] - ", err.message);
       return;

@@ -50,38 +50,36 @@ export default {
       }
     };
     return {
-      imgUrl: require("../../assets/login.png"),
+      imgUrl: require("../../assets/login.jpg"),
       form: {},
       loading: false,
       loginRules: {
         account: [
-          { required: true, trigger: "blur", validator: validateUsername },
+          { required: true, trigger: "blur", validator: validateUsername }
         ],
-        pass: [
-          { required: true, trigger: "blur", validator: validatePassword },
-        ],
-      },
+        pass: [{ required: true, trigger: "blur", validator: validatePassword }]
+      }
     };
   },
   methods: {
     handleLogin() {
-      this.$refs.loginForm.validate((valid) => {
+      this.$refs.loginForm.validate(valid => {
         if (valid) {
-          if (this.form.account == "admin" && this.form.pass == "123456") {
-            this.loading = true;
-            setTimeout(() => {
-              this.loading = false;
-              this.$router.push("/site");
-            }, 1500);
-          } else {
-            this.$message.error("账号或密码不正确");
-          }
+          this.$axios.post("/task/login", this.form).then(res => {
+            if (res.status == 200) {
+              window.sessionStorage.setItem("token", res.data.token);
+              window.sessionStorage.setItem("userInfo", JSON.stringify(res.data));
+              this.$router.push("/work");
+            } else {
+              this.$message.error(res.msg);
+            }
+          });
         } else {
           return false;
         }
       });
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -125,7 +123,6 @@ export default {
     z-index: 100;
     width: 280px;
     height: 280px;
-    background-color: rgba(64, 158, 255, 0.2);
     &-title {
       text-align: center;
       padding: 30px 20px;

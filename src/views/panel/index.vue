@@ -5,8 +5,11 @@
       <div class="panel-backlog-items">
         <div class="item" v-for="(item,index) in backlogList" :key="index">
           <div class="content">
-            <div class="name" @click="info(item)">{{item.name|strCutOut(8)}}</div>
-            <span class="status" :style="`background-color: ${$util.displayEnum($enum.statusList,item.status).color};`">{{$util.displayEnum($enum.statusList,item.status).label}}</span>
+            <div class="name" @click="info(item)">{{item.name|strCutOut(7)}}</div>
+            <span
+              class="status"
+              :style="`background-color: ${$util.displayEnum($enum.statusList,item.status).color};`"
+            >{{$util.displayEnum($enum.statusList,item.status).label}}</span>
           </div>
           <div class="floor">
             <el-button @click="allocate(item)" type="text">分配</el-button>
@@ -16,23 +19,41 @@
       </div>
     </div>
     <div class="panel-member">
-      <div class="header">成员任务</div>
+      <div class="header">
+        成员任务
+        <span class="header-info">
+          <span class="el-icon-alarm-clock red"></span>超时时间
+          <span class="el-icon-alarm-clock warn"></span>剩余时间
+        </span>
+      </div>
       <div class="panel-member-items">
         <div class="item" v-for="(item,index) in memberList" :key="index">
           <span>{{item.owner}}:</span>
           <div class="item-progress" v-for="(pitem,pindex) in item.tasks" :key="pindex">
             <el-col :span="12">
-              <el-progress :style="`width:${parseInt(pitem.estimatedTime)*20}px;min-width:80px;max-width:240px;`" :text-inside="true" :stroke-width="18" :percentage="pitem.finished"></el-progress>
+              <el-progress
+                :style="`width:${parseInt(pitem.estimatedTime)*15}px;min-width:80px;max-width:200px;`"
+                :text-inside="true"
+                :stroke-width="18"
+                :percentage="pitem.finished"
+              ></el-progress>
             </el-col>
             <el-col :span="12">
               <div class="item-operate">
-                <span class="item-sum">
+                <div class="item-sum">
                   <el-button type="text" @click="info(pitem)">{{pitem.name|strCutOut(6)}}</el-button>
                   (预期:{{pitem.estimatedTime}})
-                  <el-badge :type="pitem.overtime>0?'error':'warning'" v-if="pitem.overtime" :value="`${pitem.overtime>0?'超时':'剩余'}：${$util.formatTime(pitem.overtime)}`" class="item">
-                    <span class="el-icon-alarm-clock"></span>
+                  <el-badge
+                    :type="pitem.overtime>0?'error':'warning'"
+                    v-if="pitem.overtime"
+                    :value="`${$util.formatTime(pitem.overtime)}`"
+                    class="item"
+                  >
+                    <span
+                      :class="[{'red':pitem.overtime>0,'warn':pitem.overtime<0},'el-icon-alarm-clock']"
+                    ></span>
                   </el-badge>
-                </span>
+                </div>
                 <span class="el-icon-delete red" @click="remove(pitem,item.owner)"></span>
               </div>
             </el-col>
@@ -43,22 +64,36 @@
     <div class="panel-run">
       <div class="header">统计</div>
       <div class="panel-run-content">
-        <v-chart :options="polar" />
+        <v-chart :options="polar"/>
       </div>
     </div>
-
     <el-dialog title="分配任务" :visible.sync="isAllocate">
       <el-form :model="allocateForm" ref="allocateForm" :rules="rules" label-width="120px">
-        <el-form-item label>
+        <el-form-item label="">
           <div class="reminder">
             任务分配时，如果多人承担，请及时修改
             <span class="high">预估时间</span>，暂不支持自动调整。
           </div>
         </el-form-item>
         <el-form-item label="所有者" prop="owner">
-          <el-select filterable multiple v-model="allocateForm.owner" placeholder="请选择所有者" clearable :style="{width: '100%'}">
-            <el-option v-for="(item, index) in userList" :key="index" :label="item.name" :value="item.name" :disabled="item.disabled">
-              <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`">{{item.name}}</span>
+          <el-select
+            filterable
+            multiple
+            v-model="allocateForm.owner"
+            placeholder="请选择所有者"
+            clearable
+            :style="{width: '100%'}"
+          >
+            <el-option
+              v-for="(item, index) in userList"
+              :key="index"
+              :label="item.name"
+              :value="item.name"
+              :disabled="item.disabled"
+            >
+              <span
+                :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`"
+              >{{item.name}}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -90,23 +125,24 @@ export default {
           {
             required: true,
             message: "请选择所有者",
-            trigger: "change",
-          },
-        ],
+            trigger: "change"
+          }
+        ]
       },
       polar: {
         title: {
           text: "任务状态统计",
-          x: "center",
+          x: "center"
         },
         tooltip: {
           trigger: "item",
-          formatter: "{a} <br/>{b} : {c} ({d}%)",
+          formatter: "{a} <br/>{b} : {c} ({d}%)"
         },
         legend: {
           show: true,
           bottom: 0,
           data: [],
+          padding: [20, 5]
         },
         color: [
           "#409EFF",
@@ -115,28 +151,28 @@ export default {
           "#9764e0",
           "#e06ab7",
           "#fa9600",
-          "#67C23A",
+          "#67C23A"
         ],
         series: [
           {
             name: "任务状态",
             type: "pie",
-            radius: ["35%", "55%"],
-            // center: ["50%", "60%"],
+            radius: ["25%", "45%"],
+            center: ["50%", "40%"],
             label: {
-              formatter: "{b} {c}",
+              formatter: "{b} {c}"
             },
             data: [],
             itemStyle: {
               emphasis: {
                 shadowBlur: 10,
                 shadowOffsetX: 0,
-                shadowColor: "rgba(0, 0, 0, 0.5)",
-              },
-            },
-          },
-        ],
-      },
+                shadowColor: "rgba(0, 0, 0, 0.5)"
+              }
+            }
+          }
+        ]
+      }
     };
   },
   created() {
@@ -150,8 +186,8 @@ export default {
       this.$router.push({
         path: "/work/tasklistInfo",
         query: {
-          id: item.id,
-        },
+          id: item.id
+        }
       });
     },
     loadBacklog() {
@@ -165,7 +201,7 @@ export default {
       });
     },
     loadStatistics() {
-      this.$axios.post("/task/statistics").then((res) => {
+      this.$axios.post("/task/statistics").then(res => {
         if (res.status == 200) {
           this.polar.legend.data = res.data.legend;
           this.polar.series[0].data = res.data.series;
@@ -174,10 +210,10 @@ export default {
     },
     doMemberList() {
       let runList = [];
-      this.userList.forEach((u) => {
+      this.userList.forEach(u => {
         let temp = {
           owner: u.name,
-          tasks: this.taskList.filter((t) => t.owner.includes(u.name)),
+          tasks: this.taskList.filter(t => t.owner.includes(u.name))
         };
         runList.push(temp);
       });
@@ -187,7 +223,7 @@ export default {
     getbacklogList() {
       this.$axios
         .post("/task/list", { status: ["waitAssign", "shelve"] })
-        .then((res) => {
+        .then(res => {
           if (res.status == 200) {
             this.backlogList = res.data;
           } else {
@@ -196,7 +232,7 @@ export default {
         });
     },
     getUserList() {
-      return this.$axios.get("/task/user/list", {}).then((res) => {
+      return this.$axios.get("/task/user/list", {}).then(res => {
         if (res.status == 200) {
           this.userList = res.data;
         } else {
@@ -222,9 +258,9 @@ export default {
           .post("/task/update", {
             id: item.id,
             owner: owners.join(","),
-            status: status,
+            status: status
           })
-          .then((res) => {
+          .then(res => {
             if (res.status == 200) {
               this.loadBacklog();
               this.loadRun();
@@ -235,15 +271,15 @@ export default {
       });
     },
     saveAllocate(formName) {
-      this.$refs[formName].validate((valid) => {
+      this.$refs[formName].validate(valid => {
         if (!valid) return;
         this.$axios
           .post("/task/update", {
             id: this.selectTaskItem.id,
             owner: this.allocateForm.owner.join(","),
-            status: "demanding",
+            status: "demanding"
           })
-          .then((res) => {
+          .then(res => {
             if (res.status == 200) {
               this.loadBacklog();
               this.loadRun();
@@ -257,17 +293,17 @@ export default {
     getTaskList() {
       return this.$axios
         .post("/task/list", {
-          status: ["demanding", "designing", "coding", "testing"],
+          status: ["demanding", "designing", "coding", "testing"]
         })
-        .then((res) => {
+        .then(res => {
           if (res.status == 200) {
             this.taskList = res.data;
           } else {
             this.$message.error(res.msg);
           }
         });
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -277,9 +313,20 @@ export default {
   .header {
     border-bottom: 1px solid #ebebeb;
     padding: 10px;
+    display: flex;
+    align-items: center;
+    &-info {
+      margin-left: auto;
+      font-size: 12px;
+      color: #999;
+      .el-icon-alarm-clock {
+        padding: 0 3px;
+      }
+    }
   }
+
   &-backlog {
-    flex: 3;
+    flex: 2;
     border-left: 1px solid #ebebeb;
     border-top: 1px solid #ebebeb;
     border-bottom: 1px solid #ebebeb;
@@ -293,7 +340,7 @@ export default {
         padding: 10px;
         border: 1px solid #ebebeb;
         margin: 10px;
-        width: calc(33.33% - 42px);
+        width: calc(50% - 42px);
         height: 100px;
         display: flex;
         flex-direction: column;
@@ -327,7 +374,7 @@ export default {
       padding: 20px;
       .echarts {
         width: calc(100%);
-        height: 280px;
+        height: 320px;
       }
     }
   }
@@ -354,6 +401,12 @@ export default {
           display: flex;
           align-items: center;
           justify-content: space-between;
+          &-right {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            color: #999;
+          }
           .red {
             font-size: 14px;
           }

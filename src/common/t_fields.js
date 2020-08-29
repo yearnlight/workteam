@@ -9,24 +9,21 @@ export default {
       },
       {
         prop: "owner",
-        label: "所有者"
+        label: "所有者",
+        width: "70"
       },
       {
         prop: "status",
         label: "状态",
         renderPage: "status",
-        width: "120"
-      },
-      {
-        prop: "label",
-        label: "标签"
+        width: "100"
       },
       { prop: "startTime", label: "开始时间" },
       { prop: "endTime", label: "到期时间", renderPage: "endTime" },
       {
         prop: "estimatedTime",
         label: "预期时间",
-        width: "110",
+        width: "70",
         renderPage: "estimatedTime"
       },
       {
@@ -39,14 +36,14 @@ export default {
         prop: "priority",
         label: "优先级",
         renderPage: "priority",
-        width: "90"
+        width: "70"
       },
-      { prop: "creator", label: "创建者", width: "90" },
-      { prop: "finished", label: "%已完成", renderPage: "progress" },
+      { prop: "creator", label: "创建者", width: "70" },
+      { prop: "finished", label: "%已完成", renderPage: "progress", width: "110" },
       {
         prop: "operate",
         label: "操作",
-        width: "140",
+        width: "130",
         operateFun: [
           {
             label: "编辑",
@@ -67,11 +64,11 @@ export default {
     tableColumns: [
       {
         prop: "name",
-        label: "姓名"
+        label: "昵称"
       },
       {
         prop: "key",
-        label: "Code"
+        label: "账号"
       },
       {
         prop: "department",
@@ -98,6 +95,16 @@ export default {
             label: "删除",
             function: "del",
             icon: "el-icon-delete"
+          },
+          {
+            label: "修改密码",
+            function: "updatePass",
+            icon: "el-icon-key"
+          },
+          {
+            label: "编辑",
+            function: "edit",
+            icon: "el-icon-edit"
           }
         ]
       }

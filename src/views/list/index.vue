@@ -19,7 +19,6 @@
           <el-button type="primary" @click="search">查询</el-button>
         </div>
       </div>
-
       <template #progress="slotProps">
         <el-progress :percentage="slotProps.rowData.finished"></el-progress>
       </template>
@@ -31,16 +30,26 @@
         </span>
       </template>
       <template #endTime="slotProps">
-        <span :class="{'line-through':slotProps.rowData.status == 'shelve' || slotProps.rowData.status == 'waitAssign'}">{{slotProps.rowData.endTime}}</span>
+        <span
+          :class="{'line-through':slotProps.rowData.status == 'shelve' || slotProps.rowData.status == 'waitAssign'}"
+        >{{slotProps.rowData.endTime}}</span>
       </template>
       <template #estimatedTime="slotProps">
-        <span :class="{'line-through':slotProps.rowData.status == 'shelve' || slotProps.rowData.status == 'waitAssign'}">{{slotProps.rowData.estimatedTime | formatDur}}</span>
+        <span
+          :class="{'line-through':slotProps.rowData.status == 'shelve' || slotProps.rowData.status == 'waitAssign'}"
+        >{{slotProps.rowData.estimatedTime | formatDur}}</span>
       </template>
       <template #priority="slotProps">
-        <span class="priority" :style="`border-left: 3px solid ${$util.displayEnum($enum.prioritys,slotProps.rowData.priority).color};`">{{$util.displayEnum($enum.prioritys,slotProps.rowData.priority).label}}</span>
+        <span
+          class="priority"
+          :style="`border-left: 3px solid ${$util.displayEnum($enum.prioritys,slotProps.rowData.priority).color};`"
+        >{{$util.displayEnum($enum.prioritys,slotProps.rowData.priority).label}}</span>
       </template>
       <template #status="slotProps">
-        <span class="status" :style="`background-color: ${$util.displayEnum($enum.statusList,slotProps.rowData.status).color};`">{{$util.displayEnum($enum.statusList,slotProps.rowData.status).label}}</span>
+        <span
+          class="status"
+          :style="`background-color: ${$util.displayEnum($enum.statusList,slotProps.rowData.status).color};`"
+        >{{$util.displayEnum($enum.statusList,slotProps.rowData.status).label}}</span>
       </template>
     </v-table>
   </div>
@@ -62,7 +71,7 @@ export default {
               const start = new Date();
               start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
               picker.$emit("pick", [start, end]);
-            },
+            }
           },
           {
             text: "最近一个月",
@@ -71,7 +80,7 @@ export default {
               const start = new Date();
               start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
               picker.$emit("pick", [start, end]);
-            },
+            }
           },
           {
             text: "最近三个月",
@@ -80,14 +89,14 @@ export default {
               const start = new Date();
               start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
               picker.$emit("pick", [start, end]);
-            },
-          },
-        ],
+            }
+          }
+        ]
       },
       list: {
         records: [],
-        total: 0,
-      },
+        total: 0
+      }
     };
   },
   created() {
@@ -95,7 +104,7 @@ export default {
   },
   methods: {
     getList(params) {
-      this.$axios.post("/task/list", params).then((res) => {
+      this.$axios.post("/task/list", params).then(res => {
         if (res.status == 200) {
           this.list.records = res.data;
           this.list.total = res.data.length;
@@ -108,7 +117,7 @@ export default {
       if (this.daterange && this.daterange.length) {
         this.getList({
           startTime: this.daterange[0],
-          endTime: this.daterange[1],
+          endTime: this.daterange[1]
         });
       } else {
         this.getList();
@@ -119,7 +128,7 @@ export default {
     },
     del(item) {
       this.$confirm(`你确定删除任务${item.name} ?`, "删除").then(() => {
-        this.$axios.post("/task/delete", { id: item.id }).then((res) => {
+        this.$axios.post("/task/delete", { id: item.id }).then(res => {
           if (res.status == 200) {
             this.$message.success(res.msg);
             this.getList();
@@ -133,28 +142,24 @@ export default {
       this.$router.push({
         path: "/work/tasklistAdd",
         query: {
-          id: item.id,
-        },
+          id: item.id
+        }
       });
     },
     info(item) {
       this.$router.push({
         path: "/work/tasklistInfo",
         query: {
-          id: item.id,
-        },
+          id: item.id
+        }
       });
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style lang="scss">
 .list {
-  .line-through {
-    text-decoration: line-through;
-    color: #999;
-  }
   .search {
     display: flex;
     justify-content: space-between;

@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <router-view />
+    <router-view/>
   </div>
 </template>
 
 <script>
 export default {
-  name: "App",
+  name: "App"
 };
 </script>
 
@@ -25,9 +25,19 @@ body {
       color: #f56c6c;
       cursor: pointer;
     }
+    .redbg {
+      background-color: #f56c6c;
+    }
     .warn {
       color: #f39800;
       cursor: pointer;
+    }
+    .warnbg {
+      background-color: #f39800;
+    }
+    .line-through {
+      text-decoration: line-through;
+      color: #999;
     }
     .priority {
       padding: 2px 5px !important;

@@ -25,9 +25,9 @@ Axios.interceptors.response.use(
 );
 Axios.interceptors.request.use(
   config => {
-    const token = window.token;
+    const token = window.sessionStorage.getItem("token");
     if (token) {
-      config.headers['Authorization'] = 'Bearer ' + token;
+      config.headers['Token'] =  token;
     }
     return config;
   }

@@ -57,8 +57,8 @@ import menus from "@/menu.js";
 export default {
   data() {
     return {
-      avatar: require("@/assets/logo.png"),
-      name: "杨明翔",
+      avatar: require("@/assets/logo.jpg"),
+      name: "江阿生",
       isInFrame: false,
       isCollapse: false,
     };
@@ -66,6 +66,11 @@ export default {
   created() {
     this.leftmenus = menus;
     this.setRoute();
+    let userStr = sessionStorage.getItem("userInfo")
+    if(userStr){
+      let userInfo = JSON.parse(userStr);
+      this.name = userInfo.name;
+    }
   },
   mounted() {
     if (window.self !== window.top) {
@@ -74,11 +79,11 @@ export default {
   },
   methods: {
     setRoute() {
-      console.log(this.$router);
     },
     handleCommand(command) {
       if (command == "logout") {
         this.$confirm("你确定退出当前系统 ?", "退出").then(() => {
+          window.sessionStorage.clear();
           this.$router.push("/login");
         });
       }
@@ -95,7 +100,7 @@ export default {
   margin-bottom: 12px;
 }
 .collapse {
-  margin-left: 40px;
+  margin-left: 10px;
   cursor: pointer;
 }
 .hidden {
@@ -141,7 +146,7 @@ export default {
     }
     &-content {
       &.maxWidth {
-        width: 200px;
+        width: 160px;
       }
       &.minWidth {
         width: 64px;
@@ -152,7 +157,6 @@ export default {
         font-size: 14px;
       }
       background-color: rgb(48, 65, 86);
-      width: 200px;
       .el-menu {
         border-right: 0;
         .el-submenu {
@@ -191,7 +195,7 @@ export default {
       overflow-y: auto;
       height: calc(100% - 20px);
       &.maxWidth {
-        width: calc(100% - 220px);
+        width: calc(100% - 180px);
       }
       &.minWidth {
         width: 64px;

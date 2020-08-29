@@ -1,7 +1,7 @@
 <template>
   <div class="addTask">
     <el-form ref="elForm" :model="formData" size="small" label-width="160px" label-suffix="：">
-      <el-form-item label>
+      <el-form-item label="">
         <div class="reminder">
           按照业务需求针对任务规划，创建出合理任务项，
           <span class="high">不分配所有者</span>的任务会进任务池。
@@ -14,19 +14,28 @@
         <span>{{formData.owner}}</span>
       </el-form-item>
       <el-form-item label="状态" prop="status">
-        <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${$util.displayEnum($enum.statusList,formData.status).color};`">{{$util.displayEnum($enum.statusList,formData.status).label}}</span>
+        <span
+          :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${$util.displayEnum($enum.statusList,formData.status).color};`"
+        >{{$util.displayEnum($enum.statusList,formData.status).label}}</span>
       </el-form-item>
       <el-form-item label="优先级" prop="priority">
         <span>{{$util.displayEnum($enum.prioritys,formData.priority).label}}</span>
       </el-form-item>
       <el-form-item label="预估日期范围" prop="startEndTime">
-        <span>{{formData.startTime}} - {{formData.endTime}}</span>
+        <span
+          :class="{'line-through':formData.status == 'shelve' || formData.status == 'waitAssign'}"
+        >{{formData.startTime}} - {{formData.endTime}}</span>
       </el-form-item>
       <el-form-item label="预估时间" prop="estimatedTime">
-        <span>{{formData.estimatedTime | formatDur}}</span>
+        <span
+          :class="{'line-through':formData.status == 'shelve' || formData.status == 'waitAssign'}"
+        >{{formData.estimatedTime | formatDur}}</span>
       </el-form-item>
       <el-form-item :label="formData.overtime>0?'超时时间':'剩余时间'" prop="overtime">
-        <span :class="{'red':formData.overtime>0,'warn':formData.overtime<0}" v-if="formData.overtime">{{$util.formatTime(formData.overtime)}}</span>
+        <span
+          :class="[{'line-through':formData.status == 'shelve' || formData.status == 'waitAssign'},{'red':formData.overtime>0,'warn':formData.overtime<0}]"
+          v-if="formData.overtime"
+        >{{$util.formatTime(formData.overtime)}}</span>
       </el-form-item>
       <el-form-item label="预估说明" prop="estimatedInfo">
         <pre>
@@ -59,8 +68,8 @@ export default {
   data() {
     return {
       formData: {
-        startEndTime: [],
-      },
+        startEndTime: []
+      }
     };
   },
   computed: {},
@@ -73,13 +82,13 @@ export default {
   mounted() {},
   methods: {
     getTaskInfo(id) {
-      this.$axios.post("/task/info", { id: id }).then((res) => {
+      this.$axios.post("/task/info", { id: id }).then(res => {
         if (res.status == 200) {
           this.formData = res.data;
         }
       });
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss">
