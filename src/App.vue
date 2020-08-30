@@ -63,6 +63,19 @@ body {
       }
     }
 
+    .reminderInline {
+      font-size: 12px;
+      display: inline-block;
+      margin-left: 10px;
+      color: #999;
+      &-high {
+        color: #f39800 !important;
+      }
+      .high {
+        color: #f39800 !important;
+      }
+    }
+
     pre {
       font-family: Menlo, Monaco, Consolas, Courier New, monospace !important;
       line-height: 1.45em;

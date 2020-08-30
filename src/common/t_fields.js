@@ -48,12 +48,20 @@ export default {
           {
             label: "编辑",
             function: "edit",
-            icon: "el-icon-edit"
+            icon: "el-icon-edit",
+            isDisplay(item) {
+              let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
+              return curUser.role == "super" || (item.owner && item.owner.includes(curUser.name));
+            }
           },
           {
             label: "删除",
             function: "del",
-            icon: "el-icon-delete"
+            icon: "el-icon-delete",
+            isDisplay(item) {
+              let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
+              return curUser.role == "super" || (item.owner && item.owner.includes(curUser.name));
+            }
           }
         ]
       }
@@ -94,17 +102,28 @@ export default {
           {
             label: "删除",
             function: "del",
-            icon: "el-icon-delete"
-          },
-          {
-            label: "修改密码",
-            function: "updatePass",
-            icon: "el-icon-key"
+            icon: "el-icon-delete",
+            isDisplay(item) {
+              let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
+              return curUser.role == "super" || curUser.key == item.key;
+            }
           },
           {
             label: "编辑",
             function: "edit",
-            icon: "el-icon-edit"
+            icon: "el-icon-edit",
+            isDisplay(item) {
+              let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
+              return curUser.role == "super" || curUser.key == item.key;
+            }
+          },
+          {
+            label: "修改密码",
+            function: "updatePass",
+            icon: "el-icon-key",
+            isDisplay(item) {
+              return JSON.parse(sessionStorage.getItem("userInfo")).key == item.key;
+            }
           }
         ]
       }

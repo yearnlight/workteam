@@ -112,11 +112,12 @@ router.post("/task/user/add", async ctx => {
       params.team,
       params.remark,
       createtime,
-      params.pass
+      params.pass,
+      params.role
     ]
   ];
   let insertStr =
-    "insert into user(id,name,`key`,department,`group`,`team`,remark,createtime,pass) values ?";
+    "insert into user(id,name,`key`,department,`group`,`team`,remark,createtime,pass,role) values ?";
   res = await query(insertStr, [inputParams], function (err, result) {
     if (err) {
       console.log("[INSERT ERROR] - ", err.message);

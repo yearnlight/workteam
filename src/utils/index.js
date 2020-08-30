@@ -49,9 +49,14 @@ let formatTime = dur => {
   );
 };
 
+let getUser = () => {
+  return JSON.parse(sessionStorage.getItem("userInfo"));
+};
+
 export default {
   deepCopy: deepCopy,
   jointQuery: jointQuery,
   displayEnum: displayEnum,
-  formatTime: formatTime
+  formatTime: formatTime,
+  getUser: getUser
 };

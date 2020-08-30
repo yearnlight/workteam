@@ -15,7 +15,7 @@
     <el-table
       :data="data.records"
       row-key="uuid"
-      border
+      border=""
       style="width: 100%"
       ref="multipleTable"
       :height="defaultConfig.height"
@@ -41,7 +41,7 @@
         reserve-selection
       ></el-table-column>
       <!-- radio -->
-      <el-table-column v-if="indexColumn.type == 'radio'" label width="65">
+      <el-table-column v-if="indexColumn.type == 'radio'" label="" width="65">
         <template slot-scope="scope">
           <el-radio
             @change="singleItem(scope.row)"
@@ -53,7 +53,6 @@
           </el-radio>
         </template>
       </el-table-column>
-
       <el-table-column
         v-bind="item"
         v-for="(item,index) in activeColumns"
@@ -73,7 +72,7 @@
             <span v-for="(oItem,oIndex) in item.operateFun" :key="oIndex">
               <span v-if="oItem.isDisplay">
                 <span
-                  v-if="(typeof oItem.isDisplay === 'function')?oItem.isDisplay():getPermission(name,oItem.isDisplay)"
+                  v-if="(typeof oItem.isDisplay === 'function')?oItem.isDisplay(scope.row):oItem.isDisplay"
                 >
                   <!-- 没有状态控制，一直启用 -->
                   <el-button
@@ -119,7 +118,10 @@
                   :icon="oItem.icon"
                 >{{oItem.label}}</el-button>
               </span>
-              <el-divider direction="vertical" v-if="item.operateFun.length != oIndex + 1"></el-divider>
+              <el-divider
+                direction="vertical"
+                v-if="item.operateFun.length != oIndex + 1 && (oItem.isDisplay && oItem.isDisplay(scope.row))"
+              ></el-divider>
             </span>
           </span>
           <!-- 自定义渲染 -->
@@ -184,31 +186,31 @@ export default {
   components: {},
   props: {
     data: {
-      type: Object,
+      type: Object
     },
     columns: {
       type: Array,
       default: () => {
         return [];
-      },
+      }
     },
     tableConfig: {
-      type: Object,
+      type: Object
     },
     name: {
-      type: String,
+      type: String
     },
     tableAttributes: {
-      type: Object,
-    },
+      type: Object
+    }
   },
   computed: {
-    activeColumns: function () {
-      return this.t_columns.filter(function (item) {
+    activeColumns: function() {
+      return this.t_columns.filter(function(item) {
         return item.isvisible !== false && item.prop;
       });
     },
-    tableName: function () {
+    tableName: function() {
       let result = this.name;
       if (this.name) {
         if (this.name.endsWith("info") || this.name.endsWith("self")) {
@@ -220,7 +222,7 @@ export default {
         }
       }
       return result;
-    },
+    }
   },
   data() {
     return {
@@ -230,12 +232,12 @@ export default {
         pageSizes: [5, 10, 20, 50, 100],
         pageSize: 10,
         search: true,
-        isPublic: false,
+        isPublic: false
       },
       isSetColumn: false,
       inputParams: {
         page: 1,
-        limit: 10,
+        limit: 10
       },
       indexColumn: {},
       selectIndex: "",
@@ -244,7 +246,7 @@ export default {
       t_columns: [],
       t_all_columns: [],
       checked_t_props: [],
-      clone_checked_t_props: [],
+      clone_checked_t_props: []
     };
   },
   created() {
@@ -257,7 +259,7 @@ export default {
     data: {
       handler(n, o) {},
       immediate: true, //关键
-      deep: true,
+      deep: true
     },
     tableConfig: {
       handler(n, o) {
@@ -268,8 +270,8 @@ export default {
         this.inputParams.limit = this.defaultConfig.pageSize;
       },
       immediate: true, //关键
-      deep: true,
-    },
+      deep: true
+    }
   },
   methods: {
     setCurrent(row) {
@@ -293,7 +295,7 @@ export default {
         // 操作列
         let isExist = true;
         if (item.operateFun && Array.isArray(item.operateFun)) {
-          isExist = this.isOperateItemExist(item.operateFun);
+          // isExist = this.isOperateItemExist(item.operateFun);
           if (!isExist) {
             this.columns.splice(index, 1);
           }
@@ -310,7 +312,7 @@ export default {
       this.t_columns = this.columns;
       // 备份
       this.t_all_columns = util.deepCopy(
-        this.columns.filter((n) => n.prop || n.operateFun)
+        this.columns.filter(n => n.prop || n.operateFun)
       );
       // 备份当前选中
       this.clone_checked_t_props = util.deepCopy(this.checked_t_props);
@@ -328,10 +330,10 @@ export default {
         return;
       }
 
-      this.t_columns = this.t_all_columns.filter((n) =>
+      this.t_columns = this.t_all_columns.filter(n =>
         this.checked_t_props.includes(n.prop)
       );
-      this.t_columns.forEach((n) => {
+      this.t_columns.forEach(n => {
         n.isvisible === false ? (n.isvisible = true) : "";
       });
       // 备份当前选中
@@ -342,12 +344,12 @@ export default {
     isOperateItemExist(operateFuns) {
       let isExist = false;
       //如果不定义isDisplay方法，则该操作不做权限控制，isDisplay是function类型
-      let noControl = operateFuns.some((i) => !i.isDisplay);
+      let noControl = operateFuns.some(i => !i.isDisplay);
       if (noControl) {
         return true;
       } else {
-        isExist = operateFuns.some((i) =>
-          typeof i.isDisplay == "function" ? i.isDisplay() : true
+        isExist = operateFuns.some(
+          i => (typeof i.isDisplay == "function" ? i.isDisplay() : true)
         );
         return isExist;
       }
@@ -375,7 +377,7 @@ export default {
         inputParams = Object.assign(this.inputParams, params);
         inputParams.page = 1;
         if (this.defaultConfig.isPublic) {
-          Object.keys(inputParams).forEach((item) => {
+          Object.keys(inputParams).forEach(item => {
             if (!(inputParams[item] === 0 || inputParams[item])) {
               delete inputParams[item];
             }
@@ -401,7 +403,7 @@ export default {
       // 清理搜索条件
       this.inputParams = {
         page: 1,
-        limit: this.defaultConfig.pageSize,
+        limit: this.defaultConfig.pageSize
       };
       this.search(this.inputParams);
     },
@@ -426,8 +428,8 @@ export default {
     },
     handleSelect(row) {
       return !row.selected;
-    },
-  },
+    }
+  }
 };
 </script>
 

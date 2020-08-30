@@ -1,5 +1,5 @@
 <template>
-  <div class="addTask">
+  <div class="addUser">
     <el-form ref="elForm" :model="formData" :rules="rules" size="small" label-width="160px">
       <el-form-item label="昵称" prop="name">
         <el-input v-model="formData.name" placeholder="请输入名称" clearable></el-input>
@@ -9,6 +9,12 @@
       </el-form-item>
       <el-form-item v-if="isAdd" label="密码" prop="pass">
         <el-input v-model="formData.pass" type="password" placeholder="请输入密码" clearable></el-input>
+      </el-form-item>
+      <el-form-item label="角色" v-if="isAdd" prop="role">
+        <el-select v-model="formData.role" placeholder="请选择角色" clearable>
+          <el-option label="超级管理员" value="super"></el-option>
+          <el-option label="普通用户" value="member"></el-option>
+        </el-select>
       </el-form-item>
       <el-form-item label="部门" prop="department">
         <el-input v-model="formData.department" placeholder="请输入部门" clearable></el-input>
@@ -70,6 +76,13 @@ export default {
           {
             required: true,
             message: "请输入账号",
+            trigger: "blur"
+          }
+        ],
+        role: [
+          {
+            required: true,
+            message: "请选择角色",
             trigger: "blur"
           }
         ],
@@ -139,3 +152,19 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.addUser {
+  .el-form {
+    &-item {
+      .el-input,
+      .el-select {
+        width: 50%;
+        .el-input {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+</style>

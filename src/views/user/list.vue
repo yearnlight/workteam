@@ -1,7 +1,11 @@
 <template>
   <div class="user">
     <v-table name="user" :data="list" @info="info" @del="del" @edit="edit" @updatePass="updatePass">
-      <el-button type="primary" icon="el-icon-plus" @click="add">添加用户</el-button>
+      <el-button type="primary" icon="el-icon-plus" @click="add" v-if="isSuper">添加用户</el-button>
+      <div class="reminderInline">
+        <span class="high">超级管理</span>可以操作所有用户信息，
+        <span class="high">普通用户</span>只能操作自身。
+      </div>
     </v-table>
     <el-dialog title="修改密码" :visible.sync="isUpdatePass">
       <el-form :model="form" :rules="rules" ref="updatePassForm" label-width="140px">
@@ -71,11 +75,13 @@ export default {
         ]
       },
       isUpdatePass: false,
-      selectItem: {}
+      selectItem: {},
+      isSuper: false
     };
   },
   created() {
     this.getList();
+    this.isSuper = this.$util.getUser().role == "super";
   },
   methods: {
     save(formName) {
