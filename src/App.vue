@@ -91,7 +91,6 @@ body {
         display: block;
         color: #333;
         overflow: auto;
-        max-height: 400px;
         background-color: #f8f8f8;
         border-radius: 2px;
       }

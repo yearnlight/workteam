@@ -7,11 +7,13 @@ const query = require("./pool"),
   Uuid = require("node-uuid"),
   moment = require("moment");
 
+const KoaRouterInterceptor = require("koa-router-interceptor");
+
 let http = require("http");
 
 const app = new Koa();
 
-
+// 用户登录
 router.post("/task/login", async ctx => {
   let { account, pass } = ctx.request.body;
   let queryStr = "select * from user where `key` = ?";
@@ -20,18 +22,23 @@ router.post("/task/login", async ctx => {
     let userInfo = res[0];
     if (userInfo.pass != pass) {
       ctx.response.body = { status: 400, msg: "密码错误", data: null };
-    }
-    else {
+    } else {
       let token = Uuid.v1();
-      ctx.response.body = { status: 200, msg: "登录成功", data: Object.assign(userInfo, { token: token }) };
+      // 设置token
+      let updateStr = `update user SET token = ? where id = ?`;
+      await query(updateStr, [token, userInfo.id]);
+      ctx.response.body = {
+        status: 200,
+        msg: "登录成功",
+        data: Object.assign(userInfo, { token: token })
+      };
     }
-  }
-  else {
+  } else {
     ctx.response.body = { status: 400, msg: "用户不存在", data: null };
   }
-
 });
 
+// 查询用户列表
 router.get("/task/user/list", async ctx => {
   let res = [];
   let selectStr = `select * from user`;
@@ -39,6 +46,7 @@ router.get("/task/user/list", async ctx => {
   ctx.response.body = { status: 200, msg: "", data: res };
 });
 
+// 查询用户详情
 router.post("/task/user/info", async ctx => {
   let { id } = ctx.request.body;
   let res = [];
@@ -47,6 +55,7 @@ router.post("/task/user/info", async ctx => {
   ctx.response.body = { status: 200, msg: "", data: res[0] };
 });
 
+// 删除用户
 router.post("/task/user/delete", async ctx => {
   let params = ctx.request.body;
   let deleteStr = "delete from user where `id` = ?";
@@ -54,6 +63,7 @@ router.post("/task/user/delete", async ctx => {
   ctx.response.body = { status: 200, msg: "删除用户成功", data: null };
 });
 
+// 更新用户信息
 router.post("/task/user/update", async ctx => {
   let params = ctx.request.body;
   if (params.oldPass) {
@@ -62,11 +72,18 @@ router.post("/task/user/update", async ctx => {
     if (userInfo && userInfo[0]) {
       if (userInfo[0].pass != params.oldPass) {
         ctx.response.body = { status: 400, msg: "旧密码不正确", data: null };
-      }
-      else {
+      } else {
         let updateParams = [];
         let values = [];
-        let whitefields = ["name", "key", "department", "group", "team", "remark", "pass"];
+        let whitefields = [
+          "name",
+          "key",
+          "department",
+          "group",
+          "team",
+          "remark",
+          "pass"
+        ];
         for (let key in params) {
           if (whitefields.includes(key)) {
             updateParams.push(`\`${key}\` = ?`);
@@ -74,16 +91,25 @@ router.post("/task/user/update", async ctx => {
           }
         }
         values.concat(params.id);
-        let updateStr = `update user SET ${updateParams.join(",")} where id = ?`;
+        let updateStr = `update user SET ${updateParams.join(
+          ","
+        )} where id = ?`;
         res = await query(updateStr, values.concat(params.id));
         ctx.response.body = { status: 200, msg: "更新用户成功", data: null };
       }
     }
-  }
-  else {
+  } else {
     let updateParams = [];
     let values = [];
-    let whitefields = ["name", "key", "department", "group", "team", "remark", "pass"];
+    let whitefields = [
+      "name",
+      "key",
+      "department",
+      "group",
+      "team",
+      "remark",
+      "pass"
+    ];
     for (let key in params) {
       if (whitefields.includes(key)) {
         updateParams.push(`\`${key}\` = ?`);
@@ -95,9 +121,9 @@ router.post("/task/user/update", async ctx => {
     res = await query(updateStr, values.concat(params.id));
     ctx.response.body = { status: 200, msg: "更新用户成功", data: null };
   }
+});
 
-
-})
+// 添加用户
 router.post("/task/user/add", async ctx => {
   let params = ctx.request.body;
   let uuid = Uuid.v1();
@@ -118,7 +144,7 @@ router.post("/task/user/add", async ctx => {
   ];
   let insertStr =
     "insert into user(id,name,`key`,department,`group`,`team`,remark,createtime,pass,role) values ?";
-  res = await query(insertStr, [inputParams], function (err, result) {
+  res = await query(insertStr, [inputParams], function(err, result) {
     if (err) {
       console.log("[INSERT ERROR] - ", err.message);
       return;
@@ -132,6 +158,7 @@ router.post("/task/user/add", async ctx => {
   ctx.response.body = { status: 200, msg: "添加用户成功", data: null };
 });
 
+// 参数处理
 let dealInParams = arr => {
   let res = [];
   arr.forEach(p => {
@@ -140,6 +167,7 @@ let dealInParams = arr => {
   return res.join(",");
 };
 
+// 查询任务列表
 router.post("/task/list", async ctx => {
   let res = [];
   let params = ctx.request.body;
@@ -215,6 +243,7 @@ router.post("/task/statistics", async ctx => {
   ctx.response.body = { status: 200, msg: "", data: response };
 });
 
+// 查询任务详情
 router.post("/task/info", async ctx => {
   let res = {};
   let params = ctx.request.body;
@@ -247,6 +276,8 @@ let fields = [
   "finished",
   "createtime"
 ];
+
+// 任务更新
 router.post("/task/update", async ctx => {
   let params = ctx.request.body;
 
@@ -284,6 +315,7 @@ router.post("/task/allocate", async ctx => {
   ctx.response.body = { status: 200, msg: "分配任务成功", data: null };
 });
 
+// 创建任务
 router.post("/task/create", async ctx => {
   let params = ctx.request.body;
   let uuid = Uuid.v1();
@@ -308,7 +340,7 @@ router.post("/task/create", async ctx => {
     ]
   ];
   let insertStr = `insert into worktask(id,name,owner,status,startTime,endTime,priority,estimatedTime,estimatedInfo,creator,finished,createtime,isDel) values ?`;
-  res = await query(insertStr, [inputParams], function (err, result) {
+  res = await query(insertStr, [inputParams], function(err, result) {
     if (err) {
       console.log("[INSERT ERROR] - ", err.message);
       return;
@@ -322,7 +354,6 @@ router.post("/task/create", async ctx => {
   ctx.response.body = { status: 200, msg: "创建任务成功", data: null };
 });
 
-// app.use(bodyParser());
 app.use(
   koaBody({
     multipart: true, // 支持文件上传
@@ -330,6 +361,32 @@ app.use(
       maxFieldsSize: 2 * 1024 * 1024, // 最大文件为2兆
       multipart: true // 是否支持 multipart-formdate 的表单
     }
+  })
+);
+
+// app.use(bodyParser());
+// 拦截器
+app.use(
+  KoaRouterInterceptor(router, async (ctx, next) => {
+    let isLogin = false;
+    // 登录界面直接放过
+    if (ctx.path == "/task/login") {
+      return true;
+    }
+    let queryStr = "select * from user where `id` = ?";
+    res = await query(queryStr, [ctx.request.header.userid]);
+    if (res && res.length) {
+      let userInfo = res[0];
+      // 已登录
+      if (userInfo.token == ctx.request.header.token) {
+        isLogin = true;
+      }
+    }
+    if (!isLogin) {
+      ctx.response.body = { status: 401, msg: "认证失败", data: null };
+    }
+    // 只有这个返回true，才会走koa-router配置的逻辑分发
+    return isLogin;
   })
 );
 

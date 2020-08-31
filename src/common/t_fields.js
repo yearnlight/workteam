@@ -5,7 +5,7 @@ export default {
       {
         prop: "name",
         label: "任务",
-        operateFun: { function: "info" },
+        operateFun: { function: "info" }
       },
       {
         prop: "owner",
@@ -39,7 +39,12 @@ export default {
         width: "70"
       },
       { prop: "creator", label: "创建者", width: "70" },
-      { prop: "finished", label: "%已完成", renderPage: "progress", width: "110" },
+      {
+        prop: "finished",
+        label: "%已完成",
+        renderPage: "progress",
+        width: "110"
+      },
       {
         prop: "operate",
         label: "操作",
@@ -51,7 +56,10 @@ export default {
             icon: "el-icon-edit",
             isDisplay(item) {
               let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
-              return curUser.role == "super" || (item.owner && item.owner.includes(curUser.name));
+              return (
+                curUser.role == "super" ||
+                (item.owner && item.owner.includes(curUser.name))
+              );
             }
           },
           {
@@ -60,7 +68,10 @@ export default {
             icon: "el-icon-delete",
             isDisplay(item) {
               let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
-              return curUser.role == "super" || (item.owner && item.owner.includes(curUser.name));
+              return (
+                curUser.role == "super" ||
+                (item.owner && item.owner.includes(curUser.name))
+              );
             }
           }
         ]
@@ -72,15 +83,24 @@ export default {
     tableColumns: [
       {
         prop: "name",
-        label: "昵称"
+        label: "昵称",
+        width: 140
       },
       {
         prop: "key",
-        label: "账号"
+        label: "账号",
+        width: 140
+      },
+      {
+        prop: "role",
+        label: "角色",
+        renderPage: "role",
+        width: 140
       },
       {
         prop: "department",
-        label: "部门"
+        label: "部门",
+        width: 140
       },
       {
         prop: "group",
@@ -122,7 +142,9 @@ export default {
             function: "updatePass",
             icon: "el-icon-key",
             isDisplay(item) {
-              return JSON.parse(sessionStorage.getItem("userInfo")).key == item.key;
+              return (
+                JSON.parse(sessionStorage.getItem("userInfo")).key == item.key
+              );
             }
           }
         ]

@@ -6,10 +6,13 @@
         <span class="high">超级管理</span>可以操作所有用户信息，
         <span class="high">普通用户</span>只能操作自身。
       </div>
+      <template #role="slotProps">
+        <span :class="{'warn':slotProps.rowData.role == 'super'}">{{slotProps.rowData.role == "super"?"超级管理员":"普通用户"}}</span>
+      </template>
     </v-table>
     <el-dialog title="修改密码" :visible.sync="isUpdatePass">
       <el-form :model="form" :rules="rules" ref="updatePassForm" label-width="140px">
-        <el-form-item label="">
+        <el-form-item label>
           <div class="reminder">
             原始密码：
             <span class="high">123456</span>
@@ -22,12 +25,7 @@
           <el-input v-model="form.newPass" type="password" placeholder="请输入新密码" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="确认密码" prop="newPass2">
-          <el-input
-            v-model="form.newPass2"
-            type="password"
-            placeholder="请再次输入新密码"
-            autocomplete="off"
-          ></el-input>
+          <el-input v-model="form.newPass2" type="password" placeholder="请再次输入新密码" autocomplete="off"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -65,18 +63,18 @@ export default {
       form: {},
       rules: {
         oldPass: [
-          { required: true, trigger: "blur", validator: validatePassword }
+          { required: true, trigger: "blur", validator: validatePassword },
         ],
         newPass: [
-          { required: true, trigger: "blur", validator: validatePassword }
+          { required: true, trigger: "blur", validator: validatePassword },
         ],
         newPass2: [
-          { required: true, trigger: "blur", validator: validatePass2 }
-        ]
+          { required: true, trigger: "blur", validator: validatePass2 },
+        ],
       },
       isUpdatePass: false,
       selectItem: {},
-      isSuper: false
+      isSuper: false,
     };
   },
   created() {
@@ -85,15 +83,15 @@ export default {
   },
   methods: {
     save(formName) {
-      this.$refs[formName].validate(valid => {
+      this.$refs[formName].validate((valid) => {
         if (valid) {
           this.$axios
             .post("/task/user/update", {
               pass: this.form.newPass2,
               oldPass: this.form.oldPass,
-              id: this.selectItem.id
+              id: this.selectItem.id,
             })
-            .then(res => {
+            .then((res) => {
               if (res.status == 200) {
                 sessionStorage.clear();
                 this.$router.push("/login");
@@ -108,7 +106,7 @@ export default {
       });
     },
     getList() {
-      this.$axios.get("/task/user/list", {}).then(res => {
+      this.$axios.get("/task/user/list", {}).then((res) => {
         if (res.status == 200) {
           this.list.records = res.data;
           this.list.total = res.data.length;
@@ -124,7 +122,7 @@ export default {
     },
     del(item) {
       this.$confirm(`你确定删除 ${item.name} ?`, "删除").then(() => {
-        this.$axios.post("/task/user/delete", { id: item.id }).then(res => {
+        this.$axios.post("/task/user/delete", { id: item.id }).then((res) => {
           if (res.status == 200) {
             this.$message.success(res.msg);
             this.getList();
@@ -139,7 +137,7 @@ export default {
     },
     add() {
       this.$router.push("/work/userlistAdd");
-    }
-  }
+    },
+  },
 };
 </script>
