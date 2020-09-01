@@ -46,11 +46,16 @@
         </el-col>
         <el-col :span="6">
           <el-form-item label-width="10px" prop="startSmallTime">
-            <el-time-select :disabled="!(formData.status == 'shelve' || formData.status == 'waitAssign')" v-model="formData.startSmallTime" :picker-options="{
+            <el-time-select
+              :disabled="!(formData.status == 'shelve' || formData.status == 'waitAssign')"
+              v-model="formData.startSmallTime"
+              :picker-options="{
           start: '09:00',
           step: '00:60',
           end: '18:00'
-        }" placeholder="选择时间"></el-time-select>
+        }"
+              placeholder="选择时间"
+            ></el-time-select>
           </el-form-item>
         </el-col>
       </el-row>
@@ -62,11 +67,16 @@
         </el-col>
         <el-col :span="6">
           <el-form-item label-width="10px" prop="endSmallTime">
-            <el-time-select :disabled="!(formData.status == 'shelve' || formData.status == 'waitAssign')" v-model="formData.endSmallTime" :picker-options="{
+            <el-time-select
+              :disabled="!(formData.status == 'shelve' || formData.status == 'waitAssign')"
+              v-model="formData.endSmallTime"
+              :picker-options="{
           start: '09:00',
           step: '00:60',
           end: '18:00'
-        }" placeholder="选择时间"></el-time-select>
+        }"
+              placeholder="选择时间"
+            ></el-time-select>
           </el-form-item>
         </el-col>
       </el-row>
@@ -221,6 +231,14 @@ export default {
       handler(n, o) {
         if (n && n.length) {
           this.calcDur();
+        }
+      },
+      deep: true,
+    },
+    "formData.status": {
+      handler(n, o) {
+        if (n && n == "end") {
+          this.formData.finished = 100;
         }
       },
       deep: true,

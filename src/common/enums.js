@@ -5,7 +5,7 @@ export default {
     { label: "需求分析中", value: "demanding", color: "#E6A23C" },
     { label: "设计中", value: "designing", color: "#9764e0" },
     { label: "编码中", value: "coding", color: "#e06ab7" },
-    { label: "测试中", value: "testing", color: "#fa9600" },
+    { label: "测试中", value: "testing", color: "#333333" },
     { label: "完结", value: "end", color: "#67C23A" }
   ],
   userList: [

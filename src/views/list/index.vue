@@ -1,6 +1,6 @@
 <template>
   <div class="list">
-    <v-table name="list" :data="list" @info="info" @del="del" @edit="edit">
+    <v-table v-loading="loading" name="list" :data="list" @info="info" @del="del" @edit="edit">
       <div class="search">
         <el-button type="primary" icon="el-icon-plus" @click="add">创建任务</el-button>
         <div class="search-param">
@@ -61,6 +61,7 @@ export default {
   components: { vTable },
   data() {
     return {
+      loading:false,
       daterange: [],
       pickerOptions: {
         shortcuts: [
@@ -104,7 +105,9 @@ export default {
   },
   methods: {
     getList(params) {
+      this.loading = true;
       this.$axios.post("/task/list", params).then(res => {
+         this.loading = false;
         if (res.status == 200) {
           this.list.records = res.data;
           this.list.total = res.data.length;

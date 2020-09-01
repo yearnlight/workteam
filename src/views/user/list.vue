@@ -78,7 +78,7 @@ export default {
     };
   },
   created() {
-    this.getList();
+    this.search();
     this.isSuper = this.$util.getUser().role == "super";
   },
   methods: {
@@ -105,7 +105,7 @@ export default {
         }
       });
     },
-    getList() {
+    search() {
       this.$axios.get("/task/user/list", {}).then((res) => {
         if (res.status == 200) {
           this.list.records = res.data;
