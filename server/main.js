@@ -1,4 +1,5 @@
 const query = require("./pool"),
+  util = require("./util"),
   Koa = require("koa"),
   router = require("koa-router")(),
   bodyParser = require("koa-bodyparser"),
@@ -177,27 +178,44 @@ router.post("/task/list", async ctx => {
     if (fields.includes(key)) {
       // 数组 in,非数组 =
       if (Array.isArray(params[key])) {
-        selectParams.push(`${key} in (${dealInParams(params[key])})`);
-        values = values.concat(params[key]);
+        if (dealInParams(params[key])) {
+          selectParams.push(`${key} in (${dealInParams(params[key])})`);
+          values = values.concat(params[key]);
+        }
       } else {
         selectParams.push(`${key} = ?`);
         values.push(params[key]);
       }
     }
   }
-  let selectStr = `select * from worktask where isDel = 0 order by startTime desc`;
+
+  let selectPrefix = `select * from worktask`;
+  let selectSuffix = "";
+  let timeRange = ` and startTime > '${params.startTime}' and startTime < '${params.endTime}'`;
+  let selectParamsStr = "";
+  // 分页
+  if (params.page && params.limit) {
+    selectSuffix = ` limit ${(params.page - 1) * params.limit}, ${
+      params.limit
+    }`;
+  }
+  console.log(selectParams)
   if (selectParams && selectParams.length) {
-    selectStr = `select * from worktask where isDel = 0 and ${selectParams.join(
-      " and "
-    )} order by startTime desc`;
+    selectParamsStr = `and  ${selectParams.join(" and ")}`;
+  }
+  let selectStr = ``;
+  // 查询时间范围内
+  if (params.startTime) {
+    selectStr = `${selectPrefix} where isDel = 0 ${selectParamsStr}${timeRange} order by startTime desc`;
   } else {
-    // 查询时间范围内
-    if (params.startTime) {
-      selectStr = `select * from worktask where isDel = 0 and startTime > '${params.startTime}' and startTime < '${params.endTime}' order by startTime desc`;
-    }
+    selectStr = `${selectPrefix} where isDel = 0 ${selectParamsStr} order by startTime desc`;
   }
 
-  res = await query(selectStr, values);
+  res = await query(`${selectStr}${selectSuffix}`, values);
+  let totalRes = await query(selectStr,values);
+
+  console.log(selectStr)
+  console.log(`${selectStr}${selectSuffix}`)
   // 添加超时时间
   res.forEach(item => {
     let curTime = new Date();
@@ -211,9 +229,20 @@ router.post("/task/list", async ctx => {
       item.overtime = overtime;
     }
   });
-  ctx.response.body = { status: 200, msg: "", data: res };
+  ctx.response.body = {
+    status: 200,
+    msg: "",
+    data: { total: totalRes.length, records: res }
+  };
 });
 
+// 单个任务更新记录
+router.post("/task/record", async ctx => {
+  let { taskId } = ctx.request.body;
+  let selectStr = `select * from taskrecord where taskId = ? and isDel = 0 order by updatetime asc`;
+  res = await query(selectStr, [taskId]);
+  ctx.response.body = { status: 200, msg: "", data: res };
+});
 // 任务统计
 router.post("/task/statistics", async ctx => {
   let response = {
@@ -247,22 +276,8 @@ router.post("/task/statistics", async ctx => {
 router.post("/task/info", async ctx => {
   let res = {};
   let params = ctx.request.body;
-  let selectStr = "select * from worktask where isDel = 0 and `id` = ?";
-  res = await query(selectStr, [params.id]);
-  // 添加超时时间
-  res.forEach(item => {
-    let curTime = new Date();
-    let overtime = curTime - new Date(item.endTime);
-    // 运行态任务
-    if (
-      item.status != "shelve" &&
-      item.status != "waitAssign" &&
-      item.status != "end"
-    ) {
-      item.overtime = overtime;
-    }
-  });
-  ctx.response.body = { status: 200, msg: "", data: res[0] };
+  res = await util.getTaskInfo(params.id);
+  ctx.response.body = { status: 200, msg: "", data: res };
 });
 
 let fields = [
@@ -295,6 +310,20 @@ router.post("/task/update", async ctx => {
   values.concat(params.id);
   let updateStr = `update worktask SET ${updateParams.join(",")} where id = ?`;
   res = await query(updateStr, values.concat(params.id));
+
+  let taskInfo = await util.getTaskInfo(params.id);
+  // 组装任务记录信息
+  let record = [
+    Uuid.v1(),
+    taskInfo.finished,
+    taskInfo.status,
+    moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
+    params.updateInfo || `任务[${taskInfo.name}]分配成功`,
+    taskInfo.id, //任务id
+    ctx.request.header.userName
+  ];
+  await util.setTaskRecord(record);
+
   ctx.response.body = { status: 200, msg: "更新任务成功", data: null };
 });
 
@@ -302,6 +331,10 @@ router.post("/task/delete", async ctx => {
   let params = ctx.request.body;
   let deleteStr = `update worktask SET isDel = 1 where id = ?`;
   res = await query(deleteStr, [params.id]);
+  // 删除记录
+  let deleteRecordStr = `update taskrecord SET isDel = 1 where taskId = ?`;
+  res = await query(deleteRecordStr, [params.id]);
+
   ctx.response.body = { status: 200, msg: "删除任务成功", data: null };
 });
 
@@ -312,6 +345,19 @@ router.post("/task/allocate", async ctx => {
   let owners = params.owner.join(",");
   let str = `update worktask SET owner = ? where id = ?`;
   res = await query(str, [owners, params.id]);
+
+  let taskInfo = await util.getTaskInfo(params.id);
+  // 组装任务记录信息
+  let record = [
+    Uuid.v1(),
+    0,
+    taskInfo.status,
+    moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
+    `任务[${taskInfo.name}]分配成功`,
+    taskInfo.id, //任务id
+    ctx.request.header.userName
+  ];
+  await util.setTaskRecord(record);
   ctx.response.body = { status: 200, msg: "分配任务成功", data: null };
 });
 
@@ -340,17 +386,18 @@ router.post("/task/create", async ctx => {
     ]
   ];
   let insertStr = `insert into worktask(id,name,owner,status,startTime,endTime,priority,estimatedTime,estimatedInfo,creator,finished,createtime,isDel) values ?`;
-  res = await query(insertStr, [inputParams], function(err, result) {
-    if (err) {
-      console.log("[INSERT ERROR] - ", err.message);
-      return;
-    }
-    console.log("--------------------------INSERT----------------------------");
-    console.log("INSERT ID:", result);
-    console.log(
-      "-----------------------------------------------------------------\n\n"
-    );
-  });
+  res = await query(insertStr, [inputParams]);
+  // 组装任务记录信息
+  let record = [
+    Uuid.v1(),
+    0,
+    params.status,
+    createtime,
+    `任务[${params.name}]创建成功`,
+    uuid,
+    ctx.request.header.userName
+  ];
+  await util.setTaskRecord(record);
   ctx.response.body = { status: 200, msg: "创建任务成功", data: null };
 });
 
@@ -379,6 +426,7 @@ app.use(
       let userInfo = res[0];
       // 已登录
       if (userInfo.token == ctx.request.header.token) {
+        ctx.request.header.userName = userInfo.name;
         isLogin = true;
       }
     }

@@ -8,13 +8,6 @@ export default {
     { label: "测试中", value: "testing", color: "#333333" },
     { label: "完结", value: "end", color: "#67C23A" }
   ],
-  userList: [
-    { label: "杨明翔", value: "yangmx" },
-    { label: "李辉", value: "lihui" },
-    { label: "师志花", value: "shizh" },
-    { label: "王彩丽", value: "wangcl" },
-    { label: "李盼", value: "lipan" }
-  ],
   prioritys: [
     {
       label: "高",

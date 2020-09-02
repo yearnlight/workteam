@@ -23,7 +23,7 @@ export default {
       {
         prop: "estimatedTime",
         label: "预期时间",
-        width: "70",
+        width: "80",
         renderPage: "estimatedTime"
       },
       {

@@ -149,7 +149,7 @@
     <el-pagination
       v-if="defaultConfig.pagination"
       @size-change="sizeChange"
-      @page-change="currentChange"
+      @current-change="currentChange"
       :page-page="inputParams.page"
       :page-sizes="defaultConfig.pageSizes"
       :page-size="inputParams.limit"

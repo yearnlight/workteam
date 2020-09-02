@@ -225,7 +225,7 @@ export default {
         .post("/task/list", { status: ["waitAssign", "shelve"] })
         .then(res => {
           if (res.status == 200) {
-            this.backlogList = res.data;
+            this.backlogList = res.data.records;
           } else {
             this.$message.error(res.msg);
           }
@@ -297,7 +297,7 @@ export default {
         })
         .then(res => {
           if (res.status == 200) {
-            this.taskList = res.data;
+            this.taskList = res.data.records;
           } else {
             this.$message.error(res.msg);
           }

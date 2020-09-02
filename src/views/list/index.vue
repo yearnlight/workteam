@@ -4,18 +4,34 @@
       <div class="search">
         <el-button type="primary" icon="el-icon-plus" @click="add">创建任务</el-button>
         <div class="search-param">
-          <el-date-picker
-            format="yyyy-MM-dd"
-            value-format="yyyy-MM-dd"
-            v-model="daterange"
-            type="daterange"
-            align="right"
-            unlink-panels
-            range-separator="至"
-            start-placeholder="开始日期"
-            end-placeholder="结束日期"
-            :picker-options="pickerOptions"
-          ></el-date-picker>
+          <div class="search-param-item">
+            <el-select filterable multiple v-model="inputParams.status" placeholder="请选择状态" clearable>
+              <el-option v-for="(item, index) in $enum.statusList" :key="index" :label="item.label" :value="item.value" :disabled="item.disabled">
+                <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${$util.displayEnum($enum.statusList,item.value).color};`">{{item.label}}</span>
+              </el-option>
+            </el-select>
+          </div>
+          <div class="search-param-item">
+            <el-select filterable multiple v-model="inputParams.owner" placeholder="请选择所有者" clearable>
+              <el-option v-for="(item, index) in userList" :key="index" :label="item.name" :value="item.name" :disabled="item.disabled">
+                <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`">{{item.name}}</span>
+              </el-option>
+            </el-select>
+          </div>
+          <div class="search-param-item">
+            <el-date-picker
+              format="yyyy-MM-dd"
+              value-format="yyyy-MM-dd"
+              v-model="inputParams.daterange"
+              type="daterange"
+              align="right"
+              unlink-panels
+              range-separator="至"
+              start-placeholder="开始日期"
+              end-placeholder="结束日期"
+              :picker-options="pickerOptions"
+            ></el-date-picker>
+          </div>
           <el-button type="primary" @click="search">查询</el-button>
         </div>
       </div>
@@ -30,26 +46,16 @@
         </span>
       </template>
       <template #endTime="slotProps">
-        <span
-          :class="{'line-through':slotProps.rowData.status == 'shelve' || slotProps.rowData.status == 'waitAssign'}"
-        >{{slotProps.rowData.endTime}}</span>
+        <span :class="{'line-through':slotProps.rowData.status == 'shelve' || slotProps.rowData.status == 'waitAssign'}">{{slotProps.rowData.endTime}}</span>
       </template>
       <template #estimatedTime="slotProps">
-        <span
-          :class="{'line-through':slotProps.rowData.status == 'shelve' || slotProps.rowData.status == 'waitAssign'}"
-        >{{slotProps.rowData.estimatedTime | formatDur}}</span>
+        <span :class="{'line-through':slotProps.rowData.status == 'shelve' || slotProps.rowData.status == 'waitAssign'}">{{slotProps.rowData.estimatedTime | formatDur}}</span>
       </template>
       <template #priority="slotProps">
-        <span
-          class="priority"
-          :style="`border-left: 3px solid ${$util.displayEnum($enum.prioritys,slotProps.rowData.priority).color};`"
-        >{{$util.displayEnum($enum.prioritys,slotProps.rowData.priority).label}}</span>
+        <span class="priority" :style="`border-left: 3px solid ${$util.displayEnum($enum.prioritys,slotProps.rowData.priority).color};`">{{$util.displayEnum($enum.prioritys,slotProps.rowData.priority).label}}</span>
       </template>
       <template #status="slotProps">
-        <span
-          class="status"
-          :style="`background-color: ${$util.displayEnum($enum.statusList,slotProps.rowData.status).color};`"
-        >{{$util.displayEnum($enum.statusList,slotProps.rowData.status).label}}</span>
+        <span class="status" :style="`background-color: ${$util.displayEnum($enum.statusList,slotProps.rowData.status).color};`">{{$util.displayEnum($enum.statusList,slotProps.rowData.status).label}}</span>
       </template>
     </v-table>
   </div>
@@ -61,8 +67,8 @@ export default {
   components: { vTable },
   data() {
     return {
-      loading:false,
-      daterange: [],
+      loading: false,
+      userList: [],
       pickerOptions: {
         shortcuts: [
           {
@@ -72,7 +78,7 @@ export default {
               const start = new Date();
               start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
               picker.$emit("pick", [start, end]);
-            }
+            },
           },
           {
             text: "最近一个月",
@@ -81,7 +87,7 @@ export default {
               const start = new Date();
               start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
               picker.$emit("pick", [start, end]);
-            }
+            },
           },
           {
             text: "最近三个月",
@@ -90,39 +96,59 @@ export default {
               const start = new Date();
               start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
               picker.$emit("pick", [start, end]);
-            }
-          }
-        ]
+            },
+          },
+        ],
       },
       list: {
         records: [],
-        total: 0
-      }
+        total: 0,
+      },
+      inputParams: {
+        page: 1,
+        limit: 10,
+        daterange: [],
+        owner: [],
+        status: [],
+      },
     };
   },
   created() {
     this.getList();
+    this.getUserList();
   },
   methods: {
-    getList(params) {
-      this.loading = true;
-      this.$axios.post("/task/list", params).then(res => {
-         this.loading = false;
+    getUserList() {
+      this.$axios.get("/task/user/list", {}).then((res) => {
         if (res.status == 200) {
-          this.list.records = res.data;
-          this.list.total = res.data.length;
+          this.userList = res.data;
         } else {
           this.$message.error(res.msg);
         }
       });
     },
-    search() {
-      if (this.daterange && this.daterange.length) {
-        this.getList({
-          startTime: this.daterange[0],
-          endTime: this.daterange[1]
+    getList() {
+      this.loading = true;
+      this.$axios.post("/task/list", this.inputParams).then((res) => {
+        this.loading = false;
+        if (res.status == 200) {
+          this.list = res.data;
+        } else {
+          this.$message.error(res.msg);
+        }
+      });
+    },
+    search(params) {
+      if (params) this.inputParams = Object.assign(this.inputParams, params);
+      if (this.inputParams.daterange && this.inputParams.daterange.length) {
+        Object.assign(this.inputParams, {
+          startTime: this.inputParams.daterange[0],
+          endTime: this.inputParams.daterange[1],
         });
+        this.getList();
       } else {
+        this.inputParams.startTime = "";
+        this.inputParams.endTime = "";
         this.getList();
       }
     },
@@ -131,7 +157,7 @@ export default {
     },
     del(item) {
       this.$confirm(`你确定删除任务${item.name} ?`, "删除").then(() => {
-        this.$axios.post("/task/delete", { id: item.id }).then(res => {
+        this.$axios.post("/task/delete", { id: item.id }).then((res) => {
           if (res.status == 200) {
             this.$message.success(res.msg);
             this.getList();
@@ -145,19 +171,19 @@ export default {
       this.$router.push({
         path: "/work/tasklistAdd",
         query: {
-          id: item.id
-        }
+          id: item.id,
+        },
       });
     },
     info(item) {
       this.$router.push({
         path: "/work/tasklistInfo",
         query: {
-          id: item.id
-        }
+          id: item.id,
+        },
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -170,8 +196,11 @@ export default {
     &-param {
       display: flex;
       align-items: center;
+      &-item {
+        margin: 0 5px;
+      }
       .el-button {
-        margin-left: 20px;
+        margin-left: 10px;
       }
     }
   }

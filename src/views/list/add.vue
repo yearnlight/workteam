@@ -109,6 +109,9 @@
           </el-col>
         </div>
       </el-form-item>
+      <el-form-item v-if="!isAdd" label="更新说明" prop="updateInfo">
+        <el-input type="textarea" :autosize="{ minRows: 6, maxRows: 10}" v-model="formData.updateInfo" placeholder="请输入更新说明信息" clearable :style="{width: '100%'}"></el-input>
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submitForm">提交</el-button>
         <el-button @click="resetForm">重置</el-button>
@@ -160,6 +163,13 @@ export default {
           {
             required: true,
             message: "请输入预估说明",
+            trigger: "blur",
+          },
+        ],
+        updateInfo: [
+          {
+            required: true,
+            message: "请输入更新说明",
             trigger: "blur",
           },
         ],
