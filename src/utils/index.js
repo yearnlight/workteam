@@ -30,6 +30,28 @@ let displayEnum = (enums, value) => {
   return res;
 };
 
+// 判断一段时间里是否包含周天
+let isWeekDay = ($begin, $last) => {
+  let begin = new Date($begin);
+  let last = new Date($last);
+  let span = parseInt(last - begin);
+  if (span >= 604800000) {
+    return 1;
+  } else if (span > 0) {
+    let lastDay = last.getDay();
+    let beginDay = begin.getDay();
+    if (lastDay == 0 || beginDay == 0) {
+      return 1;
+    } else {
+      if (beginDay > lastDay) {
+        return 1;
+      } else {
+        return 0;
+      }
+    }
+  }
+};
+
 let formatDur = dur => {
   let dayHour = dur.split(" ");
   let day = parseInt(dayHour[0]);
@@ -41,9 +63,10 @@ let formatDur = dur => {
   }
 };
 
-let formatTime = dur => {
+let formatTime = (dur, week) => {
+  week = week ? week : 0;
   return formatDur(
-    `${Math.abs(parseInt(dur / 1000 / 60 / 60 / 24))}天 ${Math.abs(
+    `${Math.abs(parseInt(dur / 1000 / 60 / 60 / 24)) - week}天 ${Math.abs(
       parseInt((dur / 1000 / 60 / 60) % 24)
     )}时`
   );
@@ -58,5 +81,6 @@ export default {
   jointQuery: jointQuery,
   displayEnum: displayEnum,
   formatTime: formatTime,
-  getUser: getUser
+  getUser: getUser,
+  isWeekDay: isWeekDay
 };

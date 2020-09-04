@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <script>
 export default {
-  name: "App"
+  name: "App",
 };
 </script>
 
@@ -15,6 +15,31 @@ html,
 body {
   height: 100%;
   margin: 0;
+
+  .reminder {
+    font-size: 12px;
+    color: #999;
+    max-width: 320px;
+    &-high {
+      color: #f39800 !important;
+    }
+    .high {
+      color: #f39800 !important;
+    }
+  }
+
+  .reminderInline {
+    font-size: 12px;
+    display: inline-block;
+    margin-left: 10px;
+    color: #999;
+    &-high {
+      color: #f39800 !important;
+    }
+    .high {
+      color: #f39800 !important;
+    }
+  }
   #app {
     height: 100%;
     font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -50,30 +75,6 @@ body {
       font-size: 16px !important;
       margin-left: 10px !important;
       color: #999 !important;
-    }
-
-    .reminder {
-      font-size: 12px;
-      color: #999;
-      &-high {
-        color: #f39800 !important;
-      }
-      .high {
-        color: #f39800 !important;
-      }
-    }
-
-    .reminderInline {
-      font-size: 12px;
-      display: inline-block;
-      margin-left: 10px;
-      color: #999;
-      &-high {
-        color: #f39800 !important;
-      }
-      .high {
-        color: #f39800 !important;
-      }
     }
 
     pre {

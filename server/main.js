@@ -199,7 +199,6 @@ router.post("/task/list", async ctx => {
       params.limit
     }`;
   }
-  console.log(selectParams)
   if (selectParams && selectParams.length) {
     selectParamsStr = `and  ${selectParams.join(" and ")}`;
   }
@@ -214,8 +213,6 @@ router.post("/task/list", async ctx => {
   res = await query(`${selectStr}${selectSuffix}`, values);
   let totalRes = await query(selectStr,values);
 
-  console.log(selectStr)
-  console.log(`${selectStr}${selectSuffix}`)
   // 添加超时时间
   res.forEach(item => {
     let curTime = new Date();

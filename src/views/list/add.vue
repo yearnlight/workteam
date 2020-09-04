@@ -41,7 +41,15 @@
       <el-row>
         <el-col :span="6">
           <el-form-item label="预估开始时间" prop="startDate">
-            <el-date-picker :disabled="!(formData.status == 'shelve' || formData.status == 'waitAssign')" v-model="formData.startDate" format="yyyy-MM-dd" value-format="yyyy-MM-dd" type="date" placeholder="开始日期"></el-date-picker>
+            <el-date-picker
+              :picker-options="pickerOptions"
+              :disabled="!(formData.status == 'shelve' || formData.status == 'waitAssign')"
+              v-model="formData.startDate"
+              format="yyyy-MM-dd"
+              value-format="yyyy-MM-dd"
+              type="date"
+              placeholder="开始日期"
+            ></el-date-picker>
           </el-form-item>
         </el-col>
         <el-col :span="6">
@@ -62,7 +70,15 @@
       <el-row>
         <el-col :span="6">
           <el-form-item label="预估完结时间" prop="endDate">
-            <el-date-picker :disabled="!(formData.status == 'shelve' || formData.status == 'waitAssign')" v-model="formData.endDate" format="yyyy-MM-dd" value-format="yyyy-MM-dd" type="date" placeholder="开始日期"></el-date-picker>
+            <el-date-picker
+              :picker-options="pickerOptions"
+              :disabled="!(formData.status == 'shelve' || formData.status == 'waitAssign')"
+              v-model="formData.endDate"
+              format="yyyy-MM-dd"
+              value-format="yyyy-MM-dd"
+              type="date"
+              placeholder="开始日期"
+            ></el-date-picker>
           </el-form-item>
         </el-col>
         <el-col :span="6">
@@ -84,10 +100,13 @@
       <el-form-item label="预估时间" prop="estimatedTime">
         <el-input :disabled="true" v-model="formData.estimatedTime" placeholder="请输入预估时间" clearable :style="{width: '100%'}"></el-input>
         <el-popover placement="right" trigger="hover" popper-class="reminder">
-          预估时间：根据预估开始时间 - 预估完结时间 = 预估时间
-          <span class="reminder-high">（每天工作时间9小时计算）</span>
+          预估时间：根据预估完结时间 - 预估开始时间 = 预估时间
+          <span class="reminder-high">（每天工作时间9小时计算,每周按照6天工作日不计算周天）</span>
           <el-button class="reminderBtn" type="text" slot="reference" icon="el-icon-question"></el-button>
         </el-popover>
+        <div class="reminderInline">
+          <span class="reminder-high">周天</span>休息日，不予计算
+        </div>
       </el-form-item>
       <el-form-item label="预估说明" prop="estimatedInfo">
         <el-input type="textarea" :autosize="{ minRows: 6, maxRows: 10}" v-model="formData.estimatedInfo" placeholder="请输入预估时间说明信息" clearable :style="{width: '100%'}"></el-input>
@@ -127,7 +146,9 @@ export default {
   data() {
     return {
       pickerOptions: {
-        disabledDate(time) {},
+        disabledDate(time) {
+          return time.getDay() === 0;
+        },
       },
       userList: [],
       isAdd: true,
@@ -283,7 +304,17 @@ export default {
           new Date(
             `${this.formData.startDate} ${this.formData.startSmallTime}`
           );
-        this.formData.estimatedTime = this.$util.formatTime(dur);
+        // 判断是否包含周天
+        if (
+          this.$util.isWeekDay(
+            `${this.formData.startDate} ${this.formData.startSmallTime}`,
+            `${this.formData.endDate} ${this.formData.endSmallTime}`
+          )
+        ) {
+          this.formData.estimatedTime = this.$util.formatTime(dur, 1);
+        } else {
+          this.formData.estimatedTime = this.$util.formatTime(dur, 0);
+        }
       }
     },
     getUserList() {
