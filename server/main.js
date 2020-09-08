@@ -205,9 +205,9 @@ router.post("/task/list", async ctx => {
   let selectStr = ``;
   // 查询时间范围内
   if (params.startTime) {
-    selectStr = `${selectPrefix} where isDel = 0 ${selectParamsStr}${timeRange} order by startTime desc`;
+    selectStr = `${selectPrefix} where isDel = 0 ${selectParamsStr}${timeRange} order by endTime desc`;
   } else {
-    selectStr = `${selectPrefix} where isDel = 0 ${selectParamsStr} order by startTime desc`;
+    selectStr = `${selectPrefix} where isDel = 0 ${selectParamsStr} order by endTime desc`;
   }
 
   res = await query(`${selectStr}${selectSuffix}`, values);
@@ -251,6 +251,7 @@ router.post("/task/statistics", async ctx => {
   // 统计
   let waitAssignList = res.filter(item => item.status == "waitAssign");
   let shelveList = res.filter(item => item.status == "shelve");
+  let backlogList = res.filter(item => item.status == "backlog");
   let demandingList = res.filter(item => item.status == "demanding");
   let designingList = res.filter(item => item.status == "designing");
   let codingList = res.filter(item => item.status == "coding");
@@ -258,6 +259,7 @@ router.post("/task/statistics", async ctx => {
   let endList = res.filter(item => item.status == "end");
 
   response.series.push({ name: "待分配", value: waitAssignList.length });
+  response.series.push({ name: "待办", value: backlogList.length });
   response.series.push({ name: "搁置", value: shelveList.length });
   response.series.push({ name: "需求分析中", value: demandingList.length });
   response.series.push({ name: "设计中", value: designingList.length });

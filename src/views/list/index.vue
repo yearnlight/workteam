@@ -41,7 +41,7 @@
       <template #overtime="slotProps">
         <span v-if="slotProps.rowData.overtime">
           <span
-            :class="[{'line-through':slotProps.rowData.status == 'shelve' || slotProps.rowData.status == 'waitAssign'},{'red':slotProps.rowData.overtime>0,'warn':slotProps.rowData.overtime<0}]"
+            :class="[{'line-through':slotProps.rowData.status == 'shelve' || slotProps.rowData.status == 'waitAssign' || slotProps.rowData.status == 'backlog'},{'red':slotProps.rowData.overtime>0,'warn':slotProps.rowData.overtime<0}]"
           >{{slotProps.rowData.overtime>0?"超时":"剩余"}}（{{$util.formatTime(slotProps.rowData.overtime)}}）</span>
         </span>
       </template>

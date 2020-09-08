@@ -10,7 +10,7 @@
       <el-form-item label="任务名称" prop="name">
         <el-input v-model="formData.name" placeholder="请输入任务名称" :maxlength="255" show-word-limit clearable :style="{width: '100%'}"></el-input>
       </el-form-item>
-      <el-form-item label="所有者" prop="owner">
+      <el-form-item label="所有者" prop="owner" v-if="!isAdd">
         <el-select filterable multiple v-model="formData.owner" placeholder="请选择所有者" clearable :style="{width: '100%'}">
           <el-option v-for="(item, index) in userList" :key="index" :label="item.name" :value="item.name" :disabled="item.disabled">
             <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`">{{item.name}}</span>
@@ -357,6 +357,10 @@ export default {
             }
           });
         } else {
+          if(this.formData.status == "backlog"){
+            this.$message.warning("任务状态不允许更新成待办，分配后的任务未到开始时间默认设置成待办");
+            return;
+          }
           this.$axios.post("/task/update", this.formData).then((res) => {
             if (res.status == 200) {
               this.$message.success(res.msg);

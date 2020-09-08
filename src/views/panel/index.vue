@@ -6,10 +6,7 @@
         <div class="item" v-for="(item,index) in backlogList" :key="index">
           <div class="content">
             <div class="name" @click="info(item)">{{item.name|strCutOut(7)}}</div>
-            <span
-              class="status"
-              :style="`background-color: ${$util.displayEnum($enum.statusList,item.status).color};`"
-            >{{$util.displayEnum($enum.statusList,item.status).label}}</span>
+            <span class="status" :style="`background-color: ${$util.displayEnum($enum.statusList,item.status).color};`">{{$util.displayEnum($enum.statusList,item.status).label}}</span>
           </div>
           <div class="floor">
             <el-button @click="allocate(item)" type="text">分配</el-button>
@@ -31,27 +28,15 @@
           <span>{{item.owner}}:</span>
           <div class="item-progress" v-for="(pitem,pindex) in item.tasks" :key="pindex">
             <el-col :span="12">
-              <el-progress
-                :style="`width:${parseInt(pitem.estimatedTime)*15}px;min-width:80px;max-width:200px;`"
-                :text-inside="true"
-                :stroke-width="18"
-                :percentage="pitem.finished"
-              ></el-progress>
+              <el-progress :style="`width:${parseInt(pitem.estimatedTime)*15}px;min-width:80px;max-width:200px;`" :text-inside="true" :stroke-width="18" :percentage="pitem.finished"></el-progress>
             </el-col>
             <el-col :span="12">
               <div class="item-operate">
                 <div class="item-sum">
                   <el-button type="text" @click="info(pitem)">{{pitem.name|strCutOut(6)}}</el-button>
                   (预期:{{pitem.estimatedTime}})
-                  <el-badge
-                    :type="pitem.overtime>0?'error':'warning'"
-                    v-if="pitem.overtime"
-                    :value="`${$util.formatTime(pitem.overtime)}`"
-                    class="item"
-                  >
-                    <span
-                      :class="[{'red':pitem.overtime>0,'warn':pitem.overtime<0},'el-icon-alarm-clock']"
-                    ></span>
+                  <el-badge :type="pitem.overtime>0?'error':'warning'" v-if="pitem.overtime" :value="`${$util.formatTime(pitem.overtime)}`" class="item">
+                    <span :class="[{'red':pitem.overtime>0,'warn':pitem.overtime<0},'el-icon-alarm-clock']"></span>
                   </el-badge>
                 </div>
                 <span class="el-icon-delete red" @click="remove(pitem,item.owner)"></span>
@@ -64,36 +49,21 @@
     <div class="panel-run">
       <div class="header">统计</div>
       <div class="panel-run-content">
-        <v-chart :options="polar"/>
+        <v-chart :options="polar" />
       </div>
     </div>
     <el-dialog title="分配任务" :visible.sync="isAllocate">
       <el-form :model="allocateForm" ref="allocateForm" :rules="rules" label-width="120px">
-        <el-form-item label="">
+        <el-form-item label>
           <div class="reminder">
             任务分配时，如果多人承担，请及时修改
             <span class="high">预估时间</span>，暂不支持自动调整。
           </div>
         </el-form-item>
         <el-form-item label="所有者" prop="owner">
-          <el-select
-            filterable
-            multiple
-            v-model="allocateForm.owner"
-            placeholder="请选择所有者"
-            clearable
-            :style="{width: '100%'}"
-          >
-            <el-option
-              v-for="(item, index) in userList"
-              :key="index"
-              :label="item.name"
-              :value="item.name"
-              :disabled="item.disabled"
-            >
-              <span
-                :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`"
-              >{{item.name}}</span>
+          <el-select filterable multiple v-model="allocateForm.owner" placeholder="请选择所有者" clearable :style="{width: '100%'}">
+            <el-option v-for="(item, index) in userList" :key="index" :label="item.name" :value="item.name" :disabled="item.disabled">
+              <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`">{{item.name}}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -125,33 +95,34 @@ export default {
           {
             required: true,
             message: "请选择所有者",
-            trigger: "change"
-          }
-        ]
+            trigger: "change",
+          },
+        ],
       },
       polar: {
         title: {
           text: "任务状态统计",
-          x: "center"
+          x: "center",
         },
         tooltip: {
           trigger: "item",
-          formatter: "{a} <br/>{b} : {c} ({d}%)"
+          formatter: "{a} <br/>{b} : {c} ({d}%)",
         },
         legend: {
           show: true,
           bottom: 0,
           data: [],
-          padding: [20, 5]
+          padding: [20, 5],
         },
         color: [
           "#409EFF",
+          "#F56C6C",
           "#909399",
           "#E6A23C",
           "#9764e0",
           "#e06ab7",
           "#333333",
-          "#67C23A"
+          "#67C23A",
         ],
         series: [
           {
@@ -160,19 +131,19 @@ export default {
             radius: ["25%", "45%"],
             center: ["50%", "40%"],
             label: {
-              formatter: "{b} {c}"
+              formatter: "{b} {c}",
             },
             data: [],
             itemStyle: {
               emphasis: {
                 shadowBlur: 10,
                 shadowOffsetX: 0,
-                shadowColor: "rgba(0, 0, 0, 0.5)"
-              }
-            }
-          }
-        ]
-      }
+                shadowColor: "rgba(0, 0, 0, 0.5)",
+              },
+            },
+          },
+        ],
+      },
     };
   },
   created() {
@@ -186,8 +157,8 @@ export default {
       this.$router.push({
         path: "/work/tasklistInfo",
         query: {
-          id: item.id
-        }
+          id: item.id,
+        },
       });
     },
     loadBacklog() {
@@ -201,7 +172,7 @@ export default {
       });
     },
     loadStatistics() {
-      this.$axios.post("/task/statistics").then(res => {
+      this.$axios.post("/task/statistics").then((res) => {
         if (res.status == 200) {
           this.polar.legend.data = res.data.legend;
           this.polar.series[0].data = res.data.series;
@@ -210,10 +181,10 @@ export default {
     },
     doMemberList() {
       let runList = [];
-      this.userList.forEach(u => {
+      this.userList.forEach((u) => {
         let temp = {
           owner: u.name,
-          tasks: this.taskList.filter(t => t.owner.includes(u.name))
+          tasks: this.taskList.filter((t) => t.owner.includes(u.name)),
         };
         runList.push(temp);
       });
@@ -223,7 +194,7 @@ export default {
     getbacklogList() {
       this.$axios
         .post("/task/list", { status: ["waitAssign", "shelve"] })
-        .then(res => {
+        .then((res) => {
           if (res.status == 200) {
             this.backlogList = res.data.records;
           } else {
@@ -232,7 +203,7 @@ export default {
         });
     },
     getUserList() {
-      return this.$axios.get("/task/user/list", {}).then(res => {
+      return this.$axios.get("/task/user/list", {}).then((res) => {
         if (res.status == 200) {
           this.userList = res.data;
         } else {
@@ -258,9 +229,9 @@ export default {
           .post("/task/update", {
             id: item.id,
             owner: owners.join(","),
-            status: status
+            status: status,
           })
-          .then(res => {
+          .then((res) => {
             if (res.status == 200) {
               this.loadBacklog();
               this.loadRun();
@@ -271,15 +242,24 @@ export default {
       });
     },
     saveAllocate(formName) {
-      this.$refs[formName].validate(valid => {
+      this.$refs[formName].validate((valid) => {
         if (!valid) return;
+        // 当前时间 > 开始时间
+        let status = "";
+        if (new Date() - new Date(this.selectTaskItem.startTime) >= 0) {
+          // 任务状态设置成需求分析中
+          status = "demanding";
+        } else {
+          // 任务状态设置成待办
+          status = "backlog";
+        }
         this.$axios
           .post("/task/update", {
             id: this.selectTaskItem.id,
             owner: this.allocateForm.owner.join(","),
-            status: "demanding"
+            status: status,
           })
-          .then(res => {
+          .then((res) => {
             if (res.status == 200) {
               this.loadBacklog();
               this.loadRun();
@@ -293,17 +273,17 @@ export default {
     getTaskList() {
       return this.$axios
         .post("/task/list", {
-          status: ["demanding", "designing", "coding", "testing"]
+          status: ["backlog", "demanding", "designing", "coding", "testing"],
         })
-        .then(res => {
+        .then((res) => {
           if (res.status == 200) {
             this.taskList = res.data.records;
           } else {
             this.$message.error(res.msg);
           }
         });
-    }
-  }
+    },
+  },
 };
 </script>
 
