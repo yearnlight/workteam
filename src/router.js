@@ -45,6 +45,11 @@ const routes = [
         path: "/work/userlistAdd",
         component: () => import("@/views/user/add.vue"),
         name: "userlistAdd"
+      },
+      {
+        path: "/work/knowledgeMap",
+        component: () => import("@/views/knowledge/map.vue"),
+        name: "knowledgeMap"
       }
     ]
   }

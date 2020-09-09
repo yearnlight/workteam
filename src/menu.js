@@ -13,5 +13,10 @@ export default [
     title: "成员列表",
     icon: "el-icon-user",
     path: "/work/userlist"
+  },
+  {
+    title: "知识地图",
+    icon: "el-icon-reading",
+    path: "/work/knowledgeMap"
   }
 ];
