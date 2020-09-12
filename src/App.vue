@@ -76,7 +76,20 @@ body {
       margin-left: 10px !important;
       color: #999 !important;
     }
-
+    .el-dialog {
+      .el-form {
+        &-item {
+          .el-input,
+          .el-select,
+          .el-textarea {
+            width: 70%;
+            .el-input {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
     pre {
       font-family: Menlo, Monaco, Consolas, Courier New, monospace !important;
       line-height: 1.45em;

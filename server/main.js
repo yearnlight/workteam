@@ -400,6 +400,38 @@ router.post("/task/create", async ctx => {
   ctx.response.body = { status: 200, msg: "创建任务成功", data: null };
 });
 
+
+// 创建任务
+router.post("/task/project/create", async ctx => {
+  let params = ctx.request.body;
+  let uuid = Uuid.v1();
+  let createtime = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
+  let inputParams = [
+    [
+      uuid,
+      params.name,
+      params.desc,
+      params.type,
+      params.url,
+      params.hero,
+      params.star,
+      ctx.request.header.userid,
+      createtime,
+      0
+    ]
+  ];
+  let insertStr = `insert into project(id,name,desc,type,url,hero,star,creator,createtime,isDel) values ?`;
+  res = await query(insertStr, [inputParams]);
+  ctx.response.body = { status: 200, msg: "创建项目成功", data: null };
+});
+
+// 项目列表
+router.post("/task/project/list", async ctx => {
+  let queryStr = `select * from project where isDel = 0`;
+  let res = await query(queryStr);
+  ctx.response.body = { status: 200, msg: null, data: res };
+})
+
 app.use(
   koaBody({
     multipart: true, // 支持文件上传
