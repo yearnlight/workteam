@@ -27,7 +27,10 @@
     "vue": "^2.6.11",
     "vue-baidu-map": "^0.21.22",
     "vue-echarts": "^5.0.0-beta.0",
-    "vue-router": "^3.3.4"
+    "vue-router": "^3.3.4",
+    "mavon-editor": "^2.7.6",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.4.6",

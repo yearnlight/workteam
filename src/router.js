@@ -11,6 +11,10 @@ const routes = [
     component: () => import("@/views/user/login.vue")
   },
   {
+    path: "/md",
+    component: () => import("@/components/md/index.vue")
+  },
+  {
     path: "/work",
     redirect: "/work/panel",
     component: Menu,

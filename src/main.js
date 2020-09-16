@@ -11,6 +11,7 @@ import * as filters from "./filters";
 import ECharts from "vue-echarts";
 import BaiduMap from "vue-baidu-map";
 import { Message } from "element-ui";
+import mavonEditor from 'mavon-editor';
 
 Vue.component("v-chart", ECharts);
 Vue.config.productionTip = false;
@@ -58,6 +59,7 @@ Vue.use(ElementUI, {
 });
 
 Vue.use(VueRouter);
+Vue.use(mavonEditor);
 window.app = new Vue({
   router,
   render: h => h(App)
