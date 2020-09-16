@@ -284,6 +284,7 @@ let fields = [
   "owner",
   "status",
   "priority",
+  "endTime",
   "estimatedTime",
   "estimatedInfo",
   "creator",

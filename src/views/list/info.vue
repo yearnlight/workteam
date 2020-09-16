@@ -74,10 +74,10 @@
                 <label>进度：</label>
                 {{item.finished}}%
               </p>
-              <p class="log">
+              <div class="log">
                 <label>更新说明：</label>
-                <span class="log-info">{{item.updateInfo}}</span>
-              </p>
+                <p class="log-info">{{item.updateInfo}}</p>
+              </div>
             </el-card>
           </el-timeline-item>
         </el-timeline>
@@ -139,6 +139,8 @@ export default {
       &-info {
         color: #999;
         flex: 1;
+        white-space: break-spaces;
+        margin: 0;
       }
     }
   }

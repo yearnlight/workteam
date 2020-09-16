@@ -41,58 +41,32 @@
       <el-row>
         <el-col :span="6">
           <el-form-item label="预估开始时间" prop="startDate">
-            <el-date-picker
-              :picker-options="pickerOptions"
-              :disabled="!(formData.status == 'shelve' || formData.status == 'waitAssign')"
-              v-model="formData.startDate"
-              format="yyyy-MM-dd"
-              value-format="yyyy-MM-dd"
-              type="date"
-              placeholder="开始日期"
-            ></el-date-picker>
+            <el-date-picker :picker-options="pickerOptions" :disabled="disabledUpdate" v-model="formData.startDate" format="yyyy-MM-dd" value-format="yyyy-MM-dd" type="date" placeholder="开始日期"></el-date-picker>
           </el-form-item>
         </el-col>
         <el-col :span="6">
           <el-form-item label-width="10px" prop="startSmallTime">
-            <el-time-select
-              :disabled="!(formData.status == 'shelve' || formData.status == 'waitAssign')"
-              v-model="formData.startSmallTime"
-              :picker-options="{
+            <el-time-select :disabled="disabledUpdate" v-model="formData.startSmallTime" :picker-options="{
           start: '09:00',
           step: '00:60',
           end: '18:00'
-        }"
-              placeholder="选择时间"
-            ></el-time-select>
+        }" placeholder="选择时间"></el-time-select>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row>
         <el-col :span="6">
           <el-form-item label="预估完结时间" prop="endDate">
-            <el-date-picker
-              :picker-options="pickerOptions"
-              :disabled="!(formData.status == 'shelve' || formData.status == 'waitAssign')"
-              v-model="formData.endDate"
-              format="yyyy-MM-dd"
-              value-format="yyyy-MM-dd"
-              type="date"
-              placeholder="开始日期"
-            ></el-date-picker>
+            <el-date-picker :picker-options="pickerOptions" :disabled="disabledUpdate" v-model="formData.endDate" format="yyyy-MM-dd" value-format="yyyy-MM-dd" type="date" placeholder="开始日期"></el-date-picker>
           </el-form-item>
         </el-col>
         <el-col :span="6">
           <el-form-item label-width="10px" prop="endSmallTime">
-            <el-time-select
-              :disabled="!(formData.status == 'shelve' || formData.status == 'waitAssign')"
-              v-model="formData.endSmallTime"
-              :picker-options="{
+            <el-time-select :disabled="disabledUpdate" v-model="formData.endSmallTime" :picker-options="{
           start: '09:00',
           step: '00:60',
           end: '18:00'
-        }"
-              placeholder="选择时间"
-            ></el-time-select>
+        }" placeholder="选择时间"></el-time-select>
           </el-form-item>
         </el-col>
       </el-row>
@@ -105,7 +79,7 @@
           <el-button class="reminderBtn" type="text" slot="reference" icon="el-icon-question"></el-button>
         </el-popover>
         <div class="reminderInline">
-          <span class="reminder-high">周天</span>休息日，不予计算
+          <span class="reminder-high">周天</span>休息日，不予计算,<span class="reminder-high">管理员角色</span>可以修改预估时间
         </div>
       </el-form-item>
       <el-form-item label="预估说明" prop="estimatedInfo">
@@ -239,7 +213,20 @@ export default {
       },
     };
   },
-  computed: {},
+  computed: {
+    disabledUpdate() {
+      let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
+      if(curUser.role == "super"){
+        return false;
+      } 
+      return (
+        !(
+          this.formData.status == "shelve" ||
+          this.formData.status == "waitAssign"
+        )
+      );
+    },
+  },
   watch: {},
   watch: {
     "formData.startDate": {
@@ -357,8 +344,10 @@ export default {
             }
           });
         } else {
-          if(this.formData.status == "backlog"){
-            this.$message.warning("任务状态不允许更新成待办，分配后的任务未到开始时间默认设置成待办");
+          if (this.formData.status == "backlog") {
+            this.$message.warning(
+              "任务状态不允许更新成待办，分配后的任务未到开始时间默认设置成待办"
+            );
             return;
           }
           this.$axios.post("/task/update", this.formData).then((res) => {

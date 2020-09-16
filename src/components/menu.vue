@@ -8,7 +8,8 @@
       <div class="docHeader-items">
         <el-dropdown class="userInfo-container mr-20" trigger="click" @command="handleCommand">
           <span class="el-dropdown-link">
-            <img v-if="avatar" :src="avatar" class="user-avatar" />
+            <!-- <img v-if="avatar" :src="avatar" class="user-avatar" /> -->
+            <el-avatar :style="`background:${colors[Math.floor(Math.random()*7)]}`">{{name.charAt(name.length-1)}}</el-avatar>
             <span class="user-nickname">
               {{ name }}
               <i class="el-icon-caret-bottom el-icon--right" />
@@ -61,13 +62,22 @@ export default {
       name: "江阿生",
       isInFrame: false,
       isCollapse: false,
+      colors: [
+        "#409EFF",
+        "#F56C6C",
+        "#909399",
+        "#E6A23C",
+        "#9764e0",
+        "#e06ab7",
+        "#67C23A",
+      ],
     };
   },
   created() {
     this.leftmenus = menus;
     this.setRoute();
-    let userStr = sessionStorage.getItem("userInfo")
-    if(userStr){
+    let userStr = sessionStorage.getItem("userInfo");
+    if (userStr) {
       let userInfo = JSON.parse(userStr);
       this.name = userInfo.name;
     }
@@ -78,8 +88,7 @@ export default {
     }
   },
   methods: {
-    setRoute() {
-    },
+    setRoute() {},
     handleCommand(command) {
       if (command == "logout") {
         this.$confirm("你确定退出当前系统 ?", "退出").then(() => {
@@ -123,6 +132,13 @@ export default {
     &-items {
       margin-left: auto;
       .userInfo-container {
+        .el-dropdown-link {
+          display: flex;
+          align-items: center;
+          .user-nickname {
+            margin-left: 5px;
+          }
+        }
         color: #fff;
         .user-avatar {
           margin-right: 10px;
