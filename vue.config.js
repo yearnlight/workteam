@@ -9,6 +9,12 @@ module.exports = {
                 // target: 'http://localhost:4001/',//订单接口
                 ws: true,
                 changOrigin: true,
+            },
+            '^/(md)': {
+                target: 'http://81.68.200.164:4001/',//订单接口
+                // target: 'http://localhost:4001/',//订单接口
+                ws: true,
+                changOrigin: true,
             }
         }
     }

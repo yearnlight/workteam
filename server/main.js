@@ -6,7 +6,9 @@ const query = require("./pool"),
   koaBody = require("koa-body"),
   Multiparty = require("multiparty"),
   Uuid = require("node-uuid"),
-  moment = require("moment");
+  moment = require("moment"),
+  fs = require("fs"),
+  path = require("path");
 
 const KoaRouterInterceptor = require("koa-router-interceptor");
 
@@ -211,7 +213,7 @@ router.post("/task/list", async ctx => {
   }
 
   res = await query(`${selectStr}${selectSuffix}`, values);
-  let totalRes = await query(selectStr,values);
+  let totalRes = await query(selectStr, values);
 
   // 添加超时时间
   res.forEach(item => {
@@ -401,7 +403,6 @@ router.post("/task/create", async ctx => {
   ctx.response.body = { status: 200, msg: "创建任务成功", data: null };
 });
 
-
 // 创建任务
 router.post("/task/project/create", async ctx => {
   let params = ctx.request.body;
@@ -413,15 +414,17 @@ router.post("/task/project/create", async ctx => {
       params.name,
       params.desc,
       params.type,
+      params.color || "#909399",
       params.url,
       params.hero,
       params.star,
-      ctx.request.header.userid,
+      ctx.request.header.userName,
       createtime,
       0
     ]
   ];
-  let insertStr = `insert into project(id,name,desc,type,url,hero,star,creator,createtime,isDel) values ?`;
+  let insertStr =
+    "insert into project(id,`name`,`desc`,type,color,url,hero,star,creator,createtime,isDel) values ?";
   res = await query(insertStr, [inputParams]);
   ctx.response.body = { status: 200, msg: "创建项目成功", data: null };
 });
@@ -431,7 +434,87 @@ router.post("/task/project/list", async ctx => {
   let queryStr = `select * from project where isDel = 0`;
   let res = await query(queryStr);
   ctx.response.body = { status: 200, msg: null, data: res };
-})
+});
+
+// md图片上传
+router.post("/task/upload/files", async ctx => {
+  // 上传单个文件
+  const file = ctx.request.files.file; // 获取上传文件
+  // 创建可读流
+  const reader = fs.createReadStream(file.path);
+  let filePath = path.join(__dirname, "md/") + `${file.name}`;
+  // 创建可写流
+  const upStream = fs.createWriteStream(filePath);
+  // 可读流通过管道写入可写流
+  reader.pipe(upStream);
+  ctx.response.body = { status: 200, msg: null, data: `/md/${file.name}` };
+});
+
+// md上传
+router.post("/task/md/save", async ctx => {
+  let params = ctx.request.body;
+  let uuid = Uuid.v1();
+  let createtime = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
+  let inputParams = [
+    [
+      uuid,
+      params.title,
+      params.context,
+      params.label,
+      ctx.request.header.userName,
+      createtime,
+      0
+    ]
+  ];
+  let insertStr =
+    "insert into doc(id,`title`,`context`,`label`,creator,createtime,isDel) values ?";
+  res = await query(insertStr, [inputParams]);
+  ctx.response.body = { status: 200, msg: "发布文档成功", data: null };
+});
+
+// 文档列表
+router.post("/task/md/list", async ctx => {
+  let queryStr = `select * from doc where isDel = 0`;
+  let res = await query(queryStr);
+  ctx.response.body = { status: 200, msg: null, data: res };
+});
+
+// 文档详情
+router.post("/task/md/info", async ctx => {
+  let { id } = ctx.request.body;
+  let selectStr = `select * from doc where isDel = 0 and id = ?`;
+  let res = await query(selectStr, [id]);
+  ctx.response.body = { status: 200, msg: null, data: res ? res[0] : {} };
+});
+
+// 文档删除
+router.post("/task/md/delete", async ctx => {
+  let params = ctx.request.body;
+  let deleteStr = `update doc SET isDel = 1 where id = ?`;
+  res = await query(deleteStr, [params.id]);
+  ctx.response.body = { status: 200, msg: "删除文档成功", data: null };
+});
+
+// 文档更新
+router.post("/task/md/update", async ctx => {
+  let params = ctx.request.body;
+  // 更新时间、更新者
+  params.creator = ctx.request.header.userName;
+  params.createtime = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
+  let updateParams = [];
+  let values = [];
+  for (let key in params) {
+    updateParams.push(`${key} = ?`);
+    if (Array.isArray(params[key])) {
+      params[key] = params[key].join(",");
+    }
+    values.push(params[key]);
+  }
+  values.concat(params.id);
+  let updateStr = `update doc SET ${updateParams.join(",")} where id = ?`;
+  res = await query(updateStr, values.concat(params.id));
+  ctx.response.body = { status: 200, msg: "更新文档成功", data: null };
+});
 
 app.use(
   koaBody({

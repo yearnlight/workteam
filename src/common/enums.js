@@ -9,6 +9,13 @@ export default {
     { label: "测试中", value: "testing", color: "#333333" },
     { label: "完结", value: "end", color: "#67C23A" }
   ],
+  projectTypeList: [
+    { label: "Web", value: "web", color: "#409EFF" },
+    { label: "Java", value: "java", color: "#F56C6C" },
+    { label: "Go", value: "go", color: "#E6A23C" },
+    { label: "配置", value: "config", color: "#67C23A" },
+    { label: "公共", value: "common", color: "#9764e0" }
+  ],
   prioritys: [
     {
       label: "高",

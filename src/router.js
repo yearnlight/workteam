@@ -54,6 +54,16 @@ const routes = [
         path: "/work/knowledgeMap",
         component: () => import("@/views/knowledge/map.vue"),
         name: "knowledgeMap"
+      },
+      {
+        path: "/work/knowledgeMap_addmd",
+        component: () => import("@/components/md/index.vue"),
+        name: "knowledgeMap_addmd"
+      },
+      {
+        path: "/work/knowledgeMap_infomd",
+        component: () => import("@/views/knowledge/info.vue"),
+        name: "knowledgeMapknowledgeMap_infomd_addmd"
       }
     ]
   }
@@ -66,8 +76,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (to.path == "/login") {
     next();
-  }
-  else {
+  } else {
     if (sessionStorage.getItem("token")) {
       next();
     } else {
@@ -76,7 +85,6 @@ router.beforeEach((to, from, next) => {
       });
     }
   }
-
 });
 
 export default router;

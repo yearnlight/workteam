@@ -1,7 +1,7 @@
 <template>
   <div class="md">
     <pub-header :user-info="userInfo"></pub-header>
-    <editor></editor>
+    <editor ref="editor"></editor>
   </div>
 </template>
 
@@ -13,12 +13,13 @@ export default {
   data() {
     return {
       userInfo: {},
+      docInfo: {},
     };
   },
   components: {
     PubHeader,
     Editor,
-  },
+  }
 };
 </script>
 
@@ -29,5 +30,7 @@ export default {
   color: #333;
   font-size: 12px;
   line-height: 1.5;
+  padding: 0 !important;
+  height: 100% !important;
 }
 </style>

@@ -9,7 +9,7 @@
         <el-dropdown class="userInfo-container mr-20" trigger="click" @command="handleCommand">
           <span class="el-dropdown-link">
             <!-- <img v-if="avatar" :src="avatar" class="user-avatar" /> -->
-            <el-avatar :style="`background:${colors[Math.floor(Math.random()*7)]}`">{{name.charAt(name.length-1)}}</el-avatar>
+            <el-avatar :style="`background:${bg}`">{{name.charAt(name.length-1)}}</el-avatar>
             <span class="user-nickname">
               {{ name }}
               <i class="el-icon-caret-bottom el-icon--right" />
@@ -72,6 +72,11 @@ export default {
         "#67C23A",
       ],
     };
+  },
+  computed: {
+    bg() {
+      return this.colors[Math.floor(Math.random() * 7)];
+    },
   },
   created() {
     this.leftmenus = menus;

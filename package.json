@@ -30,7 +30,9 @@
     "vue-router": "^3.3.4",
     "mavon-editor": "^2.7.6",
     "stylus": "^0.54.7",
-    "stylus-loader": "^3.0.2"
+    "stylus-loader": "^3.0.2",
+    "github-markdown-css": "^4.0.0",
+    "marked": "^1.1.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.4.6",

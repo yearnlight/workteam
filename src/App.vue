@@ -50,6 +50,10 @@ body {
       color: #f56c6c;
       cursor: pointer;
     }
+    .blue {
+      color: #409eff;
+      cursor: pointer;
+    }
     .redbg {
       background-color: #f56c6c;
     }
