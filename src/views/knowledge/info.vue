@@ -1,11 +1,13 @@
 <template>
   <div class="docx">
-    <div class="docx-title">{{info.title}}</div>
-    <div class="helpDoc markdown-container markdown-body">
-      <div class="helpDocPrettier" v-html="prettierList"></div>
-      <!-- 放大图片 -->
-      <big-img v-if="showImg" @clickit="viewImg" :imgSrc="imgSrc"></big-img>
-    </div>
+    <el-scrollbar style="height:100%">
+      <div class="docx-title">{{info.title}}</div>
+      <div class="helpDoc markdown-container markdown-body">
+        <div class="helpDocPrettier" v-html="prettierList"></div>
+        <!-- 放大图片 -->
+        <big-img v-if="showImg" @clickit="viewImg" :imgSrc="imgSrc"></big-img>
+      </div>
+    </el-scrollbar>
   </div>
 </template>
 
@@ -142,7 +144,7 @@ export default {
 
 <style lang="scss">
 .docx {
-  width: 700px;
+  width: 780px;
   margin: 0 auto;
   &-title {
     text-align: center;

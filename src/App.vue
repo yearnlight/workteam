@@ -15,6 +15,9 @@ html,
 body {
   height: 100%;
   margin: 0;
+  .el-scrollbar__wrap {
+    overflow-x: hidden;
+  }
 
   .reminder {
     font-size: 12px;
@@ -94,7 +97,7 @@ body {
         }
       }
     }
-    pre {
+    .pre {
       font-family: Menlo, Monaco, Consolas, Courier New, monospace !important;
       line-height: 1.45em;
       font-size: 1em;

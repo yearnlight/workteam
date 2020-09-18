@@ -179,14 +179,16 @@ router.post("/task/list", async ctx => {
   for (let key in params) {
     if (fields.includes(key)) {
       // 数组 in,非数组 =
-      if (Array.isArray(params[key])) {
-        if (dealInParams(params[key])) {
-          selectParams.push(`${key} in (${dealInParams(params[key])})`);
-          values = values.concat(params[key]);
+      if (params[key]) {
+        if (Array.isArray(params[key])) {
+          if (dealInParams(params[key])) {
+            selectParams.push(`${key} in (${dealInParams(params[key])})`);
+            values = values.concat(params[key]);
+          }
+        } else {
+          selectParams.push(`${key} = ?`);
+          values.push(params[key]);
         }
-      } else {
-        selectParams.push(`${key} = ?`);
-        values.push(params[key]);
       }
     }
   }
@@ -197,9 +199,8 @@ router.post("/task/list", async ctx => {
   let selectParamsStr = "";
   // 分页
   if (params.page && params.limit) {
-    selectSuffix = ` limit ${(params.page - 1) * params.limit}, ${
-      params.limit
-    }`;
+    selectSuffix = ` limit ${(params.page - 1) * params.limit}, ${params.page *
+      params.limit}`;
   }
   if (selectParams && selectParams.length) {
     selectParamsStr = `and  ${selectParams.join(" and ")}`;
@@ -211,7 +212,6 @@ router.post("/task/list", async ctx => {
   } else {
     selectStr = `${selectPrefix} where isDel = 0 ${selectParamsStr} order by endTime desc`;
   }
-
   res = await query(`${selectStr}${selectSuffix}`, values);
   let totalRes = await query(selectStr, values);
 

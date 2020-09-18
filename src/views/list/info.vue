@@ -36,7 +36,7 @@
             >{{$util.formatTime(formData.overtime)}}</span>
           </el-form-item>
           <el-form-item label="预估说明" prop="estimatedInfo">
-            <pre>
+            <pre class="pre">
           <code>{{formData.estimatedInfo}}</code>
         </pre>
           </el-form-item>
