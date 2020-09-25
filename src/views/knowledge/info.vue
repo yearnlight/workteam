@@ -1,5 +1,5 @@
 <template>
-  <div class="docs">
+  <div class="docxs">
     <div class="docx">
       <el-scrollbar style="height: 100%">
         <div class="docx-title">{{ info.title }}</div>
@@ -10,9 +10,9 @@
         </div>
       </el-scrollbar>
     </div>
-    <div class="docs-item">
-      <img class="docs-item-img" :src="imgItemSrc" />
-      <div class="docs-item-operate">
+    <div class="docxs-item">
+      <img class="docxs-item-img" :src="imgItemSrc" />
+      <div class="docxs-item-operate">
         <el-button type="text" icon="el-icon-document" @click="downloadWord"
           >下载Word</el-button
         >
@@ -171,7 +171,7 @@ export default {
 </script>
 
 <style lang="scss">
-.docs {
+.docxs {
   display: flex;
   background: #f0f2f5 !important;
   justify-content: center;

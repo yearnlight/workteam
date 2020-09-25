@@ -541,7 +541,7 @@ app.use(
   KoaRouterInterceptor(router, async (ctx, next) => {
     let isLogin = false;
     // 登录界面直接放过
-    if (ctx.path == "/task/login" || ctx.path == "/md/output.doc") {
+    if (ctx.path == "/task/login" || ctx.path == "/md/output.docx") {
       return true;
     }
     let queryStr = "select * from user where `id` = ?";

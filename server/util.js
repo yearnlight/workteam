@@ -45,15 +45,24 @@ module.exports = {
   },
   mdToDoc(mdStr, title, ctx) {
     let headFile = fs.readFileSync("doc.html"); // 读取将要被转换的md文件
-    let mdToHtmlStr = marked(mdStr);
+    let mdToHtmlStr = marked(mdStr, {
+      gfm: true,
+      tables: true,
+      breaks: false,
+      pedantic: false,
+      sanitize: false,
+      smartLists: true,
+      smartypants: false
+    });
+
     // 将md转换成html字符串替换到html模板文件中replace_area的位置
     let content = headFile.toString().replace("replace_area", mdToHtmlStr);
-    let filepath = "./md/output.doc";
+    let filepath = "./md/output.docx";
     fs.writeFileSync(filepath, content);
     ctx.response.body = {
       status: 200,
       msg: "",
-      data: { url: "/md/output.doc", title: title }
+      data: { url: "/md/output.docx", title: title }
     };
   }
 };
