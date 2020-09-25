@@ -1,4 +1,10 @@
 const query = require("./pool");
+let fs = require("fs");
+let marked = require("marked");
+let officegen = require("officegen");
+let path = require("path");
+let docx = officegen("docx");
+const send = require("koa-send");
 
 module.exports = {
   setTaskRecord: async inputParams => {
@@ -36,5 +42,18 @@ module.exports = {
       }
     });
     return res[0];
+  },
+  mdToDoc(mdStr, title, ctx) {
+    let headFile = fs.readFileSync("doc.html"); // 读取将要被转换的md文件
+    let mdToHtmlStr = marked(mdStr);
+    // 将md转换成html字符串替换到html模板文件中replace_area的位置
+    let content = headFile.toString().replace("replace_area", mdToHtmlStr);
+    let filepath = "./md/output.doc";
+    fs.writeFileSync(filepath, content);
+    ctx.response.body = {
+      status: 200,
+      msg: "",
+      data: { url: "/md/output.doc", title: title }
+    };
   }
 };

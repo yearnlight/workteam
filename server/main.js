@@ -516,6 +516,15 @@ router.post("/task/md/update", async ctx => {
   ctx.response.body = { status: 200, msg: "更新文档成功", data: null };
 });
 
+// 文档下载
+router.post("/task/md/download", async ctx => {
+  let {id} = ctx.request.body;
+  let queryStr = `select * from doc where isDel = 0 and id = ?`;
+  let res = await query(queryStr,[id]);
+  // mdToDoc
+  util.mdToDoc(res[0].context,res[0].title,ctx);
+});
+
 app.use(
   koaBody({
     multipart: true, // 支持文件上传
@@ -532,7 +541,7 @@ app.use(
   KoaRouterInterceptor(router, async (ctx, next) => {
     let isLogin = false;
     // 登录界面直接放过
-    if (ctx.path == "/task/login") {
+    if (ctx.path == "/task/login" || ctx.path == "/md/output.doc") {
       return true;
     }
     let queryStr = "select * from user where `id` = ?";

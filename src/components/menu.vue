@@ -58,7 +58,6 @@ import menus from "@/menu.js";
 export default {
   data() {
     return {
-      avatar: require("@/assets/logo.jpg"),
       name: "江阿生",
       isInFrame: false,
       isCollapse: false,

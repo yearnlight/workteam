@@ -1,13 +1,23 @@
 <template>
-  <div class="docx">
-    <el-scrollbar style="height:100%">
-      <div class="docx-title">{{info.title}}</div>
-      <div class="helpDoc markdown-container markdown-body">
-        <div class="helpDocPrettier" v-html="prettierList"></div>
-        <!-- 放大图片 -->
-        <big-img v-if="showImg" @clickit="viewImg" :imgSrc="imgSrc"></big-img>
+  <div class="docs">
+    <div class="docx">
+      <el-scrollbar style="height: 100%">
+        <div class="docx-title">{{ info.title }}</div>
+        <div class="helpDoc markdown-container markdown-body">
+          <div class="helpDocPrettier" v-html="prettierList"></div>
+          <!-- 放大图片 -->
+          <big-img v-if="showImg" @clickit="viewImg" :imgSrc="imgSrc"></big-img>
+        </div>
+      </el-scrollbar>
+    </div>
+    <div class="docs-item">
+      <img class="docs-item-img" :src="imgItemSrc" />
+      <div class="docs-item-operate">
+        <el-button type="text" icon="el-icon-document" @click="downloadWord"
+          >下载Word</el-button
+        >
       </div>
-    </el-scrollbar>
+    </div>
   </div>
 </template>
 
@@ -70,7 +80,6 @@ const tocObj = {
   index: 0,
 };
 export default {
-  name: "Help Document",
   components: {
     "big-img": BigImg,
   },
@@ -80,12 +89,31 @@ export default {
       showImg: false,
       imgSrc: "",
       info: {},
+      imgItemSrc: require("@/assets/xietong.png"),
     };
   },
   created() {
     this.init();
   },
   methods: {
+    downloadWord() {
+      this.$axios
+        .post("/task/md/download", { id: this.$route.query.id })
+        .then((res) => {
+          if (res.status == 200) {
+            this.download(res.data);
+          } else {
+          }
+        });
+    },
+    download(item) {
+      const link = document.createElement("a");
+      link.style.display = "none";
+      link.href = item.url;
+      link.setAttribute("download", item.title);
+      document.body.appendChild(link);
+      link.click();
+    },
     viewImg() {
       this.showImg = false;
     },
@@ -143,35 +171,53 @@ export default {
 </script>
 
 <style lang="scss">
-.docx {
-  width: 780px;
-  margin: 0 auto;
-  &-title {
-    text-align: center;
-    margin: 10px 0;
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1.5;
-  }
-  .helpDoc {
-    padding: 20px;
-
-    .helpDocPrettier {
-      img {
-        cursor: pointer;
-      }
+.docs {
+  display: flex;
+  background: #f0f2f5 !important;
+  justify-content: center;
+  &-item {
+    background: #fff;
+    margin-left: 20px;
+    width: 200px;
+    height: 200px;
+    &-img {
+      width: 100%;
     }
-    .toc {
-      &-li {
-        font-size: 12px;
-        color: #a1a6ab;
-        a {
-          color: #409eff;
-          text-decoration: none;
-          font-size: 14px;
+    &-operate {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .docx {
+    width: 780px;
+    background: #fff;
+    &-title {
+      text-align: center;
+      margin: 10px 0;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+    .helpDoc {
+      padding: 20px;
+
+      .helpDocPrettier {
+        img {
           cursor: pointer;
-          &:hover {
-            color: #333;
+        }
+      }
+      .toc {
+        &-li {
+          font-size: 12px;
+          color: #a1a6ab;
+          a {
+            color: #409eff;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            &:hover {
+              color: #333;
+            }
           }
         }
       }
