@@ -5,7 +5,7 @@ export default {
       {
         prop: "name",
         label: "任务",
-        operateFun: { function: "info" }
+        renderPage: "nameTag"
       },
       {
         prop: "owner",

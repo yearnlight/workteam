@@ -97,6 +97,21 @@ body {
         }
       }
     }
+    .action {
+      .label {
+        font-size: 12px;
+        display: inline-block;
+        line-height: 18px;
+        padding: 0 10px;
+        border: 1px solid #007fff;
+        border-radius: 14px;
+        color: #007fff;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+    }
     .pre {
       font-family: Menlo, Monaco, Consolas, Courier New, monospace !important;
       line-height: 1.45em;

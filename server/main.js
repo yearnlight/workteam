@@ -291,6 +291,7 @@ let fields = [
   "estimatedInfo",
   "creator",
   "finished",
+  "tag",
   "createtime"
 ];
 
@@ -368,7 +369,6 @@ router.post("/task/create", async ctx => {
   let params = ctx.request.body;
   let uuid = Uuid.v1();
   let createtime = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
-  let label = params.labels && params.labels.join(",");
   let owners = params.owner && params.owner.join(",");
   let inputParams = [
     [
@@ -384,10 +384,11 @@ router.post("/task/create", async ctx => {
       params.creator,
       params.finished,
       createtime,
-      0
+      0,
+      params.tag
     ]
   ];
-  let insertStr = `insert into worktask(id,name,owner,status,startTime,endTime,priority,estimatedTime,estimatedInfo,creator,finished,createtime,isDel) values ?`;
+  let insertStr = `insert into worktask(id,name,owner,status,startTime,endTime,priority,estimatedTime,estimatedInfo,creator,finished,createtime,isDel,tag) values ?`;
   res = await query(insertStr, [inputParams]);
   // 组装任务记录信息
   let record = [

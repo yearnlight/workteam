@@ -16,7 +16,7 @@
           <div class="docs-item-content">
             <div class="docs-item-meta">{{item.creator}} · {{item.createtime}}</div>
             <div class="docs-item-title" @click="toInfo(item.id)">{{item.title}}</div>
-            <div class="docs-item-action">
+            <div class="action">
               <span class="label" :style="`border: 1px solid ${item.color};color:${item.color}`" v-if="item.label">{{item.label}}</span>
             </div>
           </div>
@@ -416,21 +416,6 @@ export default {
           cursor: pointer;
           &:hover {
             text-decoration: underline;
-          }
-        }
-        &-action {
-          .label {
-            font-size: 13px;
-            display: inline-block;
-            line-height: 22px;
-            padding: 0 12px;
-            border: 1px solid #007fff;
-            border-radius: 14px;
-            color: #007fff;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
           }
         }
       }

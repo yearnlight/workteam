@@ -3,14 +3,29 @@
     <div class="panel-backlog">
       <div class="header">待办项</div>
       <div class="panel-backlog-items">
-        <div class="item" v-for="(item,index) in backlogList" :key="index">
+        <div class="item" v-for="(item, index) in backlogList" :key="index">
           <div class="content">
-            <div class="name" @click="info(item)">{{item.name|strCutOut(7)}}</div>
-            <span class="status" :style="`background-color: ${$util.displayEnum($enum.statusList,item.status).color};`">{{$util.displayEnum($enum.statusList,item.status).label}}</span>
+            <div class="name" @click="info(item)">
+              {{ item.name | strCutOut(7) }}
+            </div>
+            <div class="tags">
+              <span
+                class="status"
+                :style="`background-color: ${
+                  $util.displayEnum($enum.statusList, item.status).color
+                };`"
+                >{{
+                  $util.displayEnum($enum.statusList, item.status).label
+                }}</span
+              >
+              <span class="action" v-if="item.tag">
+                <span class="label">{{ item.tag }}</span>
+              </span>
+            </div>
           </div>
           <div class="floor">
             <el-button @click="allocate(item)" type="text">分配</el-button>
-            <div class="duration">预期：{{item.estimatedTime}}</div>
+            <div class="duration">预期：{{ item.estimatedTime }}</div>
           </div>
         </div>
       </div>
@@ -24,22 +39,48 @@
         </span>
       </div>
       <div class="panel-member-items">
-        <div class="item" v-for="(item,index) in memberList" :key="index">
-          <span>{{item.owner}}:</span>
-          <div class="item-progress" v-for="(pitem,pindex) in item.tasks" :key="pindex">
+        <div class="item" v-for="(item, index) in memberList" :key="index">
+          <span>{{ item.owner }}:</span>
+          <div
+            class="item-progress"
+            v-for="(pitem, pindex) in item.tasks"
+            :key="pindex"
+          >
             <el-col :span="12">
-              <el-progress :style="`width:${parseInt(pitem.estimatedTime)*15}px;min-width:80px;max-width:200px;`" :text-inside="true" :stroke-width="18" :percentage="pitem.finished"></el-progress>
+              <el-progress
+                :style="`width:${
+                  parseInt(pitem.estimatedTime) * 15
+                }px;min-width:80px;max-width:200px;`"
+                :text-inside="true"
+                :stroke-width="18"
+                :percentage="pitem.finished"
+              ></el-progress>
             </el-col>
             <el-col :span="12">
               <div class="item-operate">
                 <div class="item-sum">
-                  <el-button type="text" @click="info(pitem)">{{pitem.name|strCutOut(6)}}</el-button>
-                  (预期:{{pitem.estimatedTime}})
-                  <el-badge :type="pitem.overtime>0?'error':'warning'" v-if="pitem.overtime" :value="`${$util.formatTime(pitem.overtime)}`" class="item">
-                    <span :class="[{'red':pitem.overtime>0,'warn':pitem.overtime<0},'el-icon-alarm-clock']"></span>
+                  <el-button type="text" @click="info(pitem)">{{
+                    pitem.name | strCutOut(6)
+                  }}</el-button>
+                  (预期:{{ pitem.estimatedTime }})
+                  <el-badge
+                    :type="pitem.overtime > 0 ? 'error' : 'warning'"
+                    v-if="pitem.overtime"
+                    :value="`${$util.formatTime(pitem.overtime)}`"
+                    class="item"
+                  >
+                    <span
+                      :class="[
+                        { red: pitem.overtime > 0, warn: pitem.overtime < 0 },
+                        'el-icon-alarm-clock',
+                      ]"
+                    ></span>
                   </el-badge>
                 </div>
-                <span class="el-icon-delete red" @click="remove(pitem,item.owner)"></span>
+                <span
+                  class="el-icon-delete red"
+                  @click="remove(pitem, item.owner)"
+                ></span>
               </div>
             </el-col>
           </div>
@@ -53,7 +94,12 @@
       </div>
     </div>
     <el-dialog title="分配任务" :visible.sync="isAllocate">
-      <el-form :model="allocateForm" ref="allocateForm" :rules="rules" label-width="120px">
+      <el-form
+        :model="allocateForm"
+        ref="allocateForm"
+        :rules="rules"
+        label-width="120px"
+      >
         <el-form-item label>
           <div class="reminder">
             任务分配时，如果多人承担，请及时修改
@@ -61,16 +107,34 @@
           </div>
         </el-form-item>
         <el-form-item label="所有者" prop="owner">
-          <el-select filterable multiple v-model="allocateForm.owner" placeholder="请选择所有者" clearable :style="{width: '100%'}">
-            <el-option v-for="(item, index) in userList" :key="index" :label="item.name" :value="item.name" :disabled="item.disabled">
-              <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`">{{item.name}}</span>
+          <el-select
+            filterable
+            multiple
+            v-model="allocateForm.owner"
+            placeholder="请选择所有者"
+            clearable
+            :style="{ width: '100%' }"
+          >
+            <el-option
+              v-for="(item, index) in userList"
+              :key="index"
+              :label="item.name"
+              :value="item.name"
+              :disabled="item.disabled"
+            >
+              <span
+                :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`"
+                >{{ item.name }}</span
+              >
             </el-option>
           </el-select>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="isAllocate = false">取 消</el-button>
-        <el-button type="primary" @click="saveAllocate('allocateForm')">确 定</el-button>
+        <el-button type="primary" @click="saveAllocate('allocateForm')"
+          >确 定</el-button
+        >
       </div>
     </el-dialog>
   </div>
@@ -113,6 +177,9 @@ export default {
           bottom: 0,
           data: [],
           padding: [20, 5],
+          selected: {
+            完结: false,
+          },
         },
         color: [
           "#409EFF",
@@ -330,6 +397,11 @@ export default {
             padding-bottom: 10px;
             cursor: pointer;
             font-weight: 600;
+          }
+          .tags{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
           }
         }
         .floor {
