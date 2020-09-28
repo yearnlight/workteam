@@ -286,6 +286,7 @@ let fields = [
   "owner",
   "status",
   "priority",
+  "startTime",
   "endTime",
   "estimatedTime",
   "estimatedInfo",
@@ -519,11 +520,11 @@ router.post("/task/md/update", async ctx => {
 
 // 文档下载
 router.post("/task/md/download", async ctx => {
-  let {id} = ctx.request.body;
+  let { id } = ctx.request.body;
   let queryStr = `select * from doc where isDel = 0 and id = ?`;
-  let res = await query(queryStr,[id]);
+  let res = await query(queryStr, [id]);
   // mdToDoc
-  util.mdToDoc(res[0].context,res[0].title,ctx);
+  util.mdToDoc(res[0].context, res[0].title, ctx);
 });
 
 app.use(

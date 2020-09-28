@@ -13,7 +13,10 @@
           <span class="high">不分配所有者</span>的任务会进任务池。
         </div>
       </el-form-item>
-      <el-form-item label="任务名称" prop="name">
+      <el-form-item
+        label="任务名称"
+        prop="name"
+      >
         <el-input
           v-model="formData.name"
           placeholder="请输入任务名称"
@@ -23,7 +26,10 @@
           :style="{ width: '100%' }"
         ></el-input>
       </el-form-item>
-      <el-form-item label="标签" prop="tag">
+      <el-form-item
+        label="标签"
+        prop="tag"
+      >
         <el-input
           v-model="formData.tag"
           placeholder="请输入标签"
@@ -33,13 +39,14 @@
           :style="{ width: '100%' }"
         ></el-input>
         <div class="reminderInline">
-          任务分<span class="reminder-high">大类</span>，或者<span
-            class="reminder-high"
-            >特殊标记</span
-          >
+          任务分<span class="reminder-high">大类</span>，或者<span class="reminder-high">特殊标记</span>
         </div>
       </el-form-item>
-      <el-form-item label="所有者" prop="owner" v-if="!isAdd">
+      <el-form-item
+        label="所有者"
+        prop="owner"
+        v-if="!isAdd"
+      >
         <el-select
           filterable
           multiple
@@ -55,14 +62,14 @@
             :value="item.name"
             :disabled="item.disabled"
           >
-            <span
-              :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`"
-              >{{ item.name }}</span
-            >
+            <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`">{{ item.name }}</span>
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="状态" prop="status">
+      <el-form-item
+        label="状态"
+        prop="status"
+      >
         <el-select
           v-if="isAdd"
           v-model="formData.status"
@@ -77,12 +84,9 @@
             :value="item.value"
             :disabled="item.disabled"
           >
-            <span
-              :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${
+            <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${
                 $util.displayEnum($enum.statusList, item.value).color
-              };`"
-              >{{ item.label }}</span
-            >
+              };`">{{ item.label }}</span>
           </el-option>
         </el-select>
         <el-select
@@ -99,17 +103,17 @@
             :value="item.value"
             :disabled="item.disabled"
           >
-            <span
-              :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${
+            <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${
                 $util.displayEnum($enum.statusList, item.value).color
-              };`"
-              >{{ item.label }}</span
-            >
+              };`">{{ item.label }}</span>
           </el-option>
         </el-select>
-        <el-popover placement="right" trigger="hover" popper-class="reminder">
-          <span class="reminder-high">待分配、搁置状态的任务</span
-          >才可以修改预估时间，任务一旦开始运行暂时不允许修改预估时间。
+        <el-popover
+          placement="right"
+          trigger="hover"
+          popper-class="reminder"
+        >
+          <span class="reminder-high">待分配、搁置状态的任务</span>才可以修改预估时间，任务一旦开始运行暂时不允许修改预估时间。
           <el-button
             class="reminderBtn"
             type="text"
@@ -118,20 +122,28 @@
           ></el-button>
         </el-popover>
       </el-form-item>
-      <el-form-item label="优先级" prop="priority">
-        <el-radio-group v-model="formData.priority" size="medium">
+      <el-form-item
+        label="优先级"
+        prop="priority"
+      >
+        <el-radio-group
+          v-model="formData.priority"
+          size="medium"
+        >
           <el-radio
             v-for="(item, index) in $enum.prioritys"
             :key="index"
             :label="item.value"
             :disabled="item.disabled"
-            >{{ item.label }}</el-radio
-          >
+          >{{ item.label }}</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-row>
+      <el-row v-if="!isAdd">
         <el-col :span="6">
-          <el-form-item label="预估开始时间" prop="startDate">
+          <el-form-item
+            label="预估开始时间"
+            prop="startDate"
+          >
             <el-date-picker
               :picker-options="pickerOptions"
               :disabled="disabledUpdate"
@@ -144,7 +156,10 @@
           </el-form-item>
         </el-col>
         <el-col :span="6">
-          <el-form-item label-width="10px" prop="startSmallTime">
+          <el-form-item
+            label-width="10px"
+            prop="startSmallTime"
+          >
             <el-time-select
               :disabled="disabledUpdate"
               v-model="formData.startSmallTime"
@@ -158,9 +173,12 @@
           </el-form-item>
         </el-col>
       </el-row>
-      <el-row>
+      <el-row v-if="!isAdd">
         <el-col :span="6">
-          <el-form-item label="预估完结时间" prop="endDate">
+          <el-form-item
+            label="预估完结时间"
+            prop="endDate"
+          >
             <el-date-picker
               :picker-options="pickerOptions"
               :disabled="disabledUpdate"
@@ -173,7 +191,10 @@
           </el-form-item>
         </el-col>
         <el-col :span="6">
-          <el-form-item label-width="10px" prop="endSmallTime">
+          <el-form-item
+            label-width="10px"
+            prop="endSmallTime"
+          >
             <el-time-select
               :disabled="disabledUpdate"
               v-model="formData.endSmallTime"
@@ -188,7 +209,11 @@
         </el-col>
       </el-row>
 
-      <el-form-item label="预估时间" prop="estimatedTime">
+      <el-form-item
+        v-if="!isAdd"
+        label="预估时间"
+        prop="estimatedTime"
+      >
         <el-input
           :disabled="true"
           v-model="formData.estimatedTime"
@@ -196,11 +221,13 @@
           clearable
           :style="{ width: '100%' }"
         ></el-input>
-        <el-popover placement="right" trigger="hover" popper-class="reminder">
+        <el-popover
+          placement="right"
+          trigger="hover"
+          popper-class="reminder"
+        >
           预估时间：根据预估完结时间 - 预估开始时间 = 预估时间
-          <span class="reminder-high"
-            >（每天工作时间9小时计算,每周按照6天工作日不计算周天）</span
-          >
+          <span class="reminder-high">（每天工作时间9小时计算,每周按照6天工作日不计算周天）</span>
           <el-button
             class="reminderBtn"
             type="text"
@@ -209,13 +236,14 @@
           ></el-button>
         </el-popover>
         <div class="reminderInline">
-          <span class="reminder-high">周天</span>休息日，不予计算,<span
-            class="reminder-high"
-            >管理员角色</span
-          >可以修改预估时间
+          <span class="reminder-high">周天</span>休息日，不予计算,<span class="reminder-high">管理员角色</span>可以修改预估时间
         </div>
       </el-form-item>
-      <el-form-item label="预估说明" prop="estimatedInfo">
+      <el-form-item
+        v-if="!isAdd"
+        label="预估说明"
+        prop="estimatedInfo"
+      >
         <el-input
           type="textarea"
           :autosize="{ minRows: 6, maxRows: 10 }"
@@ -225,7 +253,10 @@
           :style="{ width: '100%' }"
         ></el-input>
       </el-form-item>
-      <el-form-item label="创建者" prop="creator">
+      <el-form-item
+        label="创建者"
+        prop="creator"
+      >
         <el-select
           v-model="formData.creator"
           placeholder="请选择创建者"
@@ -239,14 +270,15 @@
             :value="item.name"
             :disabled="item.disabled"
           >
-            <span
-              :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`"
-              >{{ item.name }}</span
-            >
+            <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`">{{ item.name }}</span>
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="已完成%" prop="finished" required>
+      <el-form-item
+        label="已完成%"
+        prop="finished"
+        required
+      >
         <div class="spans">
           <el-col :span="21">
             <el-slider
@@ -260,7 +292,11 @@
           </el-col>
         </div>
       </el-form-item>
-      <el-form-item v-if="!isAdd" label="更新说明" prop="updateInfo">
+      <el-form-item
+        v-if="!isAdd"
+        label="更新说明"
+        prop="updateInfo"
+      >
         <el-input
           type="textarea"
           :autosize="{ minRows: 6, maxRows: 10 }"
@@ -271,7 +307,10 @@
         ></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm">提交</el-button>
+        <el-button
+          type="primary"
+          @click="submitForm"
+        >提交</el-button>
         <el-button @click="resetForm">重置</el-button>
         <el-button @click="$router.go(-1)">取消</el-button>
       </el-form-item>
@@ -354,7 +393,7 @@ export default {
             trigger: "change",
           },
         ],
-        endSmallDate: [
+        endSmallTime: [
           {
             required: true,
             message: "完结时间不能为空",
@@ -436,6 +475,12 @@ export default {
     if (this.$route.query.id) {
       this.isAdd = false;
       this.getTaskInfo(this.$route.query.id);
+    } else {
+      let userStr = sessionStorage.getItem("userInfo");
+      if (userStr) {
+        let userInfo = JSON.parse(userStr);
+        this.formData.creator = userInfo.name;
+      }
     }
     this.getUserList();
   },
@@ -479,14 +524,22 @@ export default {
       this.$axios.post("/task/info", { id: id }).then((res) => {
         if (res.status == 200) {
           let formData = res.data;
-          let startTime = formData.startTime.split(" ");
-          let endTime = formData.endTime.split(" ");
-          formData.startDate = startTime[0];
-          formData.startSmallTime = startTime[1];
-          formData.endDate = endTime[0];
-          formData.endSmallTime = endTime[1];
-          formData.owner = formData.owner.split(",");
-          formData.owner = formData.owner ? formData.owner : [];
+          if (formData.startTime) {
+            let startTime = formData.startTime.split(" ");
+            formData.startDate = startTime[0];
+            formData.startSmallTime = startTime[1];
+          }
+          if (formData.endTime) {
+            let endTime = formData.endTime.split(" ");
+
+            formData.endDate = endTime[0];
+            formData.endSmallTime = endTime[1];
+          }
+          if (formData.owner) {
+            formData.owner = formData.owner.split(",");
+            formData.owner = formData.owner ? formData.owner : [];
+          }
+
           this.formData = formData;
         }
       });
@@ -494,8 +547,6 @@ export default {
     submitForm() {
       this.$refs["elForm"].validate((valid) => {
         if (!valid) return;
-        this.formData.startTime = `${this.formData.startDate} ${this.formData.startSmallTime}`;
-        this.formData.endTime = `${this.formData.endDate} ${this.formData.endSmallTime}`;
         if (this.isAdd) {
           this.$axios.post("/task/create", this.formData).then((res) => {
             if (res.status == 200) {
@@ -506,6 +557,8 @@ export default {
             }
           });
         } else {
+          this.formData.startTime = `${this.formData.startDate} ${this.formData.startSmallTime}`;
+          this.formData.endTime = `${this.formData.endDate} ${this.formData.endSmallTime}`;
           if (this.formData.status == "backlog") {
             this.$message.warning(
               "任务状态不允许更新成待办，分配后的任务未到开始时间默认设置成待办"
@@ -532,6 +585,9 @@ export default {
 <style lang="scss">
 .addTask {
   padding: 20px;
+  .reminder {
+    max-width: 100%;
+  }
   .el-form {
     border: 1px solid #ebebeb;
     border-radius: 3px;

@@ -53,13 +53,17 @@ let isWeekDay = ($begin, $last) => {
 };
 
 let formatDur = dur => {
-  let dayHour = dur.split(" ");
-  let day = parseInt(dayHour[0]);
-  if (parseInt(dayHour[1]) == 9) {
-    day = day + 1;
-    return `${day}天`;
+  if (dur) {
+    let dayHour = dur.split(" ");
+    let day = parseInt(dayHour[0]);
+    if (parseInt(dayHour[1]) == 9) {
+      day = day + 1;
+      return `${day}天`;
+    } else {
+      return dur;
+    }
   } else {
-    return dur;
+    return "";
   }
 };
 

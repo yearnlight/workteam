@@ -1,11 +1,21 @@
 <template>
-  <div class="panel" v-loading="loading">
+  <div
+    class="panel"
+    v-loading="loading"
+  >
     <div class="panel-backlog">
       <div class="header">待办项</div>
       <div class="panel-backlog-items">
-        <div class="item" v-for="(item, index) in backlogList" :key="index">
+        <div
+          class="item"
+          v-for="(item, index) in backlogList"
+          :key="index"
+        >
           <div class="content">
-            <div class="name" @click="info(item)">
+            <div
+              class="name"
+              @click="info(item)"
+            >
               {{ item.name | strCutOut(7) }}
             </div>
             <div class="tags">
@@ -14,17 +24,22 @@
                 :style="`background-color: ${
                   $util.displayEnum($enum.statusList, item.status).color
                 };`"
-                >{{
+              >{{
                   $util.displayEnum($enum.statusList, item.status).label
-                }}</span
+                }}</span>
+              <span
+                class="action"
+                v-if="item.tag"
               >
-              <span class="action" v-if="item.tag">
                 <span class="label">{{ item.tag }}</span>
               </span>
             </div>
           </div>
           <div class="floor">
-            <el-button @click="allocate(item)" type="text">分配</el-button>
+            <el-button
+              @click="allocate(item)"
+              type="text"
+            >分配</el-button>
             <div class="duration">预期：{{ item.estimatedTime }}</div>
           </div>
         </div>
@@ -39,7 +54,11 @@
         </span>
       </div>
       <div class="panel-member-items">
-        <div class="item" v-for="(item, index) in memberList" :key="index">
+        <div
+          class="item"
+          v-for="(item, index) in memberList"
+          :key="index"
+        >
           <span>{{ item.owner }}:</span>
           <div
             class="item-progress"
@@ -59,7 +78,10 @@
             <el-col :span="12">
               <div class="item-operate">
                 <div class="item-sum">
-                  <el-button type="text" @click="info(pitem)">{{
+                  <el-button
+                    type="text"
+                    @click="info(pitem)"
+                  >{{
                     pitem.name | strCutOut(6)
                   }}</el-button>
                   (预期:{{ pitem.estimatedTime }})
@@ -69,12 +91,10 @@
                     :value="`${$util.formatTime(pitem.overtime)}`"
                     class="item"
                   >
-                    <span
-                      :class="[
+                    <span :class="[
                         { red: pitem.overtime > 0, warn: pitem.overtime < 0 },
                         'el-icon-alarm-clock',
-                      ]"
-                    ></span>
+                      ]"></span>
                   </el-badge>
                 </div>
                 <span
@@ -93,7 +113,11 @@
         <v-chart :options="polar" />
       </div>
     </div>
-    <el-dialog title="分配任务" :visible.sync="isAllocate">
+    <el-dialog
+      title="分配任务"
+      :visible.sync="isAllocate"
+      custom-class="allocate"
+    >
       <el-form
         :model="allocateForm"
         ref="allocateForm"
@@ -106,7 +130,10 @@
             <span class="high">预估时间</span>，暂不支持自动调整。
           </div>
         </el-form-item>
-        <el-form-item label="所有者" prop="owner">
+        <el-form-item
+          label="所有者"
+          prop="owner"
+        >
           <el-select
             filterable
             multiple
@@ -122,19 +149,129 @@
               :value="item.name"
               :disabled="item.disabled"
             >
-              <span
-                :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`"
-                >{{ item.name }}</span
-              >
+              <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`">{{ item.name }}</span>
             </el-option>
           </el-select>
         </el-form-item>
-      </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button @click="isAllocate = false">取 消</el-button>
-        <el-button type="primary" @click="saveAllocate('allocateForm')"
-          >确 定</el-button
+        <el-row class="dateTime">
+          <div>
+            <el-form-item
+              label="预估开始时间"
+              prop="startDate"
+            >
+              <el-date-picker
+                :picker-options="pickerOptions"
+                v-model="allocateForm.startDate"
+                format="yyyy-MM-dd"
+                value-format="yyyy-MM-dd"
+                type="date"
+                placeholder="开始日期"
+              ></el-date-picker>
+            </el-form-item>
+          </div>
+          <div>
+            <el-form-item
+              label-width="10px"
+              prop="startSmallTime"
+            >
+              <el-time-select
+                v-model="allocateForm.startSmallTime"
+                :picker-options="{
+                start: '09:00',
+                step: '00:60',
+                end: '18:00',
+              }"
+                placeholder="选择时间"
+              ></el-time-select>
+            </el-form-item>
+          </div>
+        </el-row>
+        <el-row class="dateTime">
+          <div>
+            <el-form-item
+              label="预估完结时间"
+              prop="endDate"
+            >
+              <el-date-picker
+                :picker-options="pickerOptions"
+                v-model="allocateForm.endDate"
+                format="yyyy-MM-dd"
+                value-format="yyyy-MM-dd"
+                type="date"
+                placeholder="开始日期"
+              ></el-date-picker>
+            </el-form-item>
+          </div>
+          <div>
+            <el-form-item
+              label-width="10px"
+              prop="endSmallTime"
+            >
+              <el-time-select
+                v-model="allocateForm.endSmallTime"
+                :picker-options="{
+                start: '09:00',
+                step: '00:60',
+                end: '18:00',
+              }"
+                placeholder="选择时间"
+              ></el-time-select>
+            </el-form-item>
+          </div>
+        </el-row>
+
+        <el-form-item
+          label="预估时间"
+          prop="estimatedTime"
         >
+          <el-input
+            :disabled="true"
+            v-model="allocateForm.estimatedTime"
+            placeholder="请输入预估时间"
+            clearable
+            :style="{ width: '100%' }"
+          ></el-input>
+          <el-popover
+            placement="right"
+            trigger="hover"
+            popper-class="reminder"
+          >
+            预估时间：根据预估完结时间 - 预估开始时间 = 预估时间
+            <span class="reminder-high">（每天工作时间9小时计算,每周按照6天工作日不计算周天）</span>
+            <el-button
+              class="reminderBtn"
+              type="text"
+              slot="reference"
+              icon="el-icon-question"
+            ></el-button>
+          </el-popover>
+          <div class="reminderInline">
+            <span class="reminder-high">周天</span>休息日，不予计算,<span class="reminder-high">管理员角色</span>可以修改预估时间
+          </div>
+        </el-form-item>
+        <el-form-item
+          label="预估说明"
+          prop="estimatedInfo"
+        >
+          <el-input
+            type="textarea"
+            :autosize="{ minRows: 6, maxRows: 10 }"
+            v-model="allocateForm.estimatedInfo"
+            placeholder="请输入预估时间说明信息"
+            clearable
+            :style="{ width: '100%' }"
+          ></el-input>
+        </el-form-item>
+      </el-form>
+      <div
+        slot="footer"
+        class="dialog-footer"
+      >
+        <el-button @click="isAllocate = false">取 消</el-button>
+        <el-button
+          type="primary"
+          @click="saveAllocate('allocateForm')"
+        >确 定</el-button>
       </div>
     </el-dialog>
   </div>
@@ -148,6 +285,11 @@ export default {
   components: { vTable, VChart },
   data() {
     return {
+      pickerOptions: {
+        disabledDate(time) {
+          return time.getDay() === 0;
+        },
+      },
       loading: false,
       backlogList: [],
       memberList: [],
@@ -159,6 +301,55 @@ export default {
           {
             required: true,
             message: "请选择所有者",
+            trigger: "change",
+          },
+        ],
+        estimatedTime: [
+          {
+            required: true,
+            message: "请输入预估时间",
+            trigger: "blur",
+          },
+        ],
+        estimatedInfo: [
+          {
+            required: true,
+            message: "请输入预估说明",
+            trigger: "blur",
+          },
+        ],
+        updateInfo: [
+          {
+            required: true,
+            message: "请输入更新说明",
+            trigger: "blur",
+          },
+        ],
+        startDate: [
+          {
+            required: true,
+            message: "开始日期不能为空",
+            trigger: "change",
+          },
+        ],
+        startSmallTime: [
+          {
+            required: true,
+            message: "开始时间不能为空",
+            trigger: "change",
+          },
+        ],
+        endDate: [
+          {
+            required: true,
+            message: "完结日期不能为空",
+            trigger: "change",
+          },
+        ],
+        endSmallTime: [
+          {
+            required: true,
+            message: "完结时间不能为空",
             trigger: "change",
           },
         ],
@@ -219,7 +410,68 @@ export default {
     this.loadRun();
     this.loadStatistics();
   },
+  watch: {
+    "allocateForm.startDate": {
+      handler(n, o) {
+        if (n && n.length) {
+          this.calcDur();
+        }
+      },
+      deep: true,
+    },
+    "allocateForm.startSmallTime": {
+      handler(n, o) {
+        if (n && n.length) {
+          this.calcDur();
+        }
+      },
+      deep: true,
+    },
+    "allocateForm.endDate": {
+      handler(n, o) {
+        if (n && n.length) {
+          this.calcDur();
+        }
+      },
+      deep: true,
+    },
+    "allocateForm.endSmallTime": {
+      handler(n, o) {
+        if (n && n.length) {
+          this.calcDur();
+        }
+      },
+      deep: true,
+    },
+  },
   methods: {
+    calcDur() {
+      if (
+        this.allocateForm.endDate &&
+        this.allocateForm.endSmallTime &&
+        this.allocateForm.startDate &&
+        this.allocateForm.startSmallTime
+      ) {
+        let dur =
+          new Date(
+            `${this.allocateForm.endDate} ${this.allocateForm.endSmallTime}`
+          ) -
+          new Date(
+            `${this.allocateForm.startDate} ${this.allocateForm.startSmallTime}`
+          );
+        // 判断是否包含周天
+        if (
+          this.$util.isWeekDay(
+            `${this.allocateForm.startDate} ${this.allocateForm.startSmallTime}`,
+            `${this.allocateForm.endDate} ${this.allocateForm.endSmallTime}`
+          )
+        ) {
+          this.allocateForm.estimatedTime = this.$util.formatTime(dur, 1);
+        } else {
+          this.allocateForm.estimatedTime = this.$util.formatTime(dur, 0);
+        }
+      }
+    },
     info(item) {
       this.$router.push({
         path: "/work/tasklistInfo",
@@ -297,6 +549,10 @@ export default {
             id: item.id,
             owner: owners.join(","),
             status: status,
+            startTime: "",
+            endTime: "",
+            estimatedTime: "",
+            estimatedInfo: "",
           })
           .then((res) => {
             if (res.status == 200) {
@@ -320,11 +576,16 @@ export default {
           // 任务状态设置成待办
           status = "backlog";
         }
+
         this.$axios
           .post("/task/update", {
             id: this.selectTaskItem.id,
             owner: this.allocateForm.owner.join(","),
             status: status,
+            startTime: `${this.allocateForm.startDate} ${this.allocateForm.startSmallTime}`,
+            endTime: `${this.allocateForm.endDate} ${this.allocateForm.endSmallTime}`,
+            estimatedTime: this.allocateForm.estimatedTime,
+            estimatedInfo: this.allocateForm.estimatedInfo,
           })
           .then((res) => {
             if (res.status == 200) {
@@ -398,7 +659,7 @@ export default {
             cursor: pointer;
             font-weight: 600;
           }
-          .tags{
+          .tags {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -489,6 +750,17 @@ export default {
           }
         }
       }
+    }
+  }
+}
+.allocate {
+  .reminder {
+    max-width: 100%;
+  }
+  .dateTime {
+    display: flex;
+    .el-input {
+      width: 250px !important;
     }
   }
 }
