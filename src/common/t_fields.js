@@ -111,6 +111,14 @@ export default {
         label: "团队"
       },
       {
+        prop: "logintimes",
+        label: "登录次数(次)"
+      },
+      {
+        prop: "lastLoginTime",
+        label: "上次登录时间"
+      },
+      {
         prop: "remark",
         label: "备注"
       },

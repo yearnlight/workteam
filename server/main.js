@@ -27,9 +27,21 @@ router.post("/task/login", async ctx => {
       ctx.response.body = { status: 400, msg: "密码错误", data: null };
     } else {
       let token = Uuid.v1();
+      // 记录登录次数
+      let logintimes = userInfo.logintimes + 1;
+      // 记录上次登录时间
+      let lastLoginTime = userInfo.loginTime;
+      // 本次登录时间
+      let loginTime = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
       // 设置token
-      let updateStr = `update user SET token = ? where id = ?`;
-      await query(updateStr, [token, userInfo.id]);
+      let updateStr = `update user SET token = ?,logintimes = ?,lastLoginTime = ?,loginTime =? where id = ?`;
+      await query(updateStr, [
+        token,
+        logintimes,
+        lastLoginTime,
+        loginTime,
+        userInfo.id
+      ]);
       ctx.response.body = {
         status: 200,
         msg: "登录成功",

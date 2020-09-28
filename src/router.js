@@ -64,6 +64,11 @@ const routes = [
         path: "/work/knowledgeMap_infomd",
         component: () => import("@/views/knowledge/info.vue"),
         name: "knowledgeMapknowledgeMap_infomd_addmd"
+      },
+      {
+        path: "/work/webssh",
+        component: () => import("@/views/console/index.vue"),
+        name: "webssh"
       }
     ]
   }

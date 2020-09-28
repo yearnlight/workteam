@@ -18,5 +18,10 @@ export default [
     title: "知识地图",
     icon: "el-icon-reading",
     path: "/work/knowledgeMap"
+  },  
+  {
+    title: "SSH",
+    icon: "el-icon-s-platform",
+    path: "/work/webssh"
   }
 ];
