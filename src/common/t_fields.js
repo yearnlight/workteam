@@ -79,7 +79,7 @@ export default {
     ]
   },
   user: {
-    name: "任务列表",
+    name: "用户列表",
     tableColumns: [
       {
         prop: "name",
@@ -89,18 +89,15 @@ export default {
       {
         prop: "key",
         label: "账号",
-        width: 140
       },
       {
         prop: "role",
         label: "角色",
         renderPage: "role",
-        width: 140
       },
       {
         prop: "department",
         label: "部门",
-        width: 140
       },
       {
         prop: "group",
@@ -125,7 +122,7 @@ export default {
       {
         prop: "operate",
         label: "操作",
-        width: "220",
+        width: "210",
         operateFun: [
           {
             label: "删除",

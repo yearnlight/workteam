@@ -16,7 +16,7 @@
               class="name"
               @click="info(item)"
             >
-              {{ item.name | strCutOut(7) }}
+              {{ item.name | strCutOut(6) }}
             </div>
             <div class="tags">
               <span
@@ -663,6 +663,10 @@ export default {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            .status{
+              font-size: 13px;
+            }
           }
         }
         .floor {
