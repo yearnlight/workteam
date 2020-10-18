@@ -142,7 +142,12 @@ export default {
         .then((res) => {
           this.info = res.data;
           this.prettierList = this.parsing(res.data.context);
-        });
+        }).then(()=>{
+          this.doRead();
+        })
+    },
+    doRead(){
+      this.$axios.post("/task/md/read",{ id: this.$route.query.id });
     },
     parsing(context) {
       let post = {};

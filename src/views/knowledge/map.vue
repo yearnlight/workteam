@@ -1,51 +1,67 @@
 <template>
   <div class="map">
     <div class="map-project">
-      <el-button type="primary" icon="el-icon-plus" @click="add">创建项目</el-button>
+      <el-button type="primary" icon="el-icon-plus" @click="add">创建项</el-button>
       <div id="mountNode"></div>
     </div>
-
     <div class="map-info">
       <div class="map-info-operate">
         <span class="map-info-title">文档</span>
         <el-button type="primary" icon="el-icon-plus" @click="publicD">发布文档</el-button>
       </div>
-
       <div class="docs">
         <div class="docs-item" v-for="(item,index) in docs" :key="index">
           <div class="docs-item-content">
-            <div class="docs-item-meta">{{item.creator}} · {{item.createtime}}</div>
+            <div class="docs-item-meta">
+              {{item.creator}} · {{item.createtime}}
+              <span class="readtime">
+                <span class="el-icon-view"></span>
+                {{item.readtime}}
+              </span>
+            </div>
             <div class="docs-item-title" @click="toInfo(item.id)">{{item.title}}</div>
-            <div class="action">
-              <span class="label" :style="`border: 1px solid ${item.color};color:${item.color}`" v-if="item.label">{{item.label}}</span>
+            <div class="docs-item-sub">
+              <div class="action">
+                <span
+                  class="label"
+                  :style="`border: 1px solid ${item.color};color:${item.color}`"
+                  v-if="item.label"
+                >{{item.label}}</span>
+              </div>
             </div>
           </div>
           <div class="docs-item-operate">
             <span class="el-icon-edit blue" @click="update(item.id)"></span>
-            <el-popover placement="top" width="160" v-model="isDel">
-              <p>你确定删除此文档吗？</p>
-              <div style="text-align: right; margin: 0">
-                <el-button size="mini" type="text" @click="isDel = false">取消</el-button>
-                <el-button type="primary" @click="del(item.id)" size="mini">确定</el-button>
-              </div>
-              <span class="el-icon-delete red" slot="reference"></span>
-            </el-popover>
+            <span class="el-icon-delete red" @click="del(item.id)"></span>
           </div>
         </div>
       </div>
     </div>
-    <el-dialog v-bind="$attrs" v-on="$listeners" :visible.sync="isAdd" @close="onClose" title="创建项目">
+    <el-dialog v-bind="$attrs" v-on="$listeners" :visible.sync="isAdd" @close="onClose" title="创建项">
       <el-form ref="pageForm" :model="formData" :rules="rules" size="small" label-width="180px">
         <el-form-item label="项目名称" prop="name">
           <el-input v-model="formData.name" placeholder="请输入项目名称" clearable></el-input>
         </el-form-item>
         <el-form-item label="项目描述" prop="desc">
-          <el-input v-model="formData.desc" type="textarea" placeholder="请输入项目描述" :autosize="{minRows: 4, maxRows: 4}"></el-input>
+          <el-input
+            v-model="formData.desc"
+            type="textarea"
+            placeholder="请输入项目描述"
+            :autosize="{minRows: 4, maxRows: 4}"
+          ></el-input>
         </el-form-item>
         <el-form-item label="项目类型" prop="type">
           <el-select v-model="formData.type" placeholder="请选择项目类型" clearable>
-            <el-option v-for="(item, index) in typeOptions" :key="index" :label="item.label" :value="item.value" :disabled="item.disabled">
-              <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${$util.displayEnum($enum.projectTypeList,item.value).color};`">{{item.label}}</span>
+            <el-option
+              v-for="(item, index) in typeOptions"
+              :key="index"
+              :label="item.label"
+              :value="item.value"
+              :disabled="item.disabled"
+            >
+              <span
+                :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${$util.displayEnum($enum.projectTypeList,item.value).color};`"
+              >{{item.label}}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -54,8 +70,16 @@
         </el-form-item>
         <el-form-item label="田主" prop="hero">
           <el-select v-model="formData.hero" filterable placeholder="请选择田主" clearable>
-            <el-option v-for="(item, index) in userList" :key="index" :label="item.name" :value="item.name" :disabled="item.disabled">
-              <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`">{{item.name}}</span>
+            <el-option
+              v-for="(item, index) in userList"
+              :key="index"
+              :label="item.name"
+              :value="item.name"
+              :disabled="item.disabled"
+            >
+              <span
+                :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`"
+              >{{item.name}}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -76,7 +100,7 @@ import G6 from "@antv/g6";
 
 G6.registerNode(
   "ymxNode",
-  (cfg) => `
+  cfg => `
 <group>
   <rect>
     <rect style={{
@@ -134,108 +158,110 @@ export default {
       userList: [],
       docs: [],
       formData: {
-        star: 0,
+        star: 0
       },
       rules: {
         name: [
           {
             required: true,
             message: "请输入项目名称",
-            trigger: "blur",
-          },
+            trigger: "blur"
+          }
         ],
         desc: [
           {
             required: true,
             message: "请输入项目描述",
-            trigger: "blur",
-          },
+            trigger: "blur"
+          }
         ],
         type: [
           {
             required: true,
             message: "请选择项目类型",
-            trigger: "change",
-          },
+            trigger: "change"
+          }
         ],
         url: [
           {
             required: true,
             message: "请输入项目地址",
-            trigger: "blur",
-          },
+            trigger: "blur"
+          }
         ],
         hero: [
           {
             required: true,
             message: "请选择田主",
-            trigger: "change",
-          },
+            trigger: "change"
+          }
         ],
         star: [
           {
             required: true,
             message: "评分不能为空",
-            trigger: "change",
-          },
-        ],
+            trigger: "change"
+          }
+        ]
       },
       typeOptions: [
         {
           label: "Web",
-          value: "web",
+          value: "web"
         },
         {
           label: "Java",
-          value: "java",
+          value: "java"
         },
         {
           label: "Go",
-          value: "go",
+          value: "go"
         },
         {
           label: "配置",
-          value: "config",
+          value: "config"
         },
         {
           label: "公共",
-          value: "common",
-        },
+          value: "common"
+        }
       ],
       heroOptions: [],
       projectList: [],
-      graph: null,
+      graph: null
     };
   },
   methods: {
     toInfo(id) {
       this.$router.push({
         path: "/work/knowledgeMap_infomd",
-        query: { id: id },
+        query: { id: id }
       });
     },
     update(id) {
       this.$router.push({
         path: "/work/knowledgeMap_addmd",
-        query: { id: id },
+        query: { id: id }
       });
     },
     del(id) {
       this.isDel = false;
-      this.$axios.post("/task/md/delete", { id: id }).then((res) => {
-        if (res.status == 200) {
-          this.$message.success("删除成功");
-          this.fetchDoc();
-        } else {
-          this.$message.error("删除失败");
-        }
+      this.$confirm("你确定删除此文档？", "删除").then(() => {
+        this.$axios.post("/task/md/delete", { id: id }).then(res => {
+          if (res.status == 200) {
+            this.$message.success("删除成功");
+            this.fetchDoc();
+          } else {
+            this.$message.error("删除失败");
+          }
+        });
       });
     },
     publicD() {
       this.$router.push("/work/knowledgeMap_addmd");
     },
     fetchDoc() {
-      this.$axios.post("/task/md/list", {}).then((res) => {
+      this.$axios.post("/task/md/list", {}).then(res => {
         if (res.status == 200) {
           this.docs = res.data;
         } else {
@@ -244,7 +270,7 @@ export default {
       });
     },
     fetchUser() {
-      this.$axios.get("/task/user/list", {}).then((res) => {
+      this.$axios.get("/task/user/list", {}).then(res => {
         if (res.status == 200) {
           this.userList = res.data;
         } else {
@@ -253,7 +279,7 @@ export default {
       });
     },
     fetchProject() {
-      this.$axios.post("/task/project/list", {}).then((res) => {
+      this.$axios.post("/task/project/list", {}).then(res => {
         if (res.status == 200) {
           this.projectList = res.data;
           this.initG6();
@@ -269,13 +295,13 @@ export default {
       this.$refs["pageForm"].resetFields();
     },
     save() {
-      this.$refs["pageForm"].validate((valid) => {
+      this.$refs["pageForm"].validate(valid => {
         if (!valid) return;
         this.formData.color = this.$util.displayEnum(
           this.$enum.projectTypeList,
           this.formData.type
         ).color;
-        this.$axios.post("/task/project/create", this.formData).then((res) => {
+        this.$axios.post("/task/project/create", this.formData).then(res => {
           if (res.status == 200) {
             this.$message.success("创建项目成功");
             this.fetchProject();
@@ -289,18 +315,18 @@ export default {
     constructData() {},
     initG6() {
       let nodes = this.projectList;
-      nodes.forEach((n) => {
+      nodes.forEach(n => {
         n.description = n.desc;
         n.label = n.name;
         n.meta = {
-          creatorName: n.creator,
+          creatorName: n.creator
         };
         n.color = n.color;
         n.type = "ymxNode";
       });
       const data = {
         nodes: nodes,
-        edges: [],
+        edges: []
       };
       if (this.graph) {
         this.graph.changeData(data);
@@ -321,7 +347,7 @@ export default {
           rows: 5, // 可选
           cols: 4, // 可选
           sortBy: "degree", // 可选
-          workerEnabled: true, // 可选，开启 web-worker
+          workerEnabled: true // 可选，开启 web-worker
         },
         nodeStyle: {
           default: {
@@ -329,30 +355,40 @@ export default {
             stroke: "#096dd9",
             radius: [6, 6, 0, 0],
             cursor: "move",
-            stroke: "#2196f3",
-          },
+            stroke: "#2196f3"
+          }
         },
         defaultEdge: {
           type: "cubic-horizontal",
           style: {
             stroke: "#A3B1BF",
-            endArrow: true,
-          },
+            endArrow: true
+          }
         },
         fitCenter: true,
         modes: {
           //   default: ["drag-node", "zoom-canvas"],
-        },
+        }
+      });
+      this.graph.on("node:click", function(e) {
+        let node = e.item;
+        let model = node.getModel();
+
+        graph.updateItem(node, {
+          size: size,
+          label: labelText
+        });
       });
       this.graph.read(data);
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style lang="scss">
 .map {
   display: flex;
+  overflow-y: hidden !important;
   &-project {
     flex: 1;
     height: 100%;
@@ -364,6 +400,7 @@ export default {
   &-info {
     flex: 1;
     border-left: 1px solid #eee;
+    height: calc(100% - 20px);
     &-operate {
       padding: 10px;
       border-bottom: 1px solid rgba(178, 186, 194, 0.15);
@@ -377,7 +414,7 @@ export default {
       color: #2e3135;
     }
     .docs {
-      height: calc(100% -52px);
+      height: calc(100% - 21px);
       overflow-y: auto;
       &-item {
         border-bottom: 1px solid rgba(178, 186, 194, 0.15);
@@ -403,6 +440,11 @@ export default {
         &-meta {
           font-size: 12px;
           color: #b2bac2;
+          display: flex;
+          align-items: center;
+          .readtime {
+            margin-left: 10px;
+          }
         }
         &-title {
           margin: 0.5rem 0 1rem;
@@ -416,6 +458,14 @@ export default {
           cursor: pointer;
           &:hover {
             text-decoration: underline;
+          }
+        }
+        &-sub {
+          display: flex;
+          justify-content: space-between;
+          &-readtime {
+            font-size: 12px;
+            color: #b2bac2;
           }
         }
       }

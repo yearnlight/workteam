@@ -7,10 +7,10 @@
   </div>
 </template>
 <script>
-import "xterm/css/xterm.css";
-import { Terminal } from "xterm";
-import { FitAddon } from "xterm-addon-fit";
-import { AttachAddon } from "xterm-addon-attach";
+// import "xterm/css/xterm.css";
+// import { Terminal } from "xterm";
+// import { FitAddon } from "xterm-addon-fit";
+// import { AttachAddon } from "xterm-addon-attach";
 
 export default {
   name: "Xterm",

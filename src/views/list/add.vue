@@ -1,22 +1,13 @@
 <template>
   <div class="addTask">
-    <el-form
-      ref="elForm"
-      :model="formData"
-      :rules="rules"
-      size="small"
-      label-width="160px"
-    >
-      <el-form-item label>
+    <el-form ref="elForm" :model="formData" :rules="rules" size="small" label-width="160px">
+      <el-form-item label="">
         <div class="reminder">
           按照业务需求针对任务规划，创建出合理任务项，
           <span class="high">不分配所有者</span>的任务会进任务池。
         </div>
       </el-form-item>
-      <el-form-item
-        label="任务名称"
-        prop="name"
-      >
+      <el-form-item label="任务名称" prop="name">
         <el-input
           v-model="formData.name"
           placeholder="请输入任务名称"
@@ -26,10 +17,7 @@
           :style="{ width: '100%' }"
         ></el-input>
       </el-form-item>
-      <el-form-item
-        label="标签"
-        prop="tag"
-      >
+      <el-form-item label="标签" prop="tag">
         <el-input
           v-model="formData.tag"
           placeholder="请输入标签"
@@ -38,15 +26,12 @@
           clearable
           :style="{ width: '100%' }"
         ></el-input>
-        <div class="reminderInline">
-          任务分<span class="reminder-high">大类</span>，或者<span class="reminder-high">特殊标记</span>
+        <div class="reminderInline">任务分
+          <span class="reminder-high">大类</span>，或者
+          <span class="reminder-high">特殊标记</span>
         </div>
       </el-form-item>
-      <el-form-item
-        label="所有者"
-        prop="owner"
-        v-if="!isAdd"
-      >
+      <el-form-item label="所有者" prop="owner" v-if="!isAdd">
         <el-select
           filterable
           multiple
@@ -62,14 +47,13 @@
             :value="item.name"
             :disabled="item.disabled"
           >
-            <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`">{{ item.name }}</span>
+            <span
+              :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`"
+            >{{ item.name }}</span>
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item
-        label="状态"
-        prop="status"
-      >
+      <el-form-item label="状态" prop="status">
         <el-select
           v-if="isAdd"
           v-model="formData.status"
@@ -84,9 +68,11 @@
             :value="item.value"
             :disabled="item.disabled"
           >
-            <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${
+            <span
+              :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${
                 $util.displayEnum($enum.statusList, item.value).color
-              };`">{{ item.label }}</span>
+              };`"
+            >{{ item.label }}</span>
           </el-option>
         </el-select>
         <el-select
@@ -103,33 +89,20 @@
             :value="item.value"
             :disabled="item.disabled"
           >
-            <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${
+            <span
+              :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${
                 $util.displayEnum($enum.statusList, item.value).color
-              };`">{{ item.label }}</span>
+              };`"
+            >{{ item.label }}</span>
           </el-option>
         </el-select>
-        <el-popover
-          placement="right"
-          trigger="hover"
-          popper-class="reminder"
-        >
+        <el-popover placement="right" trigger="hover" popper-class="reminder">
           <span class="reminder-high">待分配、搁置状态的任务</span>才可以修改预估时间，任务一旦开始运行暂时不允许修改预估时间。
-          <el-button
-            class="reminderBtn"
-            type="text"
-            slot="reference"
-            icon="el-icon-question"
-          ></el-button>
+          <el-button class="reminderBtn" type="text" slot="reference" icon="el-icon-question"></el-button>
         </el-popover>
       </el-form-item>
-      <el-form-item
-        label="优先级"
-        prop="priority"
-      >
-        <el-radio-group
-          v-model="formData.priority"
-          size="medium"
-        >
+      <el-form-item label="优先级" prop="priority">
+        <el-radio-group v-model="formData.priority" size="medium">
           <el-radio
             v-for="(item, index) in $enum.prioritys"
             :key="index"
@@ -140,10 +113,7 @@
       </el-form-item>
       <el-row v-if="!isAdd">
         <el-col :span="6">
-          <el-form-item
-            label="预估开始时间"
-            prop="startDate"
-          >
+          <el-form-item label="预估开始时间" prop="startDate">
             <el-date-picker
               :picker-options="pickerOptions"
               :disabled="disabledUpdate"
@@ -156,10 +126,7 @@
           </el-form-item>
         </el-col>
         <el-col :span="6">
-          <el-form-item
-            label-width="10px"
-            prop="startSmallTime"
-          >
+          <el-form-item label-width="10px" prop="startSmallTime">
             <el-time-select
               :disabled="disabledUpdate"
               v-model="formData.startSmallTime"
@@ -175,10 +142,7 @@
       </el-row>
       <el-row v-if="!isAdd">
         <el-col :span="6">
-          <el-form-item
-            label="预估完结时间"
-            prop="endDate"
-          >
+          <el-form-item label="预估完结时间" prop="endDate">
             <el-date-picker
               :picker-options="pickerOptions"
               :disabled="disabledUpdate"
@@ -191,10 +155,7 @@
           </el-form-item>
         </el-col>
         <el-col :span="6">
-          <el-form-item
-            label-width="10px"
-            prop="endSmallTime"
-          >
+          <el-form-item label-width="10px" prop="endSmallTime">
             <el-time-select
               :disabled="disabledUpdate"
               v-model="formData.endSmallTime"
@@ -208,12 +169,7 @@
           </el-form-item>
         </el-col>
       </el-row>
-
-      <el-form-item
-        v-if="!isAdd"
-        label="预估时间"
-        prop="estimatedTime"
-      >
+      <el-form-item v-if="!isAdd" label="预估时间" prop="estimatedTime">
         <el-input
           :disabled="true"
           v-model="formData.estimatedTime"
@@ -221,29 +177,17 @@
           clearable
           :style="{ width: '100%' }"
         ></el-input>
-        <el-popover
-          placement="right"
-          trigger="hover"
-          popper-class="reminder"
-        >
+        <el-popover placement="right" trigger="hover" popper-class="reminder">
           预估时间：根据预估完结时间 - 预估开始时间 = 预估时间
           <span class="reminder-high">（每天工作时间9小时计算,每周按照6天工作日不计算周天）</span>
-          <el-button
-            class="reminderBtn"
-            type="text"
-            slot="reference"
-            icon="el-icon-question"
-          ></el-button>
+          <el-button class="reminderBtn" type="text" slot="reference" icon="el-icon-question"></el-button>
         </el-popover>
         <div class="reminderInline">
-          <span class="reminder-high">周天</span>休息日，不予计算,<span class="reminder-high">管理员角色</span>可以修改预估时间
+          <span class="reminder-high">周天</span>休息日，不予计算,
+          <span class="reminder-high">管理员角色</span>可以修改预估时间
         </div>
       </el-form-item>
-      <el-form-item
-        v-if="!isAdd"
-        label="预估说明"
-        prop="estimatedInfo"
-      >
+      <el-form-item v-if="!isAdd" label="预估说明" prop="estimatedInfo">
         <el-input
           type="textarea"
           :autosize="{ minRows: 6, maxRows: 10 }"
@@ -253,10 +197,7 @@
           :style="{ width: '100%' }"
         ></el-input>
       </el-form-item>
-      <el-form-item
-        label="创建者"
-        prop="creator"
-      >
+      <el-form-item label="创建者" prop="creator">
         <el-select
           v-model="formData.creator"
           placeholder="请选择创建者"
@@ -270,33 +211,23 @@
             :value="item.name"
             :disabled="item.disabled"
           >
-            <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`">{{ item.name }}</span>
+            <span
+              :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`"
+            >{{ item.name }}</span>
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item
-        label="已完成%"
-        prop="finished"
-        required
-      >
+      <el-form-item label="已完成%" prop="finished" required>
         <div class="spans">
           <el-col :span="21">
-            <el-slider
-              :max="100"
-              :step="1"
-              v-model="formData.finished"
-            ></el-slider>
+            <el-slider :max="100" :step="1" v-model="formData.finished"></el-slider>
           </el-col>
           <el-col :span="3">
             <span class="spans-sum">{{ formData.finished }} %</span>
           </el-col>
         </div>
       </el-form-item>
-      <el-form-item
-        v-if="!isAdd"
-        label="更新说明"
-        prop="updateInfo"
-      >
+      <el-form-item v-if="!isAdd" label="更新说明" prop="updateInfo">
         <el-input
           type="textarea"
           :autosize="{ minRows: 6, maxRows: 10 }"
@@ -307,10 +238,7 @@
         ></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button
-          type="primary"
-          @click="submitForm"
-        >提交</el-button>
+        <el-button type="primary" @click="submitForm">提交</el-button>
         <el-button @click="resetForm">重置</el-button>
         <el-button @click="$router.go(-1)">取消</el-button>
       </el-form-item>
@@ -326,7 +254,7 @@ export default {
       pickerOptions: {
         disabledDate(time) {
           return time.getDay() === 0;
-        },
+        }
       },
       userList: [],
       isAdd: true,
@@ -334,91 +262,91 @@ export default {
         name: undefined,
         owner: [],
         status: "waitAssign",
-        priority: "low",
+        priority: "low"
       },
       rules: {
         name: [
           {
             required: true,
             message: "请输入任务名称",
-            trigger: "blur",
-          },
+            trigger: "blur"
+          }
         ],
         status: [
           {
             required: true,
             message: "请选择状态",
-            trigger: "change",
-          },
+            trigger: "change"
+          }
         ],
         estimatedTime: [
           {
             required: true,
             message: "请输入预估时间",
-            trigger: "blur",
-          },
+            trigger: "blur"
+          }
         ],
         estimatedInfo: [
           {
             required: true,
             message: "请输入预估说明",
-            trigger: "blur",
-          },
+            trigger: "blur"
+          }
         ],
         updateInfo: [
           {
             required: true,
             message: "请输入更新说明",
-            trigger: "blur",
-          },
+            trigger: "blur"
+          }
         ],
         startDate: [
           {
             required: true,
             message: "开始日期不能为空",
-            trigger: "change",
-          },
+            trigger: "change"
+          }
         ],
         startSmallTime: [
           {
             required: true,
             message: "开始时间不能为空",
-            trigger: "change",
-          },
+            trigger: "change"
+          }
         ],
         endDate: [
           {
             required: true,
             message: "完结日期不能为空",
-            trigger: "change",
-          },
+            trigger: "change"
+          }
         ],
         endSmallTime: [
           {
             required: true,
             message: "完结时间不能为空",
-            trigger: "change",
-          },
+            trigger: "change"
+          }
         ],
         priority: [
           {
             required: true,
             message: "优先级不能为空",
-            trigger: "change",
-          },
+            trigger: "change"
+          }
         ],
         creator: [
           {
             required: true,
             message: "请选择创建者",
-            trigger: "change",
-          },
-        ],
-      },
+            trigger: "change"
+          }
+        ]
+      }
     };
   },
   computed: {
-    disabledUpdate() {
+    disabledDate() {
       let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
       if (curUser.role == "super") {
         return false;
@@ -426,7 +354,7 @@ export default {
       return !(
         this.formData.status == "shelve" || this.formData.status == "waitAssign"
       );
-    },
+    }
   },
   watch: {},
   watch: {
@@ -436,7 +364,7 @@ export default {
           this.calcDur();
         }
       },
-      deep: true,
+      deep: true
     },
     "formData.startSmallTime": {
       handler(n, o) {
@@ -444,7 +372,7 @@ export default {
           this.calcDur();
         }
       },
-      deep: true,
+      deep: true
     },
     "formData.endDate": {
       handler(n, o) {
@@ -452,7 +380,7 @@ export default {
           this.calcDur();
         }
       },
-      deep: true,
+      deep: true
     },
     "formData.status": {
       handler(n, o) {
@@ -460,7 +388,7 @@ export default {
           this.formData.finished = 100;
         }
       },
-      deep: true,
+      deep: true
     },
     "formData.endSmallTime": {
       handler(n, o) {
@@ -468,8 +396,8 @@ export default {
           this.calcDur();
         }
       },
-      deep: true,
-    },
+      deep: true
+    }
   },
   created() {
     if (this.$route.query.id) {
@@ -512,7 +440,7 @@ export default {
       }
     },
     getUserList() {
-      this.$axios.get("/task/user/list", {}).then((res) => {
+      this.$axios.get("/task/user/list", {}).then(res => {
         if (res.status == 200) {
           this.userList = res.data;
         } else {
@@ -521,7 +449,7 @@ export default {
       });
     },
     getTaskInfo(id) {
-      this.$axios.post("/task/info", { id: id }).then((res) => {
+      this.$axios.post("/task/info", { id: id }).then(res => {
         if (res.status == 200) {
           let formData = res.data;
           if (formData.startTime) {
@@ -545,10 +473,10 @@ export default {
       });
     },
     submitForm() {
-      this.$refs["elForm"].validate((valid) => {
+      this.$refs["elForm"].validate(valid => {
         if (!valid) return;
         if (this.isAdd) {
-          this.$axios.post("/task/create", this.formData).then((res) => {
+          this.$axios.post("/task/create", this.formData).then(res => {
             if (res.status == 200) {
               this.$message.success(res.msg);
               this.$router.push("/work/tasklist");
@@ -557,15 +485,19 @@ export default {
             }
           });
         } else {
-          this.formData.startTime = `${this.formData.startDate} ${this.formData.startSmallTime}`;
-          this.formData.endTime = `${this.formData.endDate} ${this.formData.endSmallTime}`;
+          this.formData.startTime = `${this.formData.startDate} ${
+            this.formData.startSmallTime
+          }`;
+          this.formData.endTime = `${this.formData.endDate} ${
+            this.formData.endSmallTime
+          }`;
           if (this.formData.status == "backlog") {
             this.$message.warning(
               "任务状态不允许更新成待办，分配后的任务未到开始时间默认设置成待办"
             );
             return;
           }
-          this.$axios.post("/task/update", this.formData).then((res) => {
+          this.$axios.post("/task/update", this.formData).then(res => {
             if (res.status == 200) {
               this.$message.success(res.msg);
               this.$router.push("/work/tasklist");
@@ -578,8 +510,8 @@ export default {
     },
     resetForm() {
       this.$refs["elForm"].resetFields();
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss">

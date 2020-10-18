@@ -14,7 +14,8 @@ export default {
     { label: "Java", value: "java", color: "#F56C6C" },
     { label: "Go", value: "go", color: "#E6A23C" },
     { label: "配置", value: "config", color: "#67C23A" },
-    { label: "公共", value: "common", color: "#9764e0" }
+    { label: "公共", value: "common", color: "#9764e0" },
+    { label: "会议", value: "meet", color: "#9764e0" },
   ],
   prioritys: [
     {

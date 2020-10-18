@@ -159,7 +159,7 @@ router.post("/task/user/add", async ctx => {
   ];
   let insertStr =
     "insert into user(id,name,`key`,department,`group`,`team`,remark,createtime,pass,role) values ?";
-  res = await query(insertStr, [inputParams], function(err, result) {
+  res = await query(insertStr, [inputParams], function (err, result) {
     if (err) {
       console.log("[INSERT ERROR] - ", err.message);
       return;
@@ -507,6 +507,22 @@ router.post("/task/md/delete", async ctx => {
   let deleteStr = `update doc SET isDel = 1 where id = ?`;
   res = await query(deleteStr, [params.id]);
   ctx.response.body = { status: 200, msg: "删除文档成功", data: null };
+});
+
+// 文档阅读
+router.post("/task/md/read", async ctx => {
+  let params = ctx.request.body;
+  let selectStr = `select * from doc where isDel = 0 and id = ?`;
+  let selectList = await query(selectStr, [params.id]);
+  if (selectList && selectList.length) {
+    let readtime = selectList[0].readtime;
+    let deleteStr = `update doc SET readtime = ? where id = ?`;
+    let res = await query(deleteStr, [readtime + 1, params.id]);
+    ctx.response.body = { status: 200, msg: "正在阅读", data: null };
+  }
+  else {
+    ctx.response.body = { status: 404, msg: "文档不存在", data: null };
+  }
 });
 
 // 文档更新
