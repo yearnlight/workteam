@@ -1,7 +1,7 @@
 <template>
   <div class="editor">
     <!-- <textarea name="editor" class="mk-ed"></textarea> -->
-    <mavon-editor @imgAdd="handleEditorImgAdd" @imgDel="handleEditorImgDel" class="mk-ed" placeholder=" " v-model="value" :toolbars="toolbars" />
+    <mavon-editor @imglst2Url="imglst2Url" ref="mavon" @imgAdd="handleEditorImgAdd" @imgDel="handleEditorImgDel" class="mk-ed" placeholder=" " v-model="value" :toolbars="toolbars" />
   </div>
 </template>
 
@@ -36,18 +36,13 @@ export default {
         .then((res) => {
           this.docInfo = res.data;
           this.value = this.docInfo.context;
+           console.log(this.$refs["mavon"])
         });
     },
     handleEditorImgAdd(pos, $file) {
       let formdata = new FormData();
       formdata.append("file", $file);
       this.imgFile[pos] = $file;
-      //   let instance = this.$axios.create({
-      //     withCredentials: true,
-      //     headers: {
-      //       Authorization: token, // 我上传的时候请求头需要带上token 验证，不需要的删除就好
-      //     },
-      //   });
       this.$axios.post("/task/upload/files", formdata).then((res) => {
         if (res.status === 200) {
           this.$message.success("上传成功");
@@ -75,7 +70,7 @@ export default {
     },
     handleEditorImgDel(pos) {
       delete this.imgFile[pos];
-    },
+    }
   },
 };
 </script>

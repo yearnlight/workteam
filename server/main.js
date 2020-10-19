@@ -456,12 +456,30 @@ router.post("/task/upload/files", async ctx => {
   const file = ctx.request.files.file; // 获取上传文件
   // 创建可读流
   const reader = fs.createReadStream(file.path);
-  let filePath = path.join(__dirname, "md/") + `${file.name}`;
+  let randomCode = Uuid.v1();
+  let fileNames = file.name.split(".");
+  let filePath =
+    path.join(__dirname, "md/") +
+    `${fileNames[0]}${randomCode}.${fileNames[1]}`;
   // 创建可写流
   const upStream = fs.createWriteStream(filePath);
   // 可读流通过管道写入可写流
   reader.pipe(upStream);
-  ctx.response.body = { status: 200, msg: null, data: `/md/${file.name}` };
+  ctx.response.body = {
+    status: 200,
+    msg: null,
+    data: `/md/${fileNames[0]}${randomCode}.${fileNames[1]}`
+  };
+});
+
+router.post("/task/delete/files", async ctx => {
+  let { fileName } = ctx.request.body;
+  fs.unlink(`/md/${fileName}`, function(err) {
+    if (err) {
+      throw err;
+    }
+    ctx.response.body = { status: 200, msg: "文件删除成功", data: null };
+  });
 });
 
 // md上传
