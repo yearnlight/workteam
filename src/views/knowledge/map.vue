@@ -1,16 +1,43 @@
 <template>
   <div class="map">
     <div class="map-project">
-      <el-button type="primary" icon="el-icon-plus" @click="add">创建项</el-button>
+      <el-button
+        type="primary"
+        icon="el-icon-plus"
+        @click="add"
+      >创建项</el-button>
       <div id="mountNode"></div>
     </div>
     <div class="map-info">
       <div class="map-info-operate">
         <span class="map-info-title">文档</span>
-        <el-button type="primary" icon="el-icon-plus" @click="publicD">发布文档</el-button>
+        <div class="map-info-operate-item">
+          <el-input
+            size="small"
+            placeholder="请输入标题（回车键搜索）"
+            suffix-icon="el-icon-search"
+            v-model="searchTitle"
+            @keyup.enter.native="searchDocs"
+          >
+          </el-input>
+          <el-button
+            type="primary"
+            icon="el-icon-plus"
+            @click="publicD"
+          >发布文档</el-button>
+        </div>
+
       </div>
       <div class="docs">
-        <div class="docs-item" v-for="(item,index) in docs" :key="index">
+        <div class="nodata" v-if="!(docs && docs.length)">
+          <img :src="nodataSvg" />
+          <span class="nodata-text">暂无文档</span>
+        </div>
+        <div
+          class="docs-item"
+          v-for="(item,index) in docs"
+          :key="index"
+        >
           <div class="docs-item-content">
             <div class="docs-item-meta">
               {{item.creator}} · {{item.createtime}}
@@ -19,7 +46,10 @@
                 {{item.readtime}}
               </span>
             </div>
-            <div class="docs-item-title" @click="toInfo(item.id)">{{item.title}}</div>
+            <div
+              class="docs-item-title"
+              @click="toInfo(item.id)"
+            >{{item.title}}</div>
             <div class="docs-item-sub">
               <div class="action">
                 <span
@@ -31,18 +61,46 @@
             </div>
           </div>
           <div class="docs-item-operate">
-            <span class="el-icon-edit blue" @click="update(item.id)"></span>
-            <span class="el-icon-delete red" @click="del(item.id)"></span>
+            <span
+              class="el-icon-edit blue"
+              @click="update(item.id)"
+            ></span>
+            <span
+              class="el-icon-delete red"
+              @click="del(item.id)"
+            ></span>
           </div>
         </div>
       </div>
     </div>
-    <el-dialog v-bind="$attrs" v-on="$listeners" :visible.sync="isAdd" @close="onClose" title="创建项">
-      <el-form ref="pageForm" :model="formData" :rules="rules" size="small" label-width="180px">
-        <el-form-item label="项目名称" prop="name">
-          <el-input v-model="formData.name" placeholder="请输入项目名称" clearable></el-input>
+    <el-dialog
+      v-bind="$attrs"
+      v-on="$listeners"
+      :visible.sync="isAdd"
+      @close="onClose"
+      title="创建项"
+    >
+      <el-form
+        ref="pageForm"
+        :model="formData"
+        :rules="rules"
+        size="small"
+        label-width="180px"
+      >
+        <el-form-item
+          label="项目名称"
+          prop="name"
+        >
+          <el-input
+            v-model="formData.name"
+            placeholder="请输入项目名称"
+            clearable
+          ></el-input>
         </el-form-item>
-        <el-form-item label="项目描述" prop="desc">
+        <el-form-item
+          label="项目描述"
+          prop="desc"
+        >
           <el-input
             v-model="formData.desc"
             type="textarea"
@@ -50,8 +108,15 @@
             :autosize="{minRows: 4, maxRows: 4}"
           ></el-input>
         </el-form-item>
-        <el-form-item label="项目类型" prop="type">
-          <el-select v-model="formData.type" placeholder="请选择项目类型" clearable>
+        <el-form-item
+          label="项目类型"
+          prop="type"
+        >
+          <el-select
+            v-model="formData.type"
+            placeholder="请选择项目类型"
+            clearable
+          >
             <el-option
               v-for="(item, index) in typeOptions"
               :key="index"
@@ -59,17 +124,30 @@
               :value="item.value"
               :disabled="item.disabled"
             >
-              <span
-                :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${$util.displayEnum($enum.projectTypeList,item.value).color};`"
-              >{{item.label}}</span>
+              <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${$util.displayEnum($enum.projectTypeList,item.value).color};`">{{item.label}}</span>
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="项目地址" prop="url">
-          <el-input v-model="formData.url" placeholder="请输入项目地址" clearable></el-input>
+        <el-form-item
+          label="项目地址"
+          prop="url"
+        >
+          <el-input
+            v-model="formData.url"
+            placeholder="请输入项目地址"
+            clearable
+          ></el-input>
         </el-form-item>
-        <el-form-item label="田主" prop="hero">
-          <el-select v-model="formData.hero" filterable placeholder="请选择田主" clearable>
+        <el-form-item
+          label="田主"
+          prop="hero"
+        >
+          <el-select
+            v-model="formData.hero"
+            filterable
+            placeholder="请选择田主"
+            clearable
+          >
             <el-option
               v-for="(item, index) in userList"
               :key="index"
@@ -77,19 +155,26 @@
               :value="item.name"
               :disabled="item.disabled"
             >
-              <span
-                :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`"
-              >{{item.name}}</span>
+              <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`">{{item.name}}</span>
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="评分" prop="star">
-          <el-rate v-model="formData.star" :max="5"></el-rate>
+        <el-form-item
+          label="评分"
+          prop="star"
+        >
+          <el-rate
+            v-model="formData.star"
+            :max="5"
+          ></el-rate>
         </el-form-item>
       </el-form>
       <div slot="footer">
         <el-button @click="isAdd = false;">取消</el-button>
-        <el-button type="primary" @click="save">确定</el-button>
+        <el-button
+          type="primary"
+          @click="save"
+        >确定</el-button>
       </div>
     </el-dialog>
   </div>
@@ -99,47 +184,47 @@
 import G6 from "@antv/g6";
 
 G6.registerNode(
-  "ymxNode",
-  cfg => `
-<group>
-  <rect>
-    <rect style={{
-      width: 150,
-      height: 20,
-      fill: ${cfg.color},
-      radius: [6, 6, 0, 0],
-      cursor: 'move'，
-      stroke: ${cfg.color}
-    }} draggable="true">
-      <text style={{ 
-        marginTop: 2, 
-        marginLeft: 75, 
-        textAlign: 'center', 
-        fontWeight: 'bold', 
-        fill: '#fff' }}>{{label}}</text>
-    </rect>
-    <rect style={{
-      width: 150,
-      height: 55,
-      stroke: ${cfg.color},
-      fill: #ffffff,
-      radius: [0, 0, 6, 6],
-    }}>
-      <text style={{ marginTop: 5, marginLeft: 3, fill: '#333', marginLeft: 4 }}>描述: {{description}}</text>
-      <text style={{ marginTop: 10, marginLeft: 3, fill: '#333', marginLeft: 4 }}>田主: {{meta.creatorName}}</text>
-    </rect>
-  </rect>
-  <circle style={{
-    stroke: ${cfg.color},
-    r: 10,
-    fill: '#fff',
-    marginLeft: 75,
-    cursor: 'pointer'
-  }} name="circle">
-    <image style={{ img: 'https://gw.alipayobjects.com/zos/antfincdn/FLrTNDvlna/antv.png', width: 12, height: 12,  marginLeft: 70,  marginTop: -5 }} />
-  </circle>
-</group>
-`
+  "ymx-node",
+  (cfg) => `
+    <group>
+      <rect>
+        <rect style={{
+          width: 150,
+          height: 20,
+          fill: ${cfg.color},
+          radius: [6, 6, 0, 0],
+          cursor: 'move'，
+          stroke: ${cfg.color}
+        }} draggable="true">
+          <text style={{ 
+            marginTop: 2, 
+            marginLeft: 75, 
+            textAlign: 'center', 
+            fontWeight: 'bold', 
+            fill: '#fff' }}>{{label}}</text>
+        </rect>
+        <rect style={{
+          width: 150,
+          height: 55,
+          stroke: ${cfg.color},
+          fill: #ffffff,
+          radius: [0, 0, 6, 6],
+        }}>
+          <text style={{ marginTop: 5, marginLeft: 3, fill: '#333', marginLeft: 4 }}>描述: {{description}}</text>
+          <text style={{ marginTop: 10, marginLeft: 3, fill: '#333', marginLeft: 4 }}>田主: {{meta.creatorName}}</text>
+        </rect>
+      </rect>
+      <circle style={{
+        stroke: ${cfg.color},
+        r: 10,
+        fill: '#fff',
+        marginLeft: 75,
+        cursor: 'pointer'
+      }} name="circle">
+        <image style={{ img: 'https://gw.alipayobjects.com/zos/antfincdn/FLrTNDvlna/antv.png', width: 12, height: 12,  marginLeft: 70,  marginTop: -5 }} />
+      </circle>
+    </group>
+  `
 );
 
 export default {
@@ -153,101 +238,106 @@ export default {
   },
   data() {
     return {
+      nodataSvg:require("@/assets/empty-card.svg"),
+      searchTitle: "", //文档搜索框
       isDel: false,
       isAdd: false,
       userList: [],
       docs: [],
       formData: {
-        star: 0
+        star: 0,
       },
       rules: {
         name: [
           {
             required: true,
             message: "请输入项目名称",
-            trigger: "blur"
-          }
+            trigger: "blur",
+          },
         ],
         desc: [
           {
             required: true,
             message: "请输入项目描述",
-            trigger: "blur"
-          }
+            trigger: "blur",
+          },
         ],
         type: [
           {
             required: true,
             message: "请选择项目类型",
-            trigger: "change"
-          }
+            trigger: "change",
+          },
         ],
         url: [
           {
             required: true,
             message: "请输入项目地址",
-            trigger: "blur"
-          }
+            trigger: "blur",
+          },
         ],
         hero: [
           {
             required: true,
             message: "请选择田主",
-            trigger: "change"
-          }
+            trigger: "change",
+          },
         ],
         star: [
           {
             required: true,
             message: "评分不能为空",
-            trigger: "change"
-          }
-        ]
+            trigger: "change",
+          },
+        ],
       },
       typeOptions: [
         {
           label: "Web",
-          value: "web"
+          value: "web",
         },
         {
           label: "Java",
-          value: "java"
+          value: "java",
         },
         {
           label: "Go",
-          value: "go"
+          value: "go",
         },
         {
           label: "配置",
-          value: "config"
+          value: "config",
         },
         {
           label: "公共",
-          value: "common"
-        }
+          value: "common",
+        },
       ],
       heroOptions: [],
       projectList: [],
-      graph: null
+      graph: null,
     };
   },
   methods: {
+    searchDocs() {
+      this.fetchDoc({ title: this.searchTitle });
+    },
     toInfo(id) {
       this.$router.push({
         path: "/work/knowledgeMap_infomd",
-        query: { id: id }
+        query: { id: id },
       });
     },
     update(id) {
       this.$router.push({
         path: "/work/knowledgeMap_addmd",
-        query: { id: id }
+        query: { id: id },
       });
     },
     del(id) {
       this.isDel = false;
       this.$confirm("你确定删除此文档？", "删除").then(() => {
-        this.$axios.post("/task/md/delete", { id: id }).then(res => {
+        this.$axios.post("/task/md/delete", { id: id }).then((res) => {
           if (res.status == 200) {
             this.$message.success("删除成功");
             this.fetchDoc();
@@ -260,8 +350,8 @@ export default {
     publicD() {
       this.$router.push("/work/knowledgeMap_addmd");
     },
-    fetchDoc() {
-      this.$axios.post("/task/md/list", {}).then(res => {
+    fetchDoc(params) {
+      this.$axios.post("/task/md/list", params || {}).then((res) => {
         if (res.status == 200) {
           this.docs = res.data;
         } else {
@@ -270,7 +360,7 @@ export default {
       });
     },
     fetchUser() {
-      this.$axios.get("/task/user/list", {}).then(res => {
+      this.$axios.get("/task/user/list", {}).then((res) => {
         if (res.status == 200) {
           this.userList = res.data;
         } else {
@@ -279,7 +369,7 @@ export default {
       });
     },
     fetchProject() {
-      this.$axios.post("/task/project/list", {}).then(res => {
+      this.$axios.post("/task/project/list", {}).then((res) => {
         if (res.status == 200) {
           this.projectList = res.data;
           this.initG6();
@@ -295,13 +385,13 @@ export default {
       this.$refs["pageForm"].resetFields();
     },
     save() {
-      this.$refs["pageForm"].validate(valid => {
+      this.$refs["pageForm"].validate((valid) => {
         if (!valid) return;
         this.formData.color = this.$util.displayEnum(
           this.$enum.projectTypeList,
           this.formData.type
         ).color;
-        this.$axios.post("/task/project/create", this.formData).then(res => {
+        this.$axios.post("/task/project/create", this.formData).then((res) => {
           if (res.status == 200) {
             this.$message.success("创建项目成功");
             this.fetchProject();
@@ -314,19 +404,20 @@ export default {
     },
     constructData() {},
     initG6() {
+      let that = this;
       let nodes = this.projectList;
-      nodes.forEach(n => {
+      nodes.forEach((n) => {
         n.description = n.desc;
         n.label = n.name;
         n.meta = {
-          creatorName: n.creator
+          creatorName: n.creator,
         };
         n.color = n.color;
-        n.type = "ymxNode";
+        n.type = "ymx-node";
       });
       const data = {
         nodes: nodes,
-        edges: []
+        edges: [],
       };
       if (this.graph) {
         this.graph.changeData(data);
@@ -347,7 +438,7 @@ export default {
           rows: 5, // 可选
           cols: 4, // 可选
           sortBy: "degree", // 可选
-          workerEnabled: true // 可选，开启 web-worker
+          workerEnabled: true, // 可选，开启 web-worker
         },
         nodeStyle: {
           default: {
@@ -355,33 +446,33 @@ export default {
             stroke: "#096dd9",
             radius: [6, 6, 0, 0],
             cursor: "move",
-            stroke: "#2196f3"
-          }
+            stroke: "#2196f3",
+          },
         },
         defaultEdge: {
           type: "cubic-horizontal",
           style: {
             stroke: "#A3B1BF",
-            endArrow: true
-          }
+            endArrow: true,
+          },
         },
         fitCenter: true,
-        modes: {
-          //   default: ["drag-node", "zoom-canvas"],
-        }
       });
-      this.graph.on("node:click", function(e) {
+      this.graph.on("node:click", function (e) {
         let node = e.item;
         let model = node.getModel();
-
-        graph.updateItem(node, {
-          size: size,
-          label: labelText
-        });
+        that.fetchDoc({ label: model.label });
+      });
+      this.graph.on("canvas:click", function (e) {
+        let node = e.item;
+        //点击空白处，查询所有
+        if (!node) {
+          that.fetchDoc();
+        }
       });
       this.graph.read(data);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -406,6 +497,12 @@ export default {
       border-bottom: 1px solid rgba(178, 186, 194, 0.15);
       display: flex;
       justify-content: space-between;
+      &-item {
+        display: flex;
+        .el-button {
+          margin-left: 10px;
+        }
+      }
     }
     &-title {
       font-size: 1.4rem;
@@ -416,6 +513,17 @@ export default {
     .docs {
       height: calc(100% - 21px);
       overflow-y: auto;
+      .nodata{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        &-text{
+          font-size: 12px;
+          margin-left: 40px;
+          color: #b2bac2;
+        }
+      }
       &-item {
         border-bottom: 1px solid rgba(178, 186, 194, 0.15);
         &:hover {

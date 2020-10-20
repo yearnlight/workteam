@@ -159,7 +159,7 @@ router.post("/task/user/add", async ctx => {
   ];
   let insertStr =
     "insert into user(id,name,`key`,department,`group`,`team`,remark,createtime,pass,role) values ?";
-  res = await query(insertStr, [inputParams], function (err, result) {
+  res = await query(insertStr, [inputParams], function(err, result) {
     if (err) {
       console.log("[INSERT ERROR] - ", err.message);
       return;
@@ -504,10 +504,20 @@ router.post("/task/md/save", async ctx => {
   ctx.response.body = { status: 200, msg: "发布文档成功", data: null };
 });
 
-// 文档列表
+// 文档列表(标题，标签过滤)
 router.post("/task/md/list", async ctx => {
+  let { title, label } = ctx.request.body;
+  let params = [];
   let queryStr = `select * from doc where isDel = 0`;
-  let res = await query(queryStr);
+  if (title) {
+    queryStr += ` and title LIKE ?`;
+    params.push("%" + title + "%");
+  }
+  if (label) {
+    queryStr += " and `label` = ?";
+    params.push(label);
+  }
+  let res = await query(queryStr, params);
   ctx.response.body = { status: 200, msg: null, data: res };
 });
 
@@ -537,8 +547,7 @@ router.post("/task/md/read", async ctx => {
     let deleteStr = `update doc SET readtime = ? where id = ?`;
     let res = await query(deleteStr, [readtime + 1, params.id]);
     ctx.response.body = { status: 200, msg: "正在阅读", data: null };
-  }
-  else {
+  } else {
     ctx.response.body = { status: 404, msg: "文档不存在", data: null };
   }
 });
