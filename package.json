@@ -27,6 +27,8 @@
     "node-sass": "^4.14.1",
     "node-uuid": "^1.4.8",
     "sass-loader": "^8.0.2",
+    "socket.io": "^2.3.0",
+    "ssh2": "^0.8.9",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
     "vue": "^2.6.11",

@@ -1,9 +1,13 @@
-let io = require("socket.io")(http);
+let Koa = require("koa");
+const app = new Koa();
 let utf8 = require("utf8");
 let SSHClient = require("ssh2").Client;
-let Koa = require("koa");
-let http = require("http");
-const app = new Koa();
+
+let server = require("http")
+  .createServer(app.callback())
+  .listen(4002);
+let io = require("socket.io")(server);
+
 //创建SSH服务
 function createSSHServer(machineConfig, socket) {
   var ssh = new SSHClient();
@@ -63,4 +67,4 @@ io.on("connection", function(socket) {
   });
 });
 
-http.createServer(app.callback()).listen(4002);
+console.log("success to run ssh server.");

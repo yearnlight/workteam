@@ -417,6 +417,49 @@ router.post("/task/create", async ctx => {
   ctx.response.body = { status: 200, msg: "创建任务成功", data: null };
 });
 
+// 添加机器
+router.post("/task/host/create", async ctx => {
+  let params = ctx.request.body;
+  let uuid = Uuid.v1();
+  let createtime = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
+  let inputParams = [
+    [
+      uuid,
+      params.ip,
+      params.protocol,
+      params.port,
+      params.alias,
+      params.username,
+      params.password,
+      params.desc,
+      ctx.request.header.userName,
+      createtime,//使用次数
+      0,
+      0
+    ]
+  ];
+  let insertStr =
+    "insert into host(uuid,`ip`,`protocol`,`port`,`alias`,username,`password`,`desc`,creator,createtime,usetime,isDel) values ?";
+  res = await query(insertStr, [inputParams]);
+  ctx.response.body = { status: 200, msg: "添加机器成功", data: null };
+});
+
+// 机器列表
+router.post("/task/host/list", async ctx => {
+  let queryStr = `select * from host where isDel = 0`;
+  let res = await query(queryStr);
+  ctx.response.body = { status: 200, msg: null, data: res };
+});
+
+// 机器删除
+router.post("/task/host/delete", async ctx => {
+  let params = ctx.request.body;
+  let deleteStr = `update host SET isDel = 1 where uuid = ?`;
+  res = await query(deleteStr, [params.uuid]);
+  ctx.response.body = { status: 200, msg: "删除机器成功", data: null };
+});
+
+
 // 创建任务
 router.post("/task/project/create", async ctx => {
   let params = ctx.request.body;

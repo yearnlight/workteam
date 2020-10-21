@@ -1,16 +1,151 @@
 <template>
   <div class="webssh">
-    <div
-      class="console"
-      id="terminal"
-    ></div>
+    <div class="webssh-hosts">
+      <el-button
+        size="mini"
+        class="webssh-hosts-add"
+        icon="el-icon-plus"
+        @click="add"
+      >添加机器</el-button>
+      <div
+        @click="Login(item,index + 1)"
+        :class="['webssh-hosts-item']"
+        v-for="(item,index) in hosts"
+        :key="index"
+      >
+        <span :class="['el-icon-monitor','console-icon']"></span><span :class="[{'active':seletedItem.ip == item.ip},'console-text']">{{item.alias}}({{item.ip}})</span>
+      </div>
+    </div>
+    <div class="console">
+      <div
+        id="terminal"
+        class="console-terminal"
+        v-if="!seletedItem.ip"
+      ></div>
+      <div
+        v-show="seletedItem.ip == item.ip"
+        v-for="(item,index) in hosts"
+        :id="`terminal${index + 1}`"
+        class="console-terminal"
+        :key="index"
+      ></div>
+    </div>
+    <el-dialog
+      :visible.sync="isAdd"
+      @close="onClose"
+      title="添加机器"
+    >
+      <el-form
+        ref="pageForm"
+        :model="formData"
+        :rules="rules"
+        size="small"
+        label-width="160px"
+      >
+        <el-form-item
+          label="主机IP(H)"
+          prop="ip"
+        >
+          <el-input
+            v-model="formData.ip"
+            placeholder="请输入主机IP(H)"
+            clearable
+            prefix-icon='el-icon-s-platform'
+            :style="{width: '90%'}"
+          ></el-input>
+        </el-form-item>
+        <el-form-item
+          label="协议(P)"
+          prop="protocol"
+        >
+          <el-input
+            v-model="formData.protocol"
+            placeholder="请输入协议(P)"
+            :disabled='true'
+            clearable
+            :style="{width: '90%'}"
+          ></el-input>
+        </el-form-item>
+        <el-form-item
+          label="端口号(O)"
+          prop="port"
+        >
+          <el-input
+            v-model="formData.port"
+            placeholder="请输入端口号(O)"
+            readonly
+            :disabled='true'
+            :style="{width: '90%'}"
+          ></el-input>
+        </el-form-item>
+        <el-form-item
+          label="别名(A)"
+          prop="alias"
+        >
+          <el-input
+            v-model="formData.alias"
+            placeholder="请输入别名(A)"
+            clearable
+            :style="{width: '90%'}"
+          ></el-input>
+        </el-form-item>
+        <el-form-item
+          label="用户名(U)"
+          prop="username"
+        >
+          <el-input
+            v-model="formData.username"
+            placeholder="请输入用户名(U)"
+            clearable
+            prefix-icon='el-icon-user'
+            :style="{width: '90%'}"
+          ></el-input>
+        </el-form-item>
+        <el-form-item
+          label="密码(P)"
+          prop="password"
+        >
+          <el-input
+            v-model="formData.password"
+            placeholder="请输入密码(P)"
+            clearable
+            prefix-icon='el-icon-key'
+            show-password
+            :style="{width: '90%'}"
+          ></el-input>
+        </el-form-item>
+        <el-form-item
+          label="说明(D)"
+          prop="desc"
+        >
+          <el-input
+            v-model="formData.desc"
+            type="textarea"
+            placeholder="请输入说明(D)"
+            :maxlength="100"
+            show-word-limit
+            :autosize="{minRows: 3, maxRows: 3}"
+            :style="{width: '90%'}"
+          ></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer">
+        <el-button @click="isAdd = false">取消</el-button>
+        <el-button
+          type="primary"
+          @click="save"
+        >确定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 <script>
-// import "xterm/css/xterm.css";
-// import { Terminal } from "xterm";
-// import { FitAddon } from "xterm-addon-fit";
-// import { AttachAddon } from "xterm-addon-attach";
+import "xterm/css/xterm.css";
+import { Terminal } from "xterm";
+import { FitAddon } from "xterm-addon-fit";
+import { AttachAddon } from "xterm-addon-attach";
+import openSocket from "socket.io-client";
+const NET_LINK = "net_";
 
 export default {
   name: "Xterm",
@@ -20,26 +155,111 @@ export default {
       default: "",
     },
   },
+  created() {
+    this.socket = openSocket(`http://${location.hostname}:4002/`, { autoConnect: true });
+    this.fetchHost();
+  },
   data() {
     return {
-      term: null,
+      isAdd: false,
       socket: null,
+      hosts: [
+        {
+          ip: "81.68.200.164",
+          username: "root",
+          password: "Xuanwo!@#2020",
+          alias: "TX",
+        },
+        {
+          ip: "10.127.2.119",
+          username: "root",
+          password: "fhrootroot",
+          alias: "FH119",
+        },
+      ],
+      ips: [],
+      terms: [],
+      term: null,
       rows: 40,
       // cols: 10,
       SetOut: false,
       isKey: false,
+      seletedItem: {},
+      formData: {
+        ip: undefined,
+        protocol: "SSH",
+        port: 22,
+        alias: undefined,
+        username: undefined,
+        password: "",
+        desc: undefined,
+      },
+      rules: {
+        ip: [
+          {
+            required: true,
+            message: "请输入主机IP(H)",
+            trigger: "blur",
+          },
+        ],
+        protocol: [
+          {
+            required: true,
+            message: "请输入协议(P)",
+            trigger: "blur",
+          },
+        ],
+        port: [
+          {
+            required: true,
+            message: "请输入端口号(O)",
+            trigger: "blur",
+          },
+        ],
+        alias: [
+          {
+            required: true,
+            message: "请输入别名(A)",
+            trigger: "blur",
+          },
+        ],
+        username: [
+          {
+            required: true,
+            message: "请输入用户名(U)",
+            trigger: "blur",
+          },
+        ],
+        password: [
+          {
+            required: true,
+            message: "请输入密码(P)",
+            trigger: "blur",
+          },
+        ],
+      },
     };
   },
   mounted() {
-    this.initSocket();
+    // this.Login();
+    this.initTerm();
   },
   beforeDestroy() {
     this.socket.close();
-    // this.term.dispose();
+    this.terms.forEach((item) => {
+      item.dispose();
+    });
   },
   methods: {
+    fetchHost() {
+      this.$axios.post("/task/host/list").then((res) => {
+        if (res.status == 200) {
+          this.hosts = res.data;
+        }
+      });
+    },
     //Xterm主题
-    initTerm() {
+    initTerm(index) {
       const term = new Terminal({
         rendererType: "canvas", //渲染类型
         rows: this.rows, //行数
@@ -53,7 +273,7 @@ export default {
         scrollback: 30,
         tabStopWidth: 4,
         theme: {
-          foreground: "yellow", //字体
+          foreground: "#ffffff", //字体
           background: "#060101", //背景色
           cursor: "help", //设置光标
         },
@@ -62,22 +282,23 @@ export default {
       const fitAddon = new FitAddon();
       term.loadAddon(attachAddon);
       term.loadAddon(fitAddon);
-      term.open(document.getElementById("terminal"));
-      // fitAddon.fit();
+      term.open(
+        document.getElementById(index ? `terminal${index}` : "terminal")
+      );
+      fitAddon.fit();
       term.focus();
       let _this = this;
       //限制和后端交互，只有输入回车键才显示结果
       term.prompt = () => {
         term.write("\r\n$ ");
       };
-      term.prompt();
       function runFakeTerminal(_this) {
         if (term._initialized) {
           return;
         }
         // 初始化
         term._initialized = true;
-        term.writeln(); //控制台初始化报错处
+        // term.writeln(); //控制台初始化报错处
         term.prompt();
         // / **
         //     *添加事件监听器，用于按下键时的事件。事件值包含
@@ -93,54 +314,66 @@ export default {
         //  * @返回一个IDisposable停止监听。
         //  * /
         // 支持输入与粘贴方法
-        term.onData(function (key) {
-          let order = {
-            Data: key,
-            Op: "stdin",
-          };
-          _this.onSend(order);
-        });
-        _this.term = term;
+        // term.onData(function (key) {
+        //   let order = {
+        //     Data: key,
+        //     Op: "stdin",
+        //   };
+        //   _this.onSend(order);
+        // });
+        _this.terms[index || 0] = term;
       }
       runFakeTerminal(_this);
     },
-    //webShell主题
-    initSocket() {
-      const WebSocketUrl = "ws://example.net:8080/ws";
-      this.socket = new WebSocket(WebSocketUrl);
-      this.socketOnClose(); //关闭
-      this.socketOnOpen(); //
-      this.socketOnError();
+    Login({ ip, username, password }, index) {
+      let that = this;
+      this.seletedItem = { ip, username, password };
+      if (that.ips.includes(ip)) {
+        return;
+      }
+      this.$nextTick(() => {
+        that.initTerm(index);
+        that.socket.emit("createSSHServer", {
+          msgId: `NET_LINK${index}`,
+          ip: ip,
+          username: username,
+          password: password,
+        });
+        that.terms[index].onData(function (data) {
+          that.socket.emit(`NET_LINK${index}`, data);
+        });
+        that.socket.on(`NET_LINK${index}`, (data) => {
+          that.terms[index].write(data);
+        });
+        that.terms[index].write("init...");
+        that.ips.push(ip);
+      });
     },
-    //webshell链接成功之后操作
-    socketOnOpen() {
-      this.socket.onopen = () => {
-        // 链接成功后
-        this.initTerm();
-      };
+    disConnectSocket() {
+      this.socket.emit("disConnectSocket", {});
     },
-    //webshell关闭之后操作
-    socketOnClose() {
-      this.socket.onclose = () => {
-        console.log("close socket");
-      };
+    onClose() {
+      this.$refs["pageForm"].resetFields();
     },
-    //webshell错误信息
-    socketOnError() {
-      this.socket.onerror = () => {
-        console.log("socket 链接失败");
-      };
+    close() {
+      this.isAdd = false;
     },
-    //特殊处理
-    onSend(data) {
-      data = this.base.isObject(data) ? JSON.stringify(data) : data;
-      data = this.base.isArray(data) ? data.toString() : data;
-      data = data.replace(/\\\\/, "\\");
-      this.shellWs.onSend(data);
+    save() {
+      this.$refs["pageForm"].validate((valid) => {
+        if (!valid) return;
+        this.$axios.post("/task/host/create", this.formData).then((res) => {
+          if (res.status == 200) {
+            this.$message.success(res.msg);
+            this.close();
+            this.fetchHost();
+          } else {
+            this.$message.error("添加机器失败");
+          }
+        });
+      });
     },
-    //删除左右两端的空格
-    trim(str) {
-      return str.replace(/(^\s*)|(\s*$)/g, "");
+    add() {
+      this.isAdd = true;
     },
   },
 };
@@ -148,8 +381,38 @@ export default {
 
 <style lang="scss">
 .webssh {
+  display: flex;
+  &-hosts {
+    width: 160px;
+    padding: 10px;
+    &-add {
+      margin-bottom: 20px;
+    }
+    &-item {
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      cursor: pointer;
+
+      .console-icon {
+        margin-right: 10px;
+      }
+
+      .console-text {
+        padding: 5px;
+        &.active {
+          background: #409eff;
+          color: #fff;
+        }
+      }
+    }
+  }
   .console {
+    flex: 1;
     height: 100%;
+    &-terminal {
+      height: 100%;
+    }
   }
 }
 </style>
