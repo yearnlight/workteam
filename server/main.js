@@ -433,7 +433,7 @@ router.post("/task/host/create", async ctx => {
       params.password,
       params.desc,
       ctx.request.header.userName,
-      createtime,//使用次数
+      createtime, //使用次数
       0,
       0
     ]
@@ -458,7 +458,6 @@ router.post("/task/host/delete", async ctx => {
   res = await query(deleteStr, [params.uuid]);
   ctx.response.body = { status: 200, msg: "删除机器成功", data: null };
 });
-
 
 // 创建任务
 router.post("/task/project/create", async ctx => {
@@ -648,6 +647,11 @@ app.use(
     res = await query(queryStr, [ctx.request.header.userid]);
     if (res && res.length) {
       let userInfo = res[0];
+      // 共享角色登录不限制
+      if (userInfo.role == "share") {
+        ctx.request.header.userName = userInfo.name;
+        isLogin = true;
+      }
       // 已登录
       if (userInfo.token == ctx.request.header.token) {
         ctx.request.header.userName = userInfo.name;

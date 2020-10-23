@@ -14,6 +14,10 @@
         <el-select v-model="formData.role" placeholder="请选择角色" clearable>
           <el-option label="超级管理员" value="super"></el-option>
           <el-option label="普通用户" value="member"></el-option>
+          <el-option label="共享" value="share">
+              <span style="float: left">共享</span>
+              <span style="float: right; color: #8492a6; font-size: 13px">属于共享角色的账号不限制登录</span>
+          </el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="部门" prop="department">

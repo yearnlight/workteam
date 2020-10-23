@@ -87,6 +87,8 @@
             placeholder="请输入别名(A)"
             clearable
             :style="{width: '90%'}"
+            maxlength="5"
+            show-word-limit
           ></el-input>
         </el-form-item>
         <el-form-item
@@ -156,7 +158,9 @@ export default {
     },
   },
   created() {
-    this.socket = openSocket(`http://${location.hostname}:4002/`, { autoConnect: true });
+    this.socket = openSocket(`http://${location.hostname}:4002/`, {
+      autoConnect: true,
+    });
     this.fetchHost();
   },
   data() {
@@ -383,7 +387,7 @@ export default {
 .webssh {
   display: flex;
   &-hosts {
-    width: 160px;
+    width: 180px;
     padding: 10px;
     &-add {
       margin-bottom: 20px;

@@ -18,10 +18,21 @@ export default [
     title: "知识地图",
     icon: "el-icon-reading",
     path: "/work/knowledgeMap"
-  },  
+  },
   {
-    title: "SSH",
-    icon: "el-icon-s-platform",
-    path: "/work/webssh"
+    title: "工具管理",
+    icon: "el-icon-magic-stick",
+    children: [
+      {
+        title: "SSH",
+        icon: "el-icon-s-platform",
+        path: "/work/webssh"
+      },
+      {
+        title: "表单自动生成",
+        icon: "el-icon-edit-outline",
+        path: "/work/formGenerator"
+      }
+    ]
   }
 ];
