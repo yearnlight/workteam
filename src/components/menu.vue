@@ -2,7 +2,7 @@
   <div class="doc">
     <div :class="[{'hidden':isInFrame},'docHeader']">
       <div class="docHeader-title">
-        工作任务管理系统
+        工作协作平台
         <span
           @click="isCollapse = !isCollapse"
           :class="[{'el-icon-d-arrow-left':!isCollapse,'el-icon-d-arrow-right':isCollapse},'collapse']"

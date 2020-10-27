@@ -2,7 +2,7 @@
   <div class="login" :style="{backgroundImage:'url('+ imgUrl+')'}">
     <div class="login-content">
       <el-form ref="loginForm" :model="form" :rules="loginRules" class="login-form">
-        <div class="login-content-title">工作任务管理系统</div>
+        <div class="login-content-title">工作协作平台</div>
         <el-form-item prop="account">
           <el-input
             v-model="form.account"

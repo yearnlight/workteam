@@ -1,68 +1,71 @@
 <template>
   <div class="regular">
-    <div class="regular-header">正则表达式集</div>
-    <div class="regular-create">
-      <el-button
-        icon="el-icon-plus"
-        plain
-        @click="create"
-      >添加正则</el-button>
-      <el-input
-        @keyup.enter.native="search"
-        placeholder="请输入匹配目的或标签，支持回车"
-        v-model="searchVal"
-        class="select"
-      >
+    <el-scrollbar style="height:100%">
+      <div class="regular-header">正则表达式集</div>
+      <div class="regular-create">
         <el-button
-          slot="append"
-          icon="el-icon-search"
-          @click="search"
-        ></el-button>
-      </el-input>
-    </div>
-    <div
-      v-if="!(list && list.length)"
-      class="regular-nodata"
-    >未搜索到匹配正则信息</div>
-    <el-card
-      v-else
-      v-for="(item,index) in list"
-      :key="index"
-      shadow="hover"
-    >
-      <div
-        slot="header"
-        class="clearfix"
-      >
-        <span>{{item.name}}</span>
-        <el-button
-          @click="doCopy(item.expression)"
-          style="float: right; padding: 3px 0"
-          type="text"
-        >复制表达式</el-button>
-      </div>
-      <div class="regular-express">
-        正则表达式：
-        <span class="blue">{{item.expression}}</span>
-      </div>
-      <div class="regular-exam">
-        <span class="label">测试匹配:</span>
+          icon="el-icon-plus"
+          plain
+          @click="create"
+        >添加正则</el-button>
         <el-input
-          v-model="item.example"
-          @input="(v)=>{test(v,item)}"
-          class="input"
-          size="small"
-        ></el-input>
-        <span :class="[{'green':item.result&&item.result.includes('通过'),'red':item.result&&item.result.includes('失败')},'result']">{{item.result}}</span>
+          @keyup.enter.native="search"
+          placeholder="请输入匹配目的或标签，支持回车"
+          v-model="searchVal"
+          class="select"
+        >
+          <el-button
+            slot="append"
+            icon="el-icon-search"
+            @click="search"
+          ></el-button>
+        </el-input>
       </div>
-      <div class="regular-label">
-        <el-tag
-          v-for="(tag,tindex) in item.label&&item.label.split(',')"
-          :key="tindex"
-        >{{tag}}</el-tag>
-      </div>
-      <div class="regular-create blue">{{item.creater}} 创建于{{item.createtime | DateTime}}</div>
-    </el-card>
+      <div
+        v-if="!(list && list.length)"
+        class="regular-nodata"
+      >未搜索到匹配正则信息</div>
+      <el-card
+        v-else
+        v-for="(item,index) in list"
+        :key="index"
+        shadow="hover"
+      >
+        <div
+          slot="header"
+          class="clearfix"
+        >
+          <span>{{item.name}}</span>
+          <el-button
+            @click="doCopy(item.expression)"
+            style="float: right; padding: 3px 0"
+            type="text"
+          >复制表达式</el-button>
+        </div>
+        <div class="regular-express">
+          正则表达式：
+          <span class="blue">{{item.expression}}</span>
+        </div>
+        <div class="regular-exam">
+          <span class="label">测试匹配:</span>
+          <el-input
+            v-model="item.example"
+            @input="(v)=>{test(v,item)}"
+            class="input"
+            size="small"
+          ></el-input>
+          <span :class="[{'green':item.result&&item.result.includes('通过'),'red':item.result&&item.result.includes('失败')},'result']">{{item.result}}</span>
+        </div>
+        <div class="regular-label">
+          <el-tag
+            v-for="(tag,tindex) in item.label&&item.label.split(',')"
+            :key="tindex"
+          >{{tag}}</el-tag>
+        </div>
+        <div class="regular-create blue">{{item.creater}} 创建于{{item.createtime | DateTime}}</div>
+      </el-card>
+    </el-scrollbar>
+
     <el-dialog
       title="创建正则"
       custom-class="regularCreate"
@@ -374,9 +377,17 @@ export default {
 
 <style lang="scss">
 .regular {
+  .el-scrollbar__wrap {
+    overflow-x: hidden;
+  }
   margin: 0 auto;
+  .red {
+    color: #f56c6c;
+    margin-left: 10px;
+  }
   .green {
     color: #67c23a;
+    margin-left: 10px;
   }
   &-header {
     text-align: center;
