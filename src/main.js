@@ -12,6 +12,7 @@ import ECharts from "vue-echarts";
 import BaiduMap from "vue-baidu-map";
 import { Message } from "element-ui";
 import mavonEditor from 'mavon-editor';
+import VueClipboards from 'vue-clipboard2'
 
 Vue.component("v-chart", ECharts);
 Vue.config.productionTip = false;
@@ -57,6 +58,8 @@ Vue.use(BaiduMap, {
 Vue.use(ElementUI, {
   size: "small"
 });
+
+Vue.use(VueClipboards);
 
 Vue.use(VueRouter);
 Vue.use(mavonEditor);
