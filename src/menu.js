@@ -18,6 +18,11 @@ export default [
     title: "知识地图",
     icon: "el-icon-reading",
     path: "/work/knowledgeMap"
+  },  
+  {
+    title: "服务应用",
+    icon: "el-icon-goods",
+    path: "/work/store"
   },
   {
     title: "工具管理",

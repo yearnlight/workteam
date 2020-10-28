@@ -79,6 +79,11 @@ const routes = [
         path: "/work/regular",
         component: () => import("@/views/regular/index.vue"),
         name: "regular"
+      },
+      {
+        path: "/work/store",//服务应用
+        component: () => import("@/views/store/index.vue"),
+        name: "store"
       }
     ]
   }
