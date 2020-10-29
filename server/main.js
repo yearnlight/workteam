@@ -664,6 +664,43 @@ router.post("/task/regular/create", async ctx => {
   ctx.response.body = { status: 200, msg: "创建正则表达式成功", data: null };
 });
 
+router.post("/task/store/create", async ctx => {
+  let params = ctx.request.body;
+  let uuid = Uuid.v1();
+  let createtime = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
+  let inputParams = [
+    [
+      uuid,
+      params.name,
+      params.color,
+      params.desc,
+      createtime,
+      params.creator || ctx.request.header.userName,
+      params.href,
+      params.label,
+      0,
+      0
+    ]
+  ];
+  let insertStr = `insert into store(uuid,name,color,desc,createtime,creator,href,label,accesstime,isDel) values ?`;
+  let res = await query(insertStr, [inputParams]);
+  ctx.response.body = { status: 200, msg: "创建应用服务成功", data: null };
+});
+//应用服务列表
+router.post("/task/store/list", async ctx => {
+  let res = [];
+  let selectStr = `select * from store where isDel = 0`;
+  res = await query(selectStr);
+  ctx.response.body = { status: 200, msg: "", data: res };
+});
+//应用服务删除
+router.post("/task/store/delete", async ctx => {
+  let params = ctx.request.body;
+  let deleteStr = `update store SET isDel = 1 where uuid = ?`;
+  res = await query(deleteStr, [params.uuid]);
+  ctx.response.body = { status: 200, msg: "删除应用服务成功", data: null };
+});
+
 app.use(
   koaBody({
     multipart: true, // 支持文件上传

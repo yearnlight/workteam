@@ -17,13 +17,19 @@
                 <span class="name">{{item.name}}</span>
                 <div class="bottom clearfix">
                     <time class="time">{{item.createtime}}</time>
-                    <el-dropdown @command="handleCommand">
+                    <el-dropdown @command="(key)=>{handleCommand(key,item)}">
                         <span class="el-dropdown-link">
                             操作<i class="el-icon-arrow-down el-icon--right"></i>
                         </span>
                         <el-dropdown-menu slot="dropdown">
-                            <el-dropdown-item icon="el-icon-delete">删除</el-dropdown-item>
-                            <el-dropdown-item icon="el-icon-edit">编辑</el-dropdown-item>
+                            <el-dropdown-item
+                                command="delete"
+                                icon="el-icon-delete"
+                            >删除</el-dropdown-item>
+                            <el-dropdown-item
+                                command="edit"
+                                icon="el-icon-edit"
+                            >编辑</el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
                 </div>
@@ -43,7 +49,18 @@ export default {
     }
   },
   methods: {
-    handleCommand(key) {}
+    handleCommand(key, item) {
+      switch (key) {
+        case "delete":
+          this.delete(item);
+          break;
+        case "edit":
+          this.edit(item);
+          break;
+      }
+    },
+    delete({name,uuid}) {},
+    edit(item) {}
   }
 };
 </script>
