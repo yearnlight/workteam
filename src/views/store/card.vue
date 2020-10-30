@@ -90,10 +90,11 @@ export default {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    height: 140px;
     img{
       padding: 20px;
       max-width: calc(100% - 40px);
-      height: 100px;
+      max-height: 80%;
     }
   }
   .el-collapse {
