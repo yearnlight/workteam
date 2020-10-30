@@ -34,11 +34,6 @@ export default [
         path: "/work/webssh"
       },
       {
-        title: "表单自动生成",
-        icon: "el-icon-edit-outline",
-        path: "/work/formGenerator"
-      },
-      {
         title: "正则表达式",
         icon: "el-icon-tickets",
         path: "/work/regular"

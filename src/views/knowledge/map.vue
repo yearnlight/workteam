@@ -29,7 +29,10 @@
 
       </div>
       <div class="docs">
-        <div class="nodata" v-if="!(docs && docs.length)">
+        <div
+          class="nodata"
+          v-if="!(docs && docs.length)"
+        >
           <img :src="nodataSvg" />
           <span class="nodata-text">暂无文档</span>
         </div>
@@ -238,7 +241,7 @@ export default {
   },
   data() {
     return {
-      nodataSvg:require("@/assets/empty-card.svg"),
+      nodataSvg: require("@/assets/empty-card.svg"),
       searchTitle: "", //文档搜索框
       isDel: false,
       isAdd: false,
@@ -402,7 +405,7 @@ export default {
         });
       });
     },
-    constructData() {},
+    constructData() { },
     initG6() {
       let that = this;
       let nodes = this.projectList;
@@ -513,12 +516,12 @@ export default {
     .docs {
       height: calc(100% - 21px);
       overflow-y: auto;
-      .nodata{
+      .nodata {
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 20px;
-        &-text{
+        &-text {
           font-size: 12px;
           margin-left: 40px;
           color: #b2bac2;

@@ -71,11 +71,6 @@ const routes = [
         name: "webssh"
       },
       {
-        path: "/work/formGenerator",
-        component: () => import("@/views/formGenerator/index.vue"),
-        name: "formGenerator"
-      },
-      {
         path: "/work/regular",
         component: () => import("@/views/regular/index.vue"),
         name: "regular"

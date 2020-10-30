@@ -663,7 +663,7 @@ router.post("/task/regular/create", async ctx => {
   ]);
   ctx.response.body = { status: 200, msg: "创建正则表达式成功", data: null };
 });
-
+// 添加应用服务
 router.post("/task/store/create", async ctx => {
   let params = ctx.request.body;
   let uuid = Uuid.v1();
@@ -682,7 +682,7 @@ router.post("/task/store/create", async ctx => {
       0
     ]
   ];
-  let insertStr = `insert into store(uuid,name,color,desc,createtime,creator,href,label,accesstime,isDel) values ?`;
+  let insertStr = 'insert into store(uuid,`name`,color,`desc`,createtime,creator,href,label,accesstime,isDel) values ?';
   let res = await query(insertStr, [inputParams]);
   ctx.response.body = { status: 200, msg: "创建应用服务成功", data: null };
 });
