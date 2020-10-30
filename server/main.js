@@ -679,10 +679,11 @@ router.post("/task/store/create", async ctx => {
       params.href,
       params.label,
       0,
-      0
+      0,
+      params.icon
     ]
   ];
-  let insertStr = 'insert into store(uuid,`name`,color,`desc`,createtime,creator,href,label,accesstime,isDel) values ?';
+  let insertStr = 'insert into store(uuid,`name`,color,`desc`,createtime,creator,href,label,accesstime,isDel,icon) values ?';
   let res = await query(insertStr, [inputParams]);
   ctx.response.body = { status: 200, msg: "创建应用服务成功", data: null };
 });

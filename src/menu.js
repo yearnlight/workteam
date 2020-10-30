@@ -20,7 +20,7 @@ export default [
     path: "/work/knowledgeMap"
   },  
   {
-    title: "服务应用",
+    title: "应用服务",
     icon: "el-icon-goods",
     path: "/work/store"
   },

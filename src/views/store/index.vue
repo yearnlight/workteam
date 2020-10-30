@@ -1,6 +1,6 @@
 <template>
   <div class="store">
-    <div class="store-title"><span>服务应用</span>
+    <div class="store-title"><span>应用服务</span>
       <el-button
         type="primary"
         icon="el-icon-plus"
@@ -47,6 +47,17 @@
           <el-input
             v-model="formData.href"
             placeholder="请输入链接地址"
+            clearable
+            :style="{width: '100%'}"
+          ></el-input>
+        </el-form-item>
+        <el-form-item
+          label="服务Logo Url"
+          prop="icon"
+        >
+          <el-input
+            v-model="formData.icon"
+            placeholder="请输入服务Logo Url（可不填）"
             clearable
             :style="{width: '100%'}"
           ></el-input>

@@ -10,7 +10,12 @@
         class="store-card-icon"
         @click="goto(item)"
       >
+        <img
+          v-if="item.icon"
+          :src="item.icon"
+        />
         <card-img
+          v-else
           :text="item.name"
           :fill="item.color"
         ></card-img>
@@ -85,6 +90,11 @@ export default {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    img{
+      padding: 20px;
+      max-width: calc(100% - 40px);
+      height: 100px;
+    }
   }
   .el-collapse {
     border: none;
