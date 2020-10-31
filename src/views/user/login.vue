@@ -4,29 +4,12 @@
       <el-form ref="loginForm" :model="form" :rules="loginRules" class="login-form">
         <div class="login-content-title">工作协作平台</div>
         <el-form-item prop="account">
-          <el-input
-            v-model="form.account"
-            placeholder="请输入登录账号"
-            prefix-icon="el-icon-user"
-            clearable
-          ></el-input>
+          <el-input v-model="form.account" placeholder="请输入登录账号" prefix-icon="el-icon-user" clearable></el-input>
         </el-form-item>
         <el-form-item prop="pass">
-          <el-input
-            v-model="form.pass"
-            type="password"
-            placeholder="请输入密码"
-            prefix-icon="el-icon-key"
-            @keyup.enter.native="handleLogin"
-            clearable
-          ></el-input>
+          <el-input v-model="form.pass" type="password" placeholder="请输入密码" prefix-icon="el-icon-key" @keyup.enter.native="handleLogin" clearable></el-input>
         </el-form-item>
-        <el-button
-          size="medium"
-          :loading="loading"
-          class="login-btn"
-          @click.native.prevent="handleLogin"
-        >{{loading?"登录中...":"登 录"}}</el-button>
+        <el-button size="medium" :loading="loading" class="login-btn" @click.native.prevent="handleLogin">{{loading?"登录中...":"登 录"}}</el-button>
       </el-form>
     </div>
   </div>

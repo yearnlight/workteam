@@ -3,44 +3,16 @@
     <el-scrollbar style="height:100%">
       <div class="regular-header">正则表达式集</div>
       <div class="regular-create">
-        <el-button
-          icon="el-icon-plus"
-          plain
-          @click="create"
-        >添加正则</el-button>
-        <el-input
-          @keyup.enter.native="search"
-          placeholder="请输入匹配目的或标签，支持回车"
-          v-model="searchVal"
-          class="select"
-        >
-          <el-button
-            slot="append"
-            icon="el-icon-search"
-            @click="search"
-          ></el-button>
+        <el-button icon="el-icon-plus" plain @click="create">添加正则</el-button>
+        <el-input @keyup.enter.native="search" placeholder="请输入匹配目的或标签，支持回车" v-model="searchVal" class="select">
+          <el-button slot="append" icon="el-icon-search" @click="search"></el-button>
         </el-input>
       </div>
-      <div
-        v-if="!(list && list.length)"
-        class="regular-nodata"
-      >未搜索到匹配正则信息</div>
-      <el-card
-        v-else
-        v-for="(item,index) in list"
-        :key="index"
-        shadow="hover"
-      >
-        <div
-          slot="header"
-          class="clearfix"
-        >
+      <div v-if="!(list && list.length)" class="regular-nodata">未搜索到匹配正则信息</div>
+      <el-card v-else v-for="(item,index) in list" :key="index" shadow="hover">
+        <div slot="header" class="clearfix">
           <span>{{item.name}}</span>
-          <el-button
-            @click="doCopy(item.expression)"
-            style="float: right; padding: 3px 0"
-            type="text"
-          >复制表达式</el-button>
+          <el-button @click="doCopy(item.expression)" style="float: right; padding: 3px 0" type="text">复制表达式</el-button>
         </div>
         <div class="regular-express">
           正则表达式：
@@ -48,158 +20,48 @@
         </div>
         <div class="regular-exam">
           <span class="label">测试匹配:</span>
-          <el-input
-            v-model="item.example"
-            @input="(v)=>{test(v,item)}"
-            class="input"
-            size="small"
-          ></el-input>
+          <el-input v-model="item.example" @input="(v)=>{test(v,item)}" class="input" size="small"></el-input>
           <span :class="[{'green':item.result&&item.result.includes('通过'),'red':item.result&&item.result.includes('失败')},'result']">{{item.result}}</span>
         </div>
         <div class="regular-label">
-          <el-tag
-            v-for="(tag,tindex) in item.label&&item.label.split(',')"
-            :key="tindex"
-          >{{tag}}</el-tag>
+          <el-tag v-for="(tag,tindex) in item.label&&item.label.split(',')" :key="tindex">{{tag}}</el-tag>
         </div>
         <div class="regular-create blue">{{item.creater}} 创建于{{item.createtime | DateTime}}</div>
       </el-card>
     </el-scrollbar>
 
-    <el-dialog
-      title="创建正则"
-      custom-class="regularCreate"
-      :visible.sync="isCreate"
-    >
+    <el-dialog title="创建正则" custom-class="regularCreate" :visible.sync="isCreate">
       <div class="tip">约束较松散，创建时尽量按照规则。标签可以约束行业、验证目的、类型等。测试数据会实时校验，校验通过方可创建。</div>
-      <el-form
-        :rules="rules"
-        ref="createRegular"
-        :model="form"
-        label-width="140px"
-      >
-        <el-form-item
-          label="正则匹配目的"
-          prop="name"
-          required
-        >
-          <el-input
-            size="small"
-            maxlength="100"
-            placeholder="请描述清楚正则表达式匹配目的"
-            show-word-limit
-            v-model="form.name"
-            autocomplete="off"
-          ></el-input>
+      <el-form :rules="rules" ref="createRegular" :model="form" label-width="140px">
+        <el-form-item label="正则匹配目的" prop="name" required>
+          <el-input size="small" maxlength="100" placeholder="请描述清楚正则表达式匹配目的" show-word-limit v-model="form.name" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item
-          label="正则表达式"
-          prop="expression"
-          required
-        >
-          <el-input
-            size="small"
-            maxlength="200"
-            placeholder="请填写正则表达式,例如：\w"
-            show-word-limit
-            v-model="form.expression"
-            autocomplete="off"
-          ></el-input>
+        <el-form-item label="正则表达式" prop="expression" required>
+          <el-input size="small" maxlength="200" placeholder="请填写正则表达式,例如：\w" show-word-limit v-model="form.expression" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item
-          label="测试数据"
-          prop="test"
-          required
-        >
-          <el-input
-            @input="textExam"
-            size="small"
-            maxlength="100"
-            placeholder="输入测试数据保证正则表达式验证通过"
-            show-word-limit
-            v-model="form.test"
-            autocomplete="off"
-          ></el-input>
+        <el-form-item label="测试数据" prop="test" required>
+          <el-input @input="textExam" size="small" maxlength="100" placeholder="输入测试数据保证正则表达式验证通过" show-word-limit v-model="form.test" autocomplete="off"></el-input>
           <span :class="[{'green':form.result&&form.result.includes('通过'),'red':form.result&&form.result.includes('失败')},'result']">{{form.result}}</span>
         </el-form-item>
-        <el-form-item
-          label="创建者"
-          prop="creater"
-        >
-          <el-input
-            size="small"
-            maxlength="30"
-            placeholder="请填写创建者"
-            show-word-limit
-            v-model="form.creater"
-            autocomplete="off"
-          ></el-input>
+        <el-form-item label="创建者" prop="creater">
+          <el-input size="small" maxlength="30" placeholder="请填写创建者" show-word-limit v-model="form.creater" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item
-          label="正则验证数据类型"
-          required
-        >
-          <el-select
-            size="small"
-            v-model="form.type"
-            placeholder="请数据类型"
-          >
-            <el-option
-              label="字符串"
-              value="string"
-            ></el-option>
-            <el-option
-              label="整数"
-              value="int"
-            ></el-option>
-            <el-option
-              label="小数"
-              value="float"
-            ></el-option>
+        <el-form-item label="正则验证数据类型" required>
+          <el-select size="small" v-model="form.type" placeholder="请数据类型">
+            <el-option label="字符串" value="string"></el-option>
+            <el-option label="整数" value="int"></el-option>
+            <el-option label="小数" value="float"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item
-          label="标签"
-          prop="labels"
-          required
-        >
-          <el-tag
-            :key="tag"
-            v-for="tag in form.labels"
-            closable
-            :disable-transitions="false"
-            @close="closeTag(tag)"
-          >{{tag}}</el-tag>
-          <el-input
-            class="input-new-tag"
-            v-if="inputVisible"
-            v-model="inputValue"
-            ref="saveTagInput"
-            size="small"
-            @keyup.enter.native="inputConfirm"
-            @blur="inputConfirm"
-          ></el-input>
-          <el-button
-            v-else
-            class="button-new-tag"
-            size="small"
-            @click="showInput"
-          >+ 添加标签</el-button>
+        <el-form-item label="标签" prop="labels" required>
+          <el-tag :key="tag" v-for="tag in form.labels" closable :disable-transitions="false" @close="closeTag(tag)">{{tag}}</el-tag>
+          <el-input class="input-new-tag" v-if="inputVisible" v-model="inputValue" ref="saveTagInput" size="small" @keyup.enter.native="inputConfirm" @blur="inputConfirm"></el-input>
+          <el-button v-else class="button-new-tag" size="small" @click="showInput">+ 添加标签</el-button>
         </el-form-item>
       </el-form>
-      <div
-        slot="footer"
-        class="dialog-footer"
-      >
-        <el-button
-          size="small"
-          @click="isCreate = false"
-        >取 消</el-button>
-        <el-button
-          size="small"
-          type="primary"
-          @click="save('createRegular')"
-        >确 定</el-button>
+      <div slot="footer" class="dialog-footer">
+        <el-button size="small" @click="isCreate = false">取 消</el-button>
+        <el-button size="small" type="primary" @click="save('createRegular')">确 定</el-button>
       </div>
     </el-dialog>
   </div>

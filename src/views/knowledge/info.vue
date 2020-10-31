@@ -13,9 +13,7 @@
     <div class="docxs-item">
       <img class="docxs-item-img" :src="imgItemSrc" />
       <div class="docxs-item-operate">
-        <el-button type="text" icon="el-icon-document" @click="downloadWord"
-          >下载Word</el-button
-        >
+        <el-button type="text" icon="el-icon-document" @click="downloadWord">下载Word</el-button>
       </div>
     </div>
   </div>
@@ -142,12 +140,12 @@ export default {
         .then((res) => {
           this.info = res.data;
           this.prettierList = this.parsing(res.data.context);
-        }).then(()=>{
+        }).then(() => {
           this.doRead();
         })
     },
-    doRead(){
-      this.$axios.post("/task/md/read",{ id: this.$route.query.id });
+    doRead() {
+      this.$axios.post("/task/md/read", { id: this.$route.query.id });
     },
     parsing(context) {
       let post = {};

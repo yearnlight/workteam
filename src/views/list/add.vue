@@ -8,92 +8,35 @@
         </div>
       </el-form-item>
       <el-form-item label="任务名称" prop="name">
-        <el-input
-          v-model="formData.name"
-          placeholder="请输入任务名称"
-          :maxlength="255"
-          show-word-limit
-          clearable
-          :style="{ width: '100%' }"
-        ></el-input>
+        <el-input v-model="formData.name" placeholder="请输入任务名称" :maxlength="255" show-word-limit clearable :style="{ width: '100%' }"></el-input>
       </el-form-item>
       <el-form-item label="标签" prop="tag">
-        <el-input
-          v-model="formData.tag"
-          placeholder="请输入标签"
-          :maxlength="10"
-          show-word-limit
-          clearable
-          :style="{ width: '100%' }"
-        ></el-input>
+        <el-input v-model="formData.tag" placeholder="请输入标签" :maxlength="10" show-word-limit clearable :style="{ width: '100%' }"></el-input>
         <div class="reminderInline">任务分
           <span class="reminder-high">大类</span>，或者
           <span class="reminder-high">特殊标记</span>
         </div>
       </el-form-item>
       <el-form-item label="所有者" prop="owner" v-if="!isAdd">
-        <el-select
-          filterable
-          multiple
-          v-model="formData.owner"
-          placeholder="请选择所有者"
-          clearable
-          :style="{ width: '100%' }"
-        >
-          <el-option
-            v-for="(item, index) in userList"
-            :key="index"
-            :label="item.name"
-            :value="item.name"
-            :disabled="item.disabled"
-          >
-            <span
-              :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`"
-            >{{ item.name }}</span>
+        <el-select filterable multiple v-model="formData.owner" placeholder="请选择所有者" clearable :style="{ width: '100%' }">
+          <el-option v-for="(item, index) in userList" :key="index" :label="item.name" :value="item.name" :disabled="item.disabled">
+            <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`">{{ item.name }}</span>
           </el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="状态" prop="status">
-        <el-select
-          v-if="isAdd"
-          v-model="formData.status"
-          placeholder="请选择状态"
-          clearable
-          :style="{ width: '100%' }"
-        >
-          <el-option
-            v-for="(item, index) in $enum.statusList.filter((n) => n.isInit)"
-            :key="index"
-            :label="item.label"
-            :value="item.value"
-            :disabled="item.disabled"
-          >
-            <span
-              :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${
+        <el-select v-if="isAdd" v-model="formData.status" placeholder="请选择状态" clearable :style="{ width: '100%' }">
+          <el-option v-for="(item, index) in $enum.statusList.filter((n) => n.isInit)" :key="index" :label="item.label" :value="item.value" :disabled="item.disabled">
+            <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${
                 $util.displayEnum($enum.statusList, item.value).color
-              };`"
-            >{{ item.label }}</span>
+              };`">{{ item.label }}</span>
           </el-option>
         </el-select>
-        <el-select
-          v-else
-          v-model="formData.status"
-          placeholder="请选择状态"
-          clearable
-          :style="{ width: '100%' }"
-        >
-          <el-option
-            v-for="(item, index) in $enum.statusList"
-            :key="index"
-            :label="item.label"
-            :value="item.value"
-            :disabled="item.disabled"
-          >
-            <span
-              :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${
+        <el-select v-else v-model="formData.status" placeholder="请选择状态" clearable :style="{ width: '100%' }">
+          <el-option v-for="(item, index) in $enum.statusList" :key="index" :label="item.label" :value="item.value" :disabled="item.disabled">
+            <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${
                 $util.displayEnum($enum.statusList, item.value).color
-              };`"
-            >{{ item.label }}</span>
+              };`">{{ item.label }}</span>
           </el-option>
         </el-select>
         <el-popover placement="right" trigger="hover" popper-class="reminder">
@@ -103,80 +46,43 @@
       </el-form-item>
       <el-form-item label="优先级" prop="priority">
         <el-radio-group v-model="formData.priority" size="medium">
-          <el-radio
-            v-for="(item, index) in $enum.prioritys"
-            :key="index"
-            :label="item.value"
-            :disabled="item.disabled"
-          >{{ item.label }}</el-radio>
+          <el-radio v-for="(item, index) in $enum.prioritys" :key="index" :label="item.value" :disabled="item.disabled">{{ item.label }}</el-radio>
         </el-radio-group>
       </el-form-item>
       <el-row v-if="!isAdd">
         <el-col :span="6">
           <el-form-item label="预估开始时间" prop="startDate">
-            <el-date-picker
-              :picker-options="pickerOptions"
-              :disabled="disabledUpdate"
-              v-model="formData.startDate"
-              format="yyyy-MM-dd"
-              value-format="yyyy-MM-dd"
-              type="date"
-              placeholder="开始日期"
-            ></el-date-picker>
+            <el-date-picker :picker-options="pickerOptions" :disabled="disabledUpdate" v-model="formData.startDate" format="yyyy-MM-dd" value-format="yyyy-MM-dd" type="date" placeholder="开始日期"></el-date-picker>
           </el-form-item>
         </el-col>
         <el-col :span="6">
           <el-form-item label-width="10px" prop="startSmallTime">
-            <el-time-select
-              :disabled="disabledUpdate"
-              v-model="formData.startSmallTime"
-              :picker-options="{
+            <el-time-select :disabled="disabledUpdate" v-model="formData.startSmallTime" :picker-options="{
                 start: '09:00',
                 step: '00:60',
                 end: '18:00',
-              }"
-              placeholder="选择时间"
-            ></el-time-select>
+              }" placeholder="选择时间"></el-time-select>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row v-if="!isAdd">
         <el-col :span="6">
           <el-form-item label="预估完结时间" prop="endDate">
-            <el-date-picker
-              :picker-options="pickerOptions"
-              :disabled="disabledUpdate"
-              v-model="formData.endDate"
-              format="yyyy-MM-dd"
-              value-format="yyyy-MM-dd"
-              type="date"
-              placeholder="开始日期"
-            ></el-date-picker>
+            <el-date-picker :picker-options="pickerOptions" :disabled="disabledUpdate" v-model="formData.endDate" format="yyyy-MM-dd" value-format="yyyy-MM-dd" type="date" placeholder="开始日期"></el-date-picker>
           </el-form-item>
         </el-col>
         <el-col :span="6">
           <el-form-item label-width="10px" prop="endSmallTime">
-            <el-time-select
-              :disabled="disabledUpdate"
-              v-model="formData.endSmallTime"
-              :picker-options="{
+            <el-time-select :disabled="disabledUpdate" v-model="formData.endSmallTime" :picker-options="{
                 start: '09:00',
                 step: '00:60',
                 end: '18:00',
-              }"
-              placeholder="选择时间"
-            ></el-time-select>
+              }" placeholder="选择时间"></el-time-select>
           </el-form-item>
         </el-col>
       </el-row>
       <el-form-item v-if="!isAdd" label="预估时间" prop="estimatedTime">
-        <el-input
-          :disabled="true"
-          v-model="formData.estimatedTime"
-          placeholder="请输入预估时间"
-          clearable
-          :style="{ width: '100%' }"
-        ></el-input>
+        <el-input :disabled="true" v-model="formData.estimatedTime" placeholder="请输入预估时间" clearable :style="{ width: '100%' }"></el-input>
         <el-popover placement="right" trigger="hover" popper-class="reminder">
           预估时间：根据预估完结时间 - 预估开始时间 = 预估时间
           <span class="reminder-high">（每天工作时间9小时计算,每周按照6天工作日不计算周天）</span>
@@ -188,32 +94,12 @@
         </div>
       </el-form-item>
       <el-form-item v-if="!isAdd" label="预估说明" prop="estimatedInfo">
-        <el-input
-          type="textarea"
-          :autosize="{ minRows: 6, maxRows: 10 }"
-          v-model="formData.estimatedInfo"
-          placeholder="请输入预估时间说明信息"
-          clearable
-          :style="{ width: '100%' }"
-        ></el-input>
+        <el-input type="textarea" :autosize="{ minRows: 6, maxRows: 10 }" v-model="formData.estimatedInfo" placeholder="请输入预估时间说明信息" clearable :style="{ width: '100%' }"></el-input>
       </el-form-item>
       <el-form-item label="创建者" prop="creator">
-        <el-select
-          v-model="formData.creator"
-          placeholder="请选择创建者"
-          clearable
-          :style="{ width: '100%' }"
-        >
-          <el-option
-            v-for="(item, index) in userList"
-            :key="index"
-            :label="item.name"
-            :value="item.name"
-            :disabled="item.disabled"
-          >
-            <span
-              :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`"
-            >{{ item.name }}</span>
+        <el-select v-model="formData.creator" placeholder="请选择创建者" clearable :style="{ width: '100%' }">
+          <el-option v-for="(item, index) in userList" :key="index" :label="item.name" :value="item.name" :disabled="item.disabled">
+            <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`">{{ item.name }}</span>
           </el-option>
         </el-select>
       </el-form-item>
@@ -228,14 +114,7 @@
         </div>
       </el-form-item>
       <el-form-item v-if="!isAdd" label="更新说明" prop="updateInfo">
-        <el-input
-          type="textarea"
-          :autosize="{ minRows: 6, maxRows: 10 }"
-          v-model="formData.updateInfo"
-          placeholder="请输入更新说明信息"
-          clearable
-          :style="{ width: '100%' }"
-        ></el-input>
+        <el-input type="textarea" :autosize="{ minRows: 6, maxRows: 10 }" v-model="formData.updateInfo" placeholder="请输入更新说明信息" clearable :style="{ width: '100%' }"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submitForm">提交</el-button>
@@ -412,7 +291,7 @@ export default {
     }
     this.getUserList();
   },
-  mounted() {},
+  mounted() { },
   methods: {
     calcDur() {
       if (
@@ -487,10 +366,10 @@ export default {
         } else {
           this.formData.startTime = `${this.formData.startDate} ${
             this.formData.startSmallTime
-          }`;
+            }`;
           this.formData.endTime = `${this.formData.endDate} ${
             this.formData.endSmallTime
-          }`;
+            }`;
           if (this.formData.status == "backlog") {
             this.$message.warning(
               "任务状态不允许更新成待办，分配后的任务未到开始时间默认设置成待办"

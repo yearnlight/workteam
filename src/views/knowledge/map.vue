@@ -1,46 +1,25 @@
 <template>
   <div class="map">
     <div class="map-project">
-      <el-button
-        type="primary"
-        icon="el-icon-plus"
-        @click="add"
-      >创建项</el-button>
+      <el-button type="primary" icon="el-icon-plus" @click="add">创建项</el-button>
       <div id="mountNode"></div>
     </div>
     <div class="map-info">
       <div class="map-info-operate">
         <span class="map-info-title">文档</span>
         <div class="map-info-operate-item">
-          <el-input
-            size="small"
-            placeholder="请输入标题（回车键搜索）"
-            suffix-icon="el-icon-search"
-            v-model="searchTitle"
-            @keyup.enter.native="searchDocs"
-          >
+          <el-input size="small" placeholder="请输入标题（回车键搜索）" suffix-icon="el-icon-search" v-model="searchTitle" @keyup.enter.native="searchDocs">
           </el-input>
-          <el-button
-            type="primary"
-            icon="el-icon-plus"
-            @click="publicD"
-          >发布文档</el-button>
+          <el-button type="primary" icon="el-icon-plus" @click="publicD">发布文档</el-button>
         </div>
 
       </div>
       <div class="docs">
-        <div
-          class="nodata"
-          v-if="!(docs && docs.length)"
-        >
+        <div class="nodata" v-if="!(docs && docs.length)">
           <img :src="nodataSvg" />
           <span class="nodata-text">暂无文档</span>
         </div>
-        <div
-          class="docs-item"
-          v-for="(item,index) in docs"
-          :key="index"
-        >
+        <div class="docs-item" v-for="(item,index) in docs" :key="index">
           <div class="docs-item-content">
             <div class="docs-item-meta">
               {{item.creator}} · {{item.createtime}}
@@ -49,135 +28,52 @@
                 {{item.readtime}}
               </span>
             </div>
-            <div
-              class="docs-item-title"
-              @click="toInfo(item.id)"
-            >{{item.title}}</div>
+            <div class="docs-item-title" @click="toInfo(item.id)">{{item.title}}</div>
             <div class="docs-item-sub">
               <div class="action">
-                <span
-                  class="label"
-                  :style="`border: 1px solid ${item.color};color:${item.color}`"
-                  v-if="item.label"
-                >{{item.label}}</span>
+                <span class="label" :style="`border: 1px solid ${item.color};color:${item.color}`" v-if="item.label">{{item.label}}</span>
               </div>
             </div>
           </div>
           <div class="docs-item-operate">
-            <span
-              class="el-icon-edit blue"
-              @click="update(item.id)"
-            ></span>
-            <span
-              class="el-icon-delete red"
-              @click="del(item.id)"
-            ></span>
+            <span class="el-icon-edit blue" @click="update(item.id)"></span>
+            <span class="el-icon-delete red" @click="del(item.id)"></span>
           </div>
         </div>
       </div>
     </div>
-    <el-dialog
-      v-bind="$attrs"
-      v-on="$listeners"
-      :visible.sync="isAdd"
-      @close="onClose"
-      title="创建项"
-    >
-      <el-form
-        ref="pageForm"
-        :model="formData"
-        :rules="rules"
-        size="small"
-        label-width="180px"
-      >
-        <el-form-item
-          label="项目名称"
-          prop="name"
-        >
-          <el-input
-            v-model="formData.name"
-            placeholder="请输入项目名称"
-            clearable
-          ></el-input>
+    <el-dialog v-bind="$attrs" v-on="$listeners" :visible.sync="isAdd" @close="onClose" title="创建项">
+      <el-form ref="pageForm" :model="formData" :rules="rules" size="small" label-width="180px">
+        <el-form-item label="项目名称" prop="name">
+          <el-input v-model="formData.name" placeholder="请输入项目名称" clearable></el-input>
         </el-form-item>
-        <el-form-item
-          label="项目描述"
-          prop="desc"
-        >
-          <el-input
-            v-model="formData.desc"
-            type="textarea"
-            placeholder="请输入项目描述"
-            :autosize="{minRows: 4, maxRows: 4}"
-          ></el-input>
+        <el-form-item label="项目描述" prop="desc">
+          <el-input v-model="formData.desc" type="textarea" placeholder="请输入项目描述" :autosize="{minRows: 4, maxRows: 4}"></el-input>
         </el-form-item>
-        <el-form-item
-          label="项目类型"
-          prop="type"
-        >
-          <el-select
-            v-model="formData.type"
-            placeholder="请选择项目类型"
-            clearable
-          >
-            <el-option
-              v-for="(item, index) in typeOptions"
-              :key="index"
-              :label="item.label"
-              :value="item.value"
-              :disabled="item.disabled"
-            >
+        <el-form-item label="项目类型" prop="type">
+          <el-select v-model="formData.type" placeholder="请选择项目类型" clearable>
+            <el-option v-for="(item, index) in typeOptions" :key="index" :label="item.label" :value="item.value" :disabled="item.disabled">
               <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${$util.displayEnum($enum.projectTypeList,item.value).color};`">{{item.label}}</span>
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item
-          label="项目地址"
-          prop="url"
-        >
-          <el-input
-            v-model="formData.url"
-            placeholder="请输入项目地址"
-            clearable
-          ></el-input>
+        <el-form-item label="项目地址" prop="url">
+          <el-input v-model="formData.url" placeholder="请输入项目地址" clearable></el-input>
         </el-form-item>
-        <el-form-item
-          label="田主"
-          prop="hero"
-        >
-          <el-select
-            v-model="formData.hero"
-            filterable
-            placeholder="请选择田主"
-            clearable
-          >
-            <el-option
-              v-for="(item, index) in userList"
-              :key="index"
-              :label="item.name"
-              :value="item.name"
-              :disabled="item.disabled"
-            >
+        <el-form-item label="田主" prop="hero">
+          <el-select v-model="formData.hero" filterable placeholder="请选择田主" clearable>
+            <el-option v-for="(item, index) in userList" :key="index" :label="item.name" :value="item.name" :disabled="item.disabled">
               <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`">{{item.name}}</span>
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item
-          label="评分"
-          prop="star"
-        >
-          <el-rate
-            v-model="formData.star"
-            :max="5"
-          ></el-rate>
+        <el-form-item label="评分" prop="star">
+          <el-rate v-model="formData.star" :max="5"></el-rate>
         </el-form-item>
       </el-form>
       <div slot="footer">
         <el-button @click="isAdd = false;">取消</el-button>
-        <el-button
-          type="primary"
-          @click="save"
-        >确定</el-button>
+        <el-button type="primary" @click="save">确定</el-button>
       </div>
     </el-dialog>
   </div>

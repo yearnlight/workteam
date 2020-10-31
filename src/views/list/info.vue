@@ -2,13 +2,7 @@
   <div class="addTask">
     <el-tabs v-model="activeName">
       <el-tab-pane label="任务详情" name="detail">
-        <el-form
-          ref="elForm"
-          :model="formData"
-          size="small"
-          label-width="160px"
-          label-suffix="："
-        >
+        <el-form ref="elForm" :model="formData" size="small" label-width="160px" label-suffix="：">
           <el-form-item label>
             <div class="reminder">
               按照业务需求针对任务规划，创建出合理任务项，
@@ -22,61 +16,43 @@
             <span>{{ formData.owner }}</span>
           </el-form-item>
           <el-form-item label="标签" prop="tag">
-            <span v-if="formData.tag" class="action"
-              ><span class="label">{{ formData.tag }}</span></span
-            >
+            <span v-if="formData.tag" class="action"><span class="label">{{ formData.tag }}</span></span>
           </el-form-item>
           <el-form-item label="状态" prop="status">
-            <span
-              :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${
+            <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${
                 $util.displayEnum($enum.statusList, formData.status).color
-              };`"
-              >{{
-                $util.displayEnum($enum.statusList, formData.status).label
-              }}</span
-            >
+              };`">{{
+              $util.displayEnum($enum.statusList, formData.status).label
+              }}</span>
           </el-form-item>
           <el-form-item label="优先级" prop="priority">
             <span>{{
               $util.displayEnum($enum.prioritys, formData.priority).label
-            }}</span>
+              }}</span>
           </el-form-item>
           <el-form-item label="预估日期范围" prop="startEndTime">
-            <span
-              :class="{
+            <span :class="{
                 'line-through':
                   formData.status == 'shelve' ||
                   formData.status == 'waitAssign',
-              }"
-              >{{ formData.startTime }} - {{ formData.endTime }}</span
-            >
+              }">{{ formData.startTime }} - {{ formData.endTime }}</span>
           </el-form-item>
           <el-form-item label="预估时间" prop="estimatedTime">
-            <span
-              :class="{
+            <span :class="{
                 'line-through':
                   formData.status == 'shelve' ||
                   formData.status == 'waitAssign',
-              }"
-              >{{ formData.estimatedTime | formatDur }}</span
-            >
+              }">{{ formData.estimatedTime | formatDur }}</span>
           </el-form-item>
-          <el-form-item
-            :label="formData.overtime > 0 ? '超时时间' : '剩余时间'"
-            prop="overtime"
-          >
-            <span
-              :class="[
+          <el-form-item :label="formData.overtime > 0 ? '超时时间' : '剩余时间'" prop="overtime">
+            <span :class="[
                 {
                   'line-through':
                     formData.status == 'shelve' ||
                     formData.status == 'waitAssign',
                 },
                 { red: formData.overtime > 0, warn: formData.overtime < 0 },
-              ]"
-              v-if="formData.overtime"
-              >{{ $util.formatTime(formData.overtime) }}</span
-            >
+              ]" v-if="formData.overtime">{{ $util.formatTime(formData.overtime) }}</span>
           </el-form-item>
           <el-form-item label="预估说明" prop="estimatedInfo">
             <pre class="pre">
@@ -89,12 +65,7 @@
           <el-form-item label="已完成%" prop="finished" required>
             <div class="spans">
               <el-col :span="21">
-                <el-slider
-                  :disabled="true"
-                  :max="100"
-                  :step="1"
-                  v-model="formData.finished"
-                ></el-slider>
+                <el-slider :disabled="true" :max="100" :step="1" v-model="formData.finished"></el-slider>
               </el-col>
               <el-col :span="3">
                 <span class="spans-sum">{{ formData.finished }} %</span>
@@ -108,13 +79,7 @@
       </el-tab-pane>
       <el-tab-pane label="任务跟踪" name="log">
         <el-timeline>
-          <el-timeline-item
-            :color="$util.displayEnum($enum.statusList, item.status).color"
-            v-for="(item, index) in logs"
-            :key="index"
-            :timestamp="item.updatetime"
-            placement="top"
-          >
+          <el-timeline-item :color="$util.displayEnum($enum.statusList, item.status).color" v-for="(item, index) in logs" :key="index" :timestamp="item.updatetime" placement="top">
             <el-card>
               <p>
                 <label>操作者：</label>
@@ -122,14 +87,11 @@
               </p>
               <p>
                 <label>状态：</label>
-                <span
-                  :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${
+                <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${
                     $util.displayEnum($enum.statusList, item.status).color
-                  };`"
-                  >{{
-                    $util.displayEnum($enum.statusList, item.status).label
-                  }}</span
-                >
+                  };`">{{
+                  $util.displayEnum($enum.statusList, item.status).label
+                  }}</span>
               </p>
               <p>
                 <label>进度：</label>
@@ -167,7 +129,7 @@ export default {
       this.getTaskLogs(this.$route.query.id);
     }
   },
-  mounted() {},
+  mounted() { },
   methods: {
     getTaskLogs(id) {
       this.$axios.post("/task/record", { taskId: id }).then((res) => {

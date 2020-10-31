@@ -1,142 +1,42 @@
 <template>
   <div class="webssh">
     <div class="webssh-hosts">
-      <el-button
-        size="mini"
-        class="webssh-hosts-add"
-        icon="el-icon-plus"
-        @click="add"
-      >添加机器</el-button>
-      <div
-        @click="Login(item,index + 1)"
-        :class="['webssh-hosts-item']"
-        v-for="(item,index) in hosts"
-        :key="index"
-      >
+      <el-button size="mini" class="webssh-hosts-add" icon="el-icon-plus" @click="add">添加机器</el-button>
+      <div @click="Login(item,index + 1)" :class="['webssh-hosts-item']" v-for="(item,index) in hosts" :key="index">
         <span :class="['el-icon-monitor','console-icon']"></span><span :class="[{'active':seletedItem.ip == item.ip},'console-text']">{{item.alias}}({{item.ip}})</span>
       </div>
     </div>
     <div class="console">
-      <div
-        id="terminal"
-        class="console-terminal"
-        v-if="!seletedItem.ip"
-      ></div>
-      <div
-        v-show="seletedItem.ip == item.ip"
-        v-for="(item,index) in hosts"
-        :id="`terminal${index + 1}`"
-        class="console-terminal"
-        :key="index"
-      ></div>
+      <div id="terminal" class="console-terminal" v-if="!seletedItem.ip"></div>
+      <div v-show="seletedItem.ip == item.ip" v-for="(item,index) in hosts" :id="`terminal${index + 1}`" class="console-terminal" :key="index"></div>
     </div>
-    <el-dialog
-      :visible.sync="isAdd"
-      @close="onClose"
-      title="添加机器"
-    >
-      <el-form
-        ref="pageForm"
-        :model="formData"
-        :rules="rules"
-        size="small"
-        label-width="160px"
-      >
-        <el-form-item
-          label="主机IP(H)"
-          prop="ip"
-        >
-          <el-input
-            v-model="formData.ip"
-            placeholder="请输入主机IP(H)"
-            clearable
-            prefix-icon='el-icon-s-platform'
-            :style="{width: '90%'}"
-          ></el-input>
+    <el-dialog :visible.sync="isAdd" @close="onClose" title="添加机器">
+      <el-form ref="pageForm" :model="formData" :rules="rules" size="small" label-width="160px">
+        <el-form-item label="主机IP(H)" prop="ip">
+          <el-input v-model="formData.ip" placeholder="请输入主机IP(H)" clearable prefix-icon='el-icon-s-platform' :style="{width: '90%'}"></el-input>
         </el-form-item>
-        <el-form-item
-          label="协议(P)"
-          prop="protocol"
-        >
-          <el-input
-            v-model="formData.protocol"
-            placeholder="请输入协议(P)"
-            :disabled='true'
-            clearable
-            :style="{width: '90%'}"
-          ></el-input>
+        <el-form-item label="协议(P)" prop="protocol">
+          <el-input v-model="formData.protocol" placeholder="请输入协议(P)" :disabled='true' clearable :style="{width: '90%'}"></el-input>
         </el-form-item>
-        <el-form-item
-          label="端口号(O)"
-          prop="port"
-        >
-          <el-input
-            v-model="formData.port"
-            placeholder="请输入端口号(O)"
-            readonly
-            :disabled='true'
-            :style="{width: '90%'}"
-          ></el-input>
+        <el-form-item label="端口号(O)" prop="port">
+          <el-input v-model="formData.port" placeholder="请输入端口号(O)" readonly :disabled='true' :style="{width: '90%'}"></el-input>
         </el-form-item>
-        <el-form-item
-          label="别名(A)"
-          prop="alias"
-        >
-          <el-input
-            v-model="formData.alias"
-            placeholder="请输入别名(A)"
-            clearable
-            :style="{width: '90%'}"
-            maxlength="5"
-            show-word-limit
-          ></el-input>
+        <el-form-item label="别名(A)" prop="alias">
+          <el-input v-model="formData.alias" placeholder="请输入别名(A)" clearable :style="{width: '90%'}" maxlength="5" show-word-limit></el-input>
         </el-form-item>
-        <el-form-item
-          label="用户名(U)"
-          prop="username"
-        >
-          <el-input
-            v-model="formData.username"
-            placeholder="请输入用户名(U)"
-            clearable
-            prefix-icon='el-icon-user'
-            :style="{width: '90%'}"
-          ></el-input>
+        <el-form-item label="用户名(U)" prop="username">
+          <el-input v-model="formData.username" placeholder="请输入用户名(U)" clearable prefix-icon='el-icon-user' :style="{width: '90%'}"></el-input>
         </el-form-item>
-        <el-form-item
-          label="密码(P)"
-          prop="password"
-        >
-          <el-input
-            v-model="formData.password"
-            placeholder="请输入密码(P)"
-            clearable
-            prefix-icon='el-icon-key'
-            show-password
-            :style="{width: '90%'}"
-          ></el-input>
+        <el-form-item label="密码(P)" prop="password">
+          <el-input v-model="formData.password" placeholder="请输入密码(P)" clearable prefix-icon='el-icon-key' show-password :style="{width: '90%'}"></el-input>
         </el-form-item>
-        <el-form-item
-          label="说明(D)"
-          prop="desc"
-        >
-          <el-input
-            v-model="formData.desc"
-            type="textarea"
-            placeholder="请输入说明(D)"
-            :maxlength="100"
-            show-word-limit
-            :autosize="{minRows: 3, maxRows: 3}"
-            :style="{width: '90%'}"
-          ></el-input>
+        <el-form-item label="说明(D)" prop="desc">
+          <el-input v-model="formData.desc" type="textarea" placeholder="请输入说明(D)" :maxlength="100" show-word-limit :autosize="{minRows: 3, maxRows: 3}" :style="{width: '90%'}"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer">
         <el-button @click="isAdd = false">取消</el-button>
-        <el-button
-          type="primary"
-          @click="save"
-        >确定</el-button>
+        <el-button type="primary" @click="save">确定</el-button>
       </div>
     </el-dialog>
   </div>

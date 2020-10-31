@@ -1,32 +1,14 @@
 <template>
   <div class="store-card">
-    <el-card
-      shadow="hover"
-      :body-style="{ padding: '0px' }"
-      v-for="(item,index) in stores"
-      :key="index"
-    >
-      <div
-        class="store-card-icon"
-        @click="goto(item)"
-      >
-        <img
-          v-if="item.icon"
-          :src="item.icon"
-        />
-        <card-img
-          v-else
-          :text="item.name"
-          :fill="item.color"
-        ></card-img>
+    <el-card shadow="hover" :body-style="{ padding: '0px' }" v-for="(item,index) in stores" :key="index">
+      <div class="store-card-icon" @click="goto(item)">
+        <img v-if="item.icon" :src="item.icon" />
+        <card-img v-else :text="item.name" :fill="item.color"></card-img>
       </div>
 
       <div style="padding: 14px;">
         <el-collapse>
-          <el-collapse-item
-            :title="item.name"
-            :name="index"
-          >
+          <el-collapse-item :title="item.name" :name="index">
             <div>
               <span class="tag">【{{item.label}}】</span>{{item.desc}}
             </div>
@@ -35,10 +17,7 @@
         <div class="bottom clearfix">
           <time class="time">{{item.createtime}} {{item.creator}}</time>
           <span>
-            <span
-              class="el-icon-delete red"
-              @click="del(item)"
-            ></span>
+            <span class="el-icon-delete red" @click="del(item)"></span>
           </span>
         </div>
       </div>
@@ -91,7 +70,7 @@ export default {
     align-items: center;
     cursor: pointer;
     height: 140px;
-    img{
+    img {
       padding: 20px;
       max-width: calc(100% - 40px);
       max-height: 80%;
