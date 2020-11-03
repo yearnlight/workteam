@@ -15,31 +15,33 @@
 
       </div>
       <div class="docs">
-        <div class="nodata" v-if="!(docs && docs.length)">
-          <img :src="nodataSvg" />
-          <span class="nodata-text">暂无文档</span>
-        </div>
-        <div class="docs-item" v-for="(item,index) in docs" :key="index">
-          <div class="docs-item-content">
-            <div class="docs-item-meta">
-              {{item.creator}} · {{item.createtime}}
-              <span class="readtime">
-                <span class="el-icon-view"></span>
-                {{item.readtime}}
-              </span>
-            </div>
-            <div class="docs-item-title" @click="toInfo(item.id)">{{item.title}}</div>
-            <div class="docs-item-sub">
-              <div class="action">
-                <span class="label" :style="`border: 1px solid ${item.color};color:${item.color}`" v-if="item.label">{{item.label}}</span>
+        <el-scrollbar style="height:calc(100%)">
+          <div class="nodata" v-if="!(docs && docs.length)">
+            <img :src="nodataSvg" />
+            <span class="nodata-text">暂无文档</span>
+          </div>
+          <div class="docs-item" v-for="(item,index) in docs" :key="index">
+            <div class="docs-item-content">
+              <div class="docs-item-meta">
+                {{item.creator}} · {{item.createtime}}
+                <span class="readtime">
+                  <span class="el-icon-view"></span>
+                  {{item.readtime}}
+                </span>
+              </div>
+              <div class="docs-item-title" @click="toInfo(item.id)">{{item.title}}</div>
+              <div class="docs-item-sub">
+                <div class="action">
+                  <span class="label" :style="`border: 1px solid ${item.color};color:${item.color}`" v-if="item.label">{{item.label}}</span>
+                </div>
               </div>
             </div>
+            <div class="docs-item-operate">
+              <span class="el-icon-edit blue" @click="update(item.id)"></span>
+              <span class="el-icon-delete red" @click="del(item.id)"></span>
+            </div>
           </div>
-          <div class="docs-item-operate">
-            <span class="el-icon-edit blue" @click="update(item.id)"></span>
-            <span class="el-icon-delete red" @click="del(item.id)"></span>
-          </div>
-        </div>
+        </el-scrollbar>
       </div>
     </div>
     <el-dialog v-bind="$attrs" v-on="$listeners" :visible.sync="isAdd" @close="onClose" title="创建项">

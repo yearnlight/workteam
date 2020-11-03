@@ -64,5 +64,6 @@ module.exports = {
       msg: "",
       data: { url: "/md/output.docx", title: title }
     };
-  }
+  },
+  setEvent(){}
 };
