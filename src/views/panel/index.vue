@@ -20,7 +20,10 @@
               >
 
                 <div
-                  class="name"
+                  :class="['name']"
+                  :style="`border-left: 3px solid ${
+            $util.displayEnum($enum.prioritys, item.priority).color
+          };`"
                   @click="info(item)"
                 >
                   {{ item.name }}
@@ -687,7 +690,9 @@ export default {
         .content {
           flex: 3;
           .name {
-            padding-bottom: 10px;
+            padding-left: 5px;
+            margin-bottom: 10px;
+            font-size: 13px;
             cursor: pointer;
             font-weight: 600;
             overflow: hidden;
