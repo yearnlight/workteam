@@ -79,6 +79,11 @@ const routes = [
         path: "/work/store",//服务应用
         component: () => import("@/views/store/index.vue"),
         name: "store"
+      },
+      {
+        path: "/work/event",//事件管理
+        component: () => import("@/views/event/index.vue"),
+        name: "event"
       }
     ]
   }

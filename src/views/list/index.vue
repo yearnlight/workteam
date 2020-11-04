@@ -1,13 +1,35 @@
 <template>
   <div class="list">
     <el-scrollbar style="height:calc(100% - 20px)">
-      <v-table v-loading="loading" name="list" :data="list" @del="del" @edit="edit">
+      <v-table
+        v-loading="loading"
+        name="list"
+        :data="list"
+        @del="del"
+        @edit="edit"
+      >
         <div class="search">
-          <el-button type="primary" icon="el-icon-plus" @click="add">创建任务</el-button>
+          <el-button
+            type="primary"
+            icon="el-icon-plus"
+            @click="add"
+          >创建任务</el-button>
           <div class="search-param">
             <div class="search-param-item">
-              <el-select filterable multiple v-model="inputParams.status" placeholder="请选择状态" clearable>
-                <el-option v-for="(item, index) in $enum.statusList" :key="index" :label="item.label" :value="item.value" :disabled="item.disabled">
+              <el-select
+                filterable
+                multiple
+                v-model="inputParams.status"
+                placeholder="请选择状态"
+                clearable
+              >
+                <el-option
+                  v-for="(item, index) in $enum.statusList"
+                  :key="index"
+                  :label="item.label"
+                  :value="item.value"
+                  :disabled="item.disabled"
+                >
                   <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${
                     $util.displayEnum($enum.statusList, item.value).color
                   };`">{{ item.label }}</span>
@@ -15,22 +37,60 @@
               </el-select>
             </div>
             <div class="search-param-item">
-              <el-select filterable multiple v-model="inputParams.owner" placeholder="请选择所有者" clearable>
-                <el-option v-for="(item, index) in userList" :key="index" :label="item.name" :value="item.name" :disabled="item.disabled">
+              <el-select
+                filterable
+                multiple
+                v-model="inputParams.owner"
+                placeholder="请选择所有者"
+                clearable
+              >
+                <el-option
+                  v-for="(item, index) in userList"
+                  :key="index"
+                  :label="item.name"
+                  :value="item.name"
+                  :disabled="item.disabled"
+                >
                   <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`">{{ item.name }}</span>
                 </el-option>
               </el-select>
             </div>
             <div class="search-param-item">
-              <el-date-picker format="yyyy-MM-dd" value-format="yyyy-MM-dd" v-model="inputParams.daterange" type="daterange" align="right" unlink-panels range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" :picker-options="pickerOptions"></el-date-picker>
+              <el-date-picker
+                format="yyyy-MM-dd"
+                value-format="yyyy-MM-dd"
+                v-model="inputParams.daterange"
+                type="daterange"
+                align="right"
+                unlink-panels
+                range-separator="至"
+                start-placeholder="开始日期"
+                end-placeholder="结束日期"
+                :picker-options="pickerOptions"
+              ></el-date-picker>
             </div>
-            <el-button type="primary" @click="search">查询</el-button>
+            <el-button
+              type="primary"
+              @click="search"
+            >查询</el-button>
           </div>
         </div>
         <template #nameTag="slotProps">
-          <el-button type="text" @click="info(slotProps.rowData)">
-            <span v-if="slotProps.rowData.tag" class="tag">【{{ slotProps.rowData.tag }}】</span>{{ slotProps.rowData.name }}
-          </el-button>
+          <el-tooltip
+            :content="`【${ slotProps.rowData.tag }】${slotProps.rowData.name}`"
+            placement="top"
+            effect="light"
+          >
+            <el-button
+              type="text"
+              @click="info(slotProps.rowData)"
+            >
+              <span
+                v-if="slotProps.rowData.tag"
+                class="tag"
+              >【{{ slotProps.rowData.tag }}】</span>{{ slotProps.rowData.name }}
+            </el-button>
+          </el-tooltip>
         </template>
         <template #progress="slotProps">
           <el-progress :percentage="slotProps.rowData.finished"></el-progress>
@@ -68,16 +128,22 @@
           }">{{ slotProps.rowData.estimatedTime | formatDur }}</span>
         </template>
         <template #priority="slotProps">
-          <span class="priority" :style="`border-left: 3px solid ${
+          <span
+            class="priority"
+            :style="`border-left: 3px solid ${
             $util.displayEnum($enum.prioritys, slotProps.rowData.priority).color
-          };`">{{
+          };`"
+          >{{
             $util.displayEnum($enum.prioritys, slotProps.rowData.priority).label
             }}</span>
         </template>
         <template #status="slotProps">
-          <span class="status" :style="`background-color: ${
+          <span
+            class="status"
+            :style="`background-color: ${
             $util.displayEnum($enum.statusList, slotProps.rowData.status).color
-          };`">{{
+          };`"
+          >{{
             $util.displayEnum($enum.statusList, slotProps.rowData.status).label
             }}</span>
         </template>

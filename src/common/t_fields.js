@@ -5,7 +5,7 @@ export default {
       {
         prop: "name",
         label: "任务",
-        renderPage: "nameTag"
+        renderPage: "nameTag",
       },
       {
         prop: "owner",
