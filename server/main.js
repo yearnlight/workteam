@@ -9,6 +9,8 @@ const query = require("./pool"),
   moment = require("moment"),
   fs = require("fs"),
   path = require("path");
+// log4
+const logger = require('./utils/log4jsLogger');
 
 const KoaRouterInterceptor = require("koa-router-interceptor");
 
@@ -24,6 +26,7 @@ router.post("/task/login", async ctx => {
   if (res && res.length) {
     let userInfo = res[0];
     if (userInfo.pass != pass) {
+      logger.error(`登录密码错误===>${account, pass}`);
       ctx.response.body = { status: 400, msg: "密码错误", data: null };
     } else {
       let token = Uuid.v1();
@@ -159,7 +162,7 @@ router.post("/task/user/add", async ctx => {
   ];
   let insertStr =
     "insert into user(id,name,`key`,department,`group`,`team`,remark,createtime,pass,role) values ?";
-  res = await query(insertStr, [inputParams], function(err, result) {
+  res = await query(insertStr, [inputParams], function (err, result) {
     if (err) {
       console.log("[INSERT ERROR] - ", err.message);
       return;
@@ -516,7 +519,7 @@ router.post("/task/upload/files", async ctx => {
 
 router.post("/task/delete/files", async ctx => {
   let { fileName } = ctx.request.body;
-  fs.unlink(`/md/${fileName}`, function(err) {
+  fs.unlink(`/md/${fileName}`, function (err) {
     if (err) {
       throw err;
     }
@@ -719,6 +722,7 @@ app.use(
 app.use(
   KoaRouterInterceptor(router, async (ctx, next) => {
     let isLogin = false;
+    logger.info(`Request-URL:${ctx.path}`)
     // 登录界面直接放过
     if (ctx.path == "/task/login" || ctx.path == "/md/output.docx") {
       return true;
@@ -739,6 +743,7 @@ app.use(
       }
     }
     if (!isLogin) {
+      logger.error(`Auth faild.`)
       ctx.response.body = { status: 401, msg: "认证失败", data: null };
     }
     // 只有这个返回true，才会走koa-router配置的逻辑分发
@@ -752,4 +757,4 @@ app.use(router.allowedMethods());
 
 http.createServer(app.callback()).listen(4001);
 
-console.log("Task server success to run.");
+logger.info(`Task server success to run,port:4001.`);

@@ -2,6 +2,8 @@ let Koa = require("koa");
 const app = new Koa();
 let utf8 = require("utf8");
 let SSHClient = require("ssh2").Client;
+// log4
+const logger = require('./utils/log4jsLogger');
 
 let server = require("http")
   .createServer(app.callback())
@@ -11,36 +13,37 @@ let io = require("socket.io")(server);
 //创建SSH服务
 function createSSHServer(machineConfig, socket) {
   var ssh = new SSHClient();
+  logger.warn(`SSH CONNECTION SUCCESS,IP:${ip}.`)
   let { msgId, ip, username, password } = machineConfig;
   ssh
-    .on("ready", function() {
+    .on("ready", function () {
       socket.emit(
         msgId,
         "\r\n***" + ip + " SSH CONNECTION ESTABLISHED ***\r\n"
       );
-      ssh.shell(function(err, stream) {
+      ssh.shell(function (err, stream) {
         if (err) {
           return socket.emit(
             msgId,
             "\r\n*** SSH SHELL ERROR: " + err.message + " ***\r\n"
           );
         }
-        socket.on(msgId, function(data) {
+        socket.on(msgId, function (data) {
           stream.write(data);
         });
         stream
-          .on("data", function(d) {
+          .on("data", function (d) {
             socket.emit(msgId, utf8.decode(d.toString("binary")));
           })
-          .on("close", function() {
+          .on("close", function () {
             ssh.end();
           });
       });
     })
-    .on("close", function() {
+    .on("close", function () {
       socket.emit(msgId, "\r\n*** SSH CONNECTION CLOSED ***\r\n");
     })
-    .on("error", function(err) {
+    .on("error", function (err) {
       console.log(err);
       socket.emit(
         msgId,
@@ -55,14 +58,14 @@ function createSSHServer(machineConfig, socket) {
     });
 }
 
-io.on("connection", function(socket) {
-  socket.on("createSSHServer", function(machineConfig) {
+io.on("connection", function (socket) {
+  socket.on("createSSHServer", function (machineConfig) {
     //新建一个ssh连接
     console.log("createSSHServer");
     createSSHServer(machineConfig, socket);
   });
 
-  socket.on("disconnect", function() {
+  socket.on("disconnect", function () {
     console.log("user disconnected");
   });
 });
