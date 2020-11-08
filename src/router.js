@@ -84,6 +84,11 @@ const routes = [
         path: "/work/event",//事件管理
         component: () => import("@/views/event/index.vue"),
         name: "event"
+      },      
+      {
+        path: "/work/customComponent",//自定义组件
+        component: () => import("@/views/customComponent/index.vue"),
+        name: "event"
       }
     ]
   }
