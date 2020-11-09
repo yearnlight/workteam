@@ -22,7 +22,7 @@
         v-if="customItem.desc"
         v-highlight
       >
-        <pre><code>{{customItem.desc}}</code></pre>
+        <pre><code v-text="customItem.desc"></code></pre>
       </div>
     </div>
   </div>
