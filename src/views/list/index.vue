@@ -7,6 +7,7 @@
         :data="list"
         @del="del"
         @edit="edit"
+        @search="search"
       >
         <div class="search">
           <el-button

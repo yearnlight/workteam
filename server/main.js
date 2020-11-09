@@ -214,8 +214,7 @@ router.post("/task/list", async ctx => {
   let selectParamsStr = "";
   // 分页
   if (params.page && params.limit) {
-    selectSuffix = ` limit ${(params.page - 1) * params.limit}, ${params.page *
-      params.limit}`;
+    selectSuffix = ` limit ${(params.page - 1) * params.limit}, ${params.limit}`;
   }
   if (selectParams && selectParams.length) {
     selectParamsStr = `and  ${selectParams.join(" and ")}`;
@@ -227,6 +226,7 @@ router.post("/task/list", async ctx => {
   } else {
     selectStr = `${selectPrefix} where isDel = 0 ${selectParamsStr} order by endTime desc`;
   }
+  logger.info(`query task page:${selectStr}${selectSuffix},parames:${values}`);
   res = await query(`${selectStr}${selectSuffix}`, values);
   let totalRes = await query(selectStr, values);
 
