@@ -2,26 +2,14 @@
   <!-- 自定义组件 -->
   <div class="custom">
     <div class="custom-menu">
-      <div
-        @click="switchCom(item)"
-        :class="[{'active':customName == item.name},'custom-menu-item']"
-        v-for="(item,index) in customComponents"
-        :key="index"
-      >
+      <div @click="switchCom(item)" :class="[{'active':customName == item.name},'custom-menu-item']" v-for="(item,index) in customComponents" :key="index">
         {{item.title}}
       </div>
     </div>
 
     <div class="custom-component">
-      <component
-        class="custom-component-item"
-        :is="customName"
-      ></component>
-      <div
-        class="custom-component-desc"
-        v-if="customItem.desc"
-        v-highlight
-      >
+      <component class="custom-component-item" :is="customName"></component>
+      <div class="custom-component-desc" v-if="customItem.desc" v-highlight>
         <pre><code v-text="customItem.desc"></code></pre>
       </div>
     </div>
@@ -31,6 +19,7 @@
 <script>
 import matter from "./matter";
 import level from "./level";
+import guide from "./guide";
 import hljs from 'highlight.js';
 // 样式文件
 import 'highlight.js/styles/routeros.css';
@@ -53,7 +42,7 @@ export default {
       }
     }
   },
-  components: { matter, level },
+  components: { matter, level, guide },
   data() {
     return {
       customComponents: [
@@ -77,6 +66,15 @@ export default {
                     <level text="成功信息" level="success" effect="plain"></level>\n
                     <level text="信息" level="info" effect="plain"></level>\n
                     <level text="测试信息" level="test" effect="plain"></level>
+                ` },
+        {
+          title: "Guide 指南", name: "guide", desc: `
+                  <guide step="1" level="primary" title="提示信息" desc=""></guide>\n
+                  <guide step="2" level="danger" title="错误信息" desc=""></guide>\n
+                  <guide step="3" level="success" title="成功信息" desc=""></guide>\n
+                  <guide step="4" level="warning" title="警告信息" desc=""></guide>\n
+                  <guide step="5" level="info" title="一般信息" desc=""></guide>\n
+                  <guide step="6" level="test" title="测试信息" desc=""></guide>
                 ` },
       ],
       customName: "matter",
