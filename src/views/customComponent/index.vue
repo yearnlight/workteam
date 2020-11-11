@@ -2,6 +2,7 @@
   <!-- 自定义组件 -->
   <div class="custom">
     <div class="custom-menu">
+      <el-button size="mini" type="primary" icon="el-icon-plus">发布组件</el-button>
       <div @click="switchCom(item)" :class="[{'active':customName == item.name},'custom-menu-item']" v-for="(item,index) in customComponents" :key="index">
         {{item.title}}
       </div>
@@ -17,9 +18,9 @@
 </template>
 
 <script>
-import matter from "./matter";
-import level from "./level";
-import guide from "./guide";
+import matter from "./demo/matter";
+import level from "./demo/level";
+import guide from "./demo/guide";
 import hljs from 'highlight.js';
 // 样式文件
 import 'highlight.js/styles/routeros.css';

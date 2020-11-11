@@ -1,14 +1,8 @@
 <template>
   <!-- matterr -->
-  <div class="matter">
-    <div class="matter-title">Dark</div>
-    <matter
-      :title="item.title"
-      :level="item.level"
-      :value="`${item.value}`"
-      :key="index"
-      v-for="(item,index) in matters"
-    ></matter>
+  <div class="matterDemo">
+    <div class="matterDemo-title">Dark</div>
+    <matter :title="item.title" :level="item.level" :value="`${item.value}`" :key="index" v-for="(item,index) in matters"></matter>
   </div>
 </template>
 
@@ -32,7 +26,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.matter {
+.matterDemo {
   &-title {
     font-size: 16px;
     font-weight: 600;

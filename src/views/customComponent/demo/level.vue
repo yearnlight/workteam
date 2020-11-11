@@ -1,9 +1,9 @@
 <template>
   <!-- matterr -->
-  <div class="level">
-    <div class="level-items">
-      <div class="level-items-title">Dark:</div>
-      <div class="level-item">
+  <div class="levelDemo">
+    <div class="levelDemo-items">
+      <div class="levelDemo-items-title">Dark:</div>
+      <div class="levelDemo-item">
         <level
           class="el-level"
           :text="item.title"
@@ -14,8 +14,8 @@
         ></level>
       </div>
 
-      <div class="level-items-title">Plain:</div>
-      <div class="level-item">
+      <div class="levelDemo-items-title">Plain:</div>
+      <div class="levelDemo-item">
         <level
           class="el-level"
           :text="item.title"
@@ -57,7 +57,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.level {
+.levelDemo {
   &-items {
     padding: 10px;
     &-title {

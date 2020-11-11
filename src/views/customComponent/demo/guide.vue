@@ -1,6 +1,6 @@
 <template>
-    <div class="guides">
-        <div class="guides-content">
+    <div class="guideDemo">
+        <div class="guideDemo-content">
             <guide v-for="(item,index) in guides" :desc="item.desc" :key="index" :step="item.step" :level="item.level" :title="item.title"></guide>
         </div>
     </div>
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.guides {
+.guideDemo {
   &-content {
     display: flex;
     flex-wrap: wrap;

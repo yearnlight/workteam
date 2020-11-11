@@ -17,6 +17,16 @@ import VueClipboards from 'vue-clipboard2'
 Vue.component("v-chart", ECharts);
 Vue.config.productionTip = false;
 
+Vue.component('ymx', {
+  template: '<div></div>',
+  props: {
+    level: {
+      type: Number,
+      required: true
+    }
+  }
+})
+
 Axios.interceptors.response.use(res => {
   if (res.status === 200) {
     if (res.data.status == 401) {
