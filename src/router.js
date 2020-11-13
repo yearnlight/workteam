@@ -8,7 +8,10 @@ const routes = [
   },
   {
     path: "/login",
-    component: () => import("@/views/user/login.vue")
+    component: () => import("@/views/user/login.vue"),
+    meta: {
+      white: true
+    }
   },
   {
     path: "/md",
@@ -28,7 +31,10 @@ const routes = [
       {
         path: "/work/tasklist",
         component: () => import("@/views/list/index.vue"),
-        name: "tasklist"
+        name: "tasklist",
+        meta: {
+          white: true
+        }
       },
       {
         path: "/work/tasklistAdd",
@@ -63,7 +69,10 @@ const routes = [
       {
         path: "/work/knowledgeMap_infomd",
         component: () => import("@/views/knowledge/info.vue"),
-        name: "knowledgeMapknowledgeMap_infomd_addmd"
+        name: "knowledgeMapknowledgeMap_infomd",
+        meta: {
+          white: true
+        }
       },
       {
         path: "/work/webssh",
@@ -73,7 +82,10 @@ const routes = [
       {
         path: "/work/regular",
         component: () => import("@/views/regular/index.vue"),
-        name: "regular"
+        name: "regular",
+        meta: {
+          white: true
+        }
       },
       {
         path: "/work/store",//服务应用
@@ -84,11 +96,14 @@ const routes = [
         path: "/work/event",//事件管理
         component: () => import("@/views/event/index.vue"),
         name: "event"
-      },      
+      },
       {
         path: "/work/customComponent",//自定义组件
         component: () => import("@/views/customComponent/index.vue"),
-        name: "event"
+        name: "event",
+        meta: {
+          white: true
+        }
       }
     ]
   }
@@ -99,7 +114,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.path == "/login") {
+  if (to.meta && to.meta.white) {
     next();
   } else {
     if (sessionStorage.getItem("token")) {

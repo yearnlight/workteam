@@ -80,26 +80,26 @@ let getUser = () => {
   return JSON.parse(sessionStorage.getItem("userInfo"));
 };
 
-const dateFormat = (date) =>{
+const dateFormat = (date) => {
   date = new Date(date);
   let fmt = "yyyy-MM-dd hh:mm:ss";
   { //author: meizz 
-    var o = { 
-    "M+" : date.getMonth()+1,     //月份 
-    "d+" : date.getDate(),     //日 
-    "h+" : date.getHours(),     //小时 
-    "m+" : date.getMinutes(),     //分 
-    "s+" : date.getSeconds(),     //秒 
-    "q+" : Math.floor((date.getMonth()+3)/3), //季度 
-    "S" : date.getMilliseconds()    //毫秒 
-    }; 
-    if(/(y+)/.test(fmt)) 
-    fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length)); 
-    for(var k in o) 
-    if(new RegExp("("+ k +")").test(fmt)) 
-    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length))); 
-    return fmt; 
-   }
+    var o = {
+      "M+": date.getMonth() + 1,     //月份 
+      "d+": date.getDate(),     //日 
+      "h+": date.getHours(),     //小时 
+      "m+": date.getMinutes(),     //分 
+      "s+": date.getSeconds(),     //秒 
+      "q+": Math.floor((date.getMonth() + 3) / 3), //季度 
+      "S": date.getMilliseconds()    //毫秒 
+    };
+    if (/(y+)/.test(fmt))
+      fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+      if (new RegExp("(" + k + ")").test(fmt))
+        fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+  }
 }
 
 //防抖
@@ -134,13 +134,19 @@ const debounce = (func, wait, immediate) => {
   return debounced;
 }
 
+let getToken = () => {
+  let token = sessionStorage.getItem("token");
+  return token;
+};
+
 export default {
   deepCopy: deepCopy,
-  debounce:debounce,
+  debounce: debounce,
   jointQuery: jointQuery,
   displayEnum: displayEnum,
   formatTime: formatTime,
   dateFormat: dateFormat,
   getUser: getUser,
-  isWeekDay: isWeekDay
+  isWeekDay: isWeekDay,
+  getToken: getToken
 };

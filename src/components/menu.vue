@@ -1,19 +1,12 @@
 <template>
   <div class="doc">
-    <div :class="[{'hidden':isInFrame},'docHeader']">
+    <div v-if="token" :class="[{'hidden':isInFrame},'docHeader']">
       <div class="docHeader-title">
         工作协作平台
-        <span
-          @click="isCollapse = !isCollapse"
-          :class="[{'el-icon-d-arrow-left':!isCollapse,'el-icon-d-arrow-right':isCollapse},'collapse']"
-        ></span>
+        <span @click="isCollapse = !isCollapse" :class="[{'el-icon-d-arrow-left':!isCollapse,'el-icon-d-arrow-right':isCollapse},'collapse']"></span>
       </div>
       <div class="docHeader-items">
-        <el-dropdown
-          class="userInfo-container mr-20"
-          trigger="click"
-          @command="handleCommand"
-        >
+        <el-dropdown class="userInfo-container mr-20" trigger="click" @command="handleCommand">
           <span class="el-dropdown-link">
             <!-- <img v-if="avatar" :src="avatar" class="user-avatar" /> -->
             <el-avatar :style="`background:${bg}`">{{name.charAt(name.length-1)}}</el-avatar>
@@ -26,57 +19,35 @@
             <el-dropdown-item command="userInfo">
               <span class="el-icon-user" />个人信息
             </el-dropdown-item>
-            <el-dropdown-item
-              command="logout"
-              divided
-            >
+            <el-dropdown-item command="logout" divided>
               <span class="el-icon-switch-button" />退出登录
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
     </div>
-    <div :class="[{'in-frame':isInFrame},'docMenu']">
-      <div :class="[{'maxWidth':!isCollapse,'minWidth':isCollapse},'docMenu-content']">
-        <el-menu
-          :collapse="isCollapse"
-          :default-active="$route.path"
-          :router="true"
-          background-color="#304156"
-          text-color="#bfcbd9"
-          active-text-color="#00a4ff"
-        >
+    <div :class="[{'in-frame':isInFrame,'no':!token},'docMenu']">
+      <div v-if="token" :class="[{'maxWidth':!isCollapse,'minWidth':isCollapse},'docMenu-content']">
+        <el-menu :collapse="isCollapse" :default-active="$route.path" :router="true" background-color="#304156" text-color="#bfcbd9" active-text-color="#00a4ff">
 
-          <el-menu-item
-            :index="item.path"
-            v-for="(item,index) in leftmenus.filter(m=>!m.children)"
-            :key="index"
-          >
+          <el-menu-item :index="item.path" v-for="(item,index) in leftmenus.filter(m=>!m.children)" :key="index">
             <i :class="item.icon"></i>
             <span slot="title">{{item.title}}</span>
           </el-menu-item>
 
-          <el-submenu
-            v-for="(item,index) in leftmenus.filter(m=>m.children)"
-            :index="item.path"
-            :key="index"
-          >
+          <el-submenu v-for="(item,index) in leftmenus.filter(m=>m.children)" :index="item.path" :key="index">
             <template slot="title">
               <i :class="item.icon"></i>
               <span>{{item.title}}</span>
             </template>
-            <el-menu-item
-              :index="citem.path"
-              v-for="(citem,cindex) in item.children"
-              :key="cindex"
-            >
+            <el-menu-item :index="citem.path" v-for="(citem,cindex) in item.children" :key="cindex">
               <span slot="title"><i :class="citem.icon"></i>{{citem.title}}</span>
             </el-menu-item>
           </el-submenu>
         </el-menu>
       </div>
 
-      <div :class="[{'maxWidth':!isCollapse,'minWidth':isCollapse},'docMenu-main']">
+      <div :class="[{'maxWidth':!isCollapse,'minWidth':isCollapse,'no':!token},'docMenu-main']">
         <router-view></router-view>
       </div>
     </div>
@@ -106,6 +77,9 @@ export default {
     bg() {
       return this.colors[Math.floor(Math.random() * 7)];
     },
+    token() {
+      return this.$util.getToken()
+    }
   },
   created() {
     this.leftmenus = menus;
@@ -122,7 +96,7 @@ export default {
     }
   },
   methods: {
-    setRoute() {},
+    setRoute() { },
     handleCommand(command) {
       if (command == "logout") {
         this.$confirm("你确定退出当前系统 ?", "退出").then(() => {
@@ -187,6 +161,9 @@ export default {
   .docMenu {
     display: flex;
     height: calc(100% - 50px);
+    &.no {
+      height: 100% !important;
+    }
     &.in-frame {
       height: 100%;
     }
@@ -195,6 +172,9 @@ export default {
       text-align: right;
     }
     &-content {
+      &.no {
+        width: 0 !important;
+      }
       &.maxWidth {
         width: 160px;
       }
@@ -253,6 +233,9 @@ export default {
       &.minWidth {
         width: 64px;
         width: calc(100% - 84px);
+      }
+      &.no {
+        width: 100% !important;
       }
       padding: 10px;
       &.in-frame {

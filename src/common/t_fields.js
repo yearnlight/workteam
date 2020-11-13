@@ -55,6 +55,10 @@ export default {
             function: "edit",
             icon: "el-icon-edit",
             isDisplay(item) {
+              let token = sessionStorage.getItem("token");
+              if (!token) {
+                return false
+              }
               let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
               return (
                 curUser.role == "super" ||
@@ -67,6 +71,10 @@ export default {
             function: "del",
             icon: "el-icon-delete",
             isDisplay(item) {
+              let token = sessionStorage.getItem("token");
+              if (!token) {
+                return false
+              }
               let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
               return (
                 curUser.role == "super" ||

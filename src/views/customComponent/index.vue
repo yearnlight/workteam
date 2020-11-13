@@ -2,7 +2,7 @@
   <!-- 自定义组件 -->
   <div class="custom">
     <div class="custom-menu">
-      <el-button size="mini" type="primary" icon="el-icon-plus">发布组件</el-button>
+      <el-button v-if="token" size="mini" type="primary" icon="el-icon-plus">发布组件</el-button>
       <div @click="switchCom(item)" :class="[{'active':customName == item.name},'custom-menu-item']" v-for="(item,index) in customComponents" :key="index">
         {{item.title}}
       </div>
@@ -80,6 +80,11 @@ export default {
       ],
       customName: "matter",
       customItem: null
+    }
+  },
+  computed: {
+    token() {
+      return this.$util.getToken()
     }
   },
   created() {

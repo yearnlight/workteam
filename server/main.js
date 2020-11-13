@@ -718,13 +718,15 @@ app.use(
 );
 
 // app.use(bodyParser());
+// 白名单[正则列表、任务列表、md详情]
+let whiteUrlList = ["/task/regular/list", "/task/list", "/task/md/info", "/task/login", "/task/md/read", "/task/user/list"];
 // 拦截器
 app.use(
   KoaRouterInterceptor(router, async (ctx, next) => {
     let isLogin = false;
     logger.info(`Request-URL:${ctx.path}`)
     // 登录界面直接放过
-    if (ctx.path == "/task/login" || ctx.path == "/md/output.docx") {
+    if (whiteUrlList.includes(ctx.path) || /\.\w+$/.test(ctx.path)) {
       return true;
     }
     let queryStr = "select * from user where `id` = ?";
