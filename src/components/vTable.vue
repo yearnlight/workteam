@@ -4,124 +4,48 @@
       <div class="operate-left">
         <slot></slot>
       </div>
-      <div
-        :class="[{'noExtraPlace':!defaultConfig.setting},'operate']"
-        v-if="defaultConfig.setting"
-      >
+      <div :class="[{'noExtraPlace':!defaultConfig.setting},'operate']" v-if="defaultConfig.setting">
         <el-button type="default" @click="set" icon="el-icon-setting"></el-button>
         <el-button type="default" @click="search()" icon="el-icon-refresh"></el-button>
       </div>
     </div>
-    <el-table
-      :data="data.records"
-      row-key="uuid"
-      border=""
-      style="width: 100%"
-      ref="multipleTable"
-      :height="defaultConfig.height"
-      @selection-change="multipleItems"
-      @select="selectCheckBox"
-      @cell-click="cellClick"
-      v-bind="tableAttributes"
-    >
+    <el-table :data="data.records" row-key="uuid" border="" style="width: 100%" ref="multipleTable" :height="defaultConfig.height" @selection-change="multipleItems" @select="selectCheckBox" @cell-click="cellClick" v-bind="tableAttributes">
       <!-- index -->
-      <el-table-column
-        v-if="indexColumn.type && indexColumn.type == 'index'"
-        :type="indexColumn.type"
-        :width="indexColumn.width || '50'"
-        :label="indexColumn.label"
-      ></el-table-column>
+      <el-table-column v-if="indexColumn.type && indexColumn.type == 'index'" :type="indexColumn.type" :width="indexColumn.width || '50'" :label="indexColumn.label"></el-table-column>
       <!-- checkbox -->
-      <el-table-column
-        v-if="indexColumn.type && indexColumn.type == 'selection'"
-        :type="indexColumn.type"
-        :width="indexColumn.width || '50'"
-        :label="indexColumn.label"
-        :selectable="handleSelect"
-        reserve-selection
-      ></el-table-column>
+      <el-table-column v-if="indexColumn.type && indexColumn.type == 'selection'" :type="indexColumn.type" :width="indexColumn.width || '50'" :label="indexColumn.label" :selectable="handleSelect" reserve-selection></el-table-column>
       <!-- radio -->
       <el-table-column v-if="indexColumn.type == 'radio'" label="" width="65">
         <template slot-scope="scope">
-          <el-radio
-            @change="singleItem(scope.row)"
-            class="radio"
-            v-model="selectIndex"
-            :label="scope.$index"
-          >
+          <el-radio @change="singleItem(scope.row)" class="radio" v-model="selectIndex" :label="scope.$index">
             <span class="radio-label"></span>
           </el-radio>
         </template>
       </el-table-column>
-      <el-table-column
-        v-bind="item"
-        v-for="(item,index) in activeColumns"
-        :key="index"
-        :width="item.width"
-      >
+      <el-table-column v-bind="item" v-for="(item,index) in activeColumns" :key="index" :width="item.width" :show-overflow-tooltip="item['showOverflowTooltip']">
         <template slot-scope="scope">
           <!-- 跳转列 -->
           <span class="operate" v-if="item.operateFun && !Array.isArray(item.operateFun)">
-            <el-link
-              @click="operate(scope.row,item.operateFun.function)"
-              type="primary"
-            >{{scope.row[item.prop]}}</el-link>
+            <el-link @click="operate(scope.row,item.operateFun.function)" type="primary">{{scope.row[item.prop]}}</el-link>
           </span>
           <!-- 最后一列操作类 -->
           <span class="operate" v-else-if="item.operateFun && Array.isArray(item.operateFun)">
             <span v-for="(oItem,oIndex) in item.operateFun" :key="oIndex">
               <span v-if="oItem.isDisplay">
-                <span
-                  v-if="(typeof oItem.isDisplay === 'function')?oItem.isDisplay(scope.row):oItem.isDisplay"
-                >
+                <span v-if="(typeof oItem.isDisplay === 'function')?oItem.isDisplay(scope.row):oItem.isDisplay">
                   <!-- 没有状态控制，一直启用 -->
-                  <el-button
-                    v-if="!oItem.isEnabled"
-                    :key="oIndex"
-                    type="text"
-                    limit="small"
-                    :title="oItem.title"
-                    @click="operate(scope.row,oItem.function,scope.$index)"
-                    :icon="oItem.icon"
-                  >{{oItem.label}}</el-button>
+                  <el-button v-if="!oItem.isEnabled" :key="oIndex" type="text" limit="small" :title="oItem.title" @click="operate(scope.row,oItem.function,scope.$index)" :icon="oItem.icon">{{oItem.label}}</el-button>
                   <!-- 状态控制 -->
-                  <el-button
-                    type="text"
-                    limit="small"
-                    v-else
-                    :class="[{'':oItem.isEnabled(scope.row),'operate-disabled':!oItem.isEnabled(scope.row)}]"
-                    :title="oItem.title"
-                    @click="operate(scope.row,oItem.function,scope.$index)"
-                    :icon="oItem.icon"
-                  >{{oItem.label}}</el-button>
+                  <el-button type="text" limit="small" v-else :class="[{'':oItem.isEnabled(scope.row),'operate-disabled':!oItem.isEnabled(scope.row)}]" :title="oItem.title" @click="operate(scope.row,oItem.function,scope.$index)" :icon="oItem.icon">{{oItem.label}}</el-button>
                 </span>
               </span>
               <span v-else>
                 <!-- 没有状态控制，一直启用 -->
-                <el-button
-                  type="text"
-                  limit="small"
-                  v-if="!oItem.isEnabled"
-                  :key="oIndex"
-                  :title="oItem.title"
-                  @click="operate(scope.row,oItem.function,scope.$index)"
-                  :icon="oItem.icon"
-                >{{oItem.label}}</el-button>
+                <el-button type="text" limit="small" v-if="!oItem.isEnabled" :key="oIndex" :title="oItem.title" @click="operate(scope.row,oItem.function,scope.$index)" :icon="oItem.icon">{{oItem.label}}</el-button>
                 <!-- 状态控制 -->
-                <el-button
-                  type="text"
-                  limit="small"
-                  v-else
-                  :class="[{'':oItem.isEnabled(scope.row),'operate-disabled':!oItem.isEnabled(scope.row)}]"
-                  :title="oItem.title"
-                  @click="operate(scope.row,oItem.function,scope.$index)"
-                  :icon="oItem.icon"
-                >{{oItem.label}}</el-button>
+                <el-button type="text" limit="small" v-else :class="[{'':oItem.isEnabled(scope.row),'operate-disabled':!oItem.isEnabled(scope.row)}]" :title="oItem.title" @click="operate(scope.row,oItem.function,scope.$index)" :icon="oItem.icon">{{oItem.label}}</el-button>
               </span>
-              <el-divider
-                direction="vertical"
-                v-if="item.operateFun.length != oIndex + 1 && (oItem.isDisplay && oItem.isDisplay(scope.row))"
-              ></el-divider>
+              <el-divider direction="vertical" v-if="item.operateFun.length != oIndex + 1 && (oItem.isDisplay && oItem.isDisplay(scope.row))"></el-divider>
             </span>
           </span>
           <!-- 自定义渲染 -->
@@ -129,33 +53,16 @@
             <slot :name="item.renderPage" :rowData="scope.row"></slot>
           </div>
           <!-- 常用渲染 -->
-          <span
-            v-else-if="(scope.row[item.prop] === 0) || (scope.row[item.prop] === false) || scope.row[item.prop]"
-          >
-            <el-tag
-              v-if="(item.enums  && item.enums[scope.row[item.prop]]) && item.enums[scope.row[item.prop]].type"
-              :type="item.enums[scope.row[item.prop]].type"
-            >{{item.enums[scope.row[item.prop]].label}}</el-tag>
-            <span
-              v-else-if="(item.enums  && item.enums[scope.row[item.prop]]) && !item.enums[scope.row[item.prop]].type"
-              :class="item.enums[scope.row[item.prop]].class"
-            >{{item.enums[scope.row[item.prop]].label}}</span>
+          <span v-else-if="(scope.row[item.prop] === 0) || (scope.row[item.prop] === false) || scope.row[item.prop]">
+            <el-tag v-if="(item.enums  && item.enums[scope.row[item.prop]]) && item.enums[scope.row[item.prop]].type" :type="item.enums[scope.row[item.prop]].type">{{item.enums[scope.row[item.prop]].label}}</el-tag>
+            <span v-else-if="(item.enums  && item.enums[scope.row[item.prop]]) && !item.enums[scope.row[item.prop]].type" :class="item.enums[scope.row[item.prop]].class">{{item.enums[scope.row[item.prop]].label}}</span>
             <span v-else>{{scope.row[item.prop]}}</span>
           </span>
           <span v-else></span>
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination
-      v-if="defaultConfig.pagination"
-      @size-change="sizeChange"
-      @current-change="currentChange"
-      :page-page="inputParams.page"
-      :page-sizes="defaultConfig.pageSizes"
-      :page-size="inputParams.limit"
-      :total="data.total"
-      layout="total, prev, pager, next,sizes, jumper"
-    ></el-pagination>
+    <el-pagination v-if="defaultConfig.pagination" @size-change="sizeChange" @current-change="currentChange" :page-page="inputParams.page" :page-sizes="defaultConfig.pageSizes" :page-size="inputParams.limit" :total="data.total" layout="total, prev, pager, next,sizes, jumper"></el-pagination>
     <el-dialog title="自定义列表" :visible.sync="isSetColumn" custom-class="cloudtable-set">
       <div class="cloudtable-set-explain">
         选中：
@@ -163,12 +70,7 @@
       </div>
       <div>
         <el-checkbox-group :min="2" v-model="checked_t_props">
-          <el-checkbox
-            v-for="(col,cIndex) in t_all_columns"
-            :label="col.prop"
-            :key="cIndex"
-            :disabled="col.operateFun && Array.isArray(col.operateFun)"
-          >{{col.label}}</el-checkbox>
+          <el-checkbox v-for="(col,cIndex) in t_all_columns" :label="col.prop" :key="cIndex" :disabled="col.operateFun && Array.isArray(col.operateFun)">{{col.label}}</el-checkbox>
         </el-checkbox-group>
       </div>
       <div slot="footer" class="dialog-footer">
@@ -205,12 +107,12 @@ export default {
     }
   },
   computed: {
-    activeColumns: function() {
-      return this.t_columns.filter(function(item) {
+    activeColumns: function () {
+      return this.t_columns.filter(function (item) {
         return item.isvisible !== false && item.prop;
       });
     },
-    tableName: function() {
+    tableName: function () {
       let result = this.name;
       if (this.name) {
         if (this.name.endsWith("info") || this.name.endsWith("self")) {
@@ -218,7 +120,7 @@ export default {
         } else {
           result = `${this.name}_${
             this.defaultConfig.pagination ? "page" : "list"
-          }`;
+            }`;
         }
       }
       return result;
@@ -257,7 +159,7 @@ export default {
   },
   watch: {
     data: {
-      handler(n, o) {},
+      handler(n, o) { },
       immediate: true, //关键
       deep: true
     },

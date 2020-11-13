@@ -86,6 +86,33 @@ export default {
       }
     ]
   },
+  event: {
+    name: "事件列表",
+    tableColumns: [
+      {
+        prop: "title",
+        label: "标题",
+      },
+      {
+        prop: "level",
+        label: "等级",
+        renderPage: "level"
+      },
+      {
+        prop: "desc",
+        label: "描述",
+        showOverflowTooltip:true
+      },
+      {
+        prop: "username",
+        label: "触发者",
+      },
+      {
+        prop: "createtime",
+        label: "触发时间",
+      },
+    ]
+  },
   user: {
     name: "用户列表",
     tableColumns: [

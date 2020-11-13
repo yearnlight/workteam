@@ -20,14 +20,17 @@ const app = new Koa();
 
 // 用户登录
 router.post("/task/login", async ctx => {
+  let msg = "";
   let { account, pass } = ctx.request.body;
   let queryStr = "select * from user where `key` = ?";
   res = await query(queryStr, [account]);
   if (res && res.length) {
     let userInfo = res[0];
     if (userInfo.pass != pass) {
+      msg = "密码错误"
+      util.setEvent(ctx, "error", msg);
       logger.error(`登录密码错误===>${account, pass}`);
-      ctx.response.body = { status: 400, msg: "密码错误", data: null };
+      ctx.response.body = { status: 400, msg: msg, data: null };
     } else {
       let token = Uuid.v1();
       // 记录登录次数
@@ -45,14 +48,18 @@ router.post("/task/login", async ctx => {
         loginTime,
         userInfo.id
       ]);
+      msg = `账号【${account}】登录成功`
+      util.setEvent(ctx, "success", msg);
       ctx.response.body = {
         status: 200,
-        msg: "登录成功",
+        msg: msg,
         data: Object.assign(userInfo, { token: token })
       };
     }
   } else {
-    ctx.response.body = { status: 400, msg: "用户不存在", data: null };
+    msg = `账号【${account}】不存在`
+    util.setEvent(ctx, "error", msg);
+    ctx.response.body = { status: 400, msg: msg, data: null };
   }
 });
 
@@ -78,18 +85,23 @@ router.post("/task/user/delete", async ctx => {
   let params = ctx.request.body;
   let deleteStr = "delete from user where `id` = ?";
   res = await query(deleteStr, [params.id]);
-  ctx.response.body = { status: 200, msg: "删除用户成功", data: null };
+  let msg = `删除用户成功`
+  util.setEvent(ctx, "success", msg);
+  ctx.response.body = { status: 200, msg: msg, data: null };
 });
 
 // 更新用户信息
 router.post("/task/user/update", async ctx => {
+  let msg = "";
   let params = ctx.request.body;
   if (params.oldPass) {
     let selectStr = `select * from user where id = ?`;
     let userInfo = await query(selectStr, [params.id]);
     if (userInfo && userInfo[0]) {
       if (userInfo[0].pass != params.oldPass) {
-        ctx.response.body = { status: 400, msg: "旧密码不正确", data: null };
+        msg = "旧密码不正确"
+        util.setEvent(ctx, "error", msg);
+        ctx.response.body = { status: 400, msg: msg, data: null };
       } else {
         let updateParams = [];
         let values = [];
@@ -113,7 +125,9 @@ router.post("/task/user/update", async ctx => {
           ","
         )} where id = ?`;
         res = await query(updateStr, values.concat(params.id));
-        ctx.response.body = { status: 200, msg: "更新用户成功", data: null };
+        msg = `修改密码成功`
+        util.setEvent(ctx, "success", msg);
+        ctx.response.body = { status: 200, msg: msg, data: null };
       }
     }
   } else {
@@ -137,12 +151,15 @@ router.post("/task/user/update", async ctx => {
     values.concat(params.id);
     let updateStr = `update user SET ${updateParams.join(",")} where id = ?`;
     res = await query(updateStr, values.concat(params.id));
-    ctx.response.body = { status: 200, msg: "更新用户成功", data: null };
+    msg = `更新用户【${params.name}】成功`
+    util.setEvent(ctx, "success", msg);
+    ctx.response.body = { status: 200, msg: msg, data: null };
   }
 });
 
 // 添加用户
 router.post("/task/user/add", async ctx => {
+  let msg = "";
   let params = ctx.request.body;
   let uuid = Uuid.v1();
   let createtime = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
@@ -164,6 +181,8 @@ router.post("/task/user/add", async ctx => {
     "insert into user(id,name,`key`,department,`group`,`team`,remark,createtime,pass,role) values ?";
   res = await query(insertStr, [inputParams], function (err, result) {
     if (err) {
+      msg = "添加用户失败"
+      util.setEvent(ctx, "error", msg);
       console.log("[INSERT ERROR] - ", err.message);
       return;
     }
@@ -173,7 +192,9 @@ router.post("/task/user/add", async ctx => {
       "-----------------------------------------------------------------\n\n"
     );
   });
-  ctx.response.body = { status: 200, msg: "添加用户成功", data: null };
+  msg = `添加用户【${params.name}】成功`
+  util.setEvent(ctx, "success", msg);
+  ctx.response.body = { status: 200, msg: msg, data: null };
 });
 
 // 参数处理
@@ -250,6 +271,30 @@ router.post("/task/list", async ctx => {
   };
 });
 
+
+// 查询事件列表
+router.post("/task/event/list", async ctx => {
+  let res = [];
+  let params = ctx.request.body
+  let values = [];
+  let selectPrefix = `select * from event`;
+  let selectSuffix = "";
+  // 分页
+  if (params.page && params.limit) {
+    selectSuffix = ` limit ${(params.page - 1) * params.limit}, ${params.limit}`;
+  }
+  let selectStr = `${selectPrefix} order by createtime desc`;
+  logger.info(`query event page:${selectStr}${selectSuffix},parames:${values}`);
+  res = await query(`${selectStr}${selectSuffix}`, values);
+  let totalRes = await query(selectStr, values);
+  ctx.response.body = {
+    status: 200,
+    msg: "",
+    data: { total: totalRes.length, records: res }
+  };
+});
+
+
 // 单个任务更新记录
 router.post("/task/record", async ctx => {
   let { taskId } = ctx.request.body;
@@ -313,6 +358,7 @@ let fields = [
 
 // 任务更新
 router.post("/task/update", async ctx => {
+  let msg = "";
   let params = ctx.request.body;
 
   let updateParams = [];
@@ -342,23 +388,27 @@ router.post("/task/update", async ctx => {
     ctx.request.header.userName
   ];
   await util.setTaskRecord(record);
-
-  ctx.response.body = { status: 200, msg: "更新任务成功", data: null };
+  msg = params.updateInfo ? `更新任务【${taskInfo.name}】成功` : `任务【${taskInfo.name}】分配成功`;
+  util.setEvent(ctx, "success", msg);
+  ctx.response.body = { status: 200, msg: msg, data: null };
 });
 
 router.post("/task/delete", async ctx => {
+  let msg = ""
   let params = ctx.request.body;
   let deleteStr = `update worktask SET isDel = 1 where id = ?`;
   res = await query(deleteStr, [params.id]);
   // 删除记录
   let deleteRecordStr = `update taskrecord SET isDel = 1 where taskId = ?`;
   res = await query(deleteRecordStr, [params.id]);
-
-  ctx.response.body = { status: 200, msg: "删除任务成功", data: null };
+  msg = "删除任务成功";
+  util.setEvent(ctx, "success", msg);
+  ctx.response.body = { status: 200, msg: msg, data: null };
 });
 
 //分配任务
 router.post("/task/allocate", async ctx => {
+  let msg = "";
   let res = [];
   let params = ctx.request.body;
   let owners = params.owner.join(",");
@@ -377,11 +427,14 @@ router.post("/task/allocate", async ctx => {
     ctx.request.header.userName
   ];
   await util.setTaskRecord(record);
-  ctx.response.body = { status: 200, msg: "分配任务成功", data: null };
+  msg = `分配任务【${params.name}】成功`;
+  util.setEvent(ctx, "success", msg);
+  ctx.response.body = { status: 200, msg: msg, data: null };
 });
 
 // 创建任务
 router.post("/task/create", async ctx => {
+  let msg = ""
   let params = ctx.request.body;
   let uuid = Uuid.v1();
   let createtime = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
@@ -417,11 +470,14 @@ router.post("/task/create", async ctx => {
     ctx.request.header.userName
   ];
   await util.setTaskRecord(record);
-  ctx.response.body = { status: 200, msg: "创建任务成功", data: null };
+  msg = `任务【${params.name}】创建成功`;
+  util.setEvent(ctx, "success", msg);
+  ctx.response.body = { status: 200, msg: msg, data: null };
 });
 
 // 添加机器
 router.post("/task/host/create", async ctx => {
+  let msg = "";
   let params = ctx.request.body;
   let uuid = Uuid.v1();
   let createtime = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
@@ -444,7 +500,10 @@ router.post("/task/host/create", async ctx => {
   let insertStr =
     "insert into host(uuid,`ip`,`protocol`,`port`,`alias`,username,`password`,`desc`,creator,createtime,usetime,isDel) values ?";
   res = await query(insertStr, [inputParams]);
-  ctx.response.body = { status: 200, msg: "添加机器成功", data: null };
+  // event
+  msg = `添加机器【${params.ip}】成功`;
+  util.setEvent(ctx, "success", msg);
+  ctx.response.body = { status: 200, msg: msg, data: null };
 });
 
 // 机器列表
@@ -456,14 +515,18 @@ router.post("/task/host/list", async ctx => {
 
 // 机器删除
 router.post("/task/host/delete", async ctx => {
+  let msg = ""
   let params = ctx.request.body;
   let deleteStr = `update host SET isDel = 1 where uuid = ?`;
   res = await query(deleteStr, [params.uuid]);
-  ctx.response.body = { status: 200, msg: "删除机器成功", data: null };
+  msg = `删除机器成功`;
+  util.setEvent(ctx, "success", msg);
+  ctx.response.body = { status: 200, msg: msg, data: null };
 });
 
-// 创建任务
+// 创建项目
 router.post("/task/project/create", async ctx => {
+  let msg = ""
   let params = ctx.request.body;
   let uuid = Uuid.v1();
   let createtime = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
@@ -485,7 +548,9 @@ router.post("/task/project/create", async ctx => {
   let insertStr =
     "insert into project(id,`name`,`desc`,type,color,url,hero,star,creator,createtime,isDel) values ?";
   res = await query(insertStr, [inputParams]);
-  ctx.response.body = { status: 200, msg: "创建项目成功", data: null };
+  msg = `创建项目【${params.name}】成功`;
+  util.setEvent(ctx, "success", msg);
+  ctx.response.body = { status: 200, msg: msg, data: null };
 });
 
 // 项目列表
@@ -529,6 +594,7 @@ router.post("/task/delete/files", async ctx => {
 
 // md上传
 router.post("/task/md/save", async ctx => {
+  let msg = "";
   let params = ctx.request.body;
   let uuid = Uuid.v1();
   let createtime = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
@@ -546,7 +612,9 @@ router.post("/task/md/save", async ctx => {
   let insertStr =
     "insert into doc(id,`title`,`context`,`label`,creator,createtime,isDel) values ?";
   res = await query(insertStr, [inputParams]);
-  ctx.response.body = { status: 200, msg: "发布文档成功", data: null };
+  msg = `发布文档【${params.title}】成功`;
+  util.setEvent(ctx, "success", msg);
+  ctx.response.body = { status: 200, msg: msg, data: null };
 });
 
 // 文档列表(标题，标签过滤)
@@ -576,10 +644,13 @@ router.post("/task/md/info", async ctx => {
 
 // 文档删除
 router.post("/task/md/delete", async ctx => {
+  let msg = "";
   let params = ctx.request.body;
   let deleteStr = `update doc SET isDel = 1 where id = ?`;
   res = await query(deleteStr, [params.id]);
-  ctx.response.body = { status: 200, msg: "删除文档成功", data: null };
+  msg = `删除文档成功`;
+  util.setEvent(ctx, "success", msg);
+  ctx.response.body = { status: 200, msg: msg, data: null };
 });
 
 // 文档阅读
@@ -599,6 +670,7 @@ router.post("/task/md/read", async ctx => {
 
 // 文档更新
 router.post("/task/md/update", async ctx => {
+  let msg = ""
   let params = ctx.request.body;
   // 更新时间、更新者
   params.creator = ctx.request.header.userName;
@@ -615,7 +687,9 @@ router.post("/task/md/update", async ctx => {
   values.concat(params.id);
   let updateStr = `update doc SET ${updateParams.join(",")} where id = ?`;
   res = await query(updateStr, values.concat(params.id));
-  ctx.response.body = { status: 200, msg: "更新文档成功", data: null };
+  msg = `更新文档【${params.title}】成功`;
+  util.setEvent(ctx, "success", msg);
+  ctx.response.body = { status: 200, msg: msg, data: null };
 });
 
 // 文档下载
@@ -664,6 +738,8 @@ router.post("/task/regular/create", async ctx => {
     params.creater || ctx.request.header.userName,
     0
   ]);
+  let msg = `创建正则表达式【${params.name}】成功`;
+  util.setEvent(ctx, "success", msg);
   ctx.response.body = { status: 200, msg: "创建正则表达式成功", data: null };
 });
 // 添加应用服务
@@ -688,7 +764,9 @@ router.post("/task/store/create", async ctx => {
   ];
   let insertStr = 'insert into store(uuid,`name`,color,`desc`,createtime,creator,href,label,accesstime,isDel,icon) values ?';
   let res = await query(insertStr, [inputParams]);
-  ctx.response.body = { status: 200, msg: "创建应用服务成功", data: null };
+  let msg = `创建应用服务【${params.name}】成功`;
+  util.setEvent(ctx, "success", msg);
+  ctx.response.body = { status: 200, msg: msg, data: null };
 });
 //应用服务列表
 router.post("/task/store/list", async ctx => {
@@ -702,7 +780,10 @@ router.post("/task/store/delete", async ctx => {
   let params = ctx.request.body;
   let deleteStr = `update store SET isDel = 1 where uuid = ?`;
   res = await query(deleteStr, [params.uuid]);
-  ctx.response.body = { status: 200, msg: "删除应用服务成功", data: null };
+  //event
+  let msg = `删除应用服务成功`;
+  util.setEvent(ctx, "success", msg);
+  ctx.response.body = { status: 200, msg: msg, data: null };
 });
 
 
@@ -746,6 +827,7 @@ app.use(
     }
     if (!isLogin) {
       logger.error(`Auth faild.`)
+      util.setEvent(ctx, "warning", "认证失败", "认证操作");
       ctx.response.body = { status: 401, msg: "认证失败", data: null };
     }
     // 只有这个返回true，才会走koa-router配置的逻辑分发
