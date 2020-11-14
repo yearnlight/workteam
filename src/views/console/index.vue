@@ -1,42 +1,153 @@
 <template>
   <div class="webssh">
     <div class="webssh-hosts">
-      <el-button size="mini" class="webssh-hosts-add" icon="el-icon-plus" @click="add">添加机器</el-button>
-      <div @click="Login(item,index + 1)" :class="['webssh-hosts-item']" v-for="(item,index) in hosts" :key="index">
-        <span :class="['el-icon-monitor','console-icon']"></span><span :class="[{'active':seletedItem.ip == item.ip},'console-text']">{{item.alias}}({{item.ip}})</span>
+      <el-button
+        size="mini"
+        class="webssh-hosts-add"
+        icon="el-icon-plus"
+        @click="add"
+      >添加机器</el-button>
+      <div ref="xshellNode">
+        <div
+          @click="Login(item,index + 1)"
+          @contextmenu="rightClick(item)"
+          :class="['webssh-hosts-item']"
+          v-for="(item,index) in hosts"
+          :key="index"
+        >
+          <span :class="['el-icon-monitor','console-icon']"></span><span :class="[{'active':seletedItem.ip == item.ip},'console-text']">{{item.alias}}({{item.ip}})</span>
+        </div>
       </div>
+      <VueContextMenu
+        class="right-menu"
+        ref="contextMenu"
+        :target="contextMenuTarget"
+        :show.sync="contextMenuVisible"
+      >
+        <p @click="deleteNode">删除节点</p>
+      </VueContextMenu>
     </div>
     <div class="console">
-      <div id="terminal" class="console-terminal" v-if="!seletedItem.ip"></div>
-      <div v-show="seletedItem.ip == item.ip" v-for="(item,index) in hosts" :id="`terminal${index + 1}`" class="console-terminal" :key="index"></div>
+      <div
+        id="terminal"
+        class="console-terminal"
+        v-if="!seletedItem.ip"
+      ></div>
+      <div
+        v-show="seletedItem.ip == item.ip"
+        v-for="(item,index) in hosts"
+        :id="`terminal${index + 1}`"
+        class="console-terminal"
+        :key="index"
+      ></div>
     </div>
-    <el-dialog :visible.sync="isAdd" @close="onClose" title="添加机器">
-      <el-form ref="pageForm" :model="formData" :rules="rules" size="small" label-width="160px">
-        <el-form-item label="主机IP(H)" prop="ip">
-          <el-input v-model="formData.ip" placeholder="请输入主机IP(H)" clearable prefix-icon='el-icon-s-platform' :style="{width: '90%'}"></el-input>
+    <el-dialog
+      :visible.sync="isAdd"
+      @close="onClose"
+      title="添加机器"
+    >
+      <el-form
+        ref="pageForm"
+        :model="formData"
+        :rules="rules"
+        size="small"
+        label-width="160px"
+      >
+        <el-form-item
+          label="主机IP(H)"
+          prop="ip"
+        >
+          <el-input
+            v-model="formData.ip"
+            placeholder="请输入主机IP(H)"
+            clearable
+            prefix-icon='el-icon-s-platform'
+            :style="{width: '90%'}"
+          ></el-input>
         </el-form-item>
-        <el-form-item label="协议(P)" prop="protocol">
-          <el-input v-model="formData.protocol" placeholder="请输入协议(P)" :disabled='true' clearable :style="{width: '90%'}"></el-input>
+        <el-form-item
+          label="协议(P)"
+          prop="protocol"
+        >
+          <el-input
+            v-model="formData.protocol"
+            placeholder="请输入协议(P)"
+            :disabled='true'
+            clearable
+            :style="{width: '90%'}"
+          ></el-input>
         </el-form-item>
-        <el-form-item label="端口号(O)" prop="port">
-          <el-input v-model="formData.port" placeholder="请输入端口号(O)" readonly :disabled='true' :style="{width: '90%'}"></el-input>
+        <el-form-item
+          label="端口号(O)"
+          prop="port"
+        >
+          <el-input
+            v-model="formData.port"
+            placeholder="请输入端口号(O)"
+            readonly
+            :disabled='true'
+            :style="{width: '90%'}"
+          ></el-input>
         </el-form-item>
-        <el-form-item label="别名(A)" prop="alias">
-          <el-input v-model="formData.alias" placeholder="请输入别名(A)" clearable :style="{width: '90%'}" maxlength="5" show-word-limit></el-input>
+        <el-form-item
+          label="别名(A)"
+          prop="alias"
+        >
+          <el-input
+            v-model="formData.alias"
+            placeholder="请输入别名(A)"
+            clearable
+            :style="{width: '90%'}"
+            maxlength="5"
+            show-word-limit
+          ></el-input>
         </el-form-item>
-        <el-form-item label="用户名(U)" prop="username">
-          <el-input v-model="formData.username" placeholder="请输入用户名(U)" clearable prefix-icon='el-icon-user' :style="{width: '90%'}"></el-input>
+        <el-form-item
+          label="用户名(U)"
+          prop="username"
+        >
+          <el-input
+            v-model="formData.username"
+            placeholder="请输入用户名(U)"
+            clearable
+            prefix-icon='el-icon-user'
+            :style="{width: '90%'}"
+          ></el-input>
         </el-form-item>
-        <el-form-item label="密码(P)" prop="password">
-          <el-input v-model="formData.password" placeholder="请输入密码(P)" clearable prefix-icon='el-icon-key' show-password :style="{width: '90%'}"></el-input>
+        <el-form-item
+          label="密码(P)"
+          prop="password"
+        >
+          <el-input
+            v-model="formData.password"
+            placeholder="请输入密码(P)"
+            clearable
+            prefix-icon='el-icon-key'
+            show-password
+            :style="{width: '90%'}"
+          ></el-input>
         </el-form-item>
-        <el-form-item label="说明(D)" prop="desc">
-          <el-input v-model="formData.desc" type="textarea" placeholder="请输入说明(D)" :maxlength="100" show-word-limit :autosize="{minRows: 3, maxRows: 3}" :style="{width: '90%'}"></el-input>
+        <el-form-item
+          label="说明(D)"
+          prop="desc"
+        >
+          <el-input
+            v-model="formData.desc"
+            type="textarea"
+            placeholder="请输入说明(D)"
+            :maxlength="100"
+            show-word-limit
+            :autosize="{minRows: 3, maxRows: 3}"
+            :style="{width: '90%'}"
+          ></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer">
         <el-button @click="isAdd = false">取消</el-button>
-        <el-button type="primary" @click="save">确定</el-button>
+        <el-button
+          type="primary"
+          @click="save"
+        >确定</el-button>
       </div>
     </el-dialog>
   </div>
@@ -47,6 +158,8 @@ import { Terminal } from "xterm";
 import { FitAddon } from "xterm-addon-fit";
 import { AttachAddon } from "xterm-addon-attach";
 import openSocket from "socket.io-client";
+// 右击组件
+import { component as VueContextMenu } from '@xunlei/vue-context-menu'
 const NET_LINK = "net_";
 
 export default {
@@ -57,30 +170,24 @@ export default {
       default: "",
     },
   },
+  components: { VueContextMenu },
   created() {
-    this.socket = openSocket(`http://${location.hostname}:4002/`, {
+    let hostname = location.hostname;
+    if (hostname.includes("location")) {
+      hostname = "81.68.200.164"
+    }
+    this.socket = openSocket(`http://${hostname}:4002/`, {
       autoConnect: true,
     });
     this.fetchHost();
   },
   data() {
     return {
+      contextMenuTarget: this.$refs["xshellNode"], // 可右键区域，这里也可以绑定$refs
+      contextMenuVisible: false,
       isAdd: false,
       socket: null,
-      hosts: [
-        {
-          ip: "81.68.200.164",
-          username: "root",
-          password: "Xuanwo!@#2020",
-          alias: "TX",
-        },
-        {
-          ip: "10.127.2.119",
-          username: "root",
-          password: "fhrootroot",
-          alias: "FH119",
-        },
-      ],
+      hosts: [],
       ips: [],
       terms: [],
       term: null,
@@ -89,6 +196,7 @@ export default {
       SetOut: false,
       isKey: false,
       seletedItem: {},
+      operateItem: {},
       formData: {
         ip: undefined,
         protocol: "SSH",
@@ -155,6 +263,24 @@ export default {
     });
   },
   methods: {
+    rightClick(item) {
+      this.contextMenuVisible = true;
+      this.operateItem = item;
+      //调用右击组件回调
+      this.$refs.contextMenu.contextMenuHandler(event);
+    },
+    deleteNode() {
+      this.$axios.post("/task/host/delete", { uuid: this.operateItem.uuid }).then((res) => {
+        if (res.status == 200) {
+          this.$message.success(`移除节点${this.operateItem.ip}成功`)
+          this.fetchHost();
+          this.contextMenuVisible = false;
+        }
+        else {
+          this.$message.error(`移除节点${this.operateItem.ip}失败`)
+        }
+      });
+    },
     fetchHost() {
       this.$axios.post("/task/host/list").then((res) => {
         if (res.status == 200) {
@@ -286,6 +412,37 @@ export default {
 <style lang="scss">
 .webssh {
   display: flex;
+  /deep/ td.table_td_h {
+    padding: 17px 0;
+  }
+  /deep/ .right-menu {
+    display: none;
+    position: fixed;
+    background: #fff;
+    border: 1px solid #bababa;
+    border-radius: 3px;
+    z-index: 999;
+    box-shadow: 2px 2px 3px 0px rgba(51, 42, 40, 0.7);
+    border-radius: 1px;
+    p {
+      margin: 0;
+      display: block;
+      padding: 5px;
+      text-align: center;
+      min-width: 100px;
+      color: #333;
+      cursor: pointer;
+      font-size: 12px;
+      border-bottom: 1px solid #e8eaed;
+      &:hover {
+        background: #e8eaed;
+      }
+    }
+    .menu-disable {
+      cursor: no-drop;
+      color: #80868b;
+    }
+  }
   &-hosts {
     width: 180px;
     padding: 10px;
@@ -295,7 +452,7 @@ export default {
     &-item {
       display: flex;
       align-items: center;
-      font-size: 13px;
+      font-size: 12px;
       cursor: pointer;
 
       .console-icon {
@@ -306,6 +463,7 @@ export default {
         padding: 5px;
         &.active {
           background: #409eff;
+          border: 1px dotted #80868b;
           color: #fff;
         }
       }
@@ -316,6 +474,7 @@ export default {
     height: 100%;
     &-terminal {
       height: 100%;
+      background-color: #000;
     }
   }
 }

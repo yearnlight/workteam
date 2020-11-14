@@ -45,7 +45,9 @@ export default {
 .guide {
   padding-top: 15px;
   font-size: 0;
-  margin-right: 10px;
+  &:not(:last-child) {
+    margin-right: 5px;
+  }
   &-wrapper {
     &-container {
       &-line {

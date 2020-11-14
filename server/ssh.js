@@ -2,6 +2,7 @@ let Koa = require("koa");
 const app = new Koa();
 let utf8 = require("utf8");
 let SSHClient = require("ssh2").Client;
+let util = require("./util");
 // log4
 const logger = require('./utils/log4jsLogger');
 
@@ -13,8 +14,10 @@ let io = require("socket.io")(server);
 //创建SSH服务
 function createSSHServer(machineConfig, socket) {
   var ssh = new SSHClient();
-  logger.warn(`SSH CONNECTION SUCCESS,IP:${ip}.`)
   let { msgId, ip, username, password } = machineConfig;
+  let msg = `SSH CONNECTION SUCCESS,IP:${ip}.`;
+  // util.setEvent("warning", msg);
+  logger.warn(msg)
   ssh
     .on("ready", function () {
       socket.emit(

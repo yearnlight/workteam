@@ -517,10 +517,22 @@ router.post("/task/host/list", async ctx => {
 router.post("/task/host/delete", async ctx => {
   let msg = ""
   let params = ctx.request.body;
-  let deleteStr = `update host SET isDel = 1 where uuid = ?`;
-  res = await query(deleteStr, [params.uuid]);
-  msg = `删除机器成功`;
-  util.setEvent(ctx, "success", msg);
+  // 查询机器信息
+  let selectStr = `select * from host where isDel = 0 and uuid = '${params.uuid}'`;
+  let hosts = await query(selectStr);
+  logger.info(`查询机器:${hosts}`);
+  if (hosts && hosts.length) {
+    let deleteStr = `update host SET isDel = 1 where uuid = ?`;
+    res = await query(deleteStr, [params.uuid]);
+    msg = `移除机器【${hosts[0].ip}】成功`;
+    logger.warn(msg);
+    util.setEvent(ctx, "warning", msg);
+  }
+  else {
+    msg = `移除机器失败，机器不存在`;
+    logger.info(msg);
+    util.setEvent(ctx, "error", msg);
+  }
   ctx.response.body = { status: 200, msg: msg, data: null };
 });
 
