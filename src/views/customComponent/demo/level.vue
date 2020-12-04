@@ -4,26 +4,12 @@
     <div class="levelDemo-items">
       <div class="levelDemo-items-title">Dark:</div>
       <div class="levelDemo-item">
-        <level
-          class="el-level"
-          :text="item.title"
-          :level="item.level"
-          :effect="item.effect"
-          :key="index"
-          v-for="(item,index) in darks"
-        ></level>
+        <level class="el-level" :text="item.title" :level="item.level" :effect="item.effect" :key="index" v-for="(item,index) in darks"></level>
       </div>
 
       <div class="levelDemo-items-title">Plain:</div>
       <div class="levelDemo-item">
-        <level
-          class="el-level"
-          :text="item.title"
-          :level="item.level"
-          :effect="item.effect"
-          :key="index"
-          v-for="(item,index) in plains"
-        ></level>
+        <level class="el-level" :text="item.title" :level="item.level" :effect="item.effect" :key="index" v-for="(item,index) in plains"></level>
       </div>
     </div>
   </div>

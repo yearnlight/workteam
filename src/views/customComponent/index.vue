@@ -21,6 +21,7 @@
 import matter from "./demo/matter";
 import level from "./demo/level";
 import guide from "./demo/guide";
+import dot from "./demo/dot";
 import hljs from 'highlight.js';
 // 样式文件
 import 'highlight.js/styles/routeros.css';
@@ -43,7 +44,7 @@ export default {
       }
     }
   },
-  components: { matter, level, guide },
+  components: { matter, level, guide, dot },
   data() {
     return {
       customComponents: [
@@ -76,6 +77,16 @@ export default {
                   <guide step="4" level="warning" title="警告信息" desc=""></guide>\n
                   <guide step="5" level="info" title="一般信息" desc=""></guide>\n
                   <guide step="6" level="test" title="测试信息" desc=""></guide>
+                ` },
+        {
+          title: "Dot 状态", name: "dot", desc: `
+                  <dot level="primary" text="提示状态"></dot>\n
+                  <dot level="danger" text="错误状态"></dot>\n
+                  <dot level="success" text="成功状态"></dot>\n
+                  <dot level="warning" text="警告状态"></dot>\n
+                  <dot level="info" text="一般状态"></dot>\n
+                  <dot level="test" text="测试状态"></dot>\n
+                  <dot level="primary">支持插槽(slot)</dot>\n
                 ` },
       ],
       customName: "matter",
