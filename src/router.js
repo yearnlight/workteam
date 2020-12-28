@@ -104,6 +104,14 @@ const routes = [
         meta: {
           white: true
         }
+      },      
+      {
+        path: "/work/cloudIcon",// 云计算图标库
+        component: () => import("@/views/cloudIcon/index.vue"),
+        name: "cloudIcon",
+        meta: {
+          white: true
+        }
       }
     ]
   }

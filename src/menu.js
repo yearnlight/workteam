@@ -37,11 +37,16 @@ export default [
         title: "SSH",
         icon: "el-icon-s-platform",
         path: "/work/webssh"
-      },      
+      },
       {
         title: "自定义组件",
         icon: "el-icon-brush",
         path: "/work/customComponent"
+      },
+      {
+        title: "云计算图标",
+        icon: "el-icon-picture-outline-round",
+        path: "/work/cloudIcon"
       },
       {
         title: "正则表达式",

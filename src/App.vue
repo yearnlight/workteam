@@ -2,7 +2,7 @@
   <div id="app">
     <router-view />
   </div>
-  
+
 </template>
 
 <script>
@@ -44,6 +44,27 @@ body {
       color: #f39800 !important;
     }
   }
+
+  /* 设置滚动条的样式 */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  /* 滚动槽 */
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 6px rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+  }
+  /* 滚动条滑块 */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background: rgba(144, 147, 153, 0.3);
+    -webkit-box-shadow: inset 6px rgba(0, 0, 0, 0.5);
+  }
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
   #app {
     height: 100%;
     font-family: Avenir, Helvetica, Arial, sans-serif;

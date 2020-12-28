@@ -13,7 +13,7 @@ import BaiduMap from "vue-baidu-map";
 import { Message } from "element-ui";
 import mavonEditor from 'mavon-editor';
 import VueClipboards from 'vue-clipboard2'
-
+import './icons' // icon
 Vue.component("v-chart", ECharts);
 Vue.config.productionTip = false;
 
