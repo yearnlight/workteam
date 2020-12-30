@@ -28,6 +28,11 @@ export default [
     title: "事件管理",
     icon: "el-icon-chat-line-square",
     path: "/work/event"
+  },  
+  {
+    title: "业务管理",
+    icon: "el-icon-collection",
+    path: "/work/business"
   },
   {
     title: "工具管理",

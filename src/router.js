@@ -98,13 +98,18 @@ const routes = [
         name: "event"
       },
       {
+        path: "/work/business",//业务管理
+        component: () => import("@/views/business/index.vue"),
+        name: "business"
+      },
+      {
         path: "/work/customComponent",//自定义组件
         component: () => import("@/views/customComponent/index.vue"),
         name: "event",
         meta: {
           white: true
         }
-      },      
+      },
       {
         path: "/work/cloudIcon",// 云计算图标库
         component: () => import("@/views/cloudIcon/index.vue"),

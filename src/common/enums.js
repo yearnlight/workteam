@@ -16,6 +16,7 @@ export default {
     { label: "配置", value: "config", color: "#67C23A" },
     { label: "公共", value: "common", color: "#9764e0" },
     { label: "会议", value: "meet", color: "#9764e0" },
+    { label: "设计", value: "design", color: "#e06ab7" },
   ],
   prioritys: [
     {

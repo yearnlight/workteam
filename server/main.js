@@ -572,6 +572,28 @@ router.post("/task/project/list", async ctx => {
   ctx.response.body = { status: 200, msg: null, data: res };
 });
 
+// 项目删除
+router.post("/task/project/delete", async ctx => {
+  let msg = "";
+  let params = ctx.request.body;
+  // 查询机器信息
+  let selectStr = `select * from project where isDel = 0 and id = '${params.id}'`;
+  let project = await query(selectStr);
+  if (project && project.length) {
+    let deleteStr = `delete from project where isDel = 0 and id = '${params.id}'`;
+    let delRes = await query(deleteStr);
+    if (delRes) {
+      msg = `删除项目【${project[0].name}】成功`;
+      logger.info(msg);
+      util.setEvent(ctx, "success", msg);
+    }
+  }
+  else {
+    msg = `项目【${project[0].name}】未找到`;
+  }
+  ctx.response.body = { status: 200, msg: msg, data: res };
+});
+
 // md图片上传
 router.post("/task/upload/files", async ctx => {
   // 上传单个文件

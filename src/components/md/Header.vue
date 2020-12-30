@@ -1,14 +1,30 @@
 <template>
   <div class="header">
-    <input type="text" placeholder="输入文章标题..." v-model="title" />
+    <input
+      type="text"
+      placeholder="输入文章标题..."
+      v-model="title"
+    />
     <div class="right-box">
       <i class="iconfont icon-tupian"></i>
-      <el-select v-model="label" placeholder="关联项目" clearable>
-        <el-option v-for="(item, index) in projectList" :key="index" :label="item.name" :value="item.name">
+      <el-select
+        v-model="label"
+        placeholder="关联项目"
+        clearable
+      >
+        <el-option
+          v-for="(item, index) in projectList"
+          :key="index"
+          :label="item.name"
+          :value="item.name"
+        >
           <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: ${item.color};`">{{item.name}}</span>
         </el-option>
       </el-select>
-      <div class="toggle-btn" @click="publicX">
+      <div
+        class="toggle-btn"
+        @click="publicX"
+      >
         <span class="title">发布</span>
         <i class="el-icon-s-promotion"></i>
       </div>
@@ -59,33 +75,39 @@ export default {
     },
     publicX() {
       let context = this.$parent.$refs["editor"].value;
-      let params = {
-        title: this.title,
-        context: context,
-        label: this.label,
-      };
-      // 更新
-      if (this.docInfo && this.docInfo.id) {
-        this.$axios
-          .post("/task/md/update", { id: this.docInfo.id, ...params })
-          .then((res) => {
+      if (context && this.label) {
+        let params = {
+          title: this.title,
+          context: context,
+          label: this.label,
+        };
+        // 更新
+        if (this.docInfo && this.docInfo.id) {
+          this.$axios
+            .post("/task/md/update", { id: this.docInfo.id, ...params })
+            .then((res) => {
+              if (res.status == 200) {
+                this.$message.success(res.msg);
+                this.$router.go(-1);
+              } else {
+                this.$message.error("更新文档失败");
+              }
+            });
+        } else {
+          this.$axios.post("/task/md/save", params).then((res) => {
             if (res.status == 200) {
               this.$message.success(res.msg);
               this.$router.go(-1);
             } else {
-              this.$message.error("更新文档失败");
+              this.$message.error("发布文档失败");
             }
           });
-      } else {
-        this.$axios.post("/task/md/save", params).then((res) => {
-          if (res.status == 200) {
-            this.$message.success(res.msg);
-            this.$router.go(-1);
-          } else {
-            this.$message.error("发布文档失败");
-          }
-        });
+        }
       }
+      else {
+        this.$message.warning("未选择【关联项目】或者文档【无内容】");
+      }
+
     },
   },
 };

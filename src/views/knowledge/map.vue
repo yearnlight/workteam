@@ -1,7 +1,8 @@
 <template>
   <div class="map">
     <div class="map-project">
-      <el-button type="primary" icon="el-icon-plus" @click="add">创建项</el-button>
+      <el-button type="primary" plain icon="el-icon-plus" @click="add">创建项</el-button>
+      <el-button type="danger" plain icon="el-icon-delete" @click="delProject" :disabled="!selectedModel">删除项</el-button>
       <div id="mountNode"></div>
     </div>
     <div class="map-info">
@@ -84,6 +85,8 @@
 <script>
 import G6 from "@antv/g6";
 
+let selectedIcon = require("@/assets/right.svg")
+
 G6.registerNode(
   "ymx-node",
   (cfg) => `
@@ -114,16 +117,17 @@ G6.registerNode(
           <text style={{ marginTop: 5, marginLeft: 3, fill: '#333', marginLeft: 4 }}>描述: {{description}}</text>
           <text style={{ marginTop: 10, marginLeft: 3, fill: '#333', marginLeft: 4 }}>田主: {{meta.creatorName}}</text>
         </rect>
-      </rect>
-      <circle style={{
+        <circle style={{
         stroke: ${cfg.color},
+        opacity:${cfg.isSelected ? '1' : '0'}
         r: 10,
         fill: '#fff',
         marginLeft: 75,
         cursor: 'pointer'
       }} name="circle">
-        <image style={{ img: 'https://gw.alipayobjects.com/zos/antfincdn/FLrTNDvlna/antv.png', width: 12, height: 12,  marginLeft: 70,  marginTop: -5 }} />
+        <image  name="img" style={{ opacity:${cfg.isSelected ? '1' : '0'}, img: ${selectedIcon}, width: 14, height: 14,  marginLeft: 69,  marginTop: 2}} />
       </circle>
+      </rect>
     </group>
   `
 );
@@ -213,10 +217,15 @@ export default {
           label: "公共",
           value: "common",
         },
+        {
+          label: "设计",
+          value: "design",
+        },
       ],
       heroOptions: [],
       projectList: [],
       graph: null,
+      selectedModel: null
     };
   },
   methods: {
@@ -281,6 +290,21 @@ export default {
     },
     add() {
       this.isAdd = true;
+    },
+    delProject() {
+      let that = this;
+      // 删除项目
+      this.$confirm(`你确定删除【${this.selectedModel.label}】?`, "删除").then(() => {
+        this.$axios.post("/task/project/delete", { id: this.selectedModel.id }).then(res => {
+          if (res.status == 200) {
+            this.$message.success(res.msg || `删除项目【${that.selectedModel.label}】成功`);
+            this.fetchProject();
+          }
+          else {
+            this.$message.error(res.msg || `删除项目【${that.selectedModel.label}】失败`);
+          }
+        })
+      })
     },
     onClose() {
       this.$refs["pageForm"].resetFields();
@@ -361,18 +385,37 @@ export default {
       });
       this.graph.on("node:click", function (e) {
         let node = e.item;
+        that.clearNodeStyle();
+        that.graph.updateItem(node, {
+          isSelected: true
+        });
         let model = node.getModel();
-        that.fetchDoc({ label: model.label });
+        that.selectedModel = model;
+        if (model.type == "ymx-node") {
+          that.fetchDoc({ label: model.label });
+        }
+
       });
       this.graph.on("canvas:click", function (e) {
         let node = e.item;
         //点击空白处，查询所有
         if (!node) {
+          that.selectedModel = null;
+          that.clearNodeStyle();
           that.fetchDoc();
         }
       });
       this.graph.read(data);
     },
+    clearNodeStyle() {
+      let that = this;
+      let nodes = that.graph.getNodes();
+      nodes.forEach(n => {
+        that.graph.updateItem(n, {
+          isSelected: false
+        });
+      })
+    }
   },
 };
 </script>
