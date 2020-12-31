@@ -151,7 +151,8 @@ export default {
         return data;
       } else {
         if (data.type === "store") {
-          return this.$store.state[data.dataKey];
+          // return this.$store.state[data.dataKey] || [];
+          return  [];
         } else if (data.type === "request") {
           //  return function();
         } else if (data.type === "enums") {

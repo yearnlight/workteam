@@ -512,7 +512,7 @@ export default {
     }
   }
   .el-pagination {
-    // float: right;
+    text-align: right;
     margin-top: 5px;
   }
 }

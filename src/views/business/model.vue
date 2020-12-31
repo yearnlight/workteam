@@ -2,13 +2,28 @@
     <div class="demo">
         <el-tabs v-model="activeName">
             <el-tab-pane label="表格" name="list">
-                <v-table v-loading="loading" :columns="columns" :data="list" @del="del" @edit="edit" @search="search"></v-table>
+                <v-table :name="name" v-loading="loading" :columns="columns" :data="list" @del="del" @edit="edit" @search="search"></v-table>
                 <div class="configCode" v-if="configCode" v-highlight>
                     <pre><code v-text="configCode"></code></pre>
                 </div>
             </el-tab-pane>
             <el-tab-pane label="详情" name="info">
-                <no-data fill="#E6A23C" text="开发中" />
+                <no-data fill="#E6A23C" v-if="!configInfoCode" text="当前服务没有详情配置" />
+                <div v-else>
+                    <info-base :infos="{}" :detailName="name"></info-base>
+                    <div class="configInfoCode" v-if="configInfoCode" v-highlight>
+                        <pre><code v-text="configInfoCode"></code></pre>
+                    </div>
+                </div>
+            </el-tab-pane>
+            <el-tab-pane label="关于" name="about">
+                <no-data fill="#E6A23C" v-if="!configInfoCode" text="当前服务没有关于配置" />
+                <div v-else>
+                    <explain :name="name"></explain>
+                    <div class="configInfoCode" v-if="configInfoCode" v-highlight>
+                        <pre><code v-text="configInfoCode"></code></pre>
+                    </div>
+                </div>
             </el-tab-pane>
         </el-tabs>
 
@@ -18,12 +33,15 @@
 
 <script>
 import vTable from "@/components/vTable";
+import InfoBase from "@/components/infoBase";
+import explain from "@/components/explain";
 import t_fields from "@/resource/t_fields";
+import fields from "@/resource/fields";
 import hljs from 'highlight.js';
 // 样式文件
 import 'highlight.js/styles/routeros.css';
 export default {
-    components: { vTable },
+    components: { vTable, InfoBase, explain },
     directives: {
         highlight: {
             // 被绑定元素插入父节点时调用
@@ -60,18 +78,31 @@ export default {
                 limit: 10
             },
             columns: [],
-            configCode: ""
+            configCode: "",
+            configInfoCode: ""
         }
     },
     created() {
         this.columns = t_fields[this.name].tableColumns;
         this.configCode = JSON.stringify(t_fields[this.name], null, 2);
+        if (fields[this.name] && fields[this.name].detail) {
+            this.configInfoCode = JSON.stringify(fields[this.name], null, 2);
+        }
+        else {
+            this.configInfoCode = "";
+        }
     },
     watch: {
         name(n, o) {
             if (n && n != o) {
                 this.columns = t_fields[n].tableColumns;
-                this.configCode = JSON.stringify(t_fields[this.name], null, 2);
+                this.configCode = JSON.stringify(t_fields[n], null, 2);
+                if (fields[n] && fields[n].detail) {
+                    this.configInfoCode = JSON.stringify(fields[n], null, 2);
+                }
+                else {
+                    this.configInfoCode = "";
+                }
             }
         }
     },

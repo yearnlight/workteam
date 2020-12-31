@@ -20,3 +20,11 @@ export function formatDur(dur) {
     return "";
   }
 }
+
+export function handleEmpty(value) {
+  if (!value && value !== 0) {
+    return "-"
+  } else {
+    return value
+  }
+}
