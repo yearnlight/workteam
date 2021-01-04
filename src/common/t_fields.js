@@ -55,15 +55,20 @@ export default {
             function: "edit",
             icon: "el-icon-edit",
             isDisplay(item) {
-              let token = sessionStorage.getItem("token");
-              if (!token) {
-                return false
+              if (item) {
+                let token = sessionStorage.getItem("token");
+                if (!token) {
+                  return false
+                }
+                let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
+                return (
+                  curUser.role == "super" ||
+                  (item.owner && item.owner.includes(curUser.name))
+                );
               }
-              let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
-              return (
-                curUser.role == "super" ||
-                (item.owner && item.owner.includes(curUser.name))
-              );
+              else {
+                return true;
+              }
             }
           },
           {
@@ -71,15 +76,20 @@ export default {
             function: "del",
             icon: "el-icon-delete",
             isDisplay(item) {
-              let token = sessionStorage.getItem("token");
-              if (!token) {
-                return false
+              if (item) {
+                let token = sessionStorage.getItem("token");
+                if (!token) {
+                  return false
+                }
+                let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
+                return (
+                  curUser.role == "super" ||
+                  (item.owner && item.owner.includes(curUser.name))
+                );
               }
-              let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
-              return (
-                curUser.role == "super" ||
-                (item.owner && item.owner.includes(curUser.name))
-              );
+              else {
+                return true;
+              }
             }
           }
         ]
@@ -101,7 +111,7 @@ export default {
       {
         prop: "desc",
         label: "描述",
-        showOverflowTooltip:true
+        showOverflowTooltip: true
       },
       {
         prop: "username",
@@ -164,8 +174,13 @@ export default {
             function: "del",
             icon: "el-icon-delete",
             isDisplay(item) {
-              let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
-              return curUser.role == "super" || curUser.key == item.key;
+              if (item) {
+                let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
+                return curUser.role == "super" || curUser.key == item.key;
+              }
+              else {
+                return true;
+              }
             }
           },
           {
@@ -173,8 +188,13 @@ export default {
             function: "edit",
             icon: "el-icon-edit",
             isDisplay(item) {
-              let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
-              return curUser.role == "super" || curUser.key == item.key;
+              if (item) {
+                let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
+                return curUser.role == "super" || curUser.key == item.key;
+              }
+              else {
+                return true;
+              }
             }
           },
           {
@@ -182,9 +202,14 @@ export default {
             function: "updatePass",
             icon: "el-icon-key",
             isDisplay(item) {
-              return (
-                JSON.parse(sessionStorage.getItem("userInfo")).key == item.key
-              );
+              if (item) {
+                return (
+                  JSON.parse(sessionStorage.getItem("userInfo")).key == item.key
+                );
+              }
+              else {
+                return true;
+              }
             }
           }
         ]

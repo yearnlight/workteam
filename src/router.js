@@ -103,6 +103,11 @@ const routes = [
         name: "business"
       },
       {
+        path: "/work/business_create",//业务管理
+        component: () => import("@/views/business/add.vue"),
+        name: "business_create"
+      },
+      {
         path: "/work/customComponent",//自定义组件
         component: () => import("@/views/customComponent/index.vue"),
         name: "event",

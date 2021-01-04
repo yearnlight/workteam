@@ -2,6 +2,9 @@
 <template>
     <div class="businessMenu">
         <div class="businessMenu-left">
+            <div class="businessMenu-left-operate">
+                <el-button type="primary" icon="el-icon-plus" @click="create">创建</el-button>
+            </div>
             <el-menu :default-active="active" class="el-menu-vertical-demo" @select="select" :collapse="isCollapse">
                 <el-menu-item :index="item.key" v-for="(item,index) in menus" :key="index">
                     <span slot="title">{{item.name}}</span>
@@ -22,9 +25,11 @@
   display: flex;
   &-left {
     width: 200px;
-    overflow-y: scroll;
+
     .el-menu {
       border-right: none;
+      overflow-y: scroll;
+      height: calc(100% - 52px);
     }
     .remark {
       font-size: 12px;
@@ -67,7 +72,10 @@ export default {
     methods: {
         select(index) {
             this.active = index;
-
+        },
+        create() {
+            // 创建服务配置
+            this.$router.push("/work/business_create")
         }
     }
 }

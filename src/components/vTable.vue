@@ -70,7 +70,7 @@
           </span>
 
           <!-- 自定义渲染 -->
-          <div v-else-if="item.render" :id="`render_id_${scope.$index}_${inputParams.current}_${item.prop}`" v-html="item.render(scope.row,`render_id_${scope.$index}_${inputParams.current}_${item.prop}`) || '-'"></div>
+          <div v-else-if="item.render" :id="`render_id_${scope.$index}_${inputParams.page}_${item.prop}`" v-html="item.render(scope.row,`render_id_${scope.$index}_${inputParams.page}_${item.prop}`) || '-'"></div>
 
           <!-- 自定义渲染template模式 -->
           <div v-else-if="item.renderPage">
@@ -113,7 +113,7 @@
         <no-data />
       </template>
     </el-table>
-    <el-pagination v-if="defaultConfig.pagination" @size-change="sizeChange" @current-change="currentChange" :current-page="inputParams.current" :page-sizes="defaultConfig.pageSizes" :page-size="inputParams.size" :total="data.total" layout="total, prev, pager, next,sizes, jumper"></el-pagination>
+    <el-pagination v-if="defaultConfig.pagination" @size-change="sizeChange" @current-change="currentChange" :current-page="inputParams.page" :page-sizes="defaultConfig.pageSizes" :page-size="inputParams.limit" :total="data.total" layout="total, prev, pager, next,sizes, jumper"></el-pagination>
     <el-dialog title="自定义列表" :visible.sync="isSetColumn" custom-class="cloudtable-set">
       <div class="cloudtable-set-explain">
         选中：
@@ -215,8 +215,8 @@ export default {
     }
 
     this.defaultConfig = Object.assign(this.defaultConfig, this.tableConfig);
-    this.inputParams.current = 1;
-    this.inputParams.size = this.defaultConfig.pageSize;
+    this.inputParams.page = 1;
+    this.inputParams.limit = this.defaultConfig.pageSize;
     this.init();
   },
   watch: {
@@ -240,7 +240,7 @@ export default {
           this.defaultConfig,
           this.tableConfig
         );
-        this.inputParams.size = this.defaultConfig.pageSize;
+        this.inputParams.limit = this.defaultConfig.pageSize;
       },
       immediate: true, //关键
       deep: true,
@@ -374,7 +374,7 @@ export default {
       // 查询操作
       if (params) {
         inputParams = Object.assign(this.inputParams, params);
-        inputParams.current = 1;
+        inputParams.page = 1;
         if (this.defaultConfig.isPublic) {
           Object.keys(inputParams).forEach((item) => {
             if (!(inputParams[item] === 0 || inputParams[item])) {
@@ -406,12 +406,12 @@ export default {
       this.search(this.inputParams);
     },
     sizeChange(size) {
-      this.inputParams.current = 1;
-      this.inputParams.size = size;
+      this.inputParams.page = 1;
+      this.inputParams.limit = size;
       this.search();
     },
     currentChange(index) {
-      this.inputParams.current = index;
+      this.inputParams.page = index;
       this.search();
     },
     switchChange(row) {
