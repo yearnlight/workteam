@@ -41,7 +41,7 @@ export default {
     methods: {
         getList() {
             this.loading = true;
-            this.$axios.post("/task/event/list", this.inputParams).then((res) => {
+            this.$axios.post("/event/list", this.inputParams).then((res) => {
                 this.loading = false;
                 if (res.status == 200) {
                     this.list = res.data;

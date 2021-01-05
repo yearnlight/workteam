@@ -32,7 +32,7 @@ export default {
   methods: {
     fetchData() {
       return this.$axios
-        .post("/task/md/info", { id: this.$route.query.id })
+        .post("/doc/info", { id: this.$route.query.id })
         .then((res) => {
           this.docInfo = res.data;
           this.value = this.docInfo.context;
@@ -43,7 +43,7 @@ export default {
       let formdata = new FormData();
       formdata.append("file", $file);
       this.imgFile[pos] = $file;
-      this.$axios.post("/task/upload/files", formdata).then((res) => {
+      this.$axios.post("/doc/files/upload", formdata).then((res) => {
         if (res.status === 200) {
           this.$message.success("上传成功");
           let url = res.data;

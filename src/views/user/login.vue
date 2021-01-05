@@ -48,7 +48,7 @@ export default {
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
-          this.$axios.post("/task/login", this.form).then(res => {
+          this.$axios.post("/auth/login", this.form).then(res => {
             if (res.status == 200) {
               window.sessionStorage.setItem("token", res.data.token);
               window.sessionStorage.setItem("userInfo", JSON.stringify(res.data));

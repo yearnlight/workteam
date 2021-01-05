@@ -86,7 +86,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.$axios
-            .post("/task/user/update", {
+            .post("/user/update", {
               pass: this.form.newPass2,
               oldPass: this.form.oldPass,
               id: this.selectItem.id,
@@ -106,7 +106,7 @@ export default {
       });
     },
     search() {
-      this.$axios.get("/task/user/list", {}).then((res) => {
+      this.$axios.get("/user/list", {}).then((res) => {
         if (res.status == 200) {
           this.list.records = res.data;
           this.list.total = res.data.length;
@@ -122,7 +122,7 @@ export default {
     },
     del(item) {
       this.$confirm(`你确定删除 ${item.name} ?`, "删除").then(() => {
-        this.$axios.post("/task/user/delete", { id: item.id }).then((res) => {
+        this.$axios.post("/user/delete", { id: item.id }).then((res) => {
           if (res.status == 200) {
             this.$message.success(res.msg);
             this.getList();

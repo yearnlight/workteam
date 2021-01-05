@@ -247,7 +247,7 @@ export default {
     del(id) {
       this.isDel = false;
       this.$confirm("你确定删除此文档？", "删除").then(() => {
-        this.$axios.post("/task/md/delete", { id: id }).then((res) => {
+        this.$axios.post("/doc/delete", { id: id }).then((res) => {
           if (res.status == 200) {
             this.$message.success("删除成功");
             this.fetchDoc();
@@ -261,7 +261,7 @@ export default {
       this.$router.push("/work/knowledgeMap_addmd");
     },
     fetchDoc(params) {
-      this.$axios.post("/task/md/list", params || {}).then((res) => {
+      this.$axios.post("/doc/list", params || {}).then((res) => {
         if (res.status == 200) {
           this.docs = res.data;
         } else {
@@ -270,7 +270,7 @@ export default {
       });
     },
     fetchUser() {
-      this.$axios.get("/task/user/list", {}).then((res) => {
+      this.$axios.get("/user/list", {}).then((res) => {
         if (res.status == 200) {
           this.userList = res.data;
         } else {
@@ -279,7 +279,7 @@ export default {
       });
     },
     fetchProject() {
-      this.$axios.post("/task/project/list", {}).then((res) => {
+      this.$axios.post("/project/list", {}).then((res) => {
         if (res.status == 200) {
           this.projectList = res.data;
           this.initG6();
@@ -295,7 +295,7 @@ export default {
       let that = this;
       // 删除项目
       this.$confirm(`你确定删除【${this.selectedModel.label}】?`, "删除").then(() => {
-        this.$axios.post("/task/project/delete", { id: this.selectedModel.id }).then(res => {
+        this.$axios.post("/project/delete", { id: this.selectedModel.id }).then(res => {
           if (res.status == 200) {
             this.$message.success(res.msg || `删除项目【${that.selectedModel.label}】成功`);
             this.fetchProject();
@@ -316,7 +316,7 @@ export default {
           this.$enum.projectTypeList,
           this.formData.type
         ).color;
-        this.$axios.post("/task/project/create", this.formData).then((res) => {
+        this.$axios.post("/project/create", this.formData).then((res) => {
           if (res.status == 200) {
             this.$message.success("创建项目成功");
             this.fetchProject();

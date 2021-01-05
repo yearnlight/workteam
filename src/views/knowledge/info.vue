@@ -96,7 +96,7 @@ export default {
   methods: {
     downloadWord() {
       this.$axios
-        .post("/task/md/download", { id: this.$route.query.id })
+        .post("/doc/download", { id: this.$route.query.id })
         .then((res) => {
           if (res.status == 200) {
             this.download(res.data);
@@ -136,7 +136,7 @@ export default {
     },
     fetchData() {
       return this.$axios
-        .post("/task/md/info", { id: this.$route.query.id })
+        .post("/doc/info", { id: this.$route.query.id })
         .then((res) => {
           this.info = res.data;
           this.prettierList = this.parsing(res.data.context);
@@ -145,7 +145,7 @@ export default {
         })
     },
     doRead() {
-      this.$axios.post("/task/md/read", { id: this.$route.query.id });
+      this.$axios.post("/doc/read", { id: this.$route.query.id });
     },
     parsing(context) {
       let post = {};

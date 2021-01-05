@@ -319,7 +319,7 @@ export default {
       }
     },
     getUserList() {
-      this.$axios.get("/task/user/list", {}).then(res => {
+      this.$axios.get("/user/list", {}).then(res => {
         if (res.status == 200) {
           this.userList = res.data;
         } else {

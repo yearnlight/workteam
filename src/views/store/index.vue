@@ -104,7 +104,7 @@ export default {
   },
   methods: {
     list() {
-      this.$axios.post("/task/store/list").then(res => {
+      this.$axios.post("/store/list").then(res => {
         if (res.status == 200) {
           this.stores = res.data;
         }
@@ -125,7 +125,7 @@ export default {
     save() {
       this.$refs["storeForm"].validate(valid => {
         if (!valid) return;
-        this.$axios.post("/task/store/create", this.formData).then(res => {
+        this.$axios.post("/store/create", this.formData).then(res => {
           if (res.status == 200) {
             this.$message.success(res.msg);
             this.list();

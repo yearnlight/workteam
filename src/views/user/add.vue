@@ -114,7 +114,7 @@ export default {
   methods: {
     getInfo() {
       this.$axios
-        .post("/task/user/info", { id: this.$route.query.id })
+        .post("/user/info", { id: this.$route.query.id })
         .then(res => {
           if (res.status == 200) {
             this.formData = res.data;
@@ -125,7 +125,7 @@ export default {
       this.$refs["elForm"].validate(valid => {
         if (!valid) return;
         if (this.isAdd) {
-          this.$axios.post("/task/user/add", this.formData).then(res => {
+          this.$axios.post("/user/add", this.formData).then(res => {
             if (res.status == 200) {
               this.$message.success(res.msg);
               this.$router.push("/work/userlist");
@@ -136,7 +136,7 @@ export default {
         } else {
           this.$axios
             .post(
-              "/task/user/update",
+              "/user/update",
               Object.assign(this.formData, { id: this.$route.query.id })
             )
             .then(res => {

@@ -130,7 +130,7 @@ export default {
   },
   methods: {
     getList() {
-      let promise = this.$axios.post("/task/regular/list").then((res) => {
+      let promise = this.$axios.post("/regular/list").then((res) => {
         if (res.status == 200) {
           this.list = res.data;
         }
@@ -199,7 +199,7 @@ export default {
             this.$message.error("用正则表达式匹配测试数据失败");
             return;
           }
-          this.$axios.post("/task/regular/create", this.form).then((res) => {
+          this.$axios.post("/regular/create", this.form).then((res) => {
             if (res.status == 200) {
               self.$message.success("创建成功");
               self.getList();

@@ -57,7 +57,7 @@ export default {
   methods: {
     fetchData() {
       return this.$axios
-        .post("/task/md/info", { id: this.$route.query.id })
+        .post("/doc/info", { id: this.$route.query.id })
         .then((res) => {
           this.docInfo = res.data;
           this.title = this.docInfo.title;
@@ -65,7 +65,7 @@ export default {
         });
     },
     fetchProject() {
-      return this.$axios.post("/task/project/list", {}).then((res) => {
+      return this.$axios.post("/project/list", {}).then((res) => {
         if (res.status == 200) {
           this.projectList = res.data;
         } else {
@@ -84,7 +84,7 @@ export default {
         // 更新
         if (this.docInfo && this.docInfo.id) {
           this.$axios
-            .post("/task/md/update", { id: this.docInfo.id, ...params })
+            .post("/doc/update", { id: this.docInfo.id, ...params })
             .then((res) => {
               if (res.status == 200) {
                 this.$message.success(res.msg);
@@ -94,7 +94,7 @@ export default {
               }
             });
         } else {
-          this.$axios.post("/task/md/save", params).then((res) => {
+          this.$axios.post("/doc/save", params).then((res) => {
             if (res.status == 200) {
               this.$message.success(res.msg);
               this.$router.go(-1);

@@ -1,0 +1,229 @@
+[2021-01-05T14:57:54.911] [ERROR] error - 
+  TypeError: Cannot destructure property `account` of 'undefined' or 'null'.
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\auth.js:15:41)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at next (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:45:18)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:346:16
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:36:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:351:31)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:34:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+
+[2021-01-05T14:58:54.060] [ERROR] error - 
+  TypeError: Cannot destructure property `account` of 'undefined' or 'null'.
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\auth.js:15:41)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at next (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:45:18)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:346:16
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:36:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:351:31)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:34:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+
+[2021-01-05T14:59:46.444] [ERROR] error - 
+  TypeError: Cannot destructure property `account` of 'undefined' or 'null'.
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\auth.js:16:41)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at next (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:45:18)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:346:16
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:36:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:351:31)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:34:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+
+[2021-01-05T15:01:08.888] [ERROR] error - 
+  TypeError: Cannot destructure property `account` of 'undefined' or 'null'.
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\auth.js:16:41)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at next (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:45:18)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:346:16
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:36:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:351:31)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:34:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+
+[2021-01-05T15:07:08.940] [ERROR] error - 
+  TypeError: Cannot destructure property `account` of 'undefined' or 'null'.
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\auth.js:16:41)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at next (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:45:18)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:346:16
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:36:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:351:31)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:34:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+
+[2021-01-05T15:08:23.806] [ERROR] error - 
+  TypeError: Cannot destructure property `account` of 'undefined' or 'null'.
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\auth.js:17:41)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at next (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:45:18)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:346:16
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:36:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:351:31)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:34:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+
+[2021-01-05T15:16:12.454] [ERROR] error - 
+  TypeError: Cannot destructure property `account` of 'undefined' or 'null'.
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\auth.js:17:41)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at next (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:45:18)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:346:16
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:36:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:351:31)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:34:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+
+[2021-01-05T15:21:29.926] [ERROR] error - 
+  TypeError: Cannot destructure property `account` of 'undefined' or 'null'.
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\auth.js:17:41)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at next (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:45:18)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:346:16
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:36:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:351:31)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:34:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+
+[2021-01-05T15:24:28.843] [ERROR] error - 
+  TypeError: Cannot destructure property `account` of 'undefined' or 'null'.
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\auth.js:16:41)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at next (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:45:18)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:346:16
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:36:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:351:31)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:34:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+
+[2021-01-05T15:35:40.945] [ERROR] error - 
+  TypeError: Cannot destructure property `account` of 'undefined' or 'null'.
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\auth.js:16:41)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at next (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:45:18)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:346:16
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:36:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:351:31)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:34:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+
+[2021-01-05T15:35:41.360] [ERROR] error - 
+  TypeError: Cannot destructure property `account` of 'undefined' or 'null'.
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\auth.js:16:41)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at next (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:45:18)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:346:16
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:36:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:351:31)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:34:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+
+[2021-01-05T15:39:22.035] [ERROR] error - 
+  TypeError: Cannot destructure property `account` of 'undefined' or 'null'.
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\auth.js:16:41)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at next (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:45:18)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:346:16
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:36:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:351:31)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:34:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+
+[2021-01-05T15:40:39.551] [ERROR] error - 
+  ReferenceError: logger is not defined
+      at routers.push.KoaRouterInterceptor (D:\fitmgr\otherweb\worktask\server\routes\index.js:25:17)
+      at RouterInterceptor (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router-interceptor@1.0.4@koa-router-interceptor\babel\index.js:17:28)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-body@4.2.0@koa-body\index.js:148:14
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-01-05T15:40:40.310] [ERROR] error - 
+  ReferenceError: logger is not defined
+      at routers.push.KoaRouterInterceptor (D:\fitmgr\otherweb\worktask\server\routes\index.js:25:17)
+      at RouterInterceptor (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router-interceptor@1.0.4@koa-router-interceptor\babel\index.js:17:28)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-body@4.2.0@koa-body\index.js:148:14
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-01-05T15:41:52.259] [ERROR] error - 
+  TypeError: koaRouter.routes is not a function
+      at Promise.resolve.then (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router-interceptor@1.0.4@koa-router-interceptor\babel\index.js:19:34)
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-01-05T15:43:58.406] [ERROR] error - 
+  TypeError: koaRouter.routes is not a function
+      at Promise.resolve.then (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router-interceptor@1.0.4@koa-router-interceptor\babel\index.js:19:34)
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-01-05T15:46:04.615] [ERROR] error - 
+  ReferenceError: query is not defined
+      at routers.push.KoaRouterInterceptor (D:\fitmgr\otherweb\worktask\server\routes\index.js:34:17)
+      at RouterInterceptor (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router-interceptor@1.0.4@koa-router-interceptor\babel\index.js:17:28)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-body@4.2.0@koa-body\index.js:148:14
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-01-05T15:46:04.909] [ERROR] error - 
+  ReferenceError: query is not defined
+      at routers.push.KoaRouterInterceptor (D:\fitmgr\otherweb\worktask\server\routes\index.js:34:17)
+      at RouterInterceptor (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router-interceptor@1.0.4@koa-router-interceptor\babel\index.js:17:28)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-body@4.2.0@koa-body\index.js:148:14
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-01-05T16:08:15.200] [ERROR] error - Auth faild.
+[2021-01-05T16:16:18.155] [ERROR] error - Auth faild.
+[2021-01-05T16:20:23.634] [ERROR] error - Auth faild.
+[2021-01-05T16:25:01.454] [ERROR] error - Auth faild.
+[2021-01-05T16:47:30.607] [ERROR] error - Auth faild.
+[2021-01-05T17:23:30.038] [ERROR] error - 
+  TypeError: Cannot read property 'page' of undefined
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\event.js:20:16)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at next (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:45:18)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:346:16
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:36:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:351:31)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+      at allowedMethods (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:407:12)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+
+[2021-01-05T17:23:34.921] [ERROR] error - 
+  TypeError: Cannot read property 'page' of undefined
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\event.js:20:16)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at next (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:45:18)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:346:16
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:36:12
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:351:31)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+      at allowedMethods (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:407:12)
+      at dispatch (D:\fitmgr\otherweb\worktask\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+

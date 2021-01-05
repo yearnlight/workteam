@@ -38,7 +38,7 @@ export default {
   methods: {
     del({ name, uuid }) {
       this.$confirm(`你确定删除应用服务【${name}】?`, "删除").then(() => {
-        this.$axios.post("/task/store/delete", { uuid }).then(res => {
+        this.$axios.post("/store/delete", { uuid }).then(res => {
           if (res.status == 200) {
             this.$message.success(res.msg);
             this.$emit("handDelete", name);
