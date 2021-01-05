@@ -172,6 +172,18 @@ body {
       }
     }
 
+    .hljs {
+      line-height: 1.8;
+      font-family: Menlo,Monaco,Consolas,Courier,monospace;
+      font-size: 12px;
+      padding: 18px 24px;
+      background-color: #fafafa;
+      border: 1px solid #eaeefb;
+      margin-bottom: 25px;
+      border-radius: 4px;
+      -webkit-font-smoothing: auto;
+    }
+
     .base {
       border: 1px solid rgb(236, 239, 248);
       margin-bottom: 10px;

@@ -39,7 +39,7 @@ import t_fields from "@/resource/t_fields";
 import fields from "@/resource/fields";
 import hljs from 'highlight.js';
 // 样式文件
-import 'highlight.js/styles/routeros.css';
+import 'highlight.js/styles/color-brewer.css';
 export default {
     components: { vTable, InfoBase, explain },
     directives: {

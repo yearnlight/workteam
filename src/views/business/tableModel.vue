@@ -42,7 +42,7 @@
 import vTable from "@/components/vTable";
 import hljs from 'highlight.js';
 // 样式文件
-import 'highlight.js/styles/routeros.css';
+import 'highlight.js/styles/color-brewer.css';
 export default {
     components: { vTable },
     directives: {

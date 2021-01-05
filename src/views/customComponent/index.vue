@@ -24,7 +24,7 @@ import guide from "./demo/guide";
 import dot from "./demo/dot";
 import hljs from 'highlight.js';
 // 样式文件
-import 'highlight.js/styles/routeros.css';
+import 'highlight.js/styles/color-brewer.css';
 export default {
   directives: {
     highlight: {
