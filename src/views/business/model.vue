@@ -63,7 +63,7 @@ export default {
     props: {
         name: {
             type: String
-        }
+        },
     },
     data() {
         return {

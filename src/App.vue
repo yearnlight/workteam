@@ -171,6 +171,47 @@ body {
         line-height: 18px;
       }
     }
+
+    .base {
+      border: 1px solid rgb(236, 239, 248);
+      margin-bottom: 10px;
+      padding: 10px 20px 0px;
+
+      &-header {
+        font-size: 16px;
+        line-height: 1;
+        margin-top: 5px;
+        margin-bottom: 25px;
+        border-left: 4px solid rgb(64, 158, 255);
+        padding-left: 14px;
+        vertical-align: middle;
+      }
+
+      &-content {
+        padding: 20px;
+      }
+
+      &-operate {
+        margin-top: 10px;
+        text-align: right;
+        padding: 10px 20px 10px 0px !important;
+        border: 1px solid rgb(236, 239, 248);
+        margin-bottom: 10px;
+      }
+
+      .el-form {
+        &-item {
+          .el-input,
+          .el-select,
+          .el-textarea {
+            width: 50%;
+            .el-input {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
   }
 }
 </style>
