@@ -14,7 +14,7 @@
         <el-button title="刷新表格" type="default" @click="search()" icon="el-icon-refresh"></el-button>
       </div>
     </div>
-    <el-table border style="width: 100%" ref="multipleTable" :data="data.records" :row-key="getRowKeys" :height="defaultConfig.height" v-bind="tableAttributes" @selection-change="multipleItems" @select="selectCheckBox" @cell-click="cellClick">
+    <el-table tooltip-effect="light" border style="width: 100%" ref="multipleTable" :data="data.records" :row-key="getRowKeys" :height="defaultConfig.height" v-bind="tableAttributes" @selection-change="multipleItems" @select="selectCheckBox" @cell-click="cellClick">
       <!-- index -->
       <el-table-column align="center" v-if="indexColumn.type && indexColumn.type == 'index'" :type="indexColumn.type" :width="indexColumn.width || '45'" :label="indexColumn.label">
       </el-table-column>
@@ -91,6 +91,11 @@
           <dot v-else-if="item.enums  && item.enums[scope.row[item.prop]] && item.enums[scope.row[item.prop]].type && item.enums[scope.row[item.prop]].component == 'dot'" :level="item.enums[scope.row[item.prop]].type">
             {{item.enums[scope.row[item.prop]].label}}
           </dot>
+
+          <!-- dot根据枚举渲染 -->
+          <level v-else-if="item.enums  && item.enums[scope.row[item.prop]] && item.enums[scope.row[item.prop]].type && item.enums[scope.row[item.prop]].component == 'level'" :level="item.enums[scope.row[item.prop]].type">
+            {{item.enums[scope.row[item.prop]].label}}
+          </level>
 
           <!-- 枚举渲染 -->
           <span v-else-if="item.enums && item.enums[scope.row[item.prop]] && !item.enums[scope.row[item.prop]].type" :class="item.enums[scope.row[item.prop]].class">{{item.enums[scope.row[item.prop]].label}}</span>

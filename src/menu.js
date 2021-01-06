@@ -8,6 +8,11 @@ export default [
     title: "任务列表",
     icon: "el-icon-menu",
     path: "/work/tasklist"
+  },  
+  {
+    title: "小需求列表",
+    icon: "el-icon-menu",
+    path: "/work/demand"
   },
   {
     title: "成员列表",

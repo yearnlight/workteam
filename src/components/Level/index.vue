@@ -1,5 +1,5 @@
 <template>
-  <span :class="[level,'level',{'dark':effect == 'dark','plain':effect == 'plain'}]">{{text}}</span>
+  <span :class="[level,'level',{'dark':effect == 'dark','plain':effect == 'plain'}]"><slot>{{text}}</slot></span>
 </template>
 <script>
 export default {

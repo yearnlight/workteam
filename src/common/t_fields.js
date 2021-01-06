@@ -215,5 +215,121 @@ export default {
         ]
       }
     ]
+  },
+  demand: {
+    "tableConfig": {
+      "setting": true,
+      "pagination": true,
+      "isPublic": true,
+      "pageSize": 10,
+      "type": null
+    },
+    "tableColumns": [
+      {
+        "prop": "name",
+        "label": "名称",
+        "isInfo": true,
+        "funName": "info",
+        "operateFun": {
+          "function": "info"
+        },
+        "show-overflow-tooltip": true
+      },
+      {
+        "prop": "location",
+        "label": "模块位置",
+        "width": "",
+        "show-overflow-tooltip": true
+      },
+      {
+        "prop": "level",
+        "label": "等级",
+        "enums": {
+          "high": {
+            "label": "高",
+            "type": "danger",
+            "component": "level"
+          },
+          "middle": {
+            "label": "中",
+            "type": "warning",
+            "component": "level"
+          },
+          "low": {
+            "label": "低",
+            "type": "primary",
+            "component": "level"
+          }
+        }
+      },
+      {
+        "prop": "master",
+        "label": "负责人"
+      },
+      {
+        "prop": "webMaster",
+        "label": "前端责任人"
+      },
+      {
+        "prop": "backMaster",
+        "label": "后端负责人"
+      },
+      {
+        "prop": "status",
+        "label": "状态",
+        "enums": {
+          "finish": {
+            "label": "高",
+            "type": "success",
+            "component": "dot"
+          },
+          "doing": {
+            "label": "处理中",
+            "type": "warning",
+            "component": "dot"
+          },
+          "shelve": {
+            "label": "搁置",
+            "type": "info",
+            "component": "dot"
+          },
+          "todo": {
+            "label": "待处理",
+            "type": "primary",
+            "component": "dot"
+          }
+        }
+      },
+      {
+        "prop": "createtime",
+        "label": "创建时间"
+      },
+      {
+        "prop": "desc",
+        "label": "描述",
+        "show-overflow-tooltip": true
+      },
+      {
+        "prop": "id",
+        "label": "操作",
+        "isOperate": true,
+        "operateFun": [
+          {
+            "function": "del",
+            "label": "删除",
+            "icon": "delete"
+          },
+          {
+            "label": "编辑",
+            "function": "edit",
+            "icon": "edit"
+          },
+          {
+            "label": "处理",
+            "function": "deal"
+          }
+        ]
+      }
+    ]
   }
 };

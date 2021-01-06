@@ -122,6 +122,14 @@ const routes = [
         meta: {
           white: true
         }
+      },
+      {
+        path: "/work/demand",// 小需求管理
+        component: () => import("@/views/demand/index.vue"),
+        name: "demand",
+        meta: {
+          white: true
+        }
       }
     ]
   }
