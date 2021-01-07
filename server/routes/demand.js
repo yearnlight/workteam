@@ -15,6 +15,7 @@ router.post("/list", async ctx => {
         "name",
         "webMaster",
         "status",
+        "devPhase",
     ];
     let res = [];
     let params = ctx.request.body
@@ -95,21 +96,85 @@ router.post("/delete", async ctx => {
 //处理
 router.post("/deal", async ctx => {
     let msg = ""
-    let { id, status } = ctx.request.body;
+    let { id, remark, status } = ctx.request.body;
+    let dealtime = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
     // 查询存在性
     let selectStr = "select * from demand where isDel = 0 and `id` = ?";
     let searchData = await query(selectStr, [id]);
     if (searchData && searchData.length) {
+        let cur = searchData[0];
+        cur.remark = cur.remark || "[]";
+        let curRemark = JSON.parse(cur.remark);
+        curRemark.push({ dealtime: dealtime, oStatus: cur.status, nStatus: status, desc: remark });
         // 存在后，处理
-        let delStr = `update demand SET status = ? where id = ?`;
-        res = await query(delStr, [status, id]);;
-        msg = `处理小需求【${searchData[0].name}】成功`;
+        let delStr = `update demand SET status = ?,remark = ? where id = ?`;
+        res = await query(delStr, [status, JSON.stringify(curRemark), id]);;
+        msg = `处理小需求【${cur.name}】成功`;
         util.setEvent(ctx, "success", msg);
         ctx.response.body = { status: 200, msg: msg, data: null };
     }
     else {
         msg = `小需求不存在`;
         ctx.response.body = { status: 0, msg: msg, data: null };
+    }
+});
+
+// 创建 + 编辑
+router.post("/form", async ctx => {
+    let msg = "";
+    let params = ctx.request.body;
+    let id = Uuid.v1();
+    let createtime = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
+    // 编辑过程
+    if (params.id) {
+        let fields = ["name", "location", "level", "describe", "master", "webMaster", "backMaster", "devPhase"]
+        let updateParams = [];
+        let values = [];
+        for (let key in params) {
+            if (fields.includes(key)) {
+                updateParams.push(`\`${key}\` = ?`);
+                if (Array.isArray(params[key])) {
+                    params[key] = params[key].join(",");
+                }
+                values.push(params[key]);
+            }
+        }
+        values.concat(params.id);
+        let updateStr = `update demand SET ${updateParams.join(",")} where id = ?`;
+        console.log(updateStr)
+        let isUpdate = await query(updateStr, values.concat(params.id));
+        if (isUpdate) {
+            msg = `小需求【${params.name}】更新成功`;
+            util.setEvent(ctx, "success", msg);
+            ctx.response.body = { status: 200, msg: msg, data: null };
+        }
+    }
+    else {
+        let inputParams = [
+            [
+                id,
+                params.name,
+                params.location,
+                params.devPhase,
+                params.level,
+                params.master,
+                params.webMaster,
+                params.backMaster,
+                "todo",
+                createtime,
+                ctx.request.header.userName,
+                params.describe,
+                "[]",
+                0
+            ]
+        ];
+        let insertStr = 'insert into demand(id,name,location,devPhase,`level`,`master`,webMaster,backMaster,status,createtime,creator,`describe`,remark,isDel) values ?';
+        let isInsert = await query(insertStr, [inputParams]);
+        if (isInsert) {
+            msg = `小需求【${params.name}】创建成功`;
+            util.setEvent(ctx, "success", msg);
+            ctx.response.body = { status: 200, msg: msg, data: null };
+        }
     }
 });
 

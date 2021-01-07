@@ -75,6 +75,9 @@ body {
       color: #f56c6c;
       cursor: pointer;
     }
+    .high {
+      color: #f39800 !important;
+    }
     .blue {
       color: #409eff;
       cursor: pointer;
@@ -174,7 +177,7 @@ body {
 
     .hljs {
       line-height: 1.8;
-      font-family: Menlo,Monaco,Consolas,Courier,monospace;
+      font-family: Menlo, Monaco, Consolas, Courier, monospace;
       font-size: 12px;
       padding: 18px 24px;
       background-color: #fafafa;

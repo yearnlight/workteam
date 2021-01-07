@@ -46,11 +46,11 @@
                 <span v-if="(typeof oItem.isDisplay === 'function')?oItem.isDisplay(scope.row):getPermission(name,oItem.isDisplay)">
                   <!-- 没有状态控制，一直启用 -->
                   <el-button v-if="!oItem.isEnabled" :key="oIndex" type="text" size="small" :title="oItem.title" @click="operate(scope.row,oItem.function,scope.$index)">
-                    <icon style="margin-right:3px;" v-if="oItem.icon" :iconSymbol="oItem.icon" />{{oItem.label}}
+                    <i style="margin-right:3px;" v-if="oItem.icon" :class="oItem.icon" />{{oItem.label}}
                   </el-button>
                   <!-- 状态控制 -->
                   <el-button type="text" size="small" v-else :disabled="!oItem.isEnabled(scope.row)" :title="oItem.title" @click="operate(scope.row,oItem.function,scope.$index)">
-                    <icon style="margin-right:3px;" v-if="oItem.icon" :iconSymbol="oItem.icon" />{{oItem.label}}
+                    <i style="margin-right:3px;" v-if="oItem.icon" :class="oItem.icon" />{{oItem.label}}
                   </el-button>
                   <el-divider direction="vertical" v-if="item.operateFun.length != oIndex + 1"></el-divider>
                 </span>
@@ -58,11 +58,11 @@
               <span v-else>
                 <!-- 没有状态控制，一直启用 -->
                 <el-button type="text" size="small" v-if="!oItem.isEnabled" :key="oIndex" :title="oItem.title" @click="operate(scope.row,oItem.function,scope.$index)">
-                  <icon style="margin-right:3px;" v-if="oItem.icon" :iconSymbol="oItem.icon" />{{oItem.label}}
+                  <i style="margin-right:3px;" v-if="oItem.icon" :class="oItem.icon" />{{oItem.label}}
                 </el-button>
                 <!-- 状态控制 -->
                 <el-button type="text" size="small" v-else :disabled="!oItem.isEnabled(scope.row)" :title="oItem.title" @click="operate(scope.row,oItem.function,scope.$index)">
-                  <icon style="margin-right:3px;" v-if="oItem.icon" :iconSymbol="oItem.icon" />{{oItem.label}}
+                  <i style="margin-right:3px;" v-if="oItem.icon" :class="oItem.icon" />{{oItem.label}}
                 </el-button>
                 <el-divider direction="vertical" v-if="item.operateFun.length != oIndex + 1"></el-divider>
               </span>
@@ -194,8 +194,8 @@ export default {
       searchConfig: {},
       isSetColumn: false,
       inputParams: {
-        current: 1,
-        size: 10,
+        page: 1,
+        limit: 10,
       },
       indexColumn: {},
       selectIndex: "",
@@ -213,13 +213,11 @@ export default {
   },
   created() {
     this.mapName = this.name;
-    this.allDicts = sessionStorage.getItem('allDicts') ? JSON.parse(sessionStorage.getItem('allDicts')) : {};
-    //    this.menuName = this.allDicts.mappingRelations && this.allDicts.mappingRelations.dict_name_map && this.allDicts.mappingRelations.dict_name_map[this.name] ? this.allDicts.mappingRelations.dict_name_map[this.name].valueName : '';
     if (this.name) {
       this.dicts = this.allDicts[this.name];
     }
 
-    this.defaultConfig = Object.assign(this.defaultConfig, this.tableConfig);
+    this.defaultConfig = Object.assign(this.defaultConfig, this.tableConfig || t_fields[this.name].tableConfig);
     this.inputParams.page = 1;
     this.inputParams.limit = this.defaultConfig.pageSize;
     this.init();
@@ -243,7 +241,7 @@ export default {
       handler(n, o) {
         this.defaultConfig = Object.assign(
           this.defaultConfig,
-          this.tableConfig
+          this.tableConfig || t_fields[this.name].tableConfig
         );
         this.inputParams.limit = this.defaultConfig.pageSize;
       },
@@ -405,8 +403,8 @@ export default {
     reset() {
       // 清理搜索条件
       this.inputParams = {
-        current: 1,
-        size: this.defaultConfig.pageSize,
+        page: 1,
+        limit: this.defaultConfig.pageSize,
       };
       this.search(this.inputParams);
     },

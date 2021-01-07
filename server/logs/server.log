@@ -74,3 +74,633 @@
 [2021-01-06T17:19:10.250] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
 [2021-01-06T17:20:01.963] [WARN] default - /demand/list
 [2021-01-06T17:20:02.036] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T17:44:49.687] [WARN] default - /user/list
+[2021-01-06T17:51:34.246] [WARN] default - /demand/list
+[2021-01-06T17:51:34.330] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T21:18:26.614] [WARN] default - /auth/login
+[2021-01-06T21:18:31.634] [WARN] default - /task/list
+[2021-01-06T21:18:31.636] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-01-06T21:18:31.645] [WARN] default - /task/statistics
+[2021-01-06T21:18:31.951] [WARN] default - /user/list
+[2021-01-06T21:18:32.444] [WARN] default - /task/list
+[2021-01-06T21:18:32.446] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-01-06T21:18:35.042] [WARN] default - /task/list
+[2021-01-06T21:18:35.044] [INFO] default - query task page:select * from worktask where isDel = 0  order by endTime desc limit 0, 10,parames:
+[2021-01-06T21:18:35.353] [WARN] default - /user/list
+[2021-01-06T21:20:23.186] [WARN] default - /task/list
+[2021-01-06T21:20:23.190] [INFO] default - query task page:select * from worktask where isDel = 0  order by endTime desc limit 0, 10,parames:
+[2021-01-06T21:20:23.193] [WARN] default - /user/list
+[2021-01-06T21:20:26.206] [WARN] default - /demand/list
+[2021-01-06T21:20:26.290] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T21:43:51.092] [WARN] default - /demand/list
+[2021-01-06T21:44:11.278] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T21:45:08.674] [WARN] default - /demand/list
+[2021-01-06T21:45:08.775] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T21:45:12.860] [WARN] default - /demand/list
+[2021-01-06T21:45:12.952] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T21:45:27.244] [WARN] default - /demand/list
+[2021-01-06T21:45:27.336] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T21:45:57.594] [WARN] default - /demand/list
+[2021-01-06T21:45:57.678] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T21:46:06.326] [WARN] default - /demand/list
+[2021-01-06T21:46:06.426] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T21:46:13.554] [WARN] default - /demand/info
+[2021-01-06T21:48:13.733] [WARN] default - /demand/info
+[2021-01-06T21:49:20.229] [WARN] default - /demand/list
+[2021-01-06T21:49:20.313] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T21:50:23.358] [WARN] default - /event/list
+[2021-01-06T21:50:23.449] [INFO] default - query event page:select * from event order by createtime desc limit 0, 10,parames:
+[2021-01-06T21:51:01.083] [WARN] default - /doc/list
+[2021-01-06T21:51:01.102] [WARN] default - /project/list
+[2021-01-06T21:51:01.109] [WARN] default - /user/list
+[2021-01-06T21:51:01.949] [WARN] default - /demand/list
+[2021-01-06T21:51:02.040] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T21:53:27.759] [WARN] default - /auth/login
+[2021-01-06T21:53:28.604] [WARN] default - /task/list
+[2021-01-06T21:53:28.606] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-01-06T21:53:28.922] [WARN] default - /user/list
+[2021-01-06T21:53:28.924] [WARN] default - /task/statistics
+[2021-01-06T21:53:29.416] [WARN] default - /task/list
+[2021-01-06T21:53:29.418] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-01-06T21:53:31.525] [WARN] default - /demand/list
+[2021-01-06T21:53:31.611] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T21:53:35.009] [WARN] default - /demand/info
+[2021-01-06T21:56:32.412] [INFO] default - Task server success to run,port:4001.
+[2021-01-06T21:56:54.157] [WARN] default - /demand/list
+[2021-01-06T21:56:54.346] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T21:56:58.293] [WARN] default - /demand/info
+[2021-01-06T22:08:19.855] [INFO] default - Task server success to run,port:4001.
+[2021-01-06T22:08:27.674] [WARN] default - /demand/list
+[2021-01-06T22:08:27.870] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T22:09:07.299] [WARN] default - /demand/add
+[2021-01-06T22:09:41.170] [WARN] default - /demand/form
+[2021-01-06T22:09:41.350] [ERROR] default - 
+  Error: ER_PARSE_ERROR: 
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\worktask\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-06T22:12:37.850] [INFO] default - Task server success to run,port:4001.
+[2021-01-06T22:12:42.576] [WARN] default - /demand/form
+[2021-01-06T22:12:42.804] [DEBUG] default - [ [ '3df093f0-5029-11eb-ad8a-19b49615ab62',
+    'test',
+    'test',
+    'low',
+    'uu',
+    'uu',
+    undefined,
+    'todo',
+    '2021-01-06 22:12:42',
+    '杨明翔',
+    'uuuu',
+    0 ] ]
+[2021-01-06T22:12:42.907] [ERROR] default - 
+  Error: ER_PARSE_ERROR: 
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\worktask\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-06T22:17:02.816] [INFO] default - Task server success to run,port:4001.
+[2021-01-06T22:17:06.660] [WARN] default - /demand/form
+[2021-01-06T22:17:06.847] [DEBUG] default - [ [ 'db527eb0-5029-11eb-8421-85662aae6d4d',
+    'test',
+    'test',
+    'low',
+    'uu',
+    'uu',
+    undefined,
+    'todo',
+    '2021-01-06 22:17:06',
+    '杨明翔',
+    'uuuu',
+    0 ] ]
+[2021-01-06T22:17:07.182] [WARN] default - /demand/list
+[2021-01-06T22:17:07.258] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T22:17:12.546] [WARN] default - /demand/delete
+[2021-01-06T22:17:12.828] [WARN] default - /demand/list
+[2021-01-06T22:17:12.904] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T22:17:24.720] [WARN] default - /demand/form
+[2021-01-06T22:17:24.799] [DEBUG] default - [ [ 'e6065cf0-5029-11eb-8421-85662aae6d4d',
+    'test',
+    'sadsadsa',
+    'low',
+    'adads',
+    'adsas',
+    'asdsadsa',
+    'todo',
+    '2021-01-06 22:17:24',
+    '杨明翔',
+    'dasdasd',
+    0 ] ]
+[2021-01-06T22:17:25.046] [WARN] default - /demand/list
+[2021-01-06T22:17:25.134] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T22:17:28.735] [WARN] default - /demand/info
+[2021-01-06T22:17:35.947] [WARN] default - /demand/form
+[2021-01-06T22:17:36.100] [ERROR] default - 
+  Error: ER_PARSE_ERROR: 
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\worktask\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-06T22:19:09.274] [WARN] default - /demand/form
+[2021-01-06T22:19:09.441] [ERROR] default - 
+  Error: ER_PARSE_ERROR: 
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\worktask\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-06T22:19:23.758] [INFO] default - Task server success to run,port:4001.
+[2021-01-06T22:19:24.326] [WARN] default - /demand/form
+[2021-01-06T22:19:24.526] [DEBUG] default - update demand SET name = ?,location = ?,level = ?,master = ?,webMaster = ?,backMaster = ?,desc = ? where id = ?
+[2021-01-06T22:19:24.616] [ERROR] default - 
+  Error: ER_PARSE_ERROR: 
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\worktask\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-06T22:22:47.450] [WARN] default - /demand/info
+[2021-01-06T22:22:56.901] [INFO] default - Task server success to run,port:4001.
+[2021-01-06T22:23:08.557] [WARN] default - /demand/list
+[2021-01-06T22:23:08.755] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T22:25:04.361] [WARN] default - /demand/list
+[2021-01-06T22:25:04.443] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T22:25:06.433] [WARN] default - /demand/info
+[2021-01-06T22:25:14.077] [WARN] default - /demand/form
+[2021-01-06T22:25:14.160] [DEBUG] default - update demand SET name = ?,location = ?,level = ?,master = ?,webMaster = ?,backMaster = ?,describe = ? where id = ?
+[2021-01-06T22:25:14.237] [ERROR] default - 
+  Error: ER_PARSE_ERROR: 
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\worktask\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-06T22:26:43.755] [INFO] default - Task server success to run,port:4001.
+[2021-01-06T22:26:45.659] [WARN] default - /demand/form
+[2021-01-06T22:26:45.841] [DEBUG] default - update demand SET `name` = ?,`location` = ?,`level` = ?,`master` = ?,`webMaster` = ?,`backMaster` = ?,`describe` = ? where id = ?
+[2021-01-06T22:26:46.107] [WARN] default - /demand/list
+[2021-01-06T22:26:46.187] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T22:26:51.525] [WARN] default - /demand/info
+[2021-01-06T22:26:54.709] [WARN] default - /demand/list
+[2021-01-06T22:26:54.795] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T22:26:56.806] [WARN] default - /demand/info
+[2021-01-06T22:26:58.912] [WARN] default - /demand/list
+[2021-01-06T22:26:58.993] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T22:27:00.683] [WARN] default - /demand/info
+[2021-01-06T22:27:33.284] [WARN] default - /demand/list
+[2021-01-06T22:27:33.359] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T22:34:44.915] [WARN] default - /demand/list
+[2021-01-06T22:34:55.083] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T22:36:01.405] [WARN] default - /demand/list
+[2021-01-06T22:36:01.493] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T22:36:50.529] [WARN] default - /demand/list
+[2021-01-06T22:36:50.622] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T22:37:18.611] [WARN] default - /demand/list
+[2021-01-06T22:37:18.747] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T22:39:31.047] [WARN] default - /demand/list
+[2021-01-06T22:39:31.153] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T22:48:53.698] [INFO] default - Task server success to run,port:4001.
+[2021-01-06T22:50:14.212] [INFO] default - Task server success to run,port:4001.
+[2021-01-06T22:51:58.895] [WARN] default - /demand/list
+[2021-01-06T22:52:00.082] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T22:52:08.297] [WARN] default - /demand/deal
+[2021-01-06T22:52:08.475] [ERROR] default - 
+  TypeError: curRemark.push is not a function
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\demand.js:107:19)
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-01-06T22:52:38.132] [INFO] default - Task server success to run,port:4001.
+[2021-01-06T22:52:41.000] [WARN] default - /demand/deal
+[2021-01-06T22:52:42.284] [DEBUG] default - []
+[2021-01-06T22:52:42.287] [ERROR] default - 
+  TypeError: curRemark.push is not a function
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\demand.js:108:19)
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-01-06T22:56:32.776] [INFO] default - Task server success to run,port:4001.
+[2021-01-06T22:56:37.812] [WARN] default - /demand/deal
+[2021-01-06T22:56:39.096] [DEBUG] default - 2
+[2021-01-06T22:56:39.100] [ERROR] default - 
+  TypeError: curRemark.push is not a function
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\demand.js:108:19)
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-01-06T22:57:15.440] [INFO] default - Task server success to run,port:4001.
+[2021-01-06T22:57:17.915] [WARN] default - /demand/deal
+[2021-01-06T22:57:18.182] [ERROR] default - 
+  ReferenceError: evel is not defined
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\demand.js:106:25)
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-01-06T22:57:41.044] [INFO] default - Task server success to run,port:4001.
+[2021-01-06T22:57:42.243] [WARN] default - /demand/deal
+[2021-01-06T22:57:42.532] [DEBUG] default - 2
+[2021-01-06T22:57:42.535] [ERROR] default - 
+  TypeError: curRemark.push is not a function
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\demand.js:108:19)
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-01-06T22:59:52.836] [INFO] default - Task server success to run,port:4001.
+[2021-01-06T22:59:53.949] [WARN] default - /demand/deal
+[2021-01-06T22:59:55.251] [DEBUG] default - "[]"
+[2021-01-06T22:59:55.252] [DEBUG] default - 2
+[2021-01-06T22:59:55.255] [ERROR] default - 
+  TypeError: curRemark.push is not a function
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\demand.js:109:19)
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-01-06T23:01:18.031] [INFO] default - Task server success to run,port:4001.
+[2021-01-06T23:01:21.894] [WARN] default - /demand/deal
+[2021-01-06T23:01:22.198] [DEBUG] default - "[]"
+[2021-01-06T23:01:22.200] [DEBUG] default - 2
+[2021-01-06T23:01:22.203] [ERROR] default - 
+  TypeError: curRemark.push is not a function
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\demand.js:109:19)
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-01-06T23:04:02.708] [INFO] default - Task server success to run,port:4001.
+[2021-01-06T23:04:05.250] [WARN] default - /demand/deal
+[2021-01-06T23:04:05.583] [ERROR] default - 
+  SyntaxError: Unexpected token ' in JSON at position 0
+      at JSON.parse (<anonymous>)
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\demand.js:106:30)
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-01-06T23:04:45.916] [INFO] default - Task server success to run,port:4001.
+[2021-01-06T23:04:47.670] [WARN] default - /demand/deal
+[2021-01-06T23:04:47.945] [DEBUG] default - object
+[2021-01-06T23:04:48.496] [WARN] default - /demand/list
+[2021-01-06T23:04:48.586] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:05:06.674] [WARN] default - /demand/deal
+[2021-01-06T23:05:06.836] [DEBUG] default - object
+[2021-01-06T23:05:07.271] [WARN] default - /demand/list
+[2021-01-06T23:05:07.356] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:06:24.209] [INFO] default - Task server success to run,port:4001.
+[2021-01-06T23:06:36.488] [WARN] default - /demand/deal
+[2021-01-06T23:06:36.894] [WARN] default - /demand/list
+[2021-01-06T23:06:36.979] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:06:45.967] [WARN] default - /demand/deal
+[2021-01-06T23:06:46.248] [WARN] default - /demand/list
+[2021-01-06T23:06:46.331] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:06:52.640] [WARN] default - /demand/deal
+[2021-01-06T23:06:52.967] [WARN] default - /demand/list
+[2021-01-06T23:06:53.048] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:07:48.144] [WARN] default - /demand/info
+[2021-01-06T23:07:51.987] [WARN] default - /demand/form
+[2021-01-06T23:07:52.069] [DEBUG] default - update demand SET `name` = ?,`location` = ?,`level` = ?,`master` = ?,`webMaster` = ?,`backMaster` = ?,`describe` = ? where id = ?
+[2021-01-06T23:07:52.636] [WARN] default - /demand/list
+[2021-01-06T23:07:52.730] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:07:57.581] [WARN] default - /demand/info
+[2021-01-06T23:08:02.645] [WARN] default - /demand/form
+[2021-01-06T23:08:02.736] [DEBUG] default - update demand SET `name` = ?,`location` = ?,`level` = ?,`master` = ?,`webMaster` = ?,`backMaster` = ?,`describe` = ? where id = ?
+[2021-01-06T23:08:02.978] [WARN] default - /demand/list
+[2021-01-06T23:08:03.067] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:08:49.830] [WARN] default - /demand/info
+[2021-01-06T23:09:01.548] [WARN] default - /demand/form
+[2021-01-06T23:09:01.636] [DEBUG] default - update demand SET `name` = ?,`location` = ?,`level` = ?,`master` = ?,`webMaster` = ?,`backMaster` = ?,`describe` = ? where id = ?
+[2021-01-06T23:09:02.243] [WARN] default - /demand/list
+[2021-01-06T23:09:02.335] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:13:25.449] [WARN] default - /demand/list
+[2021-01-06T23:13:35.665] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:13:53.347] [WARN] default - /demand/list
+[2021-01-06T23:13:53.453] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:17:23.194] [WARN] default - /task/list
+[2021-01-06T23:17:23.198] [INFO] default - query task page:select * from worktask where isDel = 0  order by endTime desc limit 0, 10,parames:
+[2021-01-06T23:17:23.205] [WARN] default - /user/list
+[2021-01-06T23:17:25.096] [WARN] default - /task/info
+[2021-01-06T23:17:25.100] [WARN] default - /task/record
+[2021-01-06T23:17:26.933] [WARN] default - /task/list
+[2021-01-06T23:17:26.940] [INFO] default - query task page:select * from worktask where isDel = 0  order by endTime desc limit 0, 10,parames:
+[2021-01-06T23:17:27.245] [WARN] default - /user/list
+[2021-01-06T23:20:31.062] [WARN] default - /demand/list
+[2021-01-06T23:20:31.160] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:20:32.487] [WARN] default - /demand/info
+[2021-01-06T23:21:30.035] [WARN] default - /demand/info
+[2021-01-06T23:21:48.342] [WARN] default - /demand/info
+[2021-01-06T23:27:18.233] [WARN] default - /demand/info
+[2021-01-06T23:27:49.203] [WARN] default - /demand/info
+[2021-01-06T23:30:11.911] [WARN] default - /demand/info
+[2021-01-06T23:32:07.655] [WARN] default - /demand/info
+[2021-01-06T23:35:43.067] [WARN] default - /demand/info
+[2021-01-06T23:37:11.436] [WARN] default - /demand/info
+[2021-01-06T23:37:49.965] [WARN] default - /demand/list
+[2021-01-06T23:37:50.050] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:37:53.196] [WARN] default - /demand/info
+[2021-01-06T23:37:57.621] [WARN] default - /demand/list
+[2021-01-06T23:37:57.710] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:38:38.873] [WARN] default - /demand/info
+[2021-01-06T23:38:44.781] [WARN] default - /demand/list
+[2021-01-06T23:38:44.866] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:38:46.680] [WARN] default - /demand/info
+[2021-01-06T23:38:48.593] [WARN] default - /demand/list
+[2021-01-06T23:38:48.680] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:39:13.023] [WARN] default - /demand/info
+[2021-01-06T23:40:15.240] [WARN] default - /demand/info
+[2021-01-06T23:40:33.429] [WARN] default - /demand/info
+[2021-01-06T23:42:25.914] [WARN] default - /demand/info
+[2021-01-06T23:42:56.788] [WARN] default - /demand/info
+[2021-01-06T23:43:24.652] [WARN] default - /demand/info
+[2021-01-06T23:43:52.428] [WARN] default - /demand/info
+[2021-01-06T23:43:55.086] [WARN] default - /demand/info
+[2021-01-06T23:44:04.676] [WARN] default - /demand/info
+[2021-01-06T23:45:05.540] [WARN] default - /demand/info
+[2021-01-06T23:45:31.946] [WARN] default - /demand/info
+[2021-01-06T23:45:34.658] [WARN] default - /demand/info
+[2021-01-06T23:46:50.966] [WARN] default - /demand/info
+[2021-01-06T23:50:19.255] [WARN] default - /demand/list
+[2021-01-06T23:50:19.345] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:50:21.297] [WARN] default - /demand/info
+[2021-01-06T23:50:47.447] [WARN] default - /demand/info
+[2021-01-06T23:51:30.989] [WARN] default - /demand/list
+[2021-01-06T23:51:31.071] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:51:32.516] [WARN] default - /demand/info
+[2021-01-06T23:51:34.307] [WARN] default - /demand/list
+[2021-01-06T23:51:34.402] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:51:35.591] [WARN] default - /demand/info
+[2021-01-06T23:51:56.506] [WARN] default - /demand/list
+[2021-01-06T23:51:56.600] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:51:57.911] [WARN] default - /demand/info
+[2021-01-06T23:52:43.740] [WARN] default - /demand/list
+[2021-01-06T23:52:43.822] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:52:45.054] [WARN] default - /demand/info
+[2021-01-06T23:52:47.494] [WARN] default - /demand/list
+[2021-01-06T23:52:47.574] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:52:48.524] [WARN] default - /demand/info
+[2021-01-06T23:52:58.666] [WARN] default - /demand/list
+[2021-01-06T23:52:58.751] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:52:59.656] [WARN] default - /demand/info
+[2021-01-06T23:54:41.416] [WARN] default - /demand/info
+[2021-01-06T23:55:19.368] [WARN] default - /demand/info
+[2021-01-06T23:56:06.210] [WARN] default - /demand/list
+[2021-01-06T23:56:06.302] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:56:07.427] [WARN] default - /demand/info
+[2021-01-06T23:57:08.258] [WARN] default - /demand/list
+[2021-01-06T23:57:08.347] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:57:09.645] [WARN] default - /demand/info
+[2021-01-06T23:57:10.656] [WARN] default - /demand/list
+[2021-01-06T23:57:10.742] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:57:12.698] [WARN] default - /demand/info
+[2021-01-06T23:57:13.506] [WARN] default - /demand/list
+[2021-01-06T23:57:13.588] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:57:17.343] [WARN] default - /demand/info
+[2021-01-06T23:57:46.172] [WARN] default - /demand/list
+[2021-01-06T23:57:46.263] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:57:48.055] [WARN] default - /demand/info
+[2021-01-06T23:57:49.655] [WARN] default - /demand/list
+[2021-01-06T23:57:49.744] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:57:51.016] [WARN] default - /demand/info
+[2021-01-06T23:57:51.908] [WARN] default - /demand/list
+[2021-01-06T23:57:52.001] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:57:53.864] [WARN] default - /demand/info
+[2021-01-06T23:58:31.836] [WARN] default - /demand/info
+[2021-01-06T23:58:33.370] [WARN] default - /demand/list
+[2021-01-06T23:58:33.460] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-06T23:58:34.515] [WARN] default - /demand/info
+[2021-01-07T19:09:46.994] [WARN] default - /demand/list
+[2021-01-07T19:09:58.618] [WARN] default - /task/list
+[2021-01-07T19:09:58.619] [INFO] default - query task page:select * from worktask where isDel = 0  order by endTime desc limit 0, 10,parames:
+[2021-01-07T19:09:58.926] [WARN] default - /user/list
+[2021-01-07T19:10:00.847] [WARN] default - /task/list
+[2021-01-07T19:10:00.850] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-01-07T19:10:01.181] [WARN] default - /task/statistics
+[2021-01-07T19:10:01.184] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T19:10:03.308] [WARN] default - /user/list
+[2021-01-07T19:10:03.786] [WARN] default - /user/list
+[2021-01-07T19:10:03.793] [WARN] default - /task/list
+[2021-01-07T19:10:03.823] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-01-07T19:10:14.308] [INFO] default - Task server success to run,port:4001.
+[2021-01-07T19:10:16.408] [WARN] default - /demand/list
+[2021-01-07T19:10:16.598] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T19:10:18.631] [WARN] default - /demand/info
+[2021-01-07T19:11:08.839] [WARN] default - /task/list
+[2021-01-07T19:11:08.841] [INFO] default - query task page:select * from worktask where isDel = 0  order by endTime desc limit 0, 10,parames:
+[2021-01-07T19:11:08.843] [WARN] default - /user/list
+[2021-01-07T19:11:10.889] [WARN] default - /demand/list
+[2021-01-07T19:11:10.971] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T19:11:21.151] [WARN] default - /demand/info
+[2021-01-07T19:11:41.392] [WARN] default - /user/list
+[2021-01-07T19:11:42.387] [WARN] default - /demand/list
+[2021-01-07T19:11:42.471] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T19:11:55.690] [WARN] default - /demand/info
+[2021-01-07T19:13:59.398] [WARN] default - /demand/info
+[2021-01-07T19:14:13.727] [WARN] default - /demand/info
+[2021-01-07T19:19:55.092] [WARN] default - /doc/list
+[2021-01-07T19:19:55.397] [WARN] default - /project/list
+[2021-01-07T19:19:55.411] [WARN] default - /user/list
+[2021-01-07T19:19:56.816] [WARN] default - /demand/list
+[2021-01-07T19:19:56.891] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T19:19:57.897] [WARN] default - /demand/info
+[2021-01-07T19:20:16.705] [WARN] default - /demand/list
+[2021-01-07T19:20:16.782] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T19:20:21.134] [WARN] default - /demand/delete
+[2021-01-07T19:20:21.719] [WARN] default - /demand/list
+[2021-01-07T19:20:21.802] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T19:27:46.545] [WARN] default - /demand/info
+[2021-01-07T19:28:01.083] [WARN] default - /demand/info
+[2021-01-07T19:29:46.803] [WARN] default - /user/list
+[2021-01-07T19:29:47.590] [WARN] default - /demand/list
+[2021-01-07T19:29:47.679] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T19:29:48.936] [WARN] default - /demand/info
+[2021-01-07T19:29:50.847] [WARN] default - /demand/list
+[2021-01-07T19:29:50.935] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T19:31:43.031] [WARN] default - /demand/list
+[2021-01-07T19:31:43.112] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T19:32:26.325] [WARN] default - /demand/list
+[2021-01-07T19:32:26.409] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T19:35:25.113] [WARN] default - /demand/list
+[2021-01-07T19:35:25.202] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T19:36:08.647] [WARN] default - /demand/list
+[2021-01-07T19:36:08.731] [INFO] default - query demand page:select * from demand where isDel = 0 and  name = ? order by createtime desc limit 0, 10,parames:ddd
+[2021-01-07T19:36:38.021] [WARN] default - /demand/list
+[2021-01-07T19:36:38.110] [INFO] default - query demand page:select * from demand where isDel = 0 and  name = ? order by createtime desc limit 0, 10,parames:ddd
+[2021-01-07T19:44:08.260] [WARN] default - /demand/list
+[2021-01-07T19:44:18.414] [INFO] default - query demand page:select * from demand where isDel = 0 and  name = ? order by createtime desc limit 0, 10,parames:ddd
+[2021-01-07T19:44:48.365] [WARN] default - /demand/list
+[2021-01-07T19:44:48.449] [INFO] default - query demand page:select * from demand where isDel = 0 and  name = ? order by createtime desc limit 0, 10,parames:ddd
+[2021-01-07T20:01:47.025] [WARN] default - /demand/list
+[2021-01-07T20:01:57.190] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T20:03:00.469] [WARN] default - /demand/list
+[2021-01-07T20:03:00.543] [INFO] default - query demand page:select * from demand where isDel = 0 and  name = ? order by createtime desc limit 0, 10,parames:ddd
+[2021-01-07T20:03:20.045] [WARN] default - /demand/list
+[2021-01-07T20:03:20.142] [INFO] default - query demand page:select * from demand where isDel = 0 and  name = ? order by createtime desc limit 0, 10,parames:ddd
+[2021-01-07T20:04:32.892] [WARN] default - /demand/list
+[2021-01-07T20:04:32.987] [INFO] default - query demand page:select * from demand where isDel = 0 and  name = ? order by createtime desc limit 0, 10,parames:ddd
+[2021-01-07T20:05:31.369] [WARN] default - /demand/list
+[2021-01-07T20:05:31.453] [INFO] default - query demand page:select * from demand where isDel = 0 and  name = ? order by createtime desc limit 0, 10,parames:ddd
+[2021-01-07T20:05:32.408] [WARN] default - /demand/list
+[2021-01-07T20:05:32.498] [INFO] default - query demand page:select * from demand where isDel = 0 and  name = ? order by createtime desc limit 0, 10,parames:ddd
+[2021-01-07T20:06:31.939] [WARN] default - /demand/list
+[2021-01-07T20:06:32.094] [INFO] default - query demand page:select * from demand where isDel = 0 and  name = ? order by createtime desc limit 0, 10,parames:ddd
+[2021-01-07T20:10:53.771] [WARN] default - /demand/list
+[2021-01-07T20:11:03.933] [INFO] default - query demand page:select * from demand where isDel = 0 and  name = ? order by createtime desc limit 0, 10,parames:ddd
+[2021-01-07T20:11:04.908] [WARN] default - /demand/list
+[2021-01-07T20:11:04.992] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T20:11:13.183] [WARN] default - /demand/list
+[2021-01-07T20:11:13.273] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T20:11:21.738] [WARN] default - /demand/list
+[2021-01-07T20:11:21.826] [INFO] default - query demand page:select * from demand where isDel = 0 and  name = ? order by createtime desc limit 0, 10,parames:dddd
+[2021-01-07T20:11:32.446] [WARN] default - /demand/list
+[2021-01-07T20:11:32.521] [INFO] default - query demand page:select * from demand where isDel = 0 and  name = ? order by createtime desc limit 0, 10,parames:dddd
+[2021-01-07T20:12:14.066] [WARN] default - /demand/list
+[2021-01-07T20:12:14.158] [INFO] default - query demand page:select * from demand where isDel = 0 and  name = ? order by createtime desc limit 0, 10,parames:dddd
+[2021-01-07T20:12:59.524] [WARN] default - /demand/list
+[2021-01-07T20:12:59.608] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T20:13:11.729] [WARN] default - /demand/list
+[2021-01-07T20:13:11.814] [INFO] default - query demand page:select * from demand where isDel = 0 and  name = ? order by createtime desc limit 0, 10,parames:sss
+[2021-01-07T20:13:13.288] [WARN] default - /demand/list
+[2021-01-07T20:13:13.374] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T20:13:38.490] [WARN] default - /demand/info
+[2021-01-07T20:13:40.214] [WARN] default - /demand/list
+[2021-01-07T20:13:40.292] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T20:13:46.328] [WARN] default - /demand/info
+[2021-01-07T20:13:50.245] [WARN] default - /demand/list
+[2021-01-07T20:13:50.327] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T20:13:52.605] [WARN] default - /demand/list
+[2021-01-07T20:13:52.683] [INFO] default - query demand page:select * from demand where isDel = 0 and  name = ? order by createtime desc limit 0, 10,parames:性能监控，展示异常
+[2021-01-07T20:13:54.119] [WARN] default - /demand/list
+[2021-01-07T20:13:54.209] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T20:15:42.014] [WARN] default - /demand/list
+[2021-01-07T20:15:42.102] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T20:19:05.918] [WARN] default - /demand/list
+[2021-01-07T20:19:06.009] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T20:19:37.260] [WARN] default - /demand/list
+[2021-01-07T20:19:37.355] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T20:24:40.258] [INFO] default - Task server success to run,port:4001.
+[2021-01-07T20:25:37.508] [WARN] default - /demand/list
+[2021-01-07T20:25:37.703] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T20:27:07.868] [WARN] default - /demand/form
+[2021-01-07T20:27:08.137] [WARN] default - /demand/list
+[2021-01-07T20:27:08.216] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T20:27:13.385] [WARN] default - /demand/info
+[2021-01-07T20:27:19.851] [WARN] default - /demand/list
+[2021-01-07T20:27:19.930] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T20:27:30.830] [WARN] default - /demand/list
+[2021-01-07T20:27:30.905] [INFO] default - query demand page:select * from demand where isDel = 0 and  webMaster = ? order by createtime desc limit 0, 10,parames:rrr
+[2021-01-07T20:27:32.372] [WARN] default - /demand/list
+[2021-01-07T20:27:32.452] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T20:27:48.169] [WARN] default - /demand/deal
+[2021-01-07T20:27:48.426] [WARN] default - /demand/list
+[2021-01-07T20:27:48.517] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T20:27:52.096] [WARN] default - /demand/info
+[2021-01-07T20:27:56.046] [WARN] default - /demand/list
+[2021-01-07T20:27:56.122] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T20:28:58.404] [WARN] default - /demand/info
+[2021-01-07T20:29:18.662] [WARN] default - /demand/form
+[2021-01-07T20:29:18.747] [DEBUG] default - update demand SET `name` = ?,`location` = ?,`level` = ?,`devPhase` = ?,`master` = ?,`webMaster` = ?,`backMaster` = ?,`describe` = ? where id = ?
+[2021-01-07T20:29:19.239] [WARN] default - /demand/list
+[2021-01-07T20:29:19.320] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T20:32:11.087] [WARN] default - /demand/deal
+[2021-01-07T20:32:11.367] [WARN] default - /demand/list
+[2021-01-07T20:32:11.464] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T20:32:14.879] [WARN] default - /demand/info
+[2021-01-07T20:35:02.221] [WARN] default - /demand/list
+[2021-01-07T20:35:02.301] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-07T20:36:04.580] [WARN] default - /user/list
+[2021-01-07T20:36:06.440] [WARN] default - /demand/list
+[2021-01-07T20:36:06.514] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:

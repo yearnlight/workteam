@@ -10,40 +10,20 @@ let parseFields = (resourceKey, resourceInfo) => {
             let detailInfo = f.detail;
             detailInfo.forEach(dItem => {
                 if (Array.isArray(dItem.fields)) {
-                    // dItem.fields.forEach(item => {
-                    //     for (let resKey in resourceInfo) {
-                    //         // 匹配字段
-                    //         if (resKey == item.key) {
-                    //             if (item.enums) {
-                    //                 let _eValue = item.enums[resourceInfo[resKey]];
-                    //                 if(item.renderType =="EL-TAG")
-                    //                 {
-                    //                     item.value = _eValue? (_eValue.label || ""): "";
-                    //                     item.color = _eValue? (_eValue.type || ""): "";
-                    //                 }
-                    //                 else
-                    //                 {
-                    //                     item.value = _eValue
-                    //                 }
-                    //             }
-                    //             else {
-                    //                 item.value = resourceInfo[resKey];
-                    //             }
-                    //         }
-                    //     }
-                    // });
                     // 对于页面显示但是详情没有返回的 字段没有处理，使其为空，会保留上一次的数据；且不需要双层循环
                     dItem.fields.forEach(item => {
                         if (item.key in resourceInfo) {
                             if (item.enums) {
                                 let _eValue = item.enums[resourceInfo[item.key]];
-                                if (item.renderType == "EL-TAG" || item.renderType == "DOT") {
-                                    item.value = _eValue ? (_eValue.label || "") : "";
-                                    item.color = _eValue ? (_eValue.type || "") : "";
+                                if (_eValue) {
+                                    item.value = _eValue.label || "";
+                                    // 当前属性配置为组件类型
+                                    if (_eValue.component) {
+                                        item.type = _eValue.type || undefined;
+                                        item.component = _eValue.component || undefined
+                                    }
                                 }
-                                else {
-                                    item.value = _eValue
-                                }
+
                             }
                             else {
                                 item.value = resourceInfo[item.key];

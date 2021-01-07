@@ -6,17 +6,26 @@
         <div class="detail-base-content-item" v-for="(item,index) in fItem.fields" :key="index">
           <template v-if="!item.showFalse || item.showFalse(fItem.fields) ">
             <div class="detail-base-content-item-label">{{item.name}}：</div>
-            <div v-if="item.renderType == 'EL-TAG'" class="detail-base-content-item-value">
-              <el-tag v-if="item.value" :type="item.color||''">{{item.value}}</el-tag>
+            <!-- 渲染为el-tag组件 -->
+            <div v-if="item.component == 'tag'" class="detail-base-content-item-value">
+              <el-tag v-if="item.value" :type="item.type||''">{{item.value}}</el-tag>
               <span v-else></span>
             </div>
-            <div v-else-if="item.renderType == 'DOT'" class="detail-base-content-item-value">
-              <dot v-if="item.value" :level="item.color||''">{{item.value}}</dot>
+            <!-- 渲染为dot组件 -->
+            <div v-else-if="item.component == 'dot'" class="detail-base-content-item-value">
+              <dot v-if="item.value" :level="item.type||''">{{item.value}}</dot>
               <span v-else></span>
             </div>
+            <!-- 渲染为level组件 -->
+            <div v-else-if="item.component == 'level'" class="detail-base-content-item-value">
+              <level v-if="item.value" :level="item.type||''">{{item.value}}</level>
+              <span v-else></span>
+            </div>
+            <!-- 自定义渲染template -->
             <div v-else-if="item.renderPage" class="detail-base-content-item-value">
               <slot :name="item.renderPage" :param="item.value"></slot>
             </div>
+            <!-- render自定义渲染 -->
             <div v-else-if="item.render" class="detail-base-content-item-value" v-html="item.render(item.value,`render_id_${findex}_${index}`)"></div>
             <div v-else class="detail-base-content-item-value">{{item.value | handleEmpty}}</div>
           </template>
@@ -45,14 +54,11 @@ export default {
       }
     }
   },
-  data() {
-    return {
-      baseInfo: []
-    }
-  },
-  created() {
-    this.baseInfo = com.parseFields(this.detailName, this.infos);
-  },
+  computed: {
+    baseInfo: function () {
+      return com.parseFields(this.detailName, this.infos);
+    },
+  }
 };
 </script>
 

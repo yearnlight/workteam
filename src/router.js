@@ -130,6 +130,16 @@ const routes = [
         meta: {
           white: true
         }
+      },
+      {
+        path: "/work/demand_form",// 小需求管理
+        component: () => import("@/views/demand/form.vue"),
+        name: "demand_form",
+      },
+      {
+        path: "/work/demand_info",// 小需求管理
+        component: () => import("@/views/demand/info.vue"),
+        name: "demand_info",
       }
     ]
   }

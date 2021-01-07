@@ -242,8 +242,15 @@ export default {
         "show-overflow-tooltip": true
       },
       {
+        "prop": "devPhase",
+        "label": "开发阶段",
+        "width": "",
+        "show-overflow-tooltip": true
+      },
+      {
         "prop": "level",
         "label": "等级",
+        "width": 80,
         "enums": {
           "high": {
             "label": "高",
@@ -264,22 +271,24 @@ export default {
       },
       {
         "prop": "master",
-        "label": "负责人"
+        "label": "负责人",
+        "width": 80
       },
       {
         "prop": "webMaster",
-        "label": "前端责任人"
-      },
-      {
-        "prop": "backMaster",
-        "label": "后端负责人"
+        "label": "前 / 后端责任人",
+        "width": 120,
+        render(row) {
+          return `<span class='high'>${row.webMaster || '-'}</span> / <span>${row.backMaster || '-'}</span>`
+        }
       },
       {
         "prop": "status",
         "label": "状态",
+        "width": 100,
         "enums": {
           "finish": {
-            "label": "高",
+            "label": "完成",
             "type": "success",
             "component": "dot"
           },
@@ -302,10 +311,11 @@ export default {
       },
       {
         "prop": "createtime",
-        "label": "创建时间"
+        "label": "创建时间",
+        "width": 140,
       },
       {
-        "prop": "desc",
+        "prop": "describe",
         "label": "描述",
         "show-overflow-tooltip": true
       },
@@ -313,20 +323,22 @@ export default {
         "prop": "id",
         "label": "操作",
         "isOperate": true,
+        "width": 200,
         "operateFun": [
           {
             "function": "del",
             "label": "删除",
-            "icon": "delete"
+            "icon": "el-icon-delete"
           },
           {
             "label": "编辑",
             "function": "edit",
-            "icon": "edit"
+            "icon": "el-icon-edit"
           },
           {
             "label": "处理",
-            "function": "deal"
+            "function": "deal",
+            "icon": "el-icon-check"
           }
         ]
       }

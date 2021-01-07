@@ -2,61 +2,24 @@
   <div class="search">
     <el-form :inline="true" ref="elform" :model="searchConfig.inputParams" @submit.native.prevent>
       <div class="search-items" v-if="searchConfig.labels && searchConfig.labels.length">
-        <el-form-item
-          v-if="!item.hide && getEnabled(item) "
-          :label="item.name"
-          v-for="(item,index) in searchConfig.labels"
-          :key="index"
-          :class="{'haveLabel':item.name,'noLabel':!item.name}"
-          :style="`width:${item.width}px`"
-        >
-          <el-select
-            v-if="item.type == 'select' && item.data != 'map'"
-            v-model="searchConfig.inputParams[item.field]"
-            :placeholder="`${item.placeholder || '请选择'}`"
-            clearable filterable
-          >
-            <el-option
-              :label="Array.isArray(item.data)?sitem.label:sitem[item.data.labelName]"
-              :value="Array.isArray(item.data)?sitem.value:sitem[item.data.valueName]"
-              v-for="(sitem,sindex) in getSelectData(item.data)"
-              :key="sindex"
-            ></el-option>
+        <el-form-item v-if="!item.hide && getEnabled(item) " :label="item.name" v-for="(item,index) in searchConfig.labels" :key="index" :class="{'haveLabel':item.name,'noLabel':!item.name}" :style="`width:${item.width}px`">
+          <el-select v-if="item.type == 'select' && item.data != 'map'" v-model="searchConfig.inputParams[item.field]" :placeholder="`${item.placeholder || '请选择'}`" clearable filterable>
+            <el-option :label="Array.isArray(item.data)?sitem.label:sitem[item.data.labelName]" :value="Array.isArray(item.data)?sitem.value:sitem[item.data.valueName]" v-for="(sitem,sindex) in getSelectData(item.data)" :key="sindex"></el-option>
           </el-select>
 
-          <el-select
-            v-else-if="item.type == 'select' && item.data == 'map'"
-            v-model="searchConfig.inputParams[item.field]"
-            :placeholder="`${item.placeholder || '请选择'}`"
-            clearable filterable
-          >
-            <el-option
-              :label="item.valueName"
-              :value="index"
-              v-for="(item,index) in dicts[item.field]"
-              :key="index"
-            >
+          <el-select v-else-if="item.type == 'select' && item.data == 'map'" v-model="searchConfig.inputParams[item.field]" :placeholder="`${item.placeholder || '请选择'}`" clearable filterable>
+            <el-option :label="item.valueName" :value="index" v-for="(item,index) in dicts[item.field]" :key="index">
             </el-option>
           </el-select>
-          <el-date-picker
-            v-else-if="item.type == 'datetime'"
-            v-model="searchConfig.inputParams[item.field]"
-            type="datetime"
-            clearable
-            :placeholder="`${item.placeholder || '请选择日期时间'}`"
-          ></el-date-picker>
-          <el-input
-            v-else
-            @keyup.enter.native="search"
-            clearable
-            v-model="searchConfig.inputParams[item.field]"
-            :placeholder="`${item.placeholder || '请输入'}`"
-          ></el-input>
+          <el-date-picker v-else-if="item.type == 'datetime'" v-model="searchConfig.inputParams[item.field]" type="datetime" clearable :placeholder="`${item.placeholder || '请选择日期时间'}`"></el-date-picker>
+          <el-input v-else @keyup.enter.native="search" clearable v-model="searchConfig.inputParams[item.field]" :placeholder="`${item.placeholder || '请输入'}`"></el-input>
         </el-form-item>
       </div>
       <div class="search-operate" v-if="searchConfig.labels && searchConfig.labels.length">
-        <el-button type="primary" @click="search"><icon iconSymbol="search"/> 查询</el-button>
-        <el-button type="default" @click="reset"><icon iconSymbol="reset"/> 重置</el-button>
+        <el-button type="primary" @click="search">
+          <icon iconSymbol="search" /> 查询</el-button>
+        <el-button type="default" @click="reset">
+          <icon iconSymbol="reset" /> 重置</el-button>
       </div>
     </el-form>
   </div>
@@ -80,13 +43,11 @@ export default {
       searchConfig: {},
       allDicts: {},
       dicts: {},
-//      menuName: "",
+      //      menuName: "",
     };
   },
   created() {
-    this.allDicts = sessionStorage.getItem('allDicts') ? JSON.parse(sessionStorage.getItem('allDicts')) : {};
-//    this.menuName = this.allDicts.mappingRelations && this.allDicts.mappingRelations.dict_name_map && this.allDicts.mappingRelations.dict_name_map[this.name] ? this.allDicts.mappingRelations.dict_name_map[this.name].valueName : '';
-    if(this.name){
+    if (this.name) {
       this.dicts = this.allDicts[this.name];
     }
     this.searchConfig = this.config || {};
@@ -94,15 +55,15 @@ export default {
     // this.searchConfig.inputParams = {};
   },
   methods: {
-    getEnabled(item){
+    getEnabled(item) {
       let flag = true;
-      if(item.role){
-        if(this.$store.state.currentUserRole == 1){
+      if (item.role) {
+        if (this.$store.state.currentUserRole == 1) {
           flag = true;
-        }else{
+        } else {
           flag = false;
         }
-      }else{
+      } else {
         flag = true;
       }
       return flag;
@@ -152,7 +113,7 @@ export default {
       } else {
         if (data.type === "store") {
           // return this.$store.state[data.dataKey] || [];
-          return  [];
+          return [];
         } else if (data.type === "request") {
           //  return function();
         } else if (data.type === "enums") {
@@ -202,7 +163,7 @@ export default {
     margin-bottom: 10px;
   }
 
-  .el-form-item__label{
+  .el-form-item__label {
   }
 }
 </style>

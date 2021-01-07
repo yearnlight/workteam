@@ -11,7 +11,7 @@ export default [
   },  
   {
     title: "小需求列表",
-    icon: "el-icon-menu",
+    icon: "el-icon-tickets",
     path: "/work/demand"
   },
   {
