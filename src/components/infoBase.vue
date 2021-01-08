@@ -7,7 +7,7 @@
           <template v-if="!item.showFalse || item.showFalse(fItem.fields) ">
             <div class="detail-base-content-item-label">{{item.name}}：</div>
             <!-- 渲染为el-tag组件 -->
-            <div v-if="item.component == 'tag'" class="detail-base-content-item-value">
+            <div v-if="item.component == 'el-tag'" class="detail-base-content-item-value">
               <el-tag v-if="item.value" :type="item.type||''">{{item.value}}</el-tag>
               <span v-else></span>
             </div>
@@ -19,6 +19,11 @@
             <!-- 渲染为level组件 -->
             <div v-else-if="item.component == 'level'" class="detail-base-content-item-value">
               <level v-if="item.value" :level="item.type||''">{{item.value}}</level>
+              <span v-else></span>
+            </div>
+            <!-- 渲染为tag组件 -->
+            <div v-else-if="item.component == 'tag'" class="detail-base-content-item-value">
+              <tag v-if="item.value" :type="item.type||''">{{item.value}}</tag>
               <span v-else></span>
             </div>
             <!-- 自定义渲染template -->

@@ -19,6 +19,13 @@
                         <el-option label="完成" value="finish"></el-option>
                     </el-select>
                 </el-form-item>
+                <el-form-item label="前端负责人" prop="webMaster">
+                    <el-select filterable v-model="dealForm.webMaster" placeholder="请选择前端负责人" clearable>
+                        <el-option v-for="(item, index) in userList" :key="index" :label="item.name" :value="item.name" :disabled="item.disabled">
+                            <tag>{{ item.name }}</tag>
+                        </el-option>
+                    </el-select>
+                </el-form-item>
                 <el-form-item label="备注" prop="remark">
                     <el-input v-model="dealForm.remark" type="textarea" placeholder="请输入备注" show-word-limit :autosize="{minRows: 4, maxRows: 4}"></el-input>
                 </el-form-item>
@@ -39,6 +46,7 @@ export default {
     data() {
         return {
             loading: false,
+            userList: [],
             list: {
                 records: [],
                 total: 0,
@@ -50,7 +58,7 @@ export default {
             isPub: false,
             isDo: false,
             dealForm: {
-
+                webMaster: null
             }
         };
     },
@@ -61,8 +69,18 @@ export default {
     },
     created() {
         this.getList();
+        this.getUserList();
     },
     methods: {
+        getUserList() {
+            this.$axios.get("/user/list", {}).then((res) => {
+                if (res.status == 200) {
+                    this.userList = res.data;
+                } else {
+                    this.$message.error(res.msg);
+                }
+            });
+        },
         getList() {
             this.loading = true;
             this.$axios.post("/demand/list", this.inputParams).then((res) => {
@@ -87,9 +105,9 @@ export default {
         edit({ id }, index) {
             this.$router.push({ path: "/work/demand_form", query: { id: id } });
         },
-        deal({ id, name, status }) {
+        deal({ id, name, status, webMaster }) {
             this.isDo = true;;
-            this.dealForm = { id, name, status };
+            this.dealForm = { id, name, status, webMaster };
         },
         doDeal() {
             this.$axios.post("/demand/deal", this.dealForm).then(res => {

@@ -45,6 +45,12 @@ body {
     }
   }
 
+  .el-select-dropdown{
+    .selected{
+      background-color: #F5F7FA;
+    }
+  }
+
   /* 设置滚动条的样式 */
   ::-webkit-scrollbar {
     width: 6px;

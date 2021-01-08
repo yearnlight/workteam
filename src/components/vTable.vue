@@ -90,7 +90,12 @@
           <!-- dot根据枚举渲染 -->
           <dot v-else-if="item.enums  && item.enums[scope.row[item.prop]] && item.enums[scope.row[item.prop]].type && item.enums[scope.row[item.prop]].component == 'dot'" :level="item.enums[scope.row[item.prop]].type">
             {{item.enums[scope.row[item.prop]].label}}
-          </dot>
+          </dot>          
+          
+          <!-- tag根据枚举渲染 -->
+          <tag v-else-if="item.enums  && item.enums[scope.row[item.prop]] && item.enums[scope.row[item.prop]].type && item.enums[scope.row[item.prop]].component == 'tag'" :type="item.enums[scope.row[item.prop]].type">
+            {{item.enums[scope.row[item.prop]].label}}
+          </tag>
 
           <!-- dot根据枚举渲染 -->
           <level v-else-if="item.enums  && item.enums[scope.row[item.prop]] && item.enums[scope.row[item.prop]].type && item.enums[scope.row[item.prop]].component == 'level'" :level="item.enums[scope.row[item.prop]].type">

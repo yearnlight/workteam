@@ -9,7 +9,7 @@ const logger = require('../utils/log4jsLogger');
 
 router.prefix('/demand')
 
-// 用户登录
+// 小需求列表
 router.post("/list", async ctx => {
     let fields = [
         "name",
@@ -96,7 +96,7 @@ router.post("/delete", async ctx => {
 //处理
 router.post("/deal", async ctx => {
     let msg = ""
-    let { id, remark, status } = ctx.request.body;
+    let { id, remark, status, webMaster } = ctx.request.body;
     let dealtime = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
     // 查询存在性
     let selectStr = "select * from demand where isDel = 0 and `id` = ?";
@@ -105,10 +105,10 @@ router.post("/deal", async ctx => {
         let cur = searchData[0];
         cur.remark = cur.remark || "[]";
         let curRemark = JSON.parse(cur.remark);
-        curRemark.push({ dealtime: dealtime, oStatus: cur.status, nStatus: status, desc: remark });
+        curRemark.push({ dealtime: dealtime, oStatus: cur.status, nStatus: status, oWebMaster: cur.webMaster, nWebMaster: webMaster, desc: remark });
         // 存在后，处理
-        let delStr = `update demand SET status = ?,remark = ? where id = ?`;
-        res = await query(delStr, [status, JSON.stringify(curRemark), id]);;
+        let delStr = `update demand SET status = ?,webMaster = ?,remark = ? where id = ?`;
+        res = await query(delStr, [status, webMaster, JSON.stringify(curRemark), id]);;
         msg = `处理小需求【${cur.name}】成功`;
         util.setEvent(ctx, "success", msg);
         ctx.response.body = { status: 200, msg: msg, data: null };

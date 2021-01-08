@@ -6,14 +6,27 @@
             <div class="base-content">
                 <el-timeline v-if="remarks && remarks.length">
                     <el-timeline-item v-for="(item, index) in remarks" :key="index" :timestamp="item.dealtime">
-                        <div class="track">
-                            <div class="track-status">状态变更：
-                                <dot :level="enums[item.oStatus].type">{{enums[item.oStatus].label}}</dot>
-                                →
-                                <dot :level="enums[item.nStatus].type">{{enums[item.nStatus].label}}</dot>
+                        <el-card>
+                            <div class="item">
+                                <label>状态：</label>
+                                <div class="value">
+                                    <tag :type="enums[item.oStatus].type">{{enums[item.oStatus].label}}</tag>
+                                    <span class="connect">变更为</span>
+                                    <tag :type="enums[item.nStatus].type">{{enums[item.nStatus].label}}</tag>
+                                </div>
                             </div>
-                            <div class="track-desc">备注：{{item.desc}}</div>
-                        </div>
+                            <div class="item">
+                                <label>前端负责人：</label>
+                                <div class="value">
+                                    <span class="high">{{ item.oWebMaster}}</span>
+                                    <span class="connect">变更为</span>
+                                    <span class="high">{{ item.nWebMaster }}</span></div>
+                            </div>
+                            <div class="log item">
+                                <label>备注：</label>
+                                <p class="log-info">{{ item.desc }}</p>
+                            </div>
+                        </el-card>
                     </el-timeline-item>
                 </el-timeline>
                 <no-data v-else />
@@ -78,16 +91,34 @@ export default {
 
 <style lang="scss">
 .demandInfo {
-  .track {
-    &-status {
-      margin-bottom: 10px;
+  .el-timeline {
+    width: 60%;
+    .item {
+      margin-bottom: 15px;
+      label {
+        width: 120px;
+        display: inline-block;
+      }
+      .value {
+        color: #999;
+        display: inline-block;
+        .connect{
+            font-size: 10px;
+            transform: scale(0.5);
+            margin: 0 10px;
+        }
+      }
     }
 
-    &-desc {
-      margin-bottom: 10px;
+    .log {
+      display: flex;
+      &-info {
+        color: #999;
+        flex: 1;
+        white-space: break-spaces;
+        margin: 0;
+      }
     }
-    border: 1px solid #eceff8;
-    padding: 20px;
   }
 }
 </style>

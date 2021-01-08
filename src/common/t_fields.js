@@ -290,22 +290,22 @@ export default {
           "finish": {
             "label": "完成",
             "type": "success",
-            "component": "dot"
+            "component": "tag"
           },
           "doing": {
             "label": "处理中",
             "type": "warning",
-            "component": "dot"
+            "component": "tag"
           },
           "shelve": {
             "label": "搁置",
             "type": "info",
-            "component": "dot"
+            "component": "tag"
           },
           "todo": {
             "label": "待处理",
             "type": "primary",
-            "component": "dot"
+            "component": "tag"
           }
         }
       },

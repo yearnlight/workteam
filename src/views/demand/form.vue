@@ -22,8 +22,11 @@
                         <el-input v-model="formData.master" placeholder="请输入负责人" clearable suffix-icon='el-icon-user'></el-input>
                     </el-form-item>
                     <el-form-item label="前端负责人" prop="webMaster">
-                        <el-input v-model="formData.webMaster" placeholder="请输入前端负责人" clearable>
-                        </el-input>
+                        <el-select filterable v-model="formData.webMaster" placeholder="请选择前端负责人" clearable>
+                            <el-option v-for="(item, index) in userList" :key="index" :label="item.name" :value="item.name" :disabled="item.disabled">
+                                <tag>{{ item.name }}</tag>
+                            </el-option>
+                        </el-select>
                     </el-form-item>
                     <el-form-item label="后端负责人" prop="backMaster">
                         <el-input v-model="formData.backMaster" placeholder="请输入后端负责人" clearable>
@@ -51,6 +54,7 @@ export default {
     props: [],
     data() {
         return {
+            userList: [],
             formData: {
                 name: undefined,
                 location: undefined,
@@ -83,7 +87,7 @@ export default {
                 }],
                 webMaster: [{
                     required: true,
-                    message: '请输入前端负责人',
+                    message: '请选择前端负责人',
                     trigger: 'blur'
                 }],
                 backMaster: [],
@@ -111,9 +115,19 @@ export default {
         if (this.$route.query.id) {
             this.fetchInfo();
         }
+        this.getUserList();
     },
     mounted() { },
     methods: {
+        getUserList() {
+            this.$axios.get("/user/list", {}).then((res) => {
+                if (res.status == 200) {
+                    this.userList = res.data;
+                } else {
+                    this.$message.error(res.msg);
+                }
+            });
+        },
         fetchInfo() {
             this.$axios.post("/demand/info", { id: this.$route.query.id }).then(res => {
                 if (res.status == 200) {

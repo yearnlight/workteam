@@ -22,7 +22,7 @@ export default {
   &-level {
     display: inline-block;
     margin-right: 8px;
-    margin-top: 3px;
+    margin-top: 5px;
     vertical-align: top !important;
     position: relative;
     width: 12px;

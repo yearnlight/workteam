@@ -16,11 +16,13 @@ import VueClipboards from 'vue-clipboard2'
 import NoData from '@/components/noData';
 import Dot from "@/components/Dot/index"
 import Level from "@/components/Level/index"
+import Tag from "@/components/Tag/index"
 import './icons' // icon
 Vue.component("v-chart", ECharts);
 Vue.component("no-data", NoData);
 Vue.component("dot", Dot);
 Vue.component("level", Level);
+Vue.component("tag", Tag);
 Vue.config.productionTip = false;
 
 Vue.component('ymx', {
