@@ -16,10 +16,10 @@
     </div>
     <el-table tooltip-effect="light" border style="width: 100%" ref="multipleTable" :data="data.records" :row-key="getRowKeys" :height="defaultConfig.height" v-bind="tableAttributes" @selection-change="multipleItems" @select="selectCheckBox" @cell-click="cellClick">
       <!-- index -->
-      <el-table-column align="center" v-if="indexColumn.type && indexColumn.type == 'index'" :type="indexColumn.type" :width="indexColumn.width || '45'" :label="indexColumn.label">
+      <el-table-column align="center" v-if=" indexColumn.type == 'index'" :type="indexColumn.type" :width="indexColumn.width || '45'" :label="indexColumn.label">
       </el-table-column>
       <!-- checkbox -->
-      <el-table-column align="center" v-if="indexColumn.type && indexColumn.type == 'selection'" :type="indexColumn.type" :width="indexColumn.width || '45'" :label="indexColumn.label" :selectable="handleSelect" reserve-selection>
+      <el-table-column align="center" v-if="indexColumn.type == 'selection'" :type="indexColumn.type" :width="indexColumn.width || '45'" :label="indexColumn.label" :selectable="handleSelect" reserve-selection>
       </el-table-column>
       <!-- radio -->
       <el-table-column align="center" v-if="indexColumn.type == 'radio'" label width="45">
@@ -90,8 +90,8 @@
           <!-- dot根据枚举渲染 -->
           <dot v-else-if="item.enums  && item.enums[scope.row[item.prop]] && item.enums[scope.row[item.prop]].type && item.enums[scope.row[item.prop]].component == 'dot'" :level="item.enums[scope.row[item.prop]].type">
             {{item.enums[scope.row[item.prop]].label}}
-          </dot>          
-          
+          </dot>
+
           <!-- tag根据枚举渲染 -->
           <tag v-else-if="item.enums  && item.enums[scope.row[item.prop]] && item.enums[scope.row[item.prop]].type && item.enums[scope.row[item.prop]].component == 'tag'" :type="item.enums[scope.row[item.prop]].type">
             {{item.enums[scope.row[item.prop]].label}}
@@ -167,12 +167,12 @@ export default {
     },
   },
   computed: {
-    activeColumns: function () {
+    activeColumns() {
       return this.t_columns.filter(function (item) {
         return item.isvisible !== false && item.prop;
       });
     },
-    tableName: function () {
+    tableName() {
       let result = this.name;
       if (this.name) {
         if (this.name.endsWith("info") || this.name.endsWith("self")) {
@@ -213,7 +213,7 @@ export default {
       allDicts: {},
       dicts: {},
       //      menuName: "",
-      mapName: "",
+      mapName: ""
     };
   },
   created() {
@@ -273,16 +273,13 @@ export default {
       this.$refs["multipleTable"].toggleRowSelection(row);
     },
     init() {
+      let that = this;
       this.checked_t_props = [];
       this.searchConfig = com.getSearchFormConfig(this.name);
       if (!(this.columns && this.columns.length)) {
         this.columns = t_fields[this.name].tableColumns;
       }
       this.columns.forEach((item, index) => {
-        // index radio selection
-        if (item.type) {
-          this.indexColumn = item;
-        }
         // 操作列
         let isExist = true;
         if (item.operateFun && Array.isArray(item.operateFun)) {
@@ -299,6 +296,15 @@ export default {
           this.checked_t_props.push(item.prop);
         }
       });
+
+      // index radio selection
+      let typeColumn = this.columns.filter(col => col.type);
+      if (typeColumn && typeColumn.length) {
+        that.indexColumn = typeColumn[0]
+      }
+      else {
+        that.indexColumn = {};
+      }
 
       this.t_columns = this.columns;
       // 备份
@@ -517,6 +523,12 @@ export default {
     .radio-label {
       padding: 0;
       margin: 0;
+    }
+    .el-radio {
+      &__label {
+        padding: 0;
+        margin: 0;
+      }
     }
   }
   .el-pagination {

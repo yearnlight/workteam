@@ -70,6 +70,7 @@ export default {
     },
     data() {
         return {
+            isRouterAlive: false,
             loading: false,
             list: {
                 records: [],
@@ -114,7 +115,7 @@ export default {
                     this.columns = n.table.tableColumns;
                     // 设置表格配置
                     this.tableConfig = n.table.tableConfig;
-                    this.configTableCode = JSON.stringify(n.table, null, 2);
+                    this.configCode = JSON.stringify(n.table, null, 2);
 
                     //业务内代码
                     this.configBusinessCode = JSON.stringify(this.$util.deepCopy(n.business), null, 2);

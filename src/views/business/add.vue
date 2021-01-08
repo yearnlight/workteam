@@ -92,6 +92,8 @@
                             <div class="columns-header-item" v-if="isConfigInfo">详情入口回调方法名</div>
                             <div class="columns-header-item miniWidth">设置为操作列</div>
                             <div class="columns-header-item miniWidth" v-if="isConfigOperate">操作列配置</div>
+                            <div class="columns-header-item miniWidth">设置为枚举列</div>
+                            <div class="columns-header-item miniWidth" v-if="isConfigEnum">枚举列配置</div>
                         </div>
                         <div class="columns" v-for="(item,index) in setData.tableColumns" :key="index">
                             <div class="columns-item">
@@ -118,6 +120,13 @@
                                 </div>
                                 <div :class="[{'placeHidden':!item.isOperate,'placeVisible':item.isOperate},'columns-item-node miniWidth']" v-if="isConfigOperate">
                                     <el-button size="mini" icon="el-icon-setting" @click="setOperateColumn(item,index)">{{item.operateFun && item.operateFun.length?"查看操作列":"设置操作列"}}</el-button>
+                                </div>
+
+                                <div class="columns-item-node miniWidth">
+                                    <el-switch v-model="item.isEnum"></el-switch>
+                                </div>
+                                <div :class="[{'placeHidden':!item.isEnum,'placeVisible':item.isEnum},'columns-item-node miniWidth']" v-if="isConfigEnum">
+                                    <el-button size="mini" icon="el-icon-setting" @click="setEnumColumn(item,index)">{{item.enums ?"查看枚举列":"设置枚举列"}}</el-button>
                                 </div>
 
                                 <div class="columns-item-operate">
@@ -151,7 +160,7 @@
         <!-- 表格预览 -->
         <el-dialog v-bind="$attrs" custom-class="tablePreview" :close-on-click-modal="false" v-on="$listeners" width="70%" :visible.sync="isPreview" title="预览表格">
             <div class="tablePreview-content">
-                <m-table :configs="backupConfigs" />
+                <m-table v-if="isPreview" :configs="backupConfigs" />
             </div>
 
             <div slot="footer">
@@ -171,13 +180,13 @@
                     <div class="columns" v-for="(item,index) in operateConfigFormData.operates" :key="index">
                         <div class="columns-item">
                             <div class="columns-item-node">
-                                <el-input placeholder="操作名称" v-model="item.label"></el-input>
+                                <el-input clearable placeholder="操作名称" v-model="item.label"></el-input>
                             </div>
                             <div class="columns-item-node">
-                                <el-input placeholder="回调方法名" v-model="item.function"></el-input>
+                                <el-input clearable placeholder="回调方法名" v-model="item.function"></el-input>
                             </div>
                             <div class="columns-item-node miniWidth">
-                                <el-input placeholder="图标" v-model="item.icon"></el-input>
+                                <el-input clearable placeholder="图标" v-model="item.icon"></el-input>
                             </div>
 
                             <div class="columns-item-operate">
@@ -191,6 +200,71 @@
             <div slot="footer">
                 <el-button @click="isOperateColumnConfig = false;">取消</el-button>
                 <el-button type="primary" @click="saveOperateConfig">确定</el-button>
+            </div>
+        </el-dialog>
+
+        <!-- 设置枚举列 -->
+        <el-dialog v-bind="$attrs" :close-on-click-modal="false" v-on="$listeners" :visible.sync="isEnumColumn" @close="onCloseEnumDialog" title="设置枚举列">
+            <el-form ref="pageForm" :model="enumConfigFormData" size="small" label-width="120px">
+                <el-form-item label="枚举列配置" prop="operates" class="tableConfig">
+                    <div class="columns-header">
+                        <div class="columns-header-item">枚举Value</div>
+                        <div class="columns-header-item">枚举显示Label</div>
+                        <div class="columns-header-item miniWidth">枚举呈现组件</div>
+                        <div class="columns-header-item miniWidth">组件类型</div>
+                    </div>
+                    <div class="columns" v-for="(item,index) in enumConfigFormData.arrEnums" :key="index">
+                        <div class="columns-item">
+                            <div class="columns-item-node">
+                                <el-input clearable placeholder="枚举Value" v-model="item.key"></el-input>
+                            </div>
+                            <div class="columns-item-node">
+                                <el-input clearable placeholder="枚举显示Label" v-model="item.label"></el-input>
+                            </div>
+
+                            <div class="columns-item-node miniWidth">
+                                <el-select clearable placeholder="请选择枚举呈现组件" v-model="item.component">
+                                    <el-option label="Dot" value="dot"></el-option>
+                                    <el-option label="El-Tag" value="el-tag"></el-option>
+                                    <el-option label="Tag" value="tag"></el-option>
+                                    <el-option label="Level" value="level"></el-option>
+                                </el-select>
+                            </div>
+
+                            <div class="columns-item-node miniWidth" v-if="item.component">
+                                <el-select clearable placeholder="请选择组件类型" v-model="item.type">
+                                    <el-option label="一般" value="primary">
+                                        <tag type="primary">一般</tag>
+                                    </el-option>
+                                    <el-option label="成功" value="success">
+                                        <tag type="success">成功</tag>
+                                    </el-option>
+                                    <el-option label="警告" value="warning">
+                                        <tag type="warning">警告</tag>
+                                    </el-option>
+                                    <el-option label="危险" value="danger">
+                                        <tag type="danger">危险</tag>
+                                    </el-option>
+                                    <el-option label="信息" value="info">
+                                        <tag type="info">信息</tag>
+                                    </el-option>
+                                    <el-option label="测试" value="test">
+                                        <tag type="test">测试</tag>
+                                    </el-option>
+                                </el-select>
+                            </div>
+
+                            <div class="columns-item-operate">
+                                <el-button size="mini" icon="el-icon-minus" v-if="enumConfigFormData.arrEnums.length != 1" @click="minus(enumConfigFormData.arrEnums,index)"></el-button>
+                                <el-button size="mini" icon="el-icon-plus" @click="plus(enumConfigFormData.arrEnums)" v-if="enumConfigFormData.arrEnums.length == (index + 1)"></el-button>
+                            </div>
+                        </div>
+                    </div>
+                </el-form-item>
+            </el-form>
+            <div slot="footer">
+                <el-button @click="isEnumColumn = false;">取消</el-button>
+                <el-button type="primary" @click="saveEnumConfig">确定</el-button>
             </div>
         </el-dialog>
     </div>
@@ -210,7 +284,7 @@ export default {
                 icon: undefined,
                 type: "list",
                 tableConfig: {
-                    setting: false,
+                    setting: true,
                     pagination: true,
                     isPublic: false,//兼容其他类型接口，是否组装searchDTOList结构
                     pageSize: 10,
@@ -224,7 +298,11 @@ export default {
                 ]
             },
             operateConfigFormData: {
-                operates: [{ function: "", label: "", icon: "" }]
+                operates: [{ function: "", label: "", icon: "" }],
+
+            },
+            enumConfigFormData: {
+                arrEnums: [{ label: "", type: "", component: "", key: "" }],
             },
             currentRow: null,//当前操作的表格配置列
             rules: {
@@ -300,7 +378,8 @@ export default {
                 size: 10,
                 status: "active"
             },
-            isOperateColumnConfig: false,
+            isOperateColumnConfig: false,// 设置操作列弹框
+            isEnumColumn: false,// 设置枚举列弹框
             backupConfigs: {},
             isPreview: false
         }
@@ -311,6 +390,9 @@ export default {
         },
         isConfigOperate() {
             return this.setData.tableColumns.some(s => s.isOperate)
+        },
+        isConfigEnum() {
+            return this.setData.tableColumns.some(s => s.isEnum)
         }
     },
     watch: {},
@@ -342,17 +424,53 @@ export default {
                 this.operateConfigFormData.operates = this.currentRow.operateFun;
             }
         },
+        arrToObj(arr) {
+            let target = {};
+            if (arr && arr.length) {
+                arr.forEach(item => {
+                    target[item.key] = { label: item.label, type: item.type, component: item.component };
+                })
+            }
+            return target;
+        },
+        objToArr(obj) {
+            let target = [];
+            for (let key in obj) {
+                let item = obj[key];
+                target.push({ label: item.label, type: item.type, component: item.component, key: key })
+            }
+            return target;
+        },
+        setEnumColumn(row, index) {
+            this.isEnumColumn = true;
+            this.currentRow = row;
+            if (this.currentRow.enums) {
+                // 对象转成数组去弹框中回显
+                this.enumConfigFormData.arrEnums = this.objToArr(this.currentRow.enums);
+            }
+        },
         saveOperateConfig() {
             //保存表格操作列配置
             this.currentRow.operateFun = this.$util.deepCopy(this.operateConfigFormData.operates);
             this.isOperateColumnConfig = false;
+        },
+        saveEnumConfig() {
+            //保存表格枚举列配置
+            this.currentRow.enums = this.arrToObj(this.$util.deepCopy(this.enumConfigFormData.arrEnums));
+            this.isEnumColumn = false;
         },
         onCloseOperateDialog() {
             //关闭操作列配置弹框回调
 
             //还原弹框默认值
             this.operateConfigFormData = {
-                operates: [{ function: "", label: "", icon: "" }]
+                operates: [{ function: "", label: "", icon: "" }],
+            }
+        },
+        onCloseEnumDialog() {
+            //还原弹框默认值
+            this.enumConfigFormData = {
+                arrEnums: [{ label: "", type: "", component: "", key: "" }],
             }
         },
         preview() {
