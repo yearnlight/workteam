@@ -141,7 +141,10 @@
                         <div class="tableConfig-testData">
                             <div v-for="(item,index) in setData.tableColumns" :key="index" class="tableConfig-testData-item">
                                 <label>{{item.prop}}：</label>
-                                <el-input v-model="item.value" :placeholder="`${item.prop}测试数据`"></el-input>
+                                <el-select v-if="item.enums" clearable placeholder="请选择" v-model="item.value">
+                                    <el-option :label="obj.label" :value="key" v-for="(obj,key) in item.enums" :key="key"></el-option>
+                                </el-select>
+                                <el-input v-else v-model="item.value" :placeholder="`${item.prop}测试数据`"></el-input>
                             </div>
                         </div>
                     </el-form-item>
