@@ -120,23 +120,23 @@ router.post("/delete", async ctx => {
 
 });
 
-function tarDir(targetDirPath, tarName) {
+function tarDir(targetDirPath, ctx, tarName) {
     if (fs.existsSync(`${targetDirPath}.tar.gz`)) {
         // 存在时删除压缩文件
         fs.unlink(`${targetDirPath}.tar.gz`, (err) => {
             if (err) {
                 throw err;
             }
-            tarDirOperate(targetDirPath, tarName)
+            tarDirOperate(targetDirPath, ctx, tarName)
         })
     }
     else {
-        tarDirOperate(targetDirPath)
+        tarDirOperate(targetDirPath, ctx, tarName)
     }
 
 }
 
-function tarDirOperate(targetDirPath, tarName) {
+function tarDirOperate(targetDirPath, ctx, tarName) {
     const pack = new tar.Pack({ gzip: true });
     //遍历文件夹，并以指定基准输出
     readDirSync(targetDirPath);
@@ -154,6 +154,8 @@ function tarDirOperate(targetDirPath, tarName) {
     pack.end();
     const writeStream = fs.createWriteStream(`${targetDirPath}.tar.gz`);
     pack.pipe(writeStream);
+    // 输出压缩文件路径
+    // ctx.response.body = { status: 200, msg: "输出压缩文件路径", data: `/template/target/${tarName}.tar.gz` };
 }
 
 // 生成代码
@@ -193,7 +195,7 @@ router.post("/generate", async ctx => {
         fs.writeFile(targetFilePath, content, (err) => {
             if (err) throw err;
             // 生成压缩文件
-            tarDir(targetDirPath, config.code)
+            tarDir(targetDirPath, ctx, config.code)
             console.log('The ' + targetFilePath + ' has been created!');
         });
     } else {
@@ -206,12 +208,14 @@ router.post("/generate", async ctx => {
             fs.writeFile(targetFilePath, content, (err) => {
                 if (err) throw err;
                 // 生成压缩文件
-                tarDir(targetDirPath, config.code)
+                tarDir(targetDirPath, ctx, config.code)
                 console.log('The ' + targetFilePath + ' has been created!');
             });
         })
-        console.error('error!\n' + targetFilePath + ' has already been existed!');
     }
+
+    // 输出压缩文件路径
+    ctx.response.body = { status: 200, msg: "输出压缩文件路径", data: `/template/target/${config.code}.tar.gz` };
 
 })
 

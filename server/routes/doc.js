@@ -17,7 +17,7 @@ router.post("/files/upload", async ctx => {
     let randomCode = Uuid.v1();
     let fileNames = file.name.split(".");
     let filePath =
-        path.join(__dirname, "md/") +
+        path.join(__dirname, "../template/md/") +
         `${fileNames[0]}${randomCode}.${fileNames[1]}`;
     // 创建可写流
     const upStream = fs.createWriteStream(filePath);
@@ -26,13 +26,13 @@ router.post("/files/upload", async ctx => {
     ctx.response.body = {
         status: 200,
         msg: null,
-        data: `/md/${fileNames[0]}${randomCode}.${fileNames[1]}`
+        data: `/template/md/${fileNames[0]}${randomCode}.${fileNames[1]}`
     };
 });
 
 router.post("/files/delete", async ctx => {
     let { fileName } = ctx.request.body;
-    fs.unlink(`/md/${fileName}`, function (err) {
+    fs.unlink(path.join(__dirname, `../template/md/${fileName}`), function (err) {
         if (err) {
             throw err;
         }

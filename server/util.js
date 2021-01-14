@@ -81,14 +81,14 @@ module.exports = {
 
     // 将md转换成html字符串替换到html模板文件中replace_area的位置
     let content = headFile.toString().replace("replace_area", mdToHtmlStr);
-    let filepath = "./md/output.docx";
+    let filepath = "./template/output.docx";
     fs.writeFileSync(filepath, content);
     let msg = `文档下载【${title}】成功`;
     this.setEvent(ctx, "success", msg);
     ctx.response.body = {
       status: 200,
       msg: "",
-      data: { url: "/md/output.docx", title: title }
+      data: { url: "/template/output.docx", title: title }
     };
   },
   setEvent: async (ctx, level, desc, title) => {

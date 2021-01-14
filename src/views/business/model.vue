@@ -206,9 +206,22 @@ export default {
         search() { },
         del() { },
         edit() { },
+        download(url) {
+            let that = this;
+            const link = document.createElement("a");
+            link.style.display = "none";
+            link.href = url;
+            link.setAttribute("download", `${that.config.code}.tar.gz`);
+            document.body.appendChild(link);
+            link.click();
+        },
         generate() {
-            this.$axios.post("/server-config/generate", { uuid: this.config.uuid }).then(res => {
-
+            let that = this;
+            this.$axios.post("/server-config/generate", { uuid: that.config.uuid }).then(res => {
+                if (res.status == 200) {
+                    let tarPath = res.data;
+                    this.download(tarPath);
+                }
             })
         }
     }
