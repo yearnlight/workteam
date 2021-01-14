@@ -140,6 +140,16 @@ const routes = [
         path: "/work/demand_info",// 小需求管理
         component: () => import("@/views/demand/info.vue"),
         name: "demand_info",
+      },
+      {
+        path: "/work/conversation",// 会话管理
+        component: () => import("@/views/conversation/index.vue"),
+        name: "conversation",
+      },
+      {
+        path: "/work/conversation_detail",// 会话管理
+        component: () => import("@/views/conversation/detail.vue"),
+        name: "conversation_detail",
       }
     ]
   }

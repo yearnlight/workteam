@@ -197,10 +197,15 @@ router.post("/generate", async ctx => {
     let indexTempPath = path.join(__dirname, "../template/index.vue");
     // detail模板路径
     let detailTempPath = path.join(__dirname, "../template/detail.vue");
+    // router路由模板
+    let routerJsPath = path.join(__dirname, "../template/router.js");
+
     // 获取index模板文件内容
     let indexTemp = fs.readFileSync(path.join(indexTempPath), 'utf8');
     // 获取detail模板文件内容
     let detailTemp = fs.readFileSync(path.join(detailTempPath), 'utf8');
+    // 获取router路由文件内容
+    let routerJsTemp = fs.readFileSync(path.join(routerJsPath), 'utf8');
     // 表格配置,转换成Json格式
     let tableConfig = JSON.parse(config.tableConfig);
     let tableTestData = JSON.parse(config.tableTestData);
@@ -221,9 +226,14 @@ router.post("/generate", async ctx => {
         .replace(/mxComponentDetailColumns/g, JSON.stringify(detailConfig))
         .replace(/mxComponentDetailTestData/g, JSON.stringify(detailTestData));
 
+    // 详情内容替换
+    let routerContent = routerJsTemp.replace(/mxComponentName/g, config.code)
+        .replace(/mxComponentLabel/g, config.name);
+
     let targetDirPath = path.join(__dirname, `../template/target/${config.code}`);
     let targetFilePath = path.join(__dirname, `../template/target/${config.code}`, 'index.vue');
     let targetDetailFilePath = path.join(__dirname, `../template/target/${config.code}`, 'detail.vue');
+    let targetRouterFilePath = path.join(__dirname, `../template/target/${config.code}`, 'router.js');
 
     // mkdirSync
     if (!fs.existsSync(targetDirPath)) {
@@ -231,7 +241,8 @@ router.post("/generate", async ctx => {
         console.log('The ' + targetDirPath + ' folder has been created!');
     }
 
-    Promise.all([writeFile(targetFilePath, content), writeFile(targetDetailFilePath, detailContent)]).then(() => {
+    // 写入index.vue、detail.vue、router.js
+    Promise.all([writeFile(targetFilePath, content), writeFile(targetDetailFilePath, detailContent), writeFile(targetRouterFilePath, routerContent)]).then(() => {
         // 写入完index.vue、detail.vue生成压缩文件
         tarDir(targetDirPath, ctx, config.code)
     })

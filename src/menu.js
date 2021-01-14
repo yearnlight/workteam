@@ -38,6 +38,11 @@ export default [
     title: "业务管理",
     icon: "el-icon-collection",
     path: "/work/business"
+  },  
+  {
+    title: "会话管理",
+    icon: "el-icon-collection",
+    path: "/work/conversation"
   },
   {
     title: "工具管理",

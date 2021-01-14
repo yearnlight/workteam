@@ -5,8 +5,10 @@
 </template>
 
 <script>
+import infoBase from "@/components/infoBase"
 // mxComponentDetailLabel
 export default {
+    components: { infoBase },
     data() {
         return {
             name: "mxComponentName",
