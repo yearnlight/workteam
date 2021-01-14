@@ -45,24 +45,79 @@ import com from "@/utils/common.js";
 export default {
   props: {
     infos: {
-      type: Object,
+      type: Object
     },
     detailName: {
       type: String,
       default: ''
+    },
+    detailColumns: {
+      type: Array
+    }
+  },
+  data() {
+    return {
+      baseInfo: []
     }
   },
   watch: {
     detailName(n, o) {
-      if (n && n != o) {
+      // 详情配置未传入时，用组件Code去获取配置
+      if (n && n != o && !this.detailColumns) {
         this.baseInfo = com.parseFields(n, this.infos);
+      }
+    },
+    detailColumns(n, o) {
+      if (n) {
+        this.baseInfo = this.parseFields(n, this.infos)
       }
     }
   },
-  computed: {
-    baseInfo: function () {
-      return com.parseFields(this.detailName, this.infos);
-    },
+  created() {
+    let that = this;
+    //传入详情配置时，用当前详情配置渲染;
+    if (that.detailColumns) {
+      that.baseInfo = this.parseFields(that.detailColumns, that.infos)
+    }
+    else if (that.detailName) {
+      //未传入详情配置时，尝试用唯一Code在fields中去获取详情配置
+      that.baseInfo = com.parseFields(that.detailName, that.infos);
+    }
+  },
+  methods: {
+    parseFields(detailColumns, resourceInfo) {
+      let tempColumns = this.$util.deepCopy(detailColumns);
+      if (resourceInfo) {
+        tempColumns.forEach(dItem => {
+          // 遍历字段
+          if (Array.isArray(dItem.fields)) {
+            // 对于页面显示但是详情没有返回的 字段没有处理，使其为空，会保留上一次的数据；且不需要双层循环
+            dItem.fields.forEach(item => {
+              if (item.key in resourceInfo) {
+                if (item.enums) {
+                  let _eValue = item.enums[resourceInfo[item.key]];
+                  if (_eValue) {
+                    item.value = _eValue.label || "";
+                    // 当前属性配置为组件类型
+                    if (_eValue.component) {
+                      item.type = _eValue.type || undefined;
+                      item.component = _eValue.component || undefined
+                    }
+                  }
+
+                }
+                else {
+                  item.value = resourceInfo[item.key];
+                }
+              } else {
+                item.value = "";
+              }
+            })
+          }
+        })
+      }
+      return tempColumns;
+    }
   }
 };
 </script>

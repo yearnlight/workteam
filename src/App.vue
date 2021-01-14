@@ -45,9 +45,9 @@ body {
     }
   }
 
-  .el-select-dropdown{
-    .selected{
-      background-color: #F5F7FA;
+  .el-select-dropdown {
+    .selected {
+      background-color: #f5f7fa;
     }
   }
 

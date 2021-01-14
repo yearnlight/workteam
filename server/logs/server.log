@@ -704,3 +704,564 @@
 [2021-01-07T20:36:04.580] [WARN] default - /user/list
 [2021-01-07T20:36:06.440] [WARN] default - /demand/list
 [2021-01-07T20:36:06.514] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-01-13T15:32:41.217] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T15:33:56.318] [WARN] default - /auth/login
+[2021-01-13T15:33:56.984] [WARN] default - /task/list
+[2021-01-13T15:33:56.990] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-01-13T15:33:56.992] [WARN] default - /user/list
+[2021-01-13T15:33:56.995] [WARN] default - /task/statistics
+[2021-01-13T15:33:57.208] [WARN] default - /task/list
+[2021-01-13T15:33:57.208] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-01-13T15:34:04.701] [WARN] default - /server-config/list
+[2021-01-13T15:34:41.438] [WARN] default - /server-config/generate
+[2021-01-13T15:34:41.570] [ERROR] default - 
+  Error: ENOENT: no such file or directory, open '..\template\index.vue'
+      at Object.fs.openSync (fs.js:545:3)
+      at Object.fs.readFileSync (fs.js:451:33)
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\server.config.js:81:24)
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-01-13T15:35:33.010] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T15:35:35.646] [WARN] default - /server-config/generate
+[2021-01-13T15:35:35.859] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T15:35:35.862] [ERROR] default - 
+  Error: ENOENT: no such file or directory, open '..\template\index.vue'
+      at Object.fs.openSync (fs.js:545:3)
+      at Object.fs.readFileSync (fs.js:451:33)
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\server.config.js:82:24)
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-01-13T15:37:19.078] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T15:37:24.623] [WARN] default - /server-config/generate
+[2021-01-13T15:37:24.843] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T15:37:24.846] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation folder has been created!
+[2021-01-13T15:37:24.862] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T15:39:14.334] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T15:39:16.114] [WARN] default - /server-config/generate
+[2021-01-13T15:39:16.330] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T15:39:16.333] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation folder has been created!
+[2021-01-13T15:39:16.343] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T15:40:02.236] [WARN] default - /server-config/generate
+[2021-01-13T15:40:02.366] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T15:40:02.367] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T15:46:17.576] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T15:46:21.842] [WARN] default - /server-config/generate
+[2021-01-13T15:46:22.062] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T15:46:22.064] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T15:46:22.071] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T15:46:22.074] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T15:47:12.594] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T15:47:14.452] [WARN] default - /server-config/generate
+[2021-01-13T15:47:14.669] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T15:47:14.671] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T15:47:14.676] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T15:47:14.680] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T15:49:46.322] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T15:49:51.627] [WARN] default - /server-config/generate
+[2021-01-13T15:49:51.850] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T15:49:51.853] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T15:49:51.862] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T15:49:51.866] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T16:14:02.137] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T16:14:07.110] [WARN] default - /server-config/generate
+[2021-01-13T16:14:07.325] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T16:14:07.327] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:14:07.339] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T16:16:14.652] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T16:16:16.118] [WARN] default - /server-config/generate
+[2021-01-13T16:16:16.354] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T16:16:16.358] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:16:16.372] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T16:26:35.394] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T16:26:37.908] [WARN] default - /server-config/generate
+[2021-01-13T16:26:38.128] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T16:26:38.130] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:26:38.141] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T16:26:38.151] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T16:30:26.489] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T16:30:30.694] [WARN] default - /server-config/generate
+[2021-01-13T16:30:30.918] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T16:30:30.921] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:30:30.929] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T16:36:00.184] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T16:36:07.024] [WARN] default - /server-config/generate
+[2021-01-13T16:36:07.247] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T16:36:07.248] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:36:07.254] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T16:36:07.263] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T16:36:39.552] [WARN] default - /server-config/generate
+[2021-01-13T16:36:39.689] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T16:36:39.690] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:36:39.692] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T16:36:39.695] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T16:37:01.294] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T16:37:04.213] [WARN] default - /server-config/generate
+[2021-01-13T16:37:04.424] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T16:37:04.426] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:37:04.436] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T16:37:04.447] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T16:37:09.365] [WARN] default - /server-config/generate
+[2021-01-13T16:37:09.502] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T16:37:09.503] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:37:09.505] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T16:37:09.508] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T16:38:46.676] [WARN] default - /server-config/generate
+[2021-01-13T16:38:46.809] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T16:38:46.811] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:38:46.813] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T16:38:46.816] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T16:52:04.484] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T16:52:11.349] [WARN] default - /server-config/generate
+[2021-01-13T16:52:11.578] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T16:52:11.581] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:52:11.589] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T16:52:11.603] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T16:53:36.787] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T16:53:42.224] [WARN] default - /server-config/generate
+[2021-01-13T16:53:42.451] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T16:53:42.454] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:53:42.467] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T16:53:42.487] [WARN] default - [ 'index.vue' ]
+[2021-01-13T16:53:42.534] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T16:55:07.627] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T16:55:10.646] [WARN] default - /server-config/generate
+[2021-01-13T16:55:10.885] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T16:55:10.886] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:55:10.896] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T16:55:10.906] [WARN] default - Pack {
+  _events: { resume: [Function] },
+  _eventsCount: 1,
+  _maxListeners: undefined,
+  pipes: Yallist { tail: null, head: null, length: 0 },
+  buffer: Yallist { tail: null, head: null, length: 0 },
+  writable: true,
+  readable: true,
+  opt: { gzip: { flush: 0, finishFlush: 4 } },
+  file: '',
+  cwd: 'D:\\fitmgr\\otherweb\\worktask\\server',
+  maxReadSize: undefined,
+  preservePaths: false,
+  strict: false,
+  noPax: false,
+  prefix: '',
+  linkCache: Map {},
+  statCache: Map {},
+  readdirCache: Map {},
+  portable: false,
+  zip: 
+   Gzip {
+     _events: { end: [Array], data: [Function], drain: [Function] },
+     _eventsCount: 3,
+     _maxListeners: undefined,
+     pipes: Yallist { tail: null, head: null, length: 0 },
+     buffer: Yallist { tail: null, head: null, length: 0 },
+     writable: true,
+     readable: true,
+     [Symbol(flowing)]: true,
+     [Symbol(paused)]: false,
+     [Symbol(objectMode)]: false,
+     [Symbol(encoding)]: null,
+     [Symbol(decoder)]: null,
+     [Symbol(EOF)]: false,
+     [Symbol(emittedEnd)]: false,
+     [Symbol(emittingEnd)]: false,
+     [Symbol(closed)]: false,
+     [Symbol(bufferLength)]: 0,
+     [Symbol(destroyed)]: false,
+     [Symbol(sawError)]: false,
+     [Symbol(ended)]: false,
+     [Symbol(opts)]: { flush: 0, finishFlush: 4 },
+     [Symbol(flushFlag)]: 0,
+     [Symbol(finishFlushFlag)]: 4,
+     [Symbol(handle)]: 
+      Gzip {
+        _readableState: [ReadableState],
+        readable: true,
+        _events: [Object],
+        _eventsCount: 3,
+        _maxListeners: undefined,
+        _writableState: [WritableState],
+        writable: true,
+        allowHalfOpen: true,
+        _transformState: [Object],
+        bytesWritten: 0,
+        _handle: [Zlib],
+        _hadError: false,
+        _writeState: [Uint32Array],
+        _outBuffer: <Buffer 39 7d d1 08 3d 03 00 00 40 00 00 00 00 00 00 00 79 7d d1 08 3d 03 00 00 40 00 00 00 00 00 00 00 b9 7d d1 08 3d 03 00 00 40 00 00 00 00 00 00 00 f9 7d ... >,
+        _outOffset: 0,
+        _level: -1,
+        _strategy: 0,
+        _chunkSize: 16384,
+        _flushFlag: 0,
+        _scheduledFlushFlag: 0,
+        _origFlushFlag: 0,
+        _finishFlushFlag: 4,
+        _info: undefined },
+     [Symbol(onError)]: [Function],
+     [Symbol(fullFlushFlag)]: 3,
+     [Symbol(level)]: undefined,
+     [Symbol(strategy)]: undefined,
+     [Symbol(_portable)]: false },
+  noDirRecurse: false,
+  follow: false,
+  noMtime: false,
+  mtime: null,
+  filter: [Function],
+  jobs: 4,
+  [Symbol(flowing)]: false,
+  [Symbol(paused)]: false,
+  [Symbol(objectMode)]: false,
+  [Symbol(encoding)]: null,
+  [Symbol(decoder)]: null,
+  [Symbol(EOF)]: false,
+  [Symbol(emittedEnd)]: false,
+  [Symbol(emittingEnd)]: false,
+  [Symbol(closed)]: false,
+  [Symbol(bufferLength)]: 0,
+  [Symbol(destroyed)]: false,
+  [Symbol(writeEntryClass)]: 
+   { [Function: WriteEntry]
+     Sync: [Function: WriteEntrySync],
+     Tar: [Function: WriteEntryTar] },
+  [Symbol(queue)]: 
+   Yallist {
+     tail: Node { list: [Circular], value: [PackJob], prev: null, next: null },
+     head: Node { list: [Circular], value: [PackJob], prev: null, next: null },
+     length: 1 },
+  [Symbol(jobs)]: 1,
+  [Symbol(processing)]: false,
+  [Symbol(ended)]: false }
+[2021-01-13T16:55:10.934] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T16:57:37.216] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T16:57:41.132] [WARN] default - /server-config/generate
+[2021-01-13T16:57:41.352] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T16:57:41.353] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:57:41.359] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T16:57:41.369] [WARN] default - Pack {
+  _events: { resume: [Function] },
+  _eventsCount: 1,
+  _maxListeners: undefined,
+  pipes: Yallist { tail: null, head: null, length: 0 },
+  buffer: Yallist { tail: null, head: null, length: 0 },
+  writable: true,
+  readable: true,
+  opt: { gzip: { flush: 0, finishFlush: 4 } },
+  file: '',
+  cwd: 'D:\\fitmgr\\otherweb\\worktask\\server',
+  maxReadSize: undefined,
+  preservePaths: false,
+  strict: false,
+  noPax: false,
+  prefix: '',
+  linkCache: Map {},
+  statCache: Map {},
+  readdirCache: Map {},
+  portable: false,
+  zip: 
+   Gzip {
+     _events: { end: [Array], data: [Function], drain: [Function] },
+     _eventsCount: 3,
+     _maxListeners: undefined,
+     pipes: Yallist { tail: null, head: null, length: 0 },
+     buffer: Yallist { tail: null, head: null, length: 0 },
+     writable: true,
+     readable: true,
+     [Symbol(flowing)]: true,
+     [Symbol(paused)]: false,
+     [Symbol(objectMode)]: false,
+     [Symbol(encoding)]: null,
+     [Symbol(decoder)]: null,
+     [Symbol(EOF)]: false,
+     [Symbol(emittedEnd)]: false,
+     [Symbol(emittingEnd)]: false,
+     [Symbol(closed)]: false,
+     [Symbol(bufferLength)]: 0,
+     [Symbol(destroyed)]: false,
+     [Symbol(sawError)]: false,
+     [Symbol(ended)]: false,
+     [Symbol(opts)]: { flush: 0, finishFlush: 4 },
+     [Symbol(flushFlag)]: 0,
+     [Symbol(finishFlushFlag)]: 4,
+     [Symbol(handle)]: 
+      Gzip {
+        _readableState: [ReadableState],
+        readable: true,
+        _events: [Object],
+        _eventsCount: 3,
+        _maxListeners: undefined,
+        _writableState: [WritableState],
+        writable: true,
+        allowHalfOpen: true,
+        _transformState: [Object],
+        bytesWritten: 0,
+        _handle: [Zlib],
+        _hadError: false,
+        _writeState: [Uint32Array],
+        _outBuffer: <Buffer 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ... >,
+        _outOffset: 0,
+        _level: -1,
+        _strategy: 0,
+        _chunkSize: 16384,
+        _flushFlag: 0,
+        _scheduledFlushFlag: 0,
+        _origFlushFlag: 0,
+        _finishFlushFlag: 4,
+        _info: undefined },
+     [Symbol(onError)]: [Function],
+     [Symbol(fullFlushFlag)]: 3,
+     [Symbol(level)]: undefined,
+     [Symbol(strategy)]: undefined,
+     [Symbol(_portable)]: false },
+  noDirRecurse: false,
+  follow: false,
+  noMtime: false,
+  mtime: null,
+  filter: [Function],
+  jobs: 4,
+  [Symbol(flowing)]: false,
+  [Symbol(paused)]: false,
+  [Symbol(objectMode)]: false,
+  [Symbol(encoding)]: null,
+  [Symbol(decoder)]: null,
+  [Symbol(EOF)]: false,
+  [Symbol(emittedEnd)]: false,
+  [Symbol(emittingEnd)]: false,
+  [Symbol(closed)]: false,
+  [Symbol(bufferLength)]: 0,
+  [Symbol(destroyed)]: false,
+  [Symbol(writeEntryClass)]: 
+   { [Function: WriteEntry]
+     Sync: [Function: WriteEntrySync],
+     Tar: [Function: WriteEntryTar] },
+  [Symbol(queue)]: 
+   Yallist {
+     tail: Node { list: [Circular], value: [PackJob], prev: null, next: null },
+     head: Node { list: [Circular], value: [PackJob], prev: null, next: null },
+     length: 1 },
+  [Symbol(jobs)]: 1,
+  [Symbol(processing)]: false,
+  [Symbol(ended)]: false }
+[2021-01-13T16:57:41.378] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T17:00:40.140] [WARN] default - /server-config/generate
+[2021-01-13T17:00:40.277] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T17:00:40.279] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:00:40.280] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T17:00:40.283] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T17:00:40.286] [WARN] default - Pack {
+  _events: { resume: [Function] },
+  _eventsCount: 1,
+  _maxListeners: undefined,
+  pipes: Yallist { tail: null, head: null, length: 0 },
+  buffer: Yallist { tail: null, head: null, length: 0 },
+  writable: true,
+  readable: true,
+  opt: { gzip: { flush: 0, finishFlush: 4 } },
+  file: '',
+  cwd: 'D:\\fitmgr\\otherweb\\worktask\\server',
+  maxReadSize: undefined,
+  preservePaths: false,
+  strict: false,
+  noPax: false,
+  prefix: '',
+  linkCache: Map {},
+  statCache: Map {},
+  readdirCache: Map {},
+  portable: false,
+  zip: 
+   Gzip {
+     _events: { end: [Array], data: [Function], drain: [Function] },
+     _eventsCount: 3,
+     _maxListeners: undefined,
+     pipes: Yallist { tail: null, head: null, length: 0 },
+     buffer: Yallist { tail: null, head: null, length: 0 },
+     writable: true,
+     readable: true,
+     [Symbol(flowing)]: true,
+     [Symbol(paused)]: false,
+     [Symbol(objectMode)]: false,
+     [Symbol(encoding)]: null,
+     [Symbol(decoder)]: null,
+     [Symbol(EOF)]: false,
+     [Symbol(emittedEnd)]: false,
+     [Symbol(emittingEnd)]: false,
+     [Symbol(closed)]: false,
+     [Symbol(bufferLength)]: 0,
+     [Symbol(destroyed)]: false,
+     [Symbol(sawError)]: false,
+     [Symbol(ended)]: false,
+     [Symbol(opts)]: { flush: 0, finishFlush: 4 },
+     [Symbol(flushFlag)]: 0,
+     [Symbol(finishFlushFlag)]: 4,
+     [Symbol(handle)]: 
+      Gzip {
+        _readableState: [ReadableState],
+        readable: true,
+        _events: [Object],
+        _eventsCount: 3,
+        _maxListeners: undefined,
+        _writableState: [WritableState],
+        writable: true,
+        allowHalfOpen: true,
+        _transformState: [Object],
+        bytesWritten: 0,
+        _handle: [Zlib],
+        _hadError: false,
+        _writeState: [Uint32Array],
+        _outBuffer: <Buffer 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ... >,
+        _outOffset: 0,
+        _level: -1,
+        _strategy: 0,
+        _chunkSize: 16384,
+        _flushFlag: 0,
+        _scheduledFlushFlag: 0,
+        _origFlushFlag: 0,
+        _finishFlushFlag: 4,
+        _info: undefined },
+     [Symbol(onError)]: [Function],
+     [Symbol(fullFlushFlag)]: 3,
+     [Symbol(level)]: undefined,
+     [Symbol(strategy)]: undefined,
+     [Symbol(_portable)]: false },
+  noDirRecurse: false,
+  follow: false,
+  noMtime: false,
+  mtime: null,
+  filter: [Function],
+  jobs: 4,
+  [Symbol(flowing)]: false,
+  [Symbol(paused)]: false,
+  [Symbol(objectMode)]: false,
+  [Symbol(encoding)]: null,
+  [Symbol(decoder)]: null,
+  [Symbol(EOF)]: false,
+  [Symbol(emittedEnd)]: false,
+  [Symbol(emittingEnd)]: false,
+  [Symbol(closed)]: false,
+  [Symbol(bufferLength)]: 0,
+  [Symbol(destroyed)]: false,
+  [Symbol(writeEntryClass)]: 
+   { [Function: WriteEntry]
+     Sync: [Function: WriteEntrySync],
+     Tar: [Function: WriteEntryTar] },
+  [Symbol(queue)]: 
+   Yallist {
+     tail: Node { list: [Circular], value: [PackJob], prev: null, next: null },
+     head: Node { list: [Circular], value: [PackJob], prev: null, next: null },
+     length: 1 },
+  [Symbol(jobs)]: 1,
+  [Symbol(processing)]: false,
+  [Symbol(ended)]: false }
+[2021-01-13T17:02:27.175] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T17:02:31.834] [WARN] default - /server-config/generate
+[2021-01-13T17:02:32.062] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T17:02:32.064] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:02:32.072] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T17:02:32.076] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T17:02:32.081] [WARN] default - index.vue
+[2021-01-13T17:03:11.366] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T17:03:14.430] [WARN] default - /server-config/generate
+[2021-01-13T17:03:14.663] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T17:03:14.665] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:03:14.672] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T17:03:14.676] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T17:03:14.680] [WARN] default - D:\fitmgr\otherweb\worktask\server\template\target\conversation/index.vue
+[2021-01-13T17:05:55.889] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T17:05:59.108] [WARN] default - /server-config/generate
+[2021-01-13T17:05:59.326] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T17:05:59.328] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:05:59.338] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T17:05:59.342] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T17:06:34.319] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T17:06:36.541] [WARN] default - /server-config/generate
+[2021-01-13T17:06:36.760] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T17:06:36.762] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:06:36.773] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T17:06:36.780] [WARN] default - D:\fitmgr\otherweb\worktask\server\template\target\conversation/index.vue
+[2021-01-13T17:06:36.781] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T17:08:36.872] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T17:08:41.716] [WARN] default - /server-config/generate
+[2021-01-13T17:08:41.930] [DEBUG] default - D:\fitmgr\otherweb\worktask\server\routes
+[2021-01-13T17:08:41.932] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:08:41.943] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T17:08:41.957] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T17:18:52.603] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T17:18:56.022] [WARN] default - /server-config/generate
+[2021-01-13T17:18:56.247] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:18:56.256] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T17:18:56.275] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T17:23:55.515] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T17:24:04.835] [WARN] default - /server-config/generate
+[2021-01-13T17:24:05.067] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:24:05.076] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T17:24:05.087] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T17:26:37.740] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T17:26:40.245] [WARN] default - /server-config/generate
+[2021-01-13T17:26:40.475] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:26:40.481] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T17:26:40.490] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T17:38:00.710] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T17:38:03.181] [WARN] default - /server-config/generate
+[2021-01-13T17:38:03.415] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:38:03.424] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T17:38:03.437] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T17:40:32.309] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T17:40:38.057] [WARN] default - /server-config/generate
+[2021-01-13T17:40:38.287] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:40:38.299] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T17:40:38.314] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-13T17:43:05.635] [INFO] default - Task server success to run,port:4001.
+[2021-01-13T17:43:09.984] [WARN] default - /server-config/generate
+[2021-01-13T17:43:10.206] [ERROR] default - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:43:10.212] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been deleted!
+[2021-01-13T17:43:10.215] [DEBUG] default - The D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has been created!
+[2021-01-14T10:02:10.916] [INFO] default - Task server success to run,port:4001.
+[2021-01-14T10:02:44.181] [WARN] default - /auth/login
+[2021-01-14T10:02:44.770] [WARN] default - /task/list
+[2021-01-14T10:02:44.773] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-01-14T10:02:44.773] [WARN] default - /user/list
+[2021-01-14T10:02:44.773] [WARN] default - /task/statistics
+[2021-01-14T10:02:45.347] [WARN] default - /task/list
+[2021-01-14T10:02:45.347] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-01-14T10:02:47.329] [WARN] default - /store/list
+[2021-01-14T10:02:48.463] [WARN] default - /user/list
+[2021-01-14T10:02:48.768] [WARN] default - /doc/list
+[2021-01-14T10:02:48.769] [WARN] default - /project/list
+[2021-01-14T10:02:57.924] [WARN] default - /doc/info
+[2021-01-14T10:02:58.033] [WARN] default - /doc/read
+[2021-01-14T10:03:01.376] [WARN] default - /doc/list
+[2021-01-14T10:03:01.378] [WARN] default - /user/list
+[2021-01-14T10:03:01.682] [WARN] default - /project/list
+[2021-01-14T10:03:04.773] [WARN] default - /store/list
+[2021-01-14T10:03:06.186] [WARN] default - /event/list
+[2021-01-14T10:03:06.286] [INFO] default - query event page:select * from event order by createtime desc limit 0, 10,parames:
+[2021-01-14T10:03:17.829] [WARN] default - /server-config/list

@@ -220,3 +220,75 @@
       at router.post (D:\fitmgr\otherweb\worktask\server\routes\demand.js:106:30)
       at process._tickCallback (internal/process/next_tick.js:178:7)
 
+[2021-01-13T15:34:41.571] [ERROR] error - 
+  Error: ENOENT: no such file or directory, open '..\template\index.vue'
+      at Object.fs.openSync (fs.js:545:3)
+      at Object.fs.readFileSync (fs.js:451:33)
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\server.config.js:81:24)
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-01-13T15:35:35.863] [ERROR] error - 
+  Error: ENOENT: no such file or directory, open '..\template\index.vue'
+      at Object.fs.openSync (fs.js:545:3)
+      at Object.fs.readFileSync (fs.js:451:33)
+      at router.post (D:\fitmgr\otherweb\worktask\server\routes\server.config.js:82:24)
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-01-13T15:40:02.368] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T15:46:22.064] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T15:47:14.671] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T15:49:51.854] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:14:07.327] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:16:16.360] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:26:38.131] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:30:30.921] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:36:07.249] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:36:39.690] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:37:04.427] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:37:09.504] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:38:46.811] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:52:11.581] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:53:42.455] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:55:10.887] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T16:57:41.354] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:00:40.279] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:02:32.064] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:03:14.666] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:05:59.328] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:06:36.763] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:08:41.933] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:18:56.248] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:24:05.068] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:26:40.476] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:38:03.416] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:40:38.287] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!
+[2021-01-13T17:43:10.207] [ERROR] error - error!
+D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has already been existed!

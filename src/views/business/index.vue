@@ -1,35 +1,140 @@
 
 <template>
-    <div class="businessMenu">
-        <div class="businessMenu-left">
-            <div class="businessMenu-left-operate">
-                <el-button type="primary" icon="el-icon-plus" @click="create">创建</el-button>
-            </div>
-            <el-menu :default-active="active" class="el-menu-vertical-demo" @select="select" :collapse="isCollapse">
-                <el-menu-item :index="item.key" v-for="(item,index) in menus" :key="index">
-                    <span slot="title">{{item.name}}</span>
-                    <span slot="title" class="warn" v-if="!item.name">{{item.key}}<span class="remark">[无名称]</span></span>
-                </el-menu-item>
-            </el-menu>
-        </div>
+  <div class="businessMenu">
+    <div class="businessMenu-left">
+      <div class="businessMenu-left-operate">
+        <el-button type="primary" icon="el-icon-plus" @click="create">创建</el-button>
+      </div>
+      <el-tree ref="tree" :default-expanded-keys="['fitmgr']" :accordion="true" :data="treeData" node-key="key" :current-node-key="active" :highlight-current="true" :props="defaultProps" @node-click="nodeClick">
+        <span class="tree-node" slot-scope="{ node, data }">
+          <!-- <svg-icon v-if="data.icon" class="tree-node-icon" :icon-class="data.icon"></svg-icon> -->
+          <span>{{ data.name }}</span>
+          <span v-if="node.isLeaf && data.project != 'base'">
+            <span class="el-icon-delete red" @click.stop.prevent="removeNode(data)"></span>
+          </span>
 
-        <div class="businessMenu-right">
-            <Model :name="active" />
-        </div>
-
+        </span>
+      </el-tree>
     </div>
+
+    <div class="businessMenu-right">
+      <Model :name="active" :config="activeServer" />
+    </div>
+
+  </div>
 </template>
+
+<script>
+import Model from "./model";
+import t_fields from "@/resource/t_fields";
+import fields from "@/resource/fields";
+
+export default {
+  components: { Model },
+  data() {
+    return {
+      contextMenuTarget: this.$refs["tree"], // 可右键区域，这里也可以绑定$refs
+      contextMenuVisible: false,
+      isCollapse: false,
+      active: "",
+      defaultProps: {
+        children: 'children',
+        label: 'name'
+      },
+      treeData: [
+        { name: "云管(静态)", key: "base", children: [] },
+        { name: "云管(动态)", key: "fitmgr", children: [] },
+      ],
+      activeServer: {}
+    };
+  },
+  created() {
+    let that = this;
+    let menus = [];
+    // 深度合并fields、t_fields
+    let allFields = that.$util.deepMerge(fields, t_fields)
+    for (let key in allFields) {
+      let item = allFields[key];
+      if (item.tableColumns && item.tableColumns.length) {
+        menus.push({ key: key, ...item, project: "base" });
+      }
+    }
+    that.treeData[0].children = menus;
+
+
+    that.fetchServerList();
+  },
+  methods: {
+    fetchServerList() {
+      let that = this;
+      this.$axios.get("/server-config/list").then(res => {
+        if (res.status == 200) {
+          let dyncMenus = res.data.records;
+          if (dyncMenus && dyncMenus.length) {
+            let dyncTempMenus = dyncMenus.map(m => { return { key: m.code, ...m } })
+            that.treeData[1].children = dyncTempMenus;
+          }
+        }
+      })
+    },
+    create() {
+      // 创建服务配置
+      this.$router.push("/work/business_create")
+    },
+    nodeClick(data, node) {
+      if (node.isLeaf) {
+        this.active = data.key;
+        this.activeServer = data;
+      }
+    },
+    removeNode(data) {
+      this.$confirm(`是否删除服务【${data.name}】 ?`, "删除").then(() => {
+        this.$axios.post("/server-config/delete", { uuid: data.uuid }).then(res => {
+          if (res.status == 200) {
+            this.$message.success("删除服务成功");
+            this.fetchServerList();
+          }
+          else {
+            this.$message.error("删除服务失败");
+          }
+        })
+      })
+    }
+  }
+}
+</script>
+
 
 <style lang="scss">
 .businessMenu {
   display: flex;
   &-left {
     width: 200px;
-
-    .el-menu {
+    .tree {
+      &-node {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex: 1;
+        font-size: 13px;
+        &-icon {
+          height: 15px !important;
+          width: 15px !important;
+          margin-right: 5px;
+        }
+      }
+    }
+    .el-tree {
       border-right: none;
       overflow-y: scroll;
       height: calc(100% - 52px);
+      &-node {
+        &.is-current {
+          .el-tree-node__content {
+            color: #409eff;
+          }
+        }
+      }
     }
     .remark {
       font-size: 12px;
@@ -45,38 +150,3 @@
   }
 }
 </style>
-
-<script>
-import Model from "./model";
-import t_fields from "@/resource/t_fields";
-
-export default {
-    components: { Model },
-    data() {
-        return {
-            isCollapse: false,
-            active: "region",
-            menus: []
-        };
-    },
-    created() {
-        let that = this;
-        for (let key in t_fields) {
-            let item = t_fields[key];
-            if (item.tableColumns && item.tableColumns.length) {
-                that.menus.push({ key: key, ...item });
-            }
-        }
-        that.active = that.menus[0].key;
-    },
-    methods: {
-        select(index) {
-            this.active = index;
-        },
-        create() {
-            // 创建服务配置
-            this.$router.push("/work/business_create")
-        }
-    }
-}
-</script>

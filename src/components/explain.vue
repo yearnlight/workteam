@@ -53,10 +53,13 @@ export default {
     },
     setData(name) {
       // 如果没有传configs，尝试用name去fields中找配置
-      if (!(this.configs && this.configs.name)) {
-        this.$set(this.displayConfigs, "title", fields[name].name)
-        this.$set(this.displayConfigs, "desc", fields[name].explain)
-        this.$set(this.displayConfigs, "icon", fields[name].icon)
+      if (!(this.configs && this.configs.title)) {
+        let module = fields[name];
+        if (module) {
+          this.$set(this.displayConfigs, "title", module.name)
+          this.$set(this.displayConfigs, "desc", module.explain)
+          this.$set(this.displayConfigs, "icon", module.icon)
+        }
       }
       else {
         this.displayConfigs = this.configs;

@@ -184,6 +184,14 @@ export default {
       }
       return result;
     },
+    dyncConfig() {
+      if (t_fields && this.name) {
+        return t_fields[this.name] || t_fields[this.name].tableConfig
+      }
+      else {
+        return {}
+      }
+    }
   },
   data() {
     return {
@@ -222,7 +230,7 @@ export default {
       this.dicts = this.allDicts[this.name];
     }
 
-    this.defaultConfig = Object.assign(this.defaultConfig, this.tableConfig || t_fields[this.name].tableConfig);
+    this.defaultConfig = Object.assign(this.defaultConfig, this.tableConfig || this.dyncConfig);
     this.inputParams.page = 1;
     this.inputParams.limit = this.defaultConfig.pageSize;
     this.init();
@@ -246,7 +254,7 @@ export default {
       handler(n, o) {
         this.defaultConfig = Object.assign(
           this.defaultConfig,
-          this.tableConfig || t_fields[this.name].tableConfig
+          this.tableConfig || this.dyncConfig
         );
         this.inputParams.limit = this.defaultConfig.pageSize;
       },

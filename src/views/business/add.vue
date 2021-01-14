@@ -2,6 +2,15 @@
     <div class="generate">
         <el-form ref="setForm" :model="setData" :rules="rules" size="small" label-width="180px">
             <div class="base">
+                <div class="base-header">项目配置</div>
+                <div class="base-content">
+                    <el-form-item label="所属项目" prop="project">
+                        <el-input v-model="setData.project" placeholder="请输入项目名称" clearable></el-input>
+                    </el-form-item>
+                </div>
+            </div>
+
+            <div class="base">
                 <div class="base-header">服务配置</div>
 
                 <div class="base-content">
@@ -15,8 +24,7 @@
                         <el-input v-model="setData.desc" type="textarea" placeholder="请输入服务描述" :autosize="{minRows: 4, maxRows: 4}"></el-input>
                     </el-form-item>
                     <el-form-item label="服务图标" prop="icon">
-                        <el-input v-model="setData.icon" placeholder="请输入服务图标（在云计算图标库中寻找/选择）" clearable>
-                        </el-input>
+                        <cloud-icon @selectIcon="selectIcon" :icon-name="setData.icon" />
                     </el-form-item>
                     <el-form-item label="服务展现类型" prop="type">
                         <el-radio-group v-model="setData.type" size="small">
@@ -27,7 +35,7 @@
 
             </div>
 
-            <div class="base">
+            <div class="base" v-if="setData.type == 'list'">
                 <div class="base-header">表格配置</div>
 
                 <div class="base-content">
@@ -140,19 +148,24 @@
                     <el-form-item label="录入测试数据" class="tableConfig" prop="testData">
                         <div class="tableConfig-testData">
                             <div v-for="(item,index) in setData.tableColumns" :key="index" class="tableConfig-testData-item">
-                                <label>{{item.prop}}：</label>
+                                <label>{{item.label}}：</label>
                                 <el-select v-if="item.enums" clearable placeholder="请选择" v-model="item.value">
                                     <el-option :label="obj.label" :value="key" v-for="(obj,key) in item.enums" :key="key"></el-option>
                                 </el-select>
-                                <el-input v-else v-model="item.value" :placeholder="`${item.prop}测试数据`"></el-input>
+                                <el-input v-else v-model="item.value" :placeholder="`${item.label}测试数据`"></el-input>
                             </div>
                         </div>
+                    </el-form-item>
+
+                    <el-form-item>
+                        <el-button type="warning" @click="preview" icon="el-icon-view">表格预览</el-button>
                     </el-form-item>
                 </div>
             </div>
 
+            <detail ref="detail" v-if="setData.type == 'info'" />
+
             <div class="base-operate">
-                <el-button type="warning" @click="preview">预览</el-button>
                 <el-button type="primary" @click="submitForm">提交</el-button>
                 <el-button @click="resetForm">重置</el-button>
                 <el-button @click="$router.go(-1)">返回</el-button>
@@ -275,12 +288,15 @@
 
 <script>
 import mTable from "./tableModel";
+import detail from "./component/detailConfig";
+import cloudIcon from "@/components/CloudIcon/index"
 export default {
-    components: { mTable },
+    components: { mTable, detail, cloudIcon },
     props: [],
     data() {
         return {
             setData: {
+                project: "fitmgr",
                 name: undefined,
                 code: undefined,
                 desc: undefined,
@@ -309,6 +325,11 @@ export default {
             },
             currentRow: null,//当前操作的表格配置列
             rules: {
+                project: [{
+                    required: true,
+                    message: '请输入所属项目',
+                    trigger: 'blur'
+                }],
                 name: [{
                     required: true,
                     message: '请输入服务名称',
@@ -396,16 +417,53 @@ export default {
         },
         isConfigEnum() {
             return this.setData.tableColumns.some(s => s.isEnum)
-        }
+        },
     },
     watch: {},
     created() { },
     mounted() { },
     methods: {
+        selectIcon(item) {
+            this.setData.icon = item.name;
+        },
         submitForm() {
             this.$refs['setForm'].validate(valid => {
                 if (!valid) return
-                // TODO 提交表单
+                let tableConfigs = this.dealData();
+                let detailConfigs = this.$refs['detail'].setDetailData;
+                //组装测试数据
+                let detailTestData = {}
+                //串联起来所有业务模块测试数据
+                detailConfigs.detail.forEach(dc => {
+                    if (dc.fields && dc.fields.length) {
+                        dc.fields.forEach(d => {
+                            let temp = {};
+                            temp[d.key] = d.value;
+                            Object.assign(detailTestData, temp);
+                        })
+                    }
+                })
+                let params = {
+                    code: this.setData.code,
+                    name: this.setData.name,
+                    project: this.setData.project,
+                    desc: this.setData.desc,
+                    icon: this.setData.icon,
+                    tableConfig: JSON.stringify(tableConfigs.table),//设置表格配置
+                    tableBusiness: JSON.stringify(tableConfigs.business),//设置业务配置
+                    tableTestData: JSON.stringify(tableConfigs.testData),//设置表格配置
+                    detailConfig: JSON.stringify(detailConfigs.detail),//设置表格配置
+                    detailTestData: JSON.stringify(detailTestData),//设置表格配置
+                }
+
+                this.$axios.post("/server-config/create", params).then(res => {
+                    if (res.status == 200) {
+                        this.$message.success(res.msg || "创建服务成功")
+                    }
+                    else {
+                        this.$message.error(res.msg || "创建服务失败")
+                    }
+                })
             })
         },
         resetForm() {
@@ -560,7 +618,6 @@ export default {
         label {
           margin-right: 10px;
           color: #999;
-          width: 80px;
         }
         .el-input {
           width: 200px;
