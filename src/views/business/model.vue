@@ -1,6 +1,6 @@
 <template>
     <div class="demo">
-        <div class="demo-operate">
+        <div class="demo-operate" v-if="name">
             <el-button type="warning" icon="el-icon-setting" @click="generate">生成代码</el-button>
         </div>
 

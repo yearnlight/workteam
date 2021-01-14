@@ -154,8 +154,35 @@ function tarDirOperate(targetDirPath, ctx, tarName) {
     pack.end();
     const writeStream = fs.createWriteStream(`${targetDirPath}.tar.gz`);
     pack.pipe(writeStream);
-    // 输出压缩文件路径
-    // ctx.response.body = { status: 200, msg: "输出压缩文件路径", data: `/template/target/${tarName}.tar.gz` };
+}
+
+// 定制化业务导入模板
+function writeFile(filePath, content) {
+    let currentContent = content;
+    return new Promise((resolve) => {
+        // writeFile async
+        if (!fs.existsSync(filePath)) {
+            fs.writeFile(filePath, currentContent, (err) => {
+                if (err) throw err;
+                resolve(filePath)
+                console.log('The ' + filePath + ' has been created!');
+            });
+        } else {
+            // 存在时删除，并重新写入
+            fs.unlink(filePath, (err) => {
+                if (err) {
+                    throw err;
+                }
+                console.log('The ' + filePath + ' has been deleted!');
+
+                fs.writeFile(filePath, currentContent, (err) => {
+                    if (err) throw err;
+                    resolve(filePath)
+                    console.log('The ' + filePath + ' has been created!');
+                });
+            })
+        }
+    })
 }
 
 // 生成代码
@@ -168,11 +195,18 @@ router.post("/generate", async ctx => {
 
     // index模板路径
     let indexTempPath = path.join(__dirname, "../template/index.vue");
+    // detail模板路径
+    let detailTempPath = path.join(__dirname, "../template/detail.vue");
     // 获取index模板文件内容
     let indexTemp = fs.readFileSync(path.join(indexTempPath), 'utf8');
+    // 获取detail模板文件内容
+    let detailTemp = fs.readFileSync(path.join(detailTempPath), 'utf8');
     // 表格配置,转换成Json格式
     let tableConfig = JSON.parse(config.tableConfig);
     let tableTestData = JSON.parse(config.tableTestData);
+    // 详情配置，转换成Json格式
+    let detailConfig = JSON.parse(config.detailConfig);
+    let detailTestData = JSON.parse(config.detailTestData);
 
     // 内容替换
     let content = indexTemp.replace(/mxComponentName/g, config.code)
@@ -181,8 +215,15 @@ router.post("/generate", async ctx => {
         .replace(/mxComponentTableConfig/g, JSON.stringify(tableConfig.tableConfig))
         .replace(/mxComponentTableTestData/g, JSON.stringify(tableTestData));
 
+    // 详情内容替换
+    let detailContent = detailTemp.replace(/mxComponentName/g, config.code)
+        .replace(/mxComponentDetailLabel/g, config.name)
+        .replace(/mxComponentDetailColumns/g, JSON.stringify(detailConfig))
+        .replace(/mxComponentDetailTestData/g, JSON.stringify(detailTestData));
+
     let targetDirPath = path.join(__dirname, `../template/target/${config.code}`);
     let targetFilePath = path.join(__dirname, `../template/target/${config.code}`, 'index.vue');
+    let targetDetailFilePath = path.join(__dirname, `../template/target/${config.code}`, 'detail.vue');
 
     // mkdirSync
     if (!fs.existsSync(targetDirPath)) {
@@ -190,29 +231,11 @@ router.post("/generate", async ctx => {
         console.log('The ' + targetDirPath + ' folder has been created!');
     }
 
-    // writeFile async
-    if (!fs.existsSync(targetFilePath)) {
-        fs.writeFile(targetFilePath, content, (err) => {
-            if (err) throw err;
-            // 生成压缩文件
-            tarDir(targetDirPath, ctx, config.code)
-            console.log('The ' + targetFilePath + ' has been created!');
-        });
-    } else {
-        // 存在时删除，并重新写入
-        fs.unlink(targetFilePath, (err) => {
-            if (err) {
-                throw err;
-            }
-            console.log('The ' + targetFilePath + ' has been deleted!');
-            fs.writeFile(targetFilePath, content, (err) => {
-                if (err) throw err;
-                // 生成压缩文件
-                tarDir(targetDirPath, ctx, config.code)
-                console.log('The ' + targetFilePath + ' has been created!');
-            });
-        })
-    }
+    Promise.all([writeFile(targetFilePath, content), writeFile(targetDetailFilePath, detailContent)]).then(() => {
+        // 写入完index.vue、detail.vue生成压缩文件
+        tarDir(targetDirPath, ctx, config.code)
+    })
+
 
     // 输出压缩文件路径
     ctx.response.body = { status: 200, msg: "输出压缩文件路径", data: `/template/target/${config.code}.tar.gz` };
