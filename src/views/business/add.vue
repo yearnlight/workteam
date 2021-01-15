@@ -145,6 +145,72 @@
                         </div>
                     </el-form-item>
 
+                    <el-form-item label="查询条件配置" class="tableConfig" prop="searchForm">
+                        <div class="tableConfig-testData">
+                            <div class="columns-header">
+                                <div class="columns-header-item">条件名称</div>
+                                <div class="columns-header-item miniWidth">条件字段</div>
+                                <div class="columns-header-item">默认值</div>
+                                <div class="columns-header-item">Placeholder</div>
+                                <div class="columns-header-item miniWidth">是否隐藏</div>
+                                <div class="columns-header-item miniWidth">选择关系</div>
+                                <div class="columns-header-item miniWidth">展示类型</div>
+                                <div class="columns-header-item miniWidth" v-if="isConfigSelectEnum">下拉框枚举</div>
+                            </div>
+                            <div class="columns" v-for="(item,index) in setData.searchForm.labels" :key="index">
+                                <div class="columns-item">
+                                    <div class="columns-item-node">
+                                        <el-input placeholder="输入条件名称" v-model="item.name" clearable></el-input>
+                                    </div>
+                                    <div class="columns-item-node miniWidth">
+                                        <el-select placeholder="选择字段" v-model="item.field" clearable filterable>
+                                            <el-option :key="findex" :label="fitem.prop" :value="fitem.prop" v-for="(fitem,findex) in setData.tableColumns"></el-option>
+                                        </el-select>
+                                    </div>
+                                    <div class="columns-item-node">
+                                        <el-input placeholder="输入默认值" v-model="item.value" clearable></el-input>
+                                    </div>
+
+                                    <div class="columns-item-node">
+                                        <el-input placeholder="输入Placeholder" v-model="item.placeholder" clearable></el-input>
+                                    </div>
+
+                                    <div class="columns-item-node miniWidth">
+                                        <el-switch v-model="item.hide"></el-switch>
+                                    </div>
+
+                                    <div class="columns-item-node miniWidth">
+                                        <el-select placeholder="选择关系" v-model="item.connector" clearable>
+                                            <el-option label="=" value="0"></el-option>
+                                            <el-option label="!=" value="1"></el-option>
+                                            <el-option label=">" value="2"></el-option>
+                                            <el-option label="<" value="3"></el-option>
+                                            <el-option label=">=" value="4"></el-option>
+                                            <el-option label="<=" value="5"></el-option>
+                                            <el-option label="like" value="6"></el-option>
+                                            <el-option label="in" value="7"></el-option>
+                                            <el-option label="is null" value="8"></el-option>
+                                            <el-option label="is not null" value="9"></el-option>
+                                        </el-select>
+                                    </div>
+                                    <div class="columns-item-node miniWidth">
+                                        <el-select placeholder="展示类型" v-model="item.type" @change="changeSearchType(item)">
+                                            <el-option label="输入框" value="input"></el-option>
+                                            <el-option label="下拉框" value="select"></el-option>
+                                        </el-select>
+                                    </div>
+                                    <div :class="[{'placeHidden':item.type != 'select','placeVisible':item.type == 'select'},'columns-item-node miniWidth']" v-if="isConfigSelectEnum">
+                                        <el-button size="mini" icon="el-icon-setting" @click="setSearchEnumColumn(item,index)">{{item.data && item.data.length ?"查看枚举列":"设置枚举列"}}</el-button>
+                                    </div>
+                                    <div class="columns-item-operate">
+                                        <el-button size="mini" icon="el-icon-minus" v-if="setData.searchForm.labels.length != 1" @click="minus(setData.searchForm.labels,index)"></el-button>
+                                        <el-button size="mini" icon="el-icon-plus" @click="plus(setData.searchForm.labels)" v-if="setData.searchForm.labels.length == (index + 1)"></el-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </el-form-item>
+
                     <el-form-item label="录入测试数据" class="tableConfig" prop="testData">
                         <div class="tableConfig-testData">
                             <div v-for="(item,index) in setData.tableColumns" :key="index" class="tableConfig-testData-item">
@@ -283,6 +349,71 @@
                 <el-button type="primary" @click="saveEnumConfig">确定</el-button>
             </div>
         </el-dialog>
+
+        <!-- 设置查询枚举列 -->
+        <el-dialog v-bind="$attrs" :close-on-click-modal="false" v-on="$listeners" :visible.sync="isSearchEnumColumn" @close="onCloseSearchEnumDialog" title="设置枚举列">
+            <el-form ref="pageForm" :model="enumConfigSearchData" size="small" label-width="120px">
+                <el-form-item label="枚举列配置" prop="operates" class="tableConfig">
+                    <div class="columns-header">
+                        <div class="columns-header-item">枚举Value</div>
+                        <div class="columns-header-item">枚举显示Label</div>
+                        <div class="columns-header-item miniWidth">枚举呈现组件</div>
+                        <div class="columns-header-item miniWidth">组件类型</div>
+                    </div>
+                    <div class="columns" v-for="(item,index) in enumConfigSearchData.arrEnums" :key="index">
+                        <div class="columns-item">
+                            <div class="columns-item-node">
+                                <el-input clearable placeholder="枚举Value" v-model="item.value"></el-input>
+                            </div>
+                            <div class="columns-item-node">
+                                <el-input clearable placeholder="枚举显示Label" v-model="item.label"></el-input>
+                            </div>
+
+                            <div class="columns-item-node miniWidth">
+                                <el-select clearable placeholder="请选择枚举呈现组件" v-model="item.component">
+                                    <el-option label="Dot" value="dot"></el-option>
+                                    <el-option label="El-Tag" value="el-tag"></el-option>
+                                    <el-option label="Tag" value="tag"></el-option>
+                                    <el-option label="Level" value="level"></el-option>
+                                </el-select>
+                            </div>
+
+                            <div class="columns-item-node miniWidth" v-if="item.component">
+                                <el-select clearable placeholder="请选择组件类型" v-model="item.type">
+                                    <el-option label="一般" value="primary">
+                                        <tag type="primary">一般</tag>
+                                    </el-option>
+                                    <el-option label="成功" value="success">
+                                        <tag type="success">成功</tag>
+                                    </el-option>
+                                    <el-option label="警告" value="warning">
+                                        <tag type="warning">警告</tag>
+                                    </el-option>
+                                    <el-option label="危险" value="danger">
+                                        <tag type="danger">危险</tag>
+                                    </el-option>
+                                    <el-option label="信息" value="info">
+                                        <tag type="info">信息</tag>
+                                    </el-option>
+                                    <el-option label="测试" value="test">
+                                        <tag type="test">测试</tag>
+                                    </el-option>
+                                </el-select>
+                            </div>
+
+                            <div class="columns-item-operate">
+                                <el-button size="mini" icon="el-icon-minus" v-if="enumConfigSearchData.arrEnums.length != 1" @click="minus(enumConfigSearchData.arrEnums,index)"></el-button>
+                                <el-button size="mini" icon="el-icon-plus" @click="plus(enumConfigSearchData.arrEnums)" v-if="enumConfigSearchData.arrEnums.length == (index + 1)"></el-button>
+                            </div>
+                        </div>
+                    </div>
+                </el-form-item>
+            </el-form>
+            <div slot="footer">
+                <el-button @click="isSearchEnumColumn = false;">取消</el-button>
+                <el-button type="primary" @click="saveSearchEnumConfig">确定</el-button>
+            </div>
+        </el-dialog>
     </div>
 </template>
 
@@ -314,7 +445,19 @@ export default {
                     { prop: "status", label: "状态", width: "100" },
                     { prop: "start_ip", label: "第一个可用地址" },
                     { prop: "end_ip", label: "最后一个可用地址" }
-                ]
+                ],
+                searchForm: {
+                    labels: [
+                        { name: "", field: "", value: "", type: "input", connector: "0", hide: false }
+                    ],
+                    btns: [
+                        {
+                            name: "查询",
+                            click: ""
+                        }
+                    ],
+                    inputParams: {}
+                }
             },
             operateConfigFormData: {
                 operates: [{ function: "", label: "", icon: "" }],
@@ -322,6 +465,9 @@ export default {
             },
             enumConfigFormData: {
                 arrEnums: [{ label: "", type: "", component: "", key: "" }],
+            },
+            enumConfigSearchData: {
+                arrEnums: [{ label: "", type: "", component: "", value: "" }],
             },
             currentRow: null,//当前操作的表格配置列
             rules: {
@@ -404,6 +550,7 @@ export default {
             },
             isOperateColumnConfig: false,// 设置操作列弹框
             isEnumColumn: false,// 设置枚举列弹框
+            isSearchEnumColumn: false,// 设置查询枚举列弹框
             backupConfigs: {},
             isPreview: false
         }
@@ -418,6 +565,9 @@ export default {
         isConfigEnum() {
             return this.setData.tableColumns.some(s => s.isEnum)
         },
+        isConfigSelectEnum() {
+            return this.setData.searchForm.labels.some(s => s.type == 'select')
+        }
     },
     watch: {},
     created() { },
@@ -443,12 +593,20 @@ export default {
                         })
                     }
                 })
+
+                let searchConfigStr = undefined;
+                if (this.setData.searchForm && this.setData.searchForm.labels.some(s => s.field)) {
+                    searchConfigStr = JSON.stringify(this.setData.searchForm)
+                }
+
+
                 let params = {
                     code: this.setData.code,
                     name: this.setData.name,
                     project: this.setData.project,
                     desc: this.setData.desc,
                     icon: this.setData.icon,
+                    searchConfig: searchConfigStr,
                     tableConfig: JSON.stringify(tableConfigs.table),//设置表格配置
                     tableBusiness: JSON.stringify(tableConfigs.business),//设置业务配置
                     tableTestData: JSON.stringify(tableConfigs.testData),//设置表格配置
@@ -510,6 +668,18 @@ export default {
                 this.enumConfigFormData.arrEnums = this.objToArr(this.currentRow.enums);
             }
         },
+        changeSearchType(item) {
+            item.data = undefined;
+        },
+        setSearchEnumColumn(row, index) {
+            this.isSearchEnumColumn = true;
+            this.currentSearchRow = row;
+            if (this.currentSearchRow.data) {
+                // 回显枚举
+                this.enumConfigSearchData.arrEnums = this.$util.deepCopy(this.currentSearchRow.data);
+            }
+
+        },
         saveOperateConfig() {
             //保存表格操作列配置
             this.currentRow.operateFun = this.$util.deepCopy(this.operateConfigFormData.operates);
@@ -519,6 +689,11 @@ export default {
             //保存表格枚举列配置
             this.currentRow.enums = this.arrToObj(this.$util.deepCopy(this.enumConfigFormData.arrEnums));
             this.isEnumColumn = false;
+        },
+        saveSearchEnumConfig() {
+            //保存表格枚举列配置
+            this.currentSearchRow.data = this.$util.deepCopy(this.enumConfigSearchData.arrEnums);
+            this.isSearchEnumColumn = false;
         },
         onCloseOperateDialog() {
             //关闭操作列配置弹框回调
@@ -532,6 +707,12 @@ export default {
             //还原弹框默认值
             this.enumConfigFormData = {
                 arrEnums: [{ label: "", type: "", component: "", key: "" }],
+            }
+        },
+        onCloseSearchEnumDialog() {
+            //还原弹框默认值
+            this.enumConfigSearchData = {
+                arrEnums: [{ label: "", type: "", component: "", value: "" }],
             }
         },
         preview() {
@@ -581,6 +762,7 @@ export default {
             }
 
             backupConfigs.table.tableConfig = this.setData.tableConfig;
+            backupConfigs.table.searchForm = this.setData.searchForm;
             // 初始化数据
             backupConfigs.business.loading = false;
             backupConfigs.business.inputParams = {

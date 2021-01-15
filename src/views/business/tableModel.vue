@@ -3,7 +3,7 @@
         <div class="base">
             <div class="base-header">表格预览</div>
             <div class="base-content">
-                <v-table v-loading="loading" :columns="columns" :tableConfig="tableConfig" :data="list" @del="del" @edit="edit" @search="search"></v-table>
+                <v-table v-loading="loading" :columns="columns" :tableConfig="tableConfig" :searchConfig="searchConfig" :data="list" @del="del" @edit="edit" @search="search"></v-table>
             </div>
         </div>
 
@@ -94,6 +94,7 @@ export default {
         this.columns = this.configs.table.tableColumns;
         // 设置表格配置
         this.tableConfig = this.configs.table.tableConfig;
+        this.searchConfig = this.configs.table.searchForm;
         this.configCode = JSON.stringify(this.configs.table, null, 2);
 
         this.configBusinessCode = JSON.stringify(this.configs.business, null, 2);

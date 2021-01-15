@@ -2,7 +2,7 @@
   <div class="search">
     <el-form :inline="true" ref="elform" :model="searchConfig.inputParams" @submit.native.prevent>
       <div class="search-items" v-if="searchConfig.labels && searchConfig.labels.length">
-        <el-form-item v-if="!item.hide && getEnabled(item) " :label="item.name" v-for="(item,index) in searchConfig.labels" :key="index" :class="{'haveLabel':item.name,'noLabel':!item.name}" :style="`width:${item.width}px`">
+        <el-form-item v-if="!item.hide && getEnabled(item) && item.field" :label="item.name" v-for="(item,index) in searchConfig.labels" :key="index" :class="{'haveLabel':item.name,'noLabel':!item.name}" :style="`width:${item.width}px`">
           <el-select v-if="item.type == 'select' && item.data != 'map'" v-model="searchConfig.inputParams[item.field]" :placeholder="`${item.placeholder || '请选择'}`" clearable filterable>
             <el-option :label="Array.isArray(item.data)?sitem.label:sitem[item.data.labelName]" :value="Array.isArray(item.data)?sitem.value:sitem[item.data.valueName]" v-for="(sitem,sindex) in getSelectData(item.data)" :key="sindex"></el-option>
           </el-select>
@@ -15,7 +15,7 @@
           <el-input v-else @keyup.enter.native="search" clearable v-model="searchConfig.inputParams[item.field]" :placeholder="`${item.placeholder || '请输入'}`"></el-input>
         </el-form-item>
       </div>
-      <div class="search-operate" v-if="searchConfig.labels && searchConfig.labels.length">
+      <div class="search-operate" v-if="searchConfig.labels && searchConfig.labels.some(s =>s.field) ">
         <el-button type="primary" @click="search">
           <icon iconSymbol="search" /> 查询</el-button>
         <el-button type="default" @click="reset">

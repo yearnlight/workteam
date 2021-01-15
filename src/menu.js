@@ -40,9 +40,9 @@ export default [
     path: "/work/business"
   },  
   {
-    title: "会话管理",
+    title: "密码管理",
     icon: "el-icon-collection",
-    path: "/work/conversation"
+    path: "/work/password"
   },
   {
     title: "工具管理",

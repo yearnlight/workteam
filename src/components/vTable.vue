@@ -159,6 +159,9 @@ export default {
     tableConfig: {
       type: Object,
     },
+    searchConfig: {
+      type: Object,
+    },
     name: {
       type: String,
     },
@@ -204,7 +207,6 @@ export default {
         search: true,
         isPublic: false,
       },
-      searchConfig: {},
       isSetColumn: false,
       inputParams: {
         page: 1,
@@ -283,7 +285,8 @@ export default {
     init() {
       let that = this;
       this.checked_t_props = [];
-      this.searchConfig = com.getSearchFormConfig(this.name);
+      // 查询条件配置存在时，以查询条件配置为准，否则从fields里面获取
+      this.searchConfig = this.searchConfig || com.getSearchFormConfig(this.name);
       if (!(this.columns && this.columns.length)) {
         this.columns = t_fields[this.name].tableColumns;
       }

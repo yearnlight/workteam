@@ -25,6 +25,7 @@ router.post("/create", async ctx => {
             params.name,
             params.desc,
             params.icon,
+            params.searchConfig,
             params.tableConfig,
             params.tableBusiness,
             params.tableTestData,
@@ -37,7 +38,7 @@ router.post("/create", async ctx => {
         ]
     ];
     let insertStr =
-        "insert into server_config(uuid,`code`,`name`,`desc`,`icon`,tableConfig,tableBusiness,tableTestData,detailConfig,detailTestData,createtime,creator,project,isDel) values ?";
+        "insert into server_config(uuid,`code`,`name`,`desc`,`icon`,searchConfig,tableConfig,tableBusiness,tableTestData,detailConfig,detailTestData,createtime,creator,project,isDel) values ?";
     res = await query(insertStr, [inputParams]);
     msg = `创建服务【${params.name}】成功`;
     util.setEvent(ctx, "success", msg);
@@ -108,7 +109,11 @@ router.post("/delete", async ctx => {
 
         // 删除业务文件包
         let targetDirPath = path.join(__dirname, `../template/target/${config.code}`);
+        let targetTarPath = path.join(__dirname, `../template/target/${config.code}.tar.gz`);
+        // 删除生成的文件夹
         deleteFolderRecursive(targetDirPath);
+        // 删除生成的压缩包
+        fs.unlinkSync(targetTarPath);
 
         msg = "删除业务服务成功";
         util.setEvent(ctx, "success", msg);
@@ -212,12 +217,15 @@ router.post("/generate", async ctx => {
     // 详情配置，转换成Json格式
     let detailConfig = JSON.parse(config.detailConfig);
     let detailTestData = JSON.parse(config.detailTestData);
+    // 查询条件配置
+    let searchConfig = JSON.parse(config.searchConfig);
 
     // 内容替换
     let content = indexTemp.replace(/mxComponentName/g, config.code)
         .replace(/mxComponentLabel/g, config.name)
         .replace(/mxComponentColumns/g, JSON.stringify(tableConfig.tableColumns))
         .replace(/mxComponentTableConfig/g, JSON.stringify(tableConfig.tableConfig))
+        .replace(/mxComponentSearchConfig/g, JSON.stringify(searchConfig))
         .replace(/mxComponentTableTestData/g, JSON.stringify(tableTestData));
 
     // 详情内容替换

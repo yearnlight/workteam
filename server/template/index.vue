@@ -1,6 +1,6 @@
 <template>
     <div class="mxComponentName">
-        <v-table :name="name" v-loading="loading" :tableConfig="tableConfig" :columns="columns" :data="list" @del="del" @edit="edit" @search="search"></v-table>
+        <v-table :name="name" v-loading="loading" :searchConfig="searchConfig" :tableConfig="tableConfig" :columns="columns" :data="list" @del="del" @edit="edit" @search="search"></v-table>
     </div>
 </template>
 
@@ -23,7 +23,8 @@ export default {
                 limit: 10
             },
             columns: mxComponentColumns,
-            tableConfig: mxComponentTableConfig
+            tableConfig: mxComponentTableConfig,
+            searchConfig: mxComponentSearchConfig
         }
     },
     created() {
@@ -31,7 +32,11 @@ export default {
     },
     methods: {
         search() { },
-        del(item, index) { },
+        del(item, index) {
+            this.$confirm(`你确定删除此项 ?`, "删除").then(() => {
+
+            })
+        },
         edit(item, index) { },
         info(item, index) {
             // 跳入详情
