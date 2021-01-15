@@ -12,6 +12,20 @@ const logger = require('../utils/log4jsLogger');
 
 router.prefix('/server-config')
 
+let whiteFields = [
+    "name",
+    "code",
+    "project",
+    "desc",
+    "icon",
+    "searchConfig",
+    "tableConfig",
+    "tableBusiness",
+    "tableTestData",
+    "detailConfig",
+    "detailTestData"
+];
+
 // 创建服务
 router.post("/create", async ctx => {
     let msg = "";
@@ -45,6 +59,32 @@ router.post("/create", async ctx => {
     ctx.response.body = { status: 200, msg: msg, data: null };
 });
 
+// 服务更新
+router.post("/update", async ctx => {
+    let msg = "";
+    let params = ctx.request.body;
+
+    let updateParams = [];
+    let values = [];
+    for (let key in params) {
+        if (whiteFields.includes(key)) {
+            updateParams.push(`\`${key}\` = ?`);
+            if (Array.isArray(params[key])) {
+                params[key] = params[key].join(",");
+            }
+            values.push(params[key]);
+        }
+    }
+    
+    let updateStr = `update server_config SET ${updateParams.join(",")} where uuid = ?`;
+    let isSuccess = await query(updateStr, values.concat(params.uuid));
+    if (isSuccess) {
+        util.setEvent(ctx, "success", `服务【${params.name}】更新成功`);
+        ctx.response.body = { status: 200, msg: msg, data: null };
+    }
+
+});
+
 // 查询服务列表
 router.get("/list", async ctx => {
     let res = [];
@@ -55,6 +95,18 @@ router.get("/list", async ctx => {
         status: 200,
         msg: "",
         data: { total: res.length, records: res }
+    };
+});
+
+// 查询服务详情
+router.post("/detail", async ctx => {
+    let { uuid } = ctx.request.body;
+    let selectStr = `select * from server_config where isDel = 0 and uuid = ?`;
+    let res = await query(`${selectStr}`, [uuid]);
+    ctx.response.body = {
+        status: 200,
+        msg: "",
+        data: res[0]
     };
 });
 

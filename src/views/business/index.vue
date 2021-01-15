@@ -11,6 +11,7 @@
           <span>{{ data.name }}</span>
           <span v-if="node.isLeaf && data.project != 'base'">
             <span class="el-icon-delete red" @click.stop.prevent="removeNode(data)"></span>
+            <span class="el-icon-edit blue" @click.stop.prevent="editNode(data)"></span>
           </span>
 
         </span>
@@ -99,6 +100,9 @@ export default {
           }
         })
       })
+    },
+    editNode({ uuid }) {
+      this.$router.push({ path: "/work/business_edit", query: { id: uuid } })
     }
   }
 }
@@ -117,6 +121,9 @@ export default {
         justify-content: space-between;
         flex: 1;
         font-size: 13px;
+        .blue{
+          margin-left: 5px;
+        }
         &-icon {
           height: 15px !important;
           width: 15px !important;

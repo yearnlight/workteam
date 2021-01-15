@@ -6,7 +6,7 @@
 
         <el-tabs v-model="activeName" v-if="name">
             <el-tab-pane label="表格" name="list">
-                <v-table :name="name" v-loading="loading" :columns="columns" :data="list" @del="del" @edit="edit" @search="search"></v-table>
+                <v-table :name="name" v-loading="loading" :searchConfig="searchConfig" :columns="columns" :data="list" @del="del" @edit="edit" @search="search"></v-table>
                 <div class="configCode" v-if="configCode" v-highlight>
                     <pre><code v-text="configCode"></code></pre>
                 </div>
@@ -106,7 +106,8 @@ export default {
             configCode: "",
             configInfoCode: "",
             configExplainCode: "",
-            explainConfigs: null
+            explainConfigs: null,
+            searchConfig: null
         }
     },
     created() {
@@ -176,6 +177,8 @@ export default {
             // 表格配置
             let tableConfigs = JSON.parse(this.config.tableConfig);
             this.columns = tableConfigs.tableColumns;
+            // 表格条件查询
+            this.searchConfig = JSON.parse(this.config.searchConfig);
             // 表格配置代码
             this.configCode = JSON.stringify(tableConfigs, null, 2);
             // 表格测试数据

@@ -151,6 +151,11 @@
 import detailModel from "./detailModel";
 export default {
     components: { detailModel },
+    props: {
+        detailConfig: {
+            type: String
+        }
+    },
     data() {
         return {
             rules: {
@@ -174,8 +179,22 @@ export default {
             isPreview: false,
         }
     },
-    computed: {
-
+    watch: {
+        detailConfig(n) {
+            if (n) {
+                this.setDetailData = {
+                    detail: JSON.parse(n)
+                }
+            }
+        }
+    },
+    created() {
+        // 编辑时渲染
+        if (this.detailConfig) {
+            this.setDetailData = {
+                detail: JSON.parse(this.detailConfig)
+            }
+        }
     },
     methods: {
         setDetailEnumColumn(row) {

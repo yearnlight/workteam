@@ -5,7 +5,7 @@
       <svg-icon v-if="iconItem &&iconItem.name" class="icon-svg" :icon-class="iconItem.name" />
       <span class="icon-name" v-if="iconItem && iconItem.name">{{iconItem.name}}</span>
     </div>
-    <el-dialog append-to-body custom-class="icons" v-el-drag-dialog title="云计算图标素材" :visible.sync="isIcon" :close-on-click-modal="false" :width="'800px'">
+    <el-dialog append-to-body custom-class="icons" title="云计算图标素材" :visible.sync="isIcon" :close-on-click-modal="false" :width="'800px'">
       <div class="icons-content">
         <div class="icons-content-list">
           <div @click="saveIcon(item)" :class="[{'active':iconItem && (iconItem.name == item.name)},'li']" v-for="(item,index) in icons" :key="index">
@@ -29,7 +29,6 @@ const re = /\.\/(.*)\.svg/;
 const Icons = requireAll(req).map(i => {
   return i.match(re)[1]
 });
-import { deepCopy } from "@/utils";
 export default {
   props: {
     iconName: {
@@ -48,7 +47,14 @@ export default {
     this.icons = Icons.map(m => {
       return { name: m, suffix: ".svg", useType: "svg-icon" }
     })
-    this.iconItem = deepCopy({ name: this.iconName });
+    this.iconItem = this.$util.deepCopy({ name: this.iconName });
+  },
+  watch: {
+    iconName(n, o) {
+      if (n) {
+        this.iconItem = this.$util.deepCopy({ name: n });
+      }
+    }
   },
   methods: {
     saveIcon(item) {

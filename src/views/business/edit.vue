@@ -229,7 +229,7 @@
                 </div>
             </div>
 
-            <detail ref="detail" v-show="setData.type == 'info'" />
+            <detail ref="detail" :detailConfig="detailConfig" v-show="setData.type == 'info'" />
 
             <div class="base-operate">
                 <el-button type="primary" @click="submitForm">提交</el-button>
@@ -426,6 +426,7 @@ export default {
     props: [],
     data() {
         return {
+            detailConfig: undefined,
             setData: {
                 project: "fitmgr",
                 name: undefined,
@@ -566,21 +567,56 @@ export default {
             return this.setData.tableColumns.some(s => s.isEnum)
         },
         isConfigSelectEnum() {
-            return this.setData.searchForm.labels.some(s => s.type == 'select')
+            if (this.setData.searchForm) {
+                return this.setData.searchForm.labels.some(s => s.type == 'select')
+            }
+            else {
+                return false;
+            }
         }
     },
     watch: {},
-    created() { },
+    created() {
+        this.fetchDetail();
+    },
     mounted() { },
     methods: {
+        fetchDetail() {
+            this.$axios.post("/server-config/detail", { uuid: this.$route.query.id }).then(res => {
+                if (res.status == 200) {
+                    let source = res.data;
+                    this.setData.uuid = source.uuid;
+                    this.setData.project = source.project;
+                    this.setData.name = source.name;
+                    this.setData.code = source.code;
+                    this.setData.desc = source.desc;
+                    this.setData.icon = source.icon;
+                    this.setData.tableConfig = JSON.parse(source.tableConfig).tableConfig;
+                    let tableColumns = JSON.parse(source.tableConfig).tableColumns;
+                    if (source.searchConfig) {
+                        this.setData.searchForm = JSON.parse(source.searchConfig)
+                    }
+                    // 表格测试数据
+                    let tableTestData = JSON.parse(source.tableTestData)
+                    tableTestData.forEach(test => {
+                        tableColumns.forEach(col => {
+                            col.value = test[col.prop]
+                        })
+                    })
+                    this.setData.tableColumns = tableColumns
+                    this.detailConfig = source.detailConfig;
+                }
+            })
+        },
         selectIcon(item) {
             this.setData.icon = item.name;
         },
         submitForm() {
+            let that = this;
             this.$refs['setForm'].validate(valid => {
                 if (!valid) return
-                let tableConfigs = this.dealData();
-                let detailConfigs = this.$refs['detail'].setDetailData;
+                let tableConfigs = that.dealData();
+                let detailConfigs = that.$refs['detail'].setDetailData;
                 //组装测试数据
                 let detailTestData = {}
                 //串联起来所有业务模块测试数据
@@ -601,6 +637,7 @@ export default {
 
 
                 let params = {
+                    uuid: this.setData.uuid,
                     code: this.setData.code,
                     name: this.setData.name,
                     project: this.setData.project,
@@ -614,12 +651,12 @@ export default {
                     detailTestData: JSON.stringify(detailTestData),//设置表格配置
                 }
 
-                this.$axios.post("/server-config/create", params).then(res => {
+                this.$axios.post("/server-config/update", params).then(res => {
                     if (res.status == 200) {
-                        this.$message.success(res.msg || "创建服务成功")
+                        this.$message.success(res.msg || "更新服务成功")
                     }
                     else {
-                        this.$message.error(res.msg || "创建服务失败")
+                        this.$message.error(res.msg || "更新服务失败")
                     }
                 })
             })

@@ -103,6 +103,11 @@ const routes = [
         name: "business"
       },
       {
+        path: "/work/business_edit",//业务管理
+        component: () => import("@/views/business/edit.vue"),
+        name: "business_edit"
+      },
+      {
         path: "/work/business_create",//业务管理
         component: () => import("@/views/business/add.vue"),
         name: "business_create"
@@ -142,24 +147,14 @@ const routes = [
         name: "demand_info",
       },
       {
-        path: "/work/conversation",// 会话管理
-        component: () => import("@/views/conversation/index.vue"),
-        name: "conversation",
+        path: "/work/passwordRule",// 密码规则主页面
+        component: () => import("@/views/passwordRule/index.vue"),
+        name: "passwordRule",
       },
       {
-        path: "/work/conversation_detail",// 会话管理
-        component: () => import("@/views/conversation/detail.vue"),
-        name: "conversation_detail",
-      },
-      {
-        path: "/work/password",// 密码管理主页面
-        component: () => import("@/views/password/index.vue"),
-        name: "password",
-      },
-      {
-        path: "/work/password_detail",// 密码管理详情页面
-        component: () => import("@/views/password/detail.vue"),
-        name: "password_detail",
+        path: "/work/passwordRule_detail",// 密码规则详情页面
+        component: () => import("@/views/passwordRule/detail.vue"),
+        name: "passwordRule_detail",
       }
     ]
   }
