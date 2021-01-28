@@ -97,7 +97,7 @@
                             <div class="columns-header-item miniWidth">列宽度(px)</div>
                             <div class="columns-header-item miniWidth">是否开启Tooltip</div>
                             <div class="columns-header-item miniWidth">设置为详情入口</div>
-                            <div class="columns-header-item" v-if="isConfigInfo">详情入口回调方法名</div>
+                            <div class="columns-header-item miniWidth" v-if="isConfigInfo">详情入口回调方法名</div>
                             <div class="columns-header-item miniWidth">设置为操作列</div>
                             <div class="columns-header-item miniWidth" v-if="isConfigOperate">操作列配置</div>
                             <div class="columns-header-item miniWidth">设置为枚举列</div>
@@ -120,7 +120,7 @@
                                 <div class="columns-item-node miniWidth">
                                     <el-switch v-model="item.isInfo"></el-switch>
                                 </div>
-                                <div :class="[{'placeHidden':!item.isInfo,'placeVisible':item.isInfo},'columns-item-node']" v-if="isConfigInfo">
+                                <div :class="[{'placeHidden':!item.isInfo,'placeVisible':item.isInfo},'columns-item-node miniWidth']" v-if="isConfigInfo">
                                     <el-input placeholder="方法名" v-model="item.funName"></el-input>
                                 </div>
                                 <div class="columns-item-node miniWidth">

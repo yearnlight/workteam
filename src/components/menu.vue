@@ -3,7 +3,7 @@
     <div v-if="token" :class="[{'hidden':isInFrame},'docHeader']">
       <div class="docHeader-title">
         工作协作平台
-        <span @click="isCollapse = !isCollapse" :class="[{'el-icon-d-arrow-left':!isCollapse,'el-icon-d-arrow-right':isCollapse},'collapse']"></span>
+        <span @click="isCollapse = !isCollapse" :class="[{'el-icon-s-fold':!isCollapse,'el-icon-s-unfold':isCollapse},'collapse']"></span>
       </div>
       <div class="docHeader-items">
         <el-dropdown class="userInfo-container mr-20" trigger="click" @command="handleCommand">
@@ -28,7 +28,7 @@
     </div>
     <div :class="[{'in-frame':isInFrame,'no':!token},'docMenu']">
       <div v-if="token" :class="[{'maxWidth':!isCollapse,'minWidth':isCollapse},'docMenu-content']">
-        <el-menu :collapse="isCollapse" :default-active="$route.path" :router="true" background-color="#304156" text-color="#bfcbd9" active-text-color="#00a4ff">
+        <el-menu :collapse="isCollapse" :default-active="$route.path" :router="true" background-color="#1e222d" text-color="#bfcbd9" active-text-color="#00a4ff">
 
           <el-menu-item :index="item.path" v-for="(item,index) in leftmenus.filter(m=>!m.children)" :key="index">
             <i :class="item.icon"></i>
@@ -132,10 +132,14 @@ export default {
     display: flex;
     align-items: center;
     &-title {
-      font-size: 16px;
-      height: 21px;
-      line-height: 21px;
       color: #fff;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 32px;
+      animation: fade-in;
+      animation-duration: 0.2s;
+      font-family: Roboto, PingFang SC, Noto Sans CJK, WenQuanYi Micro Hei,
+        Microsoft YaHei, sans-serif;
     }
     &-items {
       margin-left: auto;
@@ -186,7 +190,7 @@ export default {
         color: #a1a6ab;
         font-size: 14px;
       }
-      background-color: rgb(48, 65, 86);
+      background-color: rgb(30, 34, 45);
       .el-menu {
         border-right: 0;
         .el-submenu {
