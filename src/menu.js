@@ -8,7 +8,7 @@ export default [
     title: "任务列表",
     icon: "el-icon-menu",
     path: "/work/tasklist"
-  },  
+  },
   {
     title: "小需求列表",
     icon: "el-icon-tickets",
@@ -22,23 +22,32 @@ export default [
   {
     title: "知识地图",
     icon: "el-icon-reading",
-    path: "/work/knowledgeMap"
+    path: "/work/knowledgeMap",
+    meta: {
+      white: true
+    }
   },
   {
     title: "应用服务",
     icon: "el-icon-goods",
-    path: "/work/store"
+    path: "/work/store",
+    meta: {
+      white: true
+    }
   },
   {
     title: "事件管理",
     icon: "el-icon-chat-line-square",
-    path: "/work/event"
-  },  
+    path: "/work/event",
+    meta: {
+      white: true
+    }
+  },
   {
     title: "业务管理",
     icon: "el-icon-collection",
     path: "/work/business"
-  },  
+  },
   {
     title: "密码规则",
     icon: "el-icon-collection",
@@ -47,6 +56,9 @@ export default [
   {
     title: "工具管理",
     icon: "el-icon-magic-stick",
+    meta: {
+      white: true
+    },
     children: [
       {
         title: "SSH",
@@ -56,7 +68,10 @@ export default [
       {
         title: "自定义组件",
         icon: "el-icon-brush",
-        path: "/work/customComponent"
+        path: "/work/customComponent",
+        meta: {
+          white: true
+        }
       },
       {
         title: "云计算图标",
@@ -66,7 +81,10 @@ export default [
       {
         title: "正则表达式",
         icon: "el-icon-tickets",
-        path: "/work/regular"
+        path: "/work/regular",
+        meta: {
+          white: true
+        }
       }
     ]
   }

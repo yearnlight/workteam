@@ -59,7 +59,8 @@ import menus from "@/menu.js";
 export default {
   data() {
     return {
-      name: "江阿生",
+      name: "",
+      role:"",
       isInFrame: false,
       isCollapse: false,
       colors: [
@@ -82,12 +83,19 @@ export default {
     }
   },
   created() {
-    this.leftmenus = menus;
+    
     this.setRoute();
     let userStr = sessionStorage.getItem("userInfo");
     if (userStr) {
       let userInfo = JSON.parse(userStr);
       this.name = userInfo.name;
+      let role = userInfo.role;
+      if(role == "share"){
+        this.leftmenus = menus.filter(menu => menu.meta && menu.meta.white);
+      }
+      else{
+        this.leftmenus = menus;
+      }
     }
   },
   mounted() {
