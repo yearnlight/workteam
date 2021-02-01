@@ -3512,3 +3512,181 @@ D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has al
 [2021-02-02T03:29:43.847] [WARN] default - /project/list
 [2021-02-02T03:29:45.467] [WARN] default - /doc/info
 [2021-02-02T03:29:45.594] [WARN] default - /doc/read
+[2021-02-02T04:02:31.040] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T04:04:06.917] [WARN] default - /role/role-menus
+[2021-02-02T04:04:06.924] [WARN] default - /menu/list
+[2021-02-02T04:04:07.161] [ERROR] default - 
+  Error: ER_PARSE_ERROR: 
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-02-02T04:04:21.564] [WARN] default - /role/role-menus
+[2021-02-02T04:04:21.567] [WARN] default - /menu/list
+[2021-02-02T04:04:21.715] [ERROR] default - 
+  Error: ER_PARSE_ERROR: 
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-02-02T04:04:37.347] [WARN] default - /auth/login
+[2021-02-02T04:04:37.895] [WARN] default - /role/role-menus
+[2021-02-02T04:04:37.902] [WARN] default - /task/list
+[2021-02-02T04:04:37.904] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-02T04:04:37.906] [WARN] default - /user/list
+[2021-02-02T04:04:38.202] [WARN] default - /task/statistics
+[2021-02-02T04:04:38.475] [WARN] default - /task/list
+[2021-02-02T04:04:38.476] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-02-02T04:04:38.512] [WARN] default - /menu/list
+[2021-02-02T04:04:38.661] [ERROR] default - 
+  Error: ER_PARSE_ERROR: 
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-02-02T04:05:54.883] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T04:06:00.760] [WARN] default - /role/role-menus
+[2021-02-02T04:06:00.768] [WARN] default - /menu/list
+[2021-02-02T04:06:27.273] [WARN] default - /menu/set-order
+[2021-02-02T04:06:27.424] [ERROR] default - 
+  Error: ER_PARSE_ERROR: 
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-02-02T04:07:11.882] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T04:07:14.248] [WARN] default - /menu/set-order
+[2021-02-02T04:07:14.529] [WARN] default - /menu/list
+[2021-02-02T04:07:18.983] [WARN] default - /role/role-menus
+[2021-02-02T04:07:18.986] [WARN] default - /menu/list
+[2021-02-02T04:07:41.190] [WARN] default - /menu/list
+[2021-02-02T04:07:53.955] [WARN] default - /role/role-menus
+[2021-02-02T04:07:53.957] [WARN] default - /menu/list
+[2021-02-02T04:08:35.393] [WARN] default - /menu/set-order
+[2021-02-02T04:08:35.568] [WARN] default - /menu/list
+[2021-02-02T04:08:52.224] [WARN] default - /menu/set-order
+[2021-02-02T04:08:52.719] [WARN] default - /menu/list
+[2021-02-02T04:09:06.295] [WARN] default - /menu/set-order
+[2021-02-02T04:09:06.788] [WARN] default - /menu/list
+[2021-02-02T04:09:21.731] [WARN] default - /menu/set-order
+[2021-02-02T04:09:22.224] [WARN] default - /menu/list
+[2021-02-02T04:09:32.017] [WARN] default - /menu/set-order
+[2021-02-02T04:09:32.504] [WARN] default - /menu/list
+[2021-02-02T04:09:41.001] [WARN] default - /menu/set-order
+[2021-02-02T04:09:41.488] [WARN] default - /menu/list
+[2021-02-02T04:09:49.555] [WARN] default - /menu/set-order
+[2021-02-02T04:09:50.046] [WARN] default - /menu/list
+[2021-02-02T04:10:02.095] [WARN] default - /menu/set-order
+[2021-02-02T04:10:02.594] [WARN] default - /menu/list
+[2021-02-02T04:10:14.747] [WARN] default - /menu/set-order
+[2021-02-02T04:10:15.436] [WARN] default - /menu/list
+[2021-02-02T04:10:21.407] [WARN] default - /role/role-menus
+[2021-02-02T04:10:21.410] [WARN] default - /menu/list
+[2021-02-02T04:10:30.122] [WARN] default - /role/role-menus
+[2021-02-02T04:10:30.126] [WARN] default - /menu/list
+[2021-02-02T04:11:29.598] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T04:11:33.683] [WARN] default - /role/role-menus
+[2021-02-02T04:11:33.691] [WARN] default - /menu/list
+[2021-02-02T04:11:33.931] [ERROR] default - 
+  Error: ER_PARSE_ERROR: 
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-02-02T04:12:08.325] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T04:12:11.467] [WARN] default - /role/role-menus
+[2021-02-02T04:12:11.473] [WARN] default - /menu/list
+[2021-02-02T04:12:15.110] [WARN] default - /role/role-menus
+[2021-02-02T04:12:15.112] [WARN] default - /menu/list
+[2021-02-02T04:12:38.757] [WARN] default - /role/role-menus
+[2021-02-02T04:12:38.761] [WARN] default - /menu/list

@@ -103,7 +103,10 @@ export default {
       this.$axios.post("/role/role-menus", { roleId }).then(res => {
         if (res.status == 200) {
           this.leftmenus = res.data.records;
-          this.$router.push(res.data.records[0].path)
+          if (this.leftmenus && this.leftmenus.length) {
+            let firstMenus = this.leftmenus.filter(m => m.path != 'Layout')
+            this.$router.push(firstMenus[0].path)
+          }
         }
       })
     },

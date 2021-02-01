@@ -54,6 +54,18 @@
       </div>
     </el-dialog>
 
+    <el-dialog :visible.sync="isOrder" title="调整顺序">
+      <el-form ref="menuForm" :model="orderData" size="small" label-width="100px">
+        <el-form-item label="菜单顺序" prop="title">
+          <el-input v-model.number="orderData.order" placeholder="请输入菜单顺序" clearable></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer">
+        <el-button @click="isOrder = false;">取消</el-button>
+        <el-button type="primary" @click="saveOrder">确定</el-button>
+      </div>
+    </el-dialog>
+
   </div>
 </template>
 
@@ -61,6 +73,10 @@
 export default {
   data() {
     return {
+      isOrder: false,
+      orderData: {
+        order: 0
+      },
       filterText: '',
       isForm: false,
       formData: {
@@ -107,6 +123,18 @@ export default {
     this.fetchMenuList();
   },
   methods: {
+    saveOrder() {
+      this.$axios.post("/menu/set-order", this.orderData).then(res => {
+        if (res.status == 200) {
+          this.$message.success("调整菜单顺序成功");
+          this.fetchMenuList();
+          this.isOrder = false;
+        }
+        else {
+          this.$message.error("调整菜单顺序失败");
+        }
+      })
+    },
     filterNode(value, data) {
       if (!value) return true;
       return data.title.indexOf(value) !== -1;
@@ -134,7 +162,7 @@ export default {
           break;
         case "edit":
           this.edit(item);
-          break;        
+          break;
         case "order":
           this.order(item);
           break;
@@ -175,8 +203,10 @@ export default {
       this.isForm = true;
       this.formData = this.$util.deepCopy(item);
     },
-    order(item){
-
+    order(item) {
+      this.isOrder = true;
+      this.orderData.order = item.order ? item.order : 0;
+      this.orderData.id = item.id;
     },
     save() {
       let that = this;
