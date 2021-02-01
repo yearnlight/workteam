@@ -30,12 +30,12 @@
       <div v-if="token" :class="[{'maxWidth':!isCollapse,'minWidth':isCollapse},'docMenu-content']">
         <el-menu :collapse="isCollapse" :default-active="$route.path" :router="true" background-color="#1e222d" text-color="#bfcbd9" active-text-color="#00a4ff">
 
-          <el-menu-item :index="item.path" v-for="(item,index) in leftmenus.filter(m=>!m.children)" :key="index">
+          <el-menu-item :index="item.path" v-for="(item,index) in leftmenus.filter(m=>!(m.children && m.children.length))" :key="index">
             <i :class="item.icon"></i>
             <span slot="title">{{item.title}}</span>
           </el-menu-item>
 
-          <el-submenu v-for="(item,index) in leftmenus.filter(m=>m.children)" :index="item.path" :key="index">
+          <el-submenu v-for="(item,index) in leftmenus.filter(m=>m.children && m.children.length)" :index="item.path" :key="index">
             <template slot="title">
               <i :class="item.icon"></i>
               <span>{{item.title}}</span>
@@ -55,12 +55,12 @@
 </template>
 
 <script>
-import menus from "@/menu.js";
+// import menus from "@/menu.js";
 export default {
   data() {
     return {
       name: "",
-      role:"",
+      role: "",
       isInFrame: false,
       isCollapse: false,
       colors: [
@@ -72,6 +72,7 @@ export default {
         "#e06ab7",
         "#67C23A",
       ],
+      leftmenus: []
     };
   },
   computed: {
@@ -83,20 +84,14 @@ export default {
     }
   },
   created() {
-    
     this.setRoute();
     let userStr = sessionStorage.getItem("userInfo");
     if (userStr) {
       let userInfo = JSON.parse(userStr);
       this.name = userInfo.name;
-      let role = userInfo.role;
-      if(role == "share"){
-        this.leftmenus = menus.filter(menu => menu.meta && menu.meta.white);
-      }
-      else{
-        this.leftmenus = menus;
-      }
+      this.fetchMenu(userInfo.roleId);
     }
+
   },
   mounted() {
     if (window.self !== window.top) {
@@ -104,6 +99,14 @@ export default {
     }
   },
   methods: {
+    fetchMenu(roleId) {
+      this.$axios.post("/role/role-menus", { roleId }).then(res => {
+        if (res.status == 200) {
+          this.leftmenus = res.data.records;
+          this.$router.push(res.data.records[0].path)
+        }
+      })
+    },
     setRoute() { },
     handleCommand(command) {
       if (command == "logout") {
@@ -200,6 +203,11 @@ export default {
       }
       background-color: rgb(30, 34, 45);
       .el-menu {
+        i[class^="icon-"] {
+          font-weight: 400;
+          margin-right: 10px;
+          font-size: 18px;
+        }
         border-right: 0;
         .el-submenu {
           .el-menu {

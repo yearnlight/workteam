@@ -21,3 +21,6 @@ pnpm-debug.log*
 *.sln
 *.sw?
 server/conf.js
+server/routes/menu.js
+server/routes/auth.js
+server/routes/role.js

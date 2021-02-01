@@ -155,6 +155,21 @@ const routes = [
         path: "/work/passwordRule_detail",// 密码规则详情页面
         component: () => import("@/views/passwordRule/detail.vue"),
         name: "passwordRule_detail",
+      },
+      {
+        path: "/work/menu",// 菜单管理页面
+        component: () => import("@/views/menu/index.vue"),
+        name: "menu",
+      },
+      {
+        path: "/work/role",// 角色管理主页面
+        component: () => import("@/views/role/index.vue"),
+        name: "role",
+      },
+      {
+        path: "/work/role_detail",// 角色管理详情页面
+        component: () => import("@/views/role/detail.vue"),
+        name: "role_detail",
       }
     ]
   }

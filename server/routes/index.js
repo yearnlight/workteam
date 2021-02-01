@@ -34,8 +34,8 @@ registerRouter = (app) => {
         res = await query(queryStr, [ctx.request.header.userid]);
         if (res && res.length) {
             let userInfo = res[0];
-            // 共享角色登录不限制
-            if (userInfo.role == "share") {
+            // 游客角色登录不限制
+            if (userInfo.role == "visitor") {
                 ctx.request.header.userName = userInfo.name;
                 isLogin = true;
             }

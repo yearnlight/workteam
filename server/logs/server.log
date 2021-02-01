@@ -1265,3 +1265,2250 @@ D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has al
 [2021-01-14T10:03:06.186] [WARN] default - /event/list
 [2021-01-14T10:03:06.286] [INFO] default - query event page:select * from event order by createtime desc limit 0, 10,parames:
 [2021-01-14T10:03:17.829] [WARN] default - /server-config/list
+[2021-01-30T11:01:39.895] [INFO] default - Task server success to run,port:4001.
+[2021-01-30T11:04:18.871] [WARN] default - /menu/list
+[2021-01-30T11:10:12.285] [WARN] default - /menu/list
+[2021-01-30T11:12:11.737] [WARN] default - /menu/list
+[2021-01-30T13:49:50.322] [WARN] default - /menu/list
+[2021-01-30T13:50:09.946] [WARN] default - /menu/list
+[2021-01-30T13:50:58.093] [WARN] default - /menu/list
+[2021-01-30T13:51:26.922] [WARN] default - /menu/list
+[2021-01-30T13:53:30.278] [WARN] default - /menu/list
+[2021-01-30T13:54:17.882] [WARN] default - /menu/add
+[2021-01-30T13:54:18.022] [ERROR] default - 
+  Error: ER_WRONG_VALUE_COUNT_ON_ROW: Unknown error 1136
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-30T13:55:26.415] [INFO] default - Task server success to run,port:4001.
+[2021-01-30T13:56:12.462] [WARN] default - /menu/add
+[2021-01-30T13:56:12.707] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-30T13:57:08.855] [INFO] default - Task server success to run,port:4001.
+[2021-01-30T13:57:28.734] [WARN] default - /menu/add
+[2021-01-30T13:57:28.973] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-30T13:58:26.319] [INFO] default - Task server success to run,port:4001.
+[2021-01-30T13:58:32.637] [WARN] default - /menu/add
+[2021-01-30T13:58:32.638] [DEBUG] default - select * from user where `id` = ?
+[2021-01-30T13:58:32.638] [DEBUG] default - [ '7cad37c0-e778-11ea-b214-81463e39dd4e' ]
+[2021-01-30T13:58:32.800] [DEBUG] default - insert into menu(pid,`title`,path,icon,remark,isHide,isWhite,createtime,creator,isDel) values ?
+[2021-01-30T13:58:32.801] [DEBUG] default - [ [ [ 0,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      0,
+      1,
+      '2021-01-30 13:58:32',
+      '杨明翔',
+      0 ] ] ]
+[2021-01-30T13:58:32.876] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:23:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-30T13:59:44.649] [WARN] default - /menu/list
+[2021-01-30T13:59:44.650] [DEBUG] default - select * from user where `id` = ?
+[2021-01-30T13:59:44.652] [DEBUG] default - [ '7cad37c0-e778-11ea-b214-81463e39dd4e' ]
+[2021-01-30T13:59:44.724] [DEBUG] default - select * from menu order by createtime desc
+[2021-01-30T13:59:44.725] [DEBUG] default - undefined
+[2021-01-30T13:59:55.785] [WARN] default - /menu/list
+[2021-01-30T13:59:55.786] [DEBUG] default - select * from user where `id` = ?
+[2021-01-30T13:59:55.788] [DEBUG] default - [ '7cad37c0-e778-11ea-b214-81463e39dd4e' ]
+[2021-01-30T13:59:55.855] [DEBUG] default - select * from menu order by createtime desc
+[2021-01-30T13:59:55.855] [DEBUG] default - undefined
+[2021-01-30T14:00:05.529] [WARN] default - /menu/list
+[2021-01-30T14:00:05.529] [DEBUG] default - select * from user where `id` = ?
+[2021-01-30T14:00:05.530] [DEBUG] default - [ '7cad37c0-e778-11ea-b214-81463e39dd4e' ]
+[2021-01-30T14:00:05.600] [DEBUG] default - select * from menu order by createtime desc
+[2021-01-30T14:00:05.601] [DEBUG] default - undefined
+[2021-01-30T14:00:17.965] [WARN] default - /menu/add
+[2021-01-30T14:00:17.966] [DEBUG] default - select * from user where `id` = ?
+[2021-01-30T14:00:17.967] [DEBUG] default - [ '7cad37c0-e778-11ea-b214-81463e39dd4e' ]
+[2021-01-30T14:00:18.035] [DEBUG] default - insert into menu(pid,`title`,path,icon,remark,isHide,isWhite,createtime,creator,isDel) values ?
+[2021-01-30T14:00:18.036] [DEBUG] default - [ [ [ 0,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      0,
+      1,
+      '2021-01-30 14:00:18',
+      '杨明翔',
+      0 ] ] ]
+[2021-01-30T14:00:18.105] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:23:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-30T14:00:45.620] [WARN] default - /menu/add
+[2021-01-30T14:00:45.621] [DEBUG] default - select * from user where `id` = ?
+[2021-01-30T14:00:45.622] [DEBUG] default - [ '7cad37c0-e778-11ea-b214-81463e39dd4e' ]
+[2021-01-30T14:00:45.692] [DEBUG] default - insert into menu(pid,`title`,path,icon,remark,isHide,isWhite,createtime,creator,isDel) values ?
+[2021-01-30T14:00:45.692] [DEBUG] default - [ [ [ 0,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      0,
+      1,
+      '2021-01-30 14:00:45',
+      '杨明翔',
+      0 ] ] ]
+[2021-01-30T14:00:45.758] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:23:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-30T14:01:08.715] [WARN] default - /menu/list
+[2021-01-30T14:01:08.716] [DEBUG] default - select * from user where `id` = ?
+[2021-01-30T14:01:08.717] [DEBUG] default - [ '7cad37c0-e778-11ea-b214-81463e39dd4e' ]
+[2021-01-30T14:01:08.788] [DEBUG] default - select * from menu order by createtime desc
+[2021-01-30T14:01:08.789] [DEBUG] default - undefined
+[2021-01-30T14:01:25.072] [WARN] default - /menu/add
+[2021-01-30T14:01:25.084] [DEBUG] default - select * from user where `id` = ?
+[2021-01-30T14:01:25.085] [DEBUG] default - [ '7cad37c0-e778-11ea-b214-81463e39dd4e' ]
+[2021-01-30T14:01:25.155] [DEBUG] default - insert into menu(pid,`title`,path,icon,remark,isHide,isWhite,createtime,creator,isDel) values ?
+[2021-01-30T14:01:25.157] [DEBUG] default - [ [ [ 0,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      0,
+      1,
+      '2021-01-30 14:01:25',
+      '杨明翔',
+      0 ] ] ]
+[2021-01-30T14:01:25.225] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:23:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-30T14:04:48.005] [WARN] default - /menu/list
+[2021-01-30T14:04:48.006] [DEBUG] default - select * from user where `id` = ?
+[2021-01-30T14:04:48.007] [DEBUG] default - [ '7cad37c0-e778-11ea-b214-81463e39dd4e' ]
+[2021-01-30T14:04:48.082] [DEBUG] default - select * from menu order by createtime desc
+[2021-01-30T14:04:48.083] [DEBUG] default - undefined
+[2021-01-30T14:13:58.414] [INFO] default - Task server success to run,port:4001.
+[2021-01-30T14:14:03.129] [WARN] default - /menu/add
+[2021-01-30T14:14:03.289] [DEBUG] default - { isHide: 0, isWhite: 0 }
+[2021-01-30T14:14:03.367] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-30T14:15:54.690] [INFO] default - Task server success to run,port:4001.
+[2021-01-30T14:16:26.803] [WARN] default - /menu/add
+[2021-01-30T14:16:27.051] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-30T14:18:54.602] [WARN] default - /menu/add
+[2021-01-30T14:18:54.739] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-30T14:19:48.436] [WARN] default - /menu/add
+[2021-01-30T14:19:48.577] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-30T14:20:00.704] [WARN] default - /menu/list
+[2021-01-30T14:20:08.682] [WARN] default - /menu/add
+[2021-01-30T14:20:08.832] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-30T14:20:09.720] [WARN] default - /menu/add
+[2021-01-30T14:20:09.872] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-30T14:20:40.840] [INFO] default - Task server success to run,port:4001.
+[2021-01-30T14:20:46.619] [WARN] default - /menu/add
+[2021-01-30T14:20:46.850] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-30T14:21:23.878] [INFO] default - Task server success to run,port:4001.
+[2021-01-30T14:21:24.531] [WARN] default - /menu/add
+[2021-01-30T14:21:24.533] [DEBUG] default - select * from user where `id` = ?
+[2021-01-30T14:21:24.533] [DEBUG] default - [ '7cad37c0-e778-11ea-b214-81463e39dd4e' ]
+[2021-01-30T14:21:24.696] [DEBUG] default - insert into menu(pid,`title`,path,icon,remark,isHide,isWhite,createtime,creator,isDel) values ?
+[2021-01-30T14:21:24.697] [DEBUG] default - [ [ [ 0,
+      'sfsdf',
+      'sdfs',
+      'fsdf',
+      'fsdf',
+      undefined,
+      0,
+      '2021-01-30 14:21:24',
+      '杨明翔',
+      0 ] ] ]
+[2021-01-30T14:21:24.775] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:23:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-30T14:22:27.365] [INFO] default - Task server success to run,port:4001.
+[2021-01-30T14:22:28.989] [WARN] default - /menu/add
+[2021-01-30T14:22:28.990] [DEBUG] default - select * from user where `id` = ?
+[2021-01-30T14:22:28.990] [DEBUG] default - [ '7cad37c0-e778-11ea-b214-81463e39dd4e' ]
+[2021-01-30T14:22:29.156] [ERROR] default - 
+  ReferenceError: isHide is not defined
+      at router.post (D:\fitmgr\otherweb\workteam\server\routes\menu.js:36:13)
+      at dispatch (D:\fitmgr\otherweb\workteam\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at next (D:\fitmgr\otherweb\workteam\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:45:18)
+      at D:\fitmgr\otherweb\workteam\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:346:16
+      at dispatch (D:\fitmgr\otherweb\workteam\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at D:\fitmgr\otherweb\workteam\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:36:12
+      at dispatch (D:\fitmgr\otherweb\workteam\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:351:31)
+      at dispatch (D:\fitmgr\otherweb\workteam\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+      at allowedMethods (D:\fitmgr\otherweb\workteam\server\node_modules\_koa-router@7.4.0@koa-router\lib\router.js:407:12)
+      at dispatch (D:\fitmgr\otherweb\workteam\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+
+[2021-01-30T14:22:47.076] [INFO] default - Task server success to run,port:4001.
+[2021-01-30T14:22:48.708] [WARN] default - /menu/add
+[2021-01-30T14:22:48.709] [DEBUG] default - select * from user where `id` = ?
+[2021-01-30T14:22:48.710] [DEBUG] default - [ '7cad37c0-e778-11ea-b214-81463e39dd4e' ]
+[2021-01-30T14:22:48.867] [DEBUG] default - insert into menu(pid,`title`,path,icon,remark,isHide,isWhite,createtime,creator,isDel) values ?
+[2021-01-30T14:22:48.868] [DEBUG] default - [ [ [ 0,
+      'sfsdf',
+      'sdfs',
+      'fsdf',
+      'fsdf',
+      0,
+      0,
+      '2021-01-30 14:22:48',
+      '杨明翔',
+      0 ] ] ]
+[2021-01-30T14:22:48.939] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:23:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-30T14:22:50.523] [WARN] default - /menu/add
+[2021-01-30T14:22:50.525] [DEBUG] default - select * from user where `id` = ?
+[2021-01-30T14:22:50.526] [DEBUG] default - [ '7cad37c0-e778-11ea-b214-81463e39dd4e' ]
+[2021-01-30T14:22:50.592] [DEBUG] default - insert into menu(pid,`title`,path,icon,remark,isHide,isWhite,createtime,creator,isDel) values ?
+[2021-01-30T14:22:50.593] [DEBUG] default - [ [ [ 0,
+      'sfsdf',
+      'sdfs',
+      'fsdf',
+      'fsdf',
+      0,
+      0,
+      '2021-01-30 14:22:50',
+      '杨明翔',
+      0 ] ] ]
+[2021-01-30T14:22:50.664] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:23:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-01-30T14:26:43.881] [INFO] default - Task server success to run,port:4001.
+[2021-01-30T14:27:33.221] [WARN] default - /menu/add
+[2021-01-30T14:27:33.524] [WARN] default - /menu/list
+[2021-01-30T14:29:57.826] [WARN] default - /menu/add
+[2021-01-30T14:29:58.082] [WARN] default - /menu/list
+[2021-01-30T14:30:30.391] [WARN] default - /menu/list
+[2021-01-30T14:35:44.102] [WARN] default - /menu/list
+[2021-01-30T14:36:21.061] [WARN] default - /menu/list
+[2021-01-30T14:36:39.339] [WARN] default - /menu/list
+[2021-01-30T14:38:37.049] [WARN] default - /auth/login
+[2021-01-30T14:38:37.120] [ERROR] default - 登录密码错误===>111111
+[2021-01-30T14:38:42.311] [WARN] default - /auth/login
+[2021-01-30T14:38:42.846] [WARN] default - /task/list
+[2021-01-30T14:38:42.849] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-01-30T14:38:42.852] [WARN] default - /user/list
+[2021-01-30T14:38:43.154] [WARN] default - /task/statistics
+[2021-01-30T14:38:43.400] [WARN] default - /task/list
+[2021-01-30T14:38:43.401] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-01-30T14:38:49.891] [WARN] default - /menu/list
+[2021-01-30T14:39:05.675] [WARN] default - /menu/list
+[2021-01-30T14:40:19.470] [WARN] default - /menu/list
+[2021-01-30T14:40:29.959] [INFO] default - Task server success to run,port:4001.
+[2021-01-30T14:40:34.139] [WARN] default - /menu/list
+[2021-01-30T14:41:08.075] [INFO] default - Task server success to run,port:4001.
+[2021-01-30T14:41:14.138] [WARN] default - /menu/list
+[2021-01-30T14:41:45.740] [INFO] default - Task server success to run,port:4001.
+[2021-01-30T14:41:49.132] [WARN] default - /menu/list
+[2021-01-30T14:41:49.363] [DEBUG] default - [ RowDataPacket {
+    id: 2,
+    pid: null,
+    title: '菜单管理',
+    path: '/work/menu',
+    icon: 'el-icon-edit',
+    remark: '',
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-01-30 14:27:33',
+    creator: '杨明翔',
+    isDel: 0 },
+  RowDataPacket {
+    id: 3,
+    pid: null,
+    title: '工具管理',
+    path: 'Layout',
+    icon: 'el-icon-magic-stick',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-01-30 14:29:57',
+    creator: '杨明翔',
+    isDel: 0 } ]
+[2021-01-30T14:42:26.341] [INFO] default - Task server success to run,port:4001.
+[2021-01-30T14:42:30.976] [WARN] default - /menu/list
+[2021-01-30T14:43:17.293] [WARN] default - /menu/list
+[2021-01-30T14:43:50.358] [WARN] default - /menu/list
+[2021-01-30T14:44:18.304] [WARN] default - /menu/list
+[2021-01-30T14:44:41.384] [INFO] default - Task server success to run,port:4001.
+[2021-01-30T14:44:51.530] [WARN] default - /menu/list
+[2021-01-30T14:45:01.993] [WARN] default - /menu/list
+[2021-01-30T14:45:50.606] [WARN] default - /menu/list
+[2021-01-30T14:46:50.494] [WARN] default - /menu/list
+[2021-01-30T14:47:19.972] [WARN] default - /menu/list
+[2021-01-30T14:47:30.903] [WARN] default - /menu/list
+[2021-01-30T14:48:51.522] [WARN] default - /menu/list
+[2021-01-30T14:50:11.800] [WARN] default - /menu/list
+[2021-01-30T14:52:36.389] [WARN] default - /menu/list
+[2021-01-30T14:52:51.102] [WARN] default - /menu/list
+[2021-01-30T14:53:28.797] [WARN] default - /menu/list
+[2021-01-30T14:54:24.005] [WARN] default - /menu/list
+[2021-01-30T14:55:47.294] [WARN] default - /menu/add
+[2021-01-30T14:55:47.525] [WARN] default - /menu/list
+[2021-01-30T14:56:54.345] [WARN] default - /menu/add
+[2021-01-30T14:56:54.599] [WARN] default - /menu/list
+[2021-01-30T14:58:00.538] [INFO] default - Task server success to run,port:4001.
+[2021-01-30T14:58:32.705] [WARN] default - /auth/login
+[2021-01-30T14:58:33.336] [WARN] default - /task/list
+[2021-01-30T14:58:33.339] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-01-30T14:58:33.341] [WARN] default - /user/list
+[2021-01-30T14:58:33.346] [WARN] default - /task/statistics
+[2021-01-30T14:58:33.876] [WARN] default - /task/list
+[2021-01-30T14:58:33.877] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-01-30T14:58:42.404] [WARN] default - /menu/list
+[2021-01-30T15:02:02.122] [WARN] default - /menu/list
+[2021-01-30T15:02:08.787] [WARN] default - /menu/list
+[2021-01-30T15:02:18.869] [WARN] default - /menu/list
+[2021-01-30T15:20:05.969] [WARN] default - /menu/list
+[2021-01-30T15:21:48.989] [WARN] default - /menu/list
+[2021-01-30T15:22:15.375] [WARN] default - /menu/list
+[2021-01-30T15:22:30.215] [WARN] default - /menu/list
+[2021-01-30T15:24:37.566] [WARN] default - /menu/list
+[2021-01-30T16:10:29.278] [WARN] default - /server-config/list
+[2021-01-30T16:16:46.915] [WARN] default - /server-config/create
+[2021-01-30T16:16:49.375] [WARN] default - /server-config/list
+[2021-01-30T16:16:53.034] [WARN] default - /server-config/generate
+[2021-01-30T16:16:53.208] [DEBUG] default - The D:\fitmgr\otherweb\workteam\server\template\target\role folder has been created!
+[2021-01-30T16:16:53.211] [DEBUG] default - The D:\fitmgr\otherweb\workteam\server\template\target\role\index.vue has been created!
+[2021-01-30T16:16:53.212] [DEBUG] default - The D:\fitmgr\otherweb\workteam\server\template\target\role\detail.vue has been created!
+[2021-01-30T16:16:53.213] [DEBUG] default - The D:\fitmgr\otherweb\workteam\server\template\target\role\router.js has been created!
+[2021-01-30T16:19:06.406] [WARN] default - /server-config/list
+[2021-01-30T16:19:25.523] [WARN] default - /server-config/list
+[2021-01-30T17:04:42.925] [INFO] default - Task server success to run,port:4001.
+[2021-01-30T17:20:15.968] [WARN] default - /role/list
+[2021-01-30T17:20:24.113] [WARN] default - /role/list
+[2021-01-30T23:14:17.062] [WARN] default - /role/add
+[2021-01-30T23:15:12.386] [WARN] default - /role/add
+[2021-02-01T15:42:38.344] [WARN] default - /role/add
+[2021-02-01T15:48:51.009] [INFO] default - Task server success to run,port:4001.
+[2021-02-01T15:48:53.220] [WARN] default - /role/add
+[2021-02-01T15:49:07.092] [WARN] default - /role/list
+[2021-02-01T15:49:12.879] [WARN] default - /role/list
+[2021-02-01T15:49:35.119] [WARN] default - /role/list
+[2021-02-01T15:49:53.169] [WARN] default - /role/add
+[2021-02-01T15:49:53.340] [ERROR] default - 
+  ReferenceError: title is not defined
+      at router.post (D:\fitmgr\otherweb\workteam\server\routes\role.js:44:19)
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-02-01T15:55:21.241] [INFO] default - Task server success to run,port:4001.
+[2021-02-01T15:55:25.261] [WARN] default - /role/add
+[2021-02-01T15:55:25.547] [WARN] default - /role/list
+[2021-02-01T15:58:24.279] [WARN] default - /role/list
+[2021-02-01T15:58:33.093] [WARN] default - /role/delete
+[2021-02-01T15:58:33.333] [WARN] default - 删除菜单【超级管理员】成功
+[2021-02-01T15:58:43.747] [WARN] default - /role/list
+[2021-02-01T15:58:49.195] [WARN] default - /role/delete
+[2021-02-01T15:58:49.418] [WARN] default - 删除菜单【超级管理员】成功
+[2021-02-01T15:58:49.449] [WARN] default - /role/list
+[2021-02-01T15:59:16.362] [WARN] default - /role/add
+[2021-02-01T15:59:16.857] [WARN] default - /role/list
+[2021-02-01T15:59:31.648] [WARN] default - /role/add
+[2021-02-01T15:59:32.164] [WARN] default - /role/list
+[2021-02-01T16:00:21.464] [WARN] default - /role/add
+[2021-02-01T16:00:21.985] [WARN] default - /role/list
+[2021-02-01T16:00:30.847] [WARN] default - /role/list
+[2021-02-01T16:00:37.344] [WARN] default - /role/list
+[2021-02-01T16:01:06.819] [WARN] default - /role/list
+[2021-02-01T16:01:15.077] [WARN] default - /role/list
+[2021-02-01T16:03:39.293] [WARN] default - /role/list
+[2021-02-01T16:04:23.359] [WARN] default - /role/list
+[2021-02-01T16:06:11.685] [WARN] default - /role/list
+[2021-02-01T16:08:35.816] [WARN] default - /auth/login
+[2021-02-01T16:08:36.010] [ERROR] default - 登录密码错误===>ymx@1234
+[2021-02-01T16:08:40.595] [WARN] default - /auth/login
+[2021-02-01T16:08:41.610] [WARN] default - /task/list
+[2021-02-01T16:08:41.612] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-01T16:08:41.615] [WARN] default - /task/statistics
+[2021-02-01T16:08:41.622] [WARN] default - /user/list
+[2021-02-01T16:08:41.874] [WARN] default - /task/list
+[2021-02-01T16:08:41.874] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-02-01T16:08:43.991] [WARN] default - /role/list
+[2021-02-01T16:09:00.594] [WARN] default - /role/list
+[2021-02-01T16:09:08.342] [WARN] default - /server-config/list
+[2021-02-01T16:09:16.093] [WARN] default - /server-config/detail
+[2021-02-01T16:10:57.219] [WARN] default - /server-config/update
+[2021-02-01T16:11:02.544] [WARN] default - /server-config/list
+[2021-02-01T16:11:37.586] [WARN] default - /role/list
+[2021-02-01T16:12:58.327] [WARN] default - /role/list
+[2021-02-01T16:14:54.353] [WARN] default - /role/list
+[2021-02-01T16:16:33.499] [WARN] default - /role/list
+[2021-02-01T16:17:06.361] [WARN] default - /role/update
+[2021-02-01T16:17:06.875] [WARN] default - /role/list
+[2021-02-01T16:17:33.157] [WARN] default - /user/list
+[2021-02-01T16:20:35.617] [WARN] default - /role/list
+[2021-02-01T16:20:42.683] [WARN] default - /role/update
+[2021-02-01T16:20:43.176] [WARN] default - /role/list
+[2021-02-01T16:21:25.002] [INFO] default - Task server success to run,port:4001.
+[2021-02-01T16:21:51.437] [WARN] default - /user/list
+[2021-02-01T16:22:15.786] [WARN] default - /role/list
+[2021-02-01T16:22:38.397] [WARN] default - /user/list
+[2021-02-01T16:23:46.360] [WARN] default - /role/list
+[2021-02-01T16:23:46.382] [WARN] default - /user/info
+[2021-02-01T16:23:54.884] [WARN] default - /user/list
+[2021-02-01T16:24:22.266] [WARN] default - /user/list
+[2021-02-01T16:24:25.925] [WARN] default - /user/list
+[2021-02-01T16:25:00.946] [WARN] default - /user/list
+[2021-02-01T19:17:48.284] [WARN] default - /user/list
+[2021-02-01T19:17:50.655] [WARN] default - /user/list
+[2021-02-01T19:18:00.345] [WARN] default - /user/list
+[2021-02-01T19:18:16.569] [WARN] default - /user/list
+[2021-02-01T19:18:39.888] [WARN] default - /user/list
+[2021-02-01T19:19:28.657] [WARN] default - /user/list
+[2021-02-01T19:20:08.273] [WARN] default - /user/list
+[2021-02-01T19:20:12.624] [WARN] default - /role/list
+[2021-02-01T19:20:15.402] [WARN] default - /user/list
+[2021-02-01T19:20:21.763] [WARN] default - /role/list
+[2021-02-01T19:26:01.887] [INFO] default - Task server success to run,port:4001.
+[2021-02-01T19:26:11.044] [WARN] default - /role/list
+[2021-02-01T19:26:11.300] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-02-01T19:26:46.751] [INFO] default - Task server success to run,port:4001.
+[2021-02-01T19:27:13.756] [WARN] default - /role/list
+[2021-02-01T19:27:13.920] [INFO] default - where name = 游客
+[2021-02-01T19:27:13.996] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-02-01T19:27:58.598] [INFO] default - Task server success to run,port:4001.
+[2021-02-01T19:28:02.599] [WARN] default - /role/list
+[2021-02-01T19:28:02.769] [INFO] default - where name = ''游客'
+[2021-02-01T19:28:02.848] [ERROR] default - 
+  Error: ER_PARSE_ERROR: 
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-02-01T19:28:21.979] [INFO] default - Task server success to run,port:4001.
+[2021-02-01T19:28:25.592] [WARN] default - /role/list
+[2021-02-01T19:28:25.756] [INFO] default - where name = '游客'
+[2021-02-01T19:28:28.148] [WARN] default - /role/list
+[2021-02-01T19:28:28.236] [INFO] default - where page = '1' and limit = '10'
+[2021-02-01T19:28:28.310] [ERROR] default - 
+  Error: ER_PARSE_ERROR: 
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-02-01T19:28:30.886] [WARN] default - /role/list
+[2021-02-01T19:28:30.972] [INFO] default - where 
+[2021-02-01T19:28:31.050] [ERROR] default - 
+  Error: ER_PARSE_ERROR: 
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-02-01T19:28:48.255] [WARN] default - /role/list
+[2021-02-01T19:28:48.384] [INFO] default - where 
+[2021-02-01T19:28:48.459] [ERROR] default - 
+  Error: ER_PARSE_ERROR: 
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-02-01T19:29:54.028] [INFO] default - Task server success to run,port:4001.
+[2021-02-01T19:29:58.797] [WARN] default - /role/list
+[2021-02-01T19:29:58.964] [INFO] default - 
+[2021-02-01T19:30:00.569] [WARN] default - /role/list
+[2021-02-01T19:30:00.654] [INFO] default - where page = '1' and limit = '10'
+[2021-02-01T19:30:00.730] [ERROR] default - 
+  Error: ER_PARSE_ERROR: 
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-02-01T19:31:03.590] [WARN] default - /role/list
+[2021-02-01T19:31:03.666] [INFO] default - 
+[2021-02-01T19:31:15.445] [WARN] default - /role/list
+[2021-02-01T19:31:15.532] [INFO] default - 
+[2021-02-01T19:31:37.969] [WARN] default - /menu/list
+[2021-02-02T00:10:00.030] [WARN] default - /menu/add
+[2021-02-02T00:10:04.004] [WARN] default - /menu/add
+[2021-02-02T00:10:04.569] [WARN] default - /menu/list
+[2021-02-02T00:10:10.638] [WARN] default - /menu/list
+[2021-02-02T00:10:15.965] [WARN] default - /menu/delete
+[2021-02-02T00:10:16.471] [WARN] default - 删除菜单【任务面板】成功
+[2021-02-02T00:10:16.796] [WARN] default - /menu/list
+[2021-02-02T00:10:56.645] [WARN] default - /menu/add
+[2021-02-02T00:10:56.900] [WARN] default - /menu/list
+[2021-02-02T00:14:24.279] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T00:14:29.707] [WARN] default - /menu/list
+[2021-02-02T00:14:45.365] [WARN] default - /menu/add
+[2021-02-02T00:15:13.651] [WARN] default - /menu/list
+[2021-02-02T00:15:17.113] [WARN] default - /menu/list
+[2021-02-02T00:15:25.828] [WARN] default - /menu/add
+[2021-02-02T00:18:31.377] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T00:19:26.646] [WARN] default - /menu/add
+[2021-02-02T00:19:27.007] [WARN] default - /menu/list
+[2021-02-02T00:20:00.245] [WARN] default - /menu/add
+[2021-02-02T00:20:00.511] [WARN] default - /menu/list
+[2021-02-02T00:20:55.812] [WARN] default - /menu/add
+[2021-02-02T00:20:56.073] [WARN] default - /menu/list
+[2021-02-02T00:28:46.293] [WARN] default - /menu/list
+[2021-02-02T00:28:51.731] [WARN] default - /menu/list
+[2021-02-02T00:29:50.961] [WARN] default - /menu/list
+[2021-02-02T00:30:15.546] [WARN] default - /menu/add
+[2021-02-02T00:30:15.805] [WARN] default - /menu/list
+[2021-02-02T00:33:34.580] [WARN] default - /menu/list
+[2021-02-02T00:33:40.774] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T00:33:43.389] [WARN] default - /menu/list
+[2021-02-02T00:33:48.834] [WARN] default - /menu/list
+[2021-02-02T00:36:54.777] [WARN] default - /menu/list
+[2021-02-02T00:37:01.891] [WARN] default - /menu/list
+[2021-02-02T00:37:21.985] [WARN] default - /menu/list
+[2021-02-02T00:37:22.189] [WARN] default - /menu/list
+[2021-02-02T00:38:28.989] [WARN] default - /menu/update
+[2021-02-02T00:38:29.323] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-02-02T00:39:19.197] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T00:39:22.380] [WARN] default - /menu/update
+[2021-02-02T00:39:22.550] [DEBUG] default - update menu SET id = ?,pid = ?,title = ?,path = ?,icon = ?,remark = ?,isHide = ?,isWhite = ?,createtime = ?,creator = ?,isDel = ?,children = ? where id = ?
+[2021-02-02T00:39:22.631] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-02-02T00:41:28.970] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T00:41:31.086] [WARN] default - /menu/update
+[2021-02-02T00:41:31.312] [DEBUG] default - update menu SET id = ?,pid = ?,title = ?,path = ?,icon = ?,remark = ?,isHide = ?,isWhite = ?,createtime = ?,creator = ?,isDel = ?,children = ? where id = ?
+[2021-02-02T00:41:31.389] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-02-02T00:43:20.687] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T00:43:25.656] [WARN] default - /menu/update
+[2021-02-02T00:43:25.818] [DEBUG] default - update menu SET id = ?,pid = ?,title = ?,path = ?,icon = ?,remark = ?,isHide = ?,isWhite = ?,createtime = ?,creator = ?,isDel = ?,children = ? where id = ?
+[2021-02-02T00:43:25.920] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-02-02T00:46:46.636] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T00:46:49.954] [WARN] default - /menu/update
+[2021-02-02T00:46:50.117] [DEBUG] default - update menu SET title = ?,path = ?,icon = ?,remark = ?,isHide = ?,isWhite = ? where id = ?
+[2021-02-02T00:46:50.229] [WARN] default - /menu/list
+[2021-02-02T00:46:58.942] [WARN] default - /menu/list
+[2021-02-02T00:46:58.946] [WARN] default - /menu/list
+[2021-02-02T00:47:21.848] [WARN] default - /menu/list
+[2021-02-02T00:47:21.851] [WARN] default - /menu/list
+[2021-02-02T00:48:25.822] [WARN] default - /event/list
+[2021-02-02T00:48:26.948] [WARN] default - /task/list
+[2021-02-02T00:48:26.950] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-02T00:48:27.260] [WARN] default - /user/list
+[2021-02-02T00:48:27.262] [WARN] default - /task/statistics
+[2021-02-02T00:48:27.754] [WARN] default - /task/list
+[2021-02-02T00:48:27.755] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-02-02T00:48:35.900] [INFO] default - query event page:select * from event order by createtime desc limit 0, 10,parames:
+[2021-02-02T00:48:39.134] [WARN] default - /event/list
+[2021-02-02T00:48:39.203] [INFO] default - query event page:select * from event order by createtime desc limit 0, 10,parames:
+[2021-02-02T00:48:40.897] [WARN] default - /menu/list
+[2021-02-02T00:48:42.606] [WARN] default - /event/list
+[2021-02-02T00:48:42.682] [INFO] default - query event page:select * from event order by createtime desc limit 0, 10,parames:
+[2021-02-02T00:50:25.992] [WARN] default - /menu/list
+[2021-02-02T00:51:23.930] [WARN] default - /menu/list
+[2021-02-02T00:56:23.756] [WARN] default - /event/list
+[2021-02-02T00:56:29.220] [WARN] default - /task/list
+[2021-02-02T00:56:29.221] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-02T00:56:29.523] [WARN] default - /task/statistics
+[2021-02-02T00:56:29.531] [WARN] default - /user/list
+[2021-02-02T00:56:30.065] [WARN] default - /task/list
+[2021-02-02T00:56:30.066] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-02-02T00:56:31.906] [WARN] default - /event/list
+[2021-02-02T00:56:31.983] [INFO] default - query event page:select * from event order by createtime desc limit 0, 10,parames:
+[2021-02-02T00:56:33.570] [WARN] default - /task/list
+[2021-02-02T00:56:33.572] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-02T00:56:33.576] [WARN] default - /user/list
+[2021-02-02T00:56:33.578] [WARN] default - /task/statistics
+[2021-02-02T00:56:33.835] [INFO] default - query event page:select * from event order by createtime desc limit 0, 10,parames:
+[2021-02-02T00:56:34.036] [WARN] default - /task/list
+[2021-02-02T00:56:34.038] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-02-02T00:56:35.589] [WARN] default - /task/list
+[2021-02-02T00:56:35.590] [INFO] default - query task page:select * from worktask where isDel = 0  order by endTime desc limit 0, 10,parames:
+[2021-02-02T00:56:35.898] [WARN] default - /user/list
+[2021-02-02T00:56:36.863] [WARN] default - /store/list
+[2021-02-02T00:56:38.375] [WARN] default - /user/list
+[2021-02-02T00:56:39.589] [WARN] default - /user/list
+[2021-02-02T00:56:39.899] [WARN] default - /doc/list
+[2021-02-02T00:56:39.905] [WARN] default - /project/list
+[2021-02-02T00:56:40.466] [WARN] default - /role/list
+[2021-02-02T00:56:40.541] [INFO] default - 
+[2021-02-02T00:56:41.647] [WARN] default - /user/list
+[2021-02-02T00:56:43.883] [WARN] default - /role/list
+[2021-02-02T00:56:43.961] [INFO] default - 
+[2021-02-02T00:58:51.877] [WARN] default - /user/list
+[2021-02-02T00:58:51.880] [WARN] default - /doc/list
+[2021-02-02T00:58:51.881] [WARN] default - /project/list
+[2021-02-02T00:59:07.513] [WARN] default - /doc/info
+[2021-02-02T00:59:07.806] [WARN] default - /doc/read
+[2021-02-02T00:59:21.826] [WARN] default - /task/list
+[2021-02-02T00:59:21.828] [INFO] default - query task page:select * from worktask where isDel = 0  order by endTime desc limit 0, 10,parames:
+[2021-02-02T00:59:21.832] [WARN] default - /user/list
+[2021-02-02T00:59:22.954] [WARN] default - /store/list
+[2021-02-02T00:59:23.786] [WARN] default - /user/list
+[2021-02-02T00:59:23.792] [WARN] default - /doc/list
+[2021-02-02T00:59:23.794] [WARN] default - /project/list
+[2021-02-02T00:59:30.727] [WARN] default - /doc/info
+[2021-02-02T00:59:31.028] [WARN] default - /doc/read
+[2021-02-02T01:16:08.440] [WARN] default - /menu/list
+[2021-02-02T01:16:08.446] [WARN] default - /doc/info
+[2021-02-02T01:16:18.649] [WARN] default - /doc/read
+[2021-02-02T01:16:25.060] [WARN] default - /menu/list
+[2021-02-02T01:16:25.064] [WARN] default - /doc/info
+[2021-02-02T01:16:25.246] [WARN] default - /doc/read
+[2021-02-02T01:16:31.242] [WARN] default - /menu/list
+[2021-02-02T01:16:44.106] [WARN] default - /menu/update
+[2021-02-02T01:16:44.182] [DEBUG] default - update menu SET title = ?,path = ?,icon = ?,remark = ?,isHide = ?,isWhite = ? where id = ?
+[2021-02-02T01:16:44.629] [WARN] default - /menu/list
+[2021-02-02T01:16:46.304] [WARN] default - /menu/list
+[2021-02-02T01:16:46.308] [WARN] default - /menu/list
+[2021-02-02T01:21:21.135] [WARN] default - /menu/update
+[2021-02-02T01:21:23.883] [WARN] default - /menu/update
+[2021-02-02T01:21:31.288] [DEBUG] default - update menu SET title = ?,path = ?,icon = ?,remark = ?,isHide = ?,isWhite = ? where id = ?
+[2021-02-02T01:21:31.710] [WARN] default - /menu/list
+[2021-02-02T01:21:33.963] [DEBUG] default - update menu SET title = ?,path = ?,icon = ?,remark = ?,isHide = ?,isWhite = ? where id = ?
+[2021-02-02T01:21:34.363] [WARN] default - /menu/list
+[2021-02-02T01:21:36.819] [WARN] default - /menu/list
+[2021-02-02T01:21:36.822] [WARN] default - /menu/list
+[2021-02-02T01:22:01.257] [WARN] default - /menu/update
+[2021-02-02T01:22:01.331] [DEBUG] default - update menu SET title = ?,path = ?,icon = ?,remark = ?,isHide = ?,isWhite = ? where id = ?
+[2021-02-02T01:22:01.436] [WARN] default - /menu/list
+[2021-02-02T01:22:15.806] [WARN] default - /menu/update
+[2021-02-02T01:22:15.886] [DEBUG] default - update menu SET title = ?,path = ?,icon = ?,remark = ?,isHide = ?,isWhite = ? where id = ?
+[2021-02-02T01:22:16.294] [WARN] default - /menu/list
+[2021-02-02T01:22:18.062] [WARN] default - /menu/list
+[2021-02-02T01:22:18.065] [WARN] default - /menu/list
+[2021-02-02T01:23:36.420] [WARN] default - /menu/update
+[2021-02-02T01:23:36.501] [DEBUG] default - update menu SET title = ?,path = ?,icon = ?,remark = ?,isHide = ?,isWhite = ? where id = ?
+[2021-02-02T01:23:36.675] [WARN] default - /menu/list
+[2021-02-02T01:23:58.255] [WARN] default - /menu/update
+[2021-02-02T01:23:58.330] [DEBUG] default - update menu SET title = ?,path = ?,icon = ?,remark = ?,isHide = ?,isWhite = ? where id = ?
+[2021-02-02T01:23:58.761] [WARN] default - /menu/list
+[2021-02-02T01:24:10.567] [WARN] default - /menu/update
+[2021-02-02T01:24:10.635] [DEBUG] default - update menu SET title = ?,path = ?,icon = ?,remark = ?,isHide = ?,isWhite = ? where id = ?
+[2021-02-02T01:24:11.039] [WARN] default - /menu/list
+[2021-02-02T01:24:28.006] [WARN] default - /menu/update
+[2021-02-02T01:24:28.084] [DEBUG] default - update menu SET title = ?,path = ?,icon = ?,remark = ?,isHide = ?,isWhite = ? where id = ?
+[2021-02-02T01:24:28.500] [WARN] default - /menu/list
+[2021-02-02T01:24:37.288] [WARN] default - /menu/update
+[2021-02-02T01:24:37.363] [DEBUG] default - update menu SET title = ?,path = ?,icon = ?,remark = ?,isHide = ?,isWhite = ? where id = ?
+[2021-02-02T01:24:37.778] [WARN] default - /menu/list
+[2021-02-02T01:24:39.389] [WARN] default - /menu/list
+[2021-02-02T01:24:39.393] [WARN] default - /menu/list
+[2021-02-02T01:25:24.529] [WARN] default - /menu/update
+[2021-02-02T01:25:24.600] [DEBUG] default - update menu SET title = ?,path = ?,icon = ?,remark = ?,isHide = ?,isWhite = ? where id = ?
+[2021-02-02T01:25:24.711] [WARN] default - /menu/list
+[2021-02-02T01:25:27.528] [WARN] default - /menu/list
+[2021-02-02T01:25:27.532] [WARN] default - /menu/list
+[2021-02-02T01:25:34.779] [WARN] default - /event/list
+[2021-02-02T01:25:34.851] [INFO] default - query event page:select * from event order by createtime desc limit 0, 10,parames:
+[2021-02-02T01:25:35.597] [WARN] default - /task/list
+[2021-02-02T01:25:35.598] [INFO] default - query task page:select * from worktask where isDel = 0  order by endTime desc limit 0, 10,parames:
+[2021-02-02T01:25:35.907] [WARN] default - /user/list
+[2021-02-02T01:25:36.664] [WARN] default - /store/list
+[2021-02-02T01:25:37.126] [WARN] default - /user/list
+[2021-02-02T01:25:39.109] [WARN] default - /user/list
+[2021-02-02T01:25:39.121] [WARN] default - /doc/list
+[2021-02-02T01:25:39.123] [WARN] default - /project/list
+[2021-02-02T01:25:43.824] [WARN] default - /host/list
+[2021-02-02T01:25:47.868] [WARN] default - /menu/list
+[2021-02-02T01:25:53.727] [WARN] default - /menu/update
+[2021-02-02T01:25:53.803] [DEBUG] default - update menu SET title = ?,path = ?,icon = ?,remark = ?,isHide = ?,isWhite = ? where id = ?
+[2021-02-02T01:25:53.983] [WARN] default - /menu/list
+[2021-02-02T01:25:56.186] [WARN] default - /menu/list
+[2021-02-02T01:25:56.189] [WARN] default - /menu/list
+[2021-02-02T01:26:06.496] [WARN] default - /menu/update
+[2021-02-02T01:26:06.574] [DEBUG] default - update menu SET title = ?,path = ?,icon = ?,remark = ?,isHide = ?,isWhite = ? where id = ?
+[2021-02-02T01:26:06.683] [WARN] default - /menu/list
+[2021-02-02T01:26:08.645] [WARN] default - /menu/list
+[2021-02-02T01:26:08.650] [WARN] default - /menu/list
+[2021-02-02T01:27:25.723] [WARN] default - /event/list
+[2021-02-02T01:27:25.812] [INFO] default - query event page:select * from event order by createtime desc limit 0, 10,parames:
+[2021-02-02T01:27:27.091] [WARN] default - /task/list
+[2021-02-02T01:27:27.094] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-02T01:27:27.096] [WARN] default - /user/list
+[2021-02-02T01:27:27.097] [WARN] default - /task/statistics
+[2021-02-02T01:27:27.333] [WARN] default - /task/list
+[2021-02-02T01:27:27.334] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-02-02T01:27:27.593] [WARN] default - /task/list
+[2021-02-02T01:27:27.594] [INFO] default - query task page:select * from worktask where isDel = 0  order by endTime desc limit 0, 10,parames:
+[2021-02-02T01:27:27.775] [WARN] default - /user/list
+[2021-02-02T01:27:28.419] [WARN] default - /store/list
+[2021-02-02T01:27:29.722] [WARN] default - /user/list
+[2021-02-02T01:27:30.751] [WARN] default - /user/list
+[2021-02-02T01:27:31.059] [WARN] default - /doc/list
+[2021-02-02T01:27:31.065] [WARN] default - /project/list
+[2021-02-02T01:27:31.704] [WARN] default - /role/list
+[2021-02-02T01:27:31.781] [INFO] default - 
+[2021-02-02T01:27:34.413] [WARN] default - /host/list
+[2021-02-02T01:27:35.692] [WARN] default - /host/list
+[2021-02-02T01:27:37.222] [WARN] default - /role/list
+[2021-02-02T01:27:37.307] [INFO] default - 
+[2021-02-02T01:27:38.402] [WARN] default - /user/list
+[2021-02-02T01:28:06.093] [WARN] default - /host/list
+[2021-02-02T01:28:11.749] [WARN] default - /task/list
+[2021-02-02T01:28:11.750] [INFO] default - query task page:select * from worktask where isDel = 0  order by endTime desc limit 0, 10,parames:
+[2021-02-02T01:28:11.752] [WARN] default - /user/list
+[2021-02-02T01:28:18.970] [WARN] default - /store/list
+[2021-02-02T01:28:20.188] [WARN] default - /user/list
+[2021-02-02T01:28:20.620] [WARN] default - /user/list
+[2021-02-02T01:28:20.926] [WARN] default - /doc/list
+[2021-02-02T01:28:20.933] [WARN] default - /project/list
+[2021-02-02T01:31:14.671] [WARN] default - /menu/list
+[2021-02-02T01:31:14.675] [WARN] default - /user/list
+[2021-02-02T01:31:14.677] [WARN] default - /doc/list
+[2021-02-02T01:31:14.679] [WARN] default - /project/list
+[2021-02-02T01:31:20.046] [WARN] default - /menu/list
+[2021-02-02T01:31:20.050] [WARN] default - /user/list
+[2021-02-02T01:31:20.053] [WARN] default - /doc/list
+[2021-02-02T01:31:20.059] [WARN] default - /project/list
+[2021-02-02T01:34:04.724] [WARN] default - /menu/list
+[2021-02-02T01:34:04.728] [WARN] default - /user/list
+[2021-02-02T01:34:04.735] [WARN] default - /doc/list
+[2021-02-02T01:34:04.739] [WARN] default - /project/list
+[2021-02-02T01:34:14.264] [WARN] default - /menu/list
+[2021-02-02T01:34:14.271] [WARN] default - /user/list
+[2021-02-02T01:34:14.273] [WARN] default - /doc/list
+[2021-02-02T01:34:14.278] [WARN] default - /project/list
+[2021-02-02T01:34:17.370] [WARN] default - /user/list
+[2021-02-02T01:34:19.110] [WARN] default - /store/list
+[2021-02-02T01:34:20.948] [WARN] default - /task/list
+[2021-02-02T01:34:20.949] [INFO] default - query task page:select * from worktask where isDel = 0  order by endTime desc limit 0, 10,parames:
+[2021-02-02T01:34:20.950] [WARN] default - /user/list
+[2021-02-02T01:34:21.895] [WARN] default - /task/list
+[2021-02-02T01:34:21.897] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-02T01:34:22.202] [WARN] default - /user/list
+[2021-02-02T01:34:22.206] [WARN] default - /task/statistics
+[2021-02-02T01:34:22.670] [WARN] default - /task/list
+[2021-02-02T01:34:22.672] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-02-02T01:34:22.857] [WARN] default - /event/list
+[2021-02-02T01:34:22.926] [INFO] default - query event page:select * from event order by createtime desc limit 0, 10,parames:
+[2021-02-02T01:34:24.247] [WARN] default - /menu/list
+[2021-02-02T01:35:18.568] [WARN] default - /menu/add
+[2021-02-02T01:35:19.145] [WARN] default - /menu/list
+[2021-02-02T01:35:21.921] [WARN] default - /menu/list
+[2021-02-02T01:35:21.930] [WARN] default - /menu/list
+[2021-02-02T01:35:23.611] [WARN] default - /server-config/list
+[2021-02-02T01:35:25.883] [WARN] default - /role/list
+[2021-02-02T01:35:26.055] [INFO] default - 
+[2021-02-02T01:35:26.951] [WARN] default - /user/list
+[2021-02-02T01:35:26.956] [WARN] default - /doc/list
+[2021-02-02T01:35:27.260] [WARN] default - /project/list
+[2021-02-02T01:35:33.206] [WARN] default - /user/list
+[2021-02-02T01:35:34.363] [WARN] default - /store/list
+[2021-02-02T01:35:34.928] [WARN] default - /role/list
+[2021-02-02T01:35:34.999] [INFO] default - 
+[2021-02-02T01:35:38.623] [WARN] default - /role/list
+[2021-02-02T01:35:38.627] [WARN] default - /server-config/list
+[2021-02-02T01:35:38.700] [INFO] default - 
+[2021-02-02T01:39:45.990] [WARN] default - /role/list
+[2021-02-02T01:40:05.941] [WARN] default - /role/list
+[2021-02-02T01:40:12.106] [WARN] default - /menu/list
+[2021-02-02T01:40:12.114] [WARN] default - /role/list
+[2021-02-02T01:40:12.277] [INFO] default - 
+[2021-02-02T01:40:16.019] [INFO] default - 
+[2021-02-02T01:40:16.076] [INFO] default - 
+[2021-02-02T01:43:23.708] [WARN] default - /role/list
+[2021-02-02T01:43:23.780] [INFO] default - 
+[2021-02-02T01:43:52.649] [WARN] default - /role/list
+[2021-02-02T01:43:52.721] [INFO] default - 
+[2021-02-02T01:44:37.759] [WARN] default - /role/list
+[2021-02-02T01:44:37.836] [INFO] default - 
+[2021-02-02T01:45:11.887] [WARN] default - /role/list
+[2021-02-02T01:45:11.964] [INFO] default - 
+[2021-02-02T01:46:17.500] [WARN] default - /role/list
+[2021-02-02T01:46:17.575] [INFO] default - 
+[2021-02-02T01:46:21.693] [WARN] default - /menu/list
+[2021-02-02T01:46:44.810] [WARN] default - /menu/list
+[2021-02-02T01:51:58.888] [WARN] default - /role/list
+[2021-02-02T01:52:12.045] [WARN] default - /role/list
+[2021-02-02T01:52:12.200] [INFO] default - 
+[2021-02-02T01:52:18.974] [INFO] default - 
+[2021-02-02T01:53:59.057] [WARN] default - /role/list
+[2021-02-02T01:53:59.136] [INFO] default - 
+[2021-02-02T01:54:03.169] [WARN] default - /menu/list
+[2021-02-02T01:54:19.447] [WARN] default - /role/list
+[2021-02-02T01:54:19.531] [INFO] default - 
+[2021-02-02T01:54:22.669] [WARN] default - /menu/list
+[2021-02-02T01:55:33.286] [WARN] default - /role/list
+[2021-02-02T01:55:33.366] [INFO] default - 
+[2021-02-02T02:04:13.395] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T02:06:07.988] [WARN] default - /role/list
+[2021-02-02T02:06:08.149] [INFO] default - 
+[2021-02-02T02:06:15.733] [WARN] default - /menu/list
+[2021-02-02T02:06:28.938] [WARN] default - /role/set-menus
+[2021-02-02T02:07:12.570] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T02:07:17.470] [WARN] default - /role/set-menus
+[2021-02-02T02:11:21.822] [WARN] default - /role/list
+[2021-02-02T02:11:31.970] [INFO] default - 
+[2021-02-02T02:11:35.980] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T02:13:30.514] [WARN] default - /role/list
+[2021-02-02T02:13:30.675] [INFO] default - 
+[2021-02-02T02:13:37.429] [WARN] default - /menu/list
+[2021-02-02T02:13:37.702] [WARN] default - /role/get-menus
+[2021-02-02T02:14:37.776] [WARN] default - /role/list
+[2021-02-02T02:14:37.852] [INFO] default - 
+[2021-02-02T02:14:39.777] [WARN] default - /menu/list
+[2021-02-02T02:14:40.029] [WARN] default - /role/get-menus
+[2021-02-02T02:14:46.796] [WARN] default - /role/set-menus
+[2021-02-02T02:15:06.009] [WARN] default - /menu/list
+[2021-02-02T02:15:06.264] [WARN] default - /role/get-menus
+[2021-02-02T02:15:11.740] [WARN] default - /menu/list
+[2021-02-02T02:15:12.248] [WARN] default - /role/get-menus
+[2021-02-02T02:15:14.045] [WARN] default - /menu/list
+[2021-02-02T02:15:14.522] [WARN] default - /role/get-menus
+[2021-02-02T02:21:02.195] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T02:21:15.327] [WARN] default - /auth/login
+[2021-02-02T02:21:16.281] [WARN] default - /menu/list
+[2021-02-02T02:21:16.284] [WARN] default - /task/list
+[2021-02-02T02:21:16.285] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-02T02:21:16.588] [WARN] default - /task/statistics
+[2021-02-02T02:21:16.596] [WARN] default - /user/list
+[2021-02-02T02:21:17.065] [WARN] default - /task/list
+[2021-02-02T02:21:17.067] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-02-02T02:22:23.327] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T02:22:32.940] [WARN] default - /auth/login
+[2021-02-02T02:22:33.675] [WARN] default - /menu/list
+[2021-02-02T02:22:33.676] [WARN] default - /task/list
+[2021-02-02T02:22:33.678] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-02T02:22:33.681] [WARN] default - /task/statistics
+[2021-02-02T02:22:33.687] [WARN] default - /user/list
+[2021-02-02T02:22:33.917] [WARN] default - /task/list
+[2021-02-02T02:22:33.918] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-02-02T02:29:59.457] [WARN] default - /role/role-menus
+[2021-02-02T02:29:59.671] [WARN] default - /task/list
+[2021-02-02T02:29:59.672] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-02T02:29:59.769] [WARN] default - /user/list
+[2021-02-02T02:29:59.777] [WARN] default - /task/statistics
+[2021-02-02T02:30:02.719] [WARN] default - /role/role-menus
+[2021-02-02T02:30:02.727] [WARN] default - /task/list
+[2021-02-02T02:30:02.728] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-02T02:30:02.734] [WARN] default - /user/list
+[2021-02-02T02:30:02.739] [WARN] default - /task/statistics
+[2021-02-02T02:30:02.990] [WARN] default - /task/list
+[2021-02-02T02:30:02.991] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-02-02T02:30:32.578] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T02:30:36.105] [WARN] default - /role/role-menus
+[2021-02-02T02:30:36.114] [WARN] default - /task/list
+[2021-02-02T02:30:36.116] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-02T02:30:36.121] [WARN] default - /task/statistics
+[2021-02-02T02:30:36.125] [WARN] default - /user/list
+[2021-02-02T02:30:36.367] [WARN] default - /task/list
+[2021-02-02T02:30:36.368] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-02-02T02:32:14.875] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T02:32:20.724] [WARN] default - /role/role-menus
+[2021-02-02T02:32:20.731] [WARN] default - /task/list
+[2021-02-02T02:32:20.733] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-02T02:32:20.738] [WARN] default - /task/statistics
+[2021-02-02T02:32:20.741] [WARN] default - /user/list
+[2021-02-02T02:32:21.016] [WARN] default - /task/list
+[2021-02-02T02:32:21.016] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-02-02T02:32:21.078] [INFO] default - []
+[2021-02-02T02:32:39.279] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T02:32:44.218] [WARN] default - /role/role-menus
+[2021-02-02T02:32:44.227] [WARN] default - /task/list
+[2021-02-02T02:32:44.230] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-02T02:32:44.235] [WARN] default - /user/list
+[2021-02-02T02:32:44.239] [WARN] default - /task/statistics
+[2021-02-02T02:32:44.497] [WARN] default - /task/list
+[2021-02-02T02:32:44.498] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-02-02T02:32:44.512] [INFO] default - [ RowDataPacket {
+    id: 2,
+    pid: null,
+    title: '菜单管理',
+    path: '/work/menu',
+    icon: 'icon-menu',
+    remark: '',
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-01-30 14:27:33',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 3,
+    pid: null,
+    title: '工具管理',
+    path: 'Layout',
+    icon: 'icon-tool',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-01-30 14:29:57',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 4,
+    pid: 3,
+    title: 'SSH',
+    path: '/work/webssh',
+    icon: '',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-01-30 14:29:57',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 5,
+    pid: 3,
+    title: '图标库',
+    path: '/work/cloudIcon',
+    icon: '',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-01-30 14:55:47',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 6,
+    pid: null,
+    title: '事件管理',
+    path: '/work/event',
+    icon: 'icon-event',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-01-30 14:56:54',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 7,
+    pid: null,
+    title: '任务面板',
+    path: '/work/panel',
+    icon: 'icon-panel',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-02-02 00:10:04',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 9,
+    pid: null,
+    title: '任务列表',
+    path: '/work/tasklist',
+    icon: 'icon-task',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-02-02 00:10:56',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 10,
+    pid: null,
+    title: '应用管理',
+    path: '/work/store',
+    icon: 'icon-store',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-02-02 00:19:26',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 11,
+    pid: null,
+    title: '成员管理',
+    path: '/work/userlist',
+    icon: 'icon-user',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-02-02 00:20:00',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 12,
+    pid: null,
+    title: '知识地图',
+    path: '/work/knowledgeMap',
+    icon: 'icon-knowledgeMap',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-02-02 00:20:55',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 13,
+    pid: null,
+    title: '角色管理',
+    path: '/work/role',
+    icon: 'icon-role',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-02-02 00:30:15',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 14,
+    pid: null,
+    title: '业务管理',
+    path: '/work/business',
+    icon: 'icon-business',
+    remark: '业务管理，代码生成',
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-02-02 01:35:18',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null } ]
+[2021-02-02T02:32:44.518] [INFO] default - []
+[2021-02-02T02:34:20.033] [WARN] default - /role/role-menus
+[2021-02-02T02:34:20.144] [WARN] default - /task/list
+[2021-02-02T02:34:20.144] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-02T02:34:20.270] [INFO] default - [ RowDataPacket {
+    id: 2,
+    pid: null,
+    title: '菜单管理',
+    path: '/work/menu',
+    icon: 'icon-menu',
+    remark: '',
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-01-30 14:27:33',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 3,
+    pid: null,
+    title: '工具管理',
+    path: 'Layout',
+    icon: 'icon-tool',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-01-30 14:29:57',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 4,
+    pid: 3,
+    title: 'SSH',
+    path: '/work/webssh',
+    icon: '',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-01-30 14:29:57',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 5,
+    pid: 3,
+    title: '图标库',
+    path: '/work/cloudIcon',
+    icon: '',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-01-30 14:55:47',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 6,
+    pid: null,
+    title: '事件管理',
+    path: '/work/event',
+    icon: 'icon-event',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-01-30 14:56:54',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 7,
+    pid: null,
+    title: '任务面板',
+    path: '/work/panel',
+    icon: 'icon-panel',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-02-02 00:10:04',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 9,
+    pid: null,
+    title: '任务列表',
+    path: '/work/tasklist',
+    icon: 'icon-task',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-02-02 00:10:56',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 10,
+    pid: null,
+    title: '应用管理',
+    path: '/work/store',
+    icon: 'icon-store',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-02-02 00:19:26',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 11,
+    pid: null,
+    title: '成员管理',
+    path: '/work/userlist',
+    icon: 'icon-user',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-02-02 00:20:00',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 12,
+    pid: null,
+    title: '知识地图',
+    path: '/work/knowledgeMap',
+    icon: 'icon-knowledgeMap',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-02-02 00:20:55',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 13,
+    pid: null,
+    title: '角色管理',
+    path: '/work/role',
+    icon: 'icon-role',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-02-02 00:30:15',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 14,
+    pid: null,
+    title: '业务管理',
+    path: '/work/business',
+    icon: 'icon-business',
+    remark: '业务管理，代码生成',
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-02-02 01:35:18',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null } ]
+[2021-02-02T02:34:20.275] [INFO] default - [ RowDataPacket { roleId: '6172b760-6463-11eb-ac21-c7807ce929da', menuId: 2 },
+  RowDataPacket { roleId: '6172b760-6463-11eb-ac21-c7807ce929da', menuId: 3 },
+  RowDataPacket { roleId: '6172b760-6463-11eb-ac21-c7807ce929da', menuId: 4 },
+  RowDataPacket { roleId: '6172b760-6463-11eb-ac21-c7807ce929da', menuId: 5 },
+  RowDataPacket { roleId: '6172b760-6463-11eb-ac21-c7807ce929da', menuId: 9 },
+  RowDataPacket { roleId: '6172b760-6463-11eb-ac21-c7807ce929da', menuId: 10 },
+  RowDataPacket { roleId: '6172b760-6463-11eb-ac21-c7807ce929da', menuId: 11 },
+  RowDataPacket { roleId: '6172b760-6463-11eb-ac21-c7807ce929da', menuId: 12 } ]
+[2021-02-02T02:34:20.345] [WARN] default - /task/statistics
+[2021-02-02T02:34:20.347] [WARN] default - /user/list
+[2021-02-02T02:34:20.516] [WARN] default - /task/list
+[2021-02-02T02:34:20.517] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-02-02T02:34:29.286] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T02:34:36.153] [WARN] default - /menu/list
+[2021-02-02T02:35:56.208] [WARN] default - /role/role-menus
+[2021-02-02T02:35:56.209] [WARN] default - /menu/list
+[2021-02-02T02:35:57.924] [WARN] default - /role/list
+[2021-02-02T02:35:57.997] [INFO] default - 
+[2021-02-02T02:35:59.817] [WARN] default - /menu/list
+[2021-02-02T02:36:00.024] [WARN] default - /role/get-menus
+[2021-02-02T02:36:04.042] [WARN] default - /role/set-menus
+[2021-02-02T02:36:07.818] [WARN] default - /menu/list
+[2021-02-02T02:36:08.072] [WARN] default - /role/get-menus
+[2021-02-02T02:36:11.808] [WARN] default - /menu/list
+[2021-02-02T02:36:12.301] [WARN] default - /role/get-menus
+[2021-02-02T02:36:14.399] [WARN] default - /menu/list
+[2021-02-02T02:36:14.881] [WARN] default - /role/get-menus
+[2021-02-02T02:36:39.635] [WARN] default - /menu/list
+[2021-02-02T02:36:40.123] [WARN] default - /role/get-menus
+[2021-02-02T02:40:40.346] [WARN] default - /role/list
+[2021-02-02T02:40:40.426] [INFO] default - 
+[2021-02-02T02:40:47.383] [WARN] default - /role/role-menus
+[2021-02-02T02:40:47.385] [WARN] default - /role/list
+[2021-02-02T02:40:47.534] [INFO] default - 
+[2021-02-02T02:40:49.362] [WARN] default - /menu/list
+[2021-02-02T02:40:49.653] [WARN] default - /role/get-menus
+[2021-02-02T02:40:52.473] [WARN] default - /menu/list
+[2021-02-02T02:40:52.746] [WARN] default - /role/get-menus
+[2021-02-02T02:40:55.905] [WARN] default - /menu/list
+[2021-02-02T02:40:56.174] [WARN] default - /role/get-menus
+[2021-02-02T02:41:17.626] [WARN] default - /role/list
+[2021-02-02T02:41:17.698] [INFO] default - 
+[2021-02-02T02:41:19.764] [WARN] default - /menu/list
+[2021-02-02T02:41:20.017] [WARN] default - /role/get-menus
+[2021-02-02T02:41:21.929] [WARN] default - /menu/list
+[2021-02-02T02:41:22.416] [WARN] default - /role/get-menus
+[2021-02-02T02:41:25.065] [WARN] default - /menu/list
+[2021-02-02T02:41:25.537] [WARN] default - /role/get-menus
+[2021-02-02T02:41:27.499] [WARN] default - /menu/list
+[2021-02-02T02:41:27.976] [WARN] default - /role/get-menus
+[2021-02-02T02:41:29.430] [WARN] default - /menu/list
+[2021-02-02T02:41:29.916] [WARN] default - /role/get-menus
+[2021-02-02T02:41:32.154] [WARN] default - /menu/list
+[2021-02-02T02:41:32.632] [WARN] default - /role/get-menus
+[2021-02-02T02:41:34.775] [WARN] default - /menu/list
+[2021-02-02T02:41:35.247] [WARN] default - /role/get-menus
+[2021-02-02T02:42:33.178] [WARN] default - /role/list
+[2021-02-02T02:42:33.255] [INFO] default - 
+[2021-02-02T02:43:02.046] [WARN] default - /role/list
+[2021-02-02T02:43:08.407] [WARN] default - /role/list
+[2021-02-02T02:43:20.097] [WARN] default - /role/role-menus
+[2021-02-02T02:43:20.105] [WARN] default - /role/list
+[2021-02-02T02:43:22.056] [ERROR] default - 
+  Error: connect ETIMEDOUT
+      at PoolConnection.Connection._handleConnectTimeout (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:409:13)
+      at Object.onceWrapper (events.js:275:13)
+      at Socket.emit (events.js:182:13)
+      at Socket._onTimeout (net.js:447:8)
+      at ontimeout (timers.js:427:11)
+      at tryOnTimeout (timers.js:289:5)
+      at listOnTimeout (timers.js:252:5)
+      at Timer.processTimers (timers.js:212:10)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at Protocol.handshake (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:51:23)
+      at PoolConnection.connect (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:116:18)
+      at Pool.getConnection (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:48:16)
+      at Pool.releaseConnection (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:157:10)
+      at Pool._removeConnection (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:277:8)
+      at Pool._purgeConnection (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:258:8)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:101:12)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+
+[2021-02-02T02:43:23.700] [WARN] default - /role/role-menus
+[2021-02-02T02:43:23.708] [WARN] default - /role/list
+[2021-02-02T02:43:28.412] [ERROR] default - 
+  Error: connect ETIMEDOUT
+      at PoolConnection.Connection._handleConnectTimeout (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:409:13)
+      at Object.onceWrapper (events.js:275:13)
+      at Socket.emit (events.js:182:13)
+      at Socket._onTimeout (net.js:447:8)
+      at ontimeout (timers.js:427:11)
+      at tryOnTimeout (timers.js:289:5)
+      at listOnTimeout (timers.js:252:5)
+      at Timer.processTimers (timers.js:212:10)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at Protocol.handshake (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:51:23)
+      at PoolConnection.connect (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:116:18)
+      at Pool.getConnection (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:48:16)
+      at Pool.releaseConnection (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:157:10)
+      at Pool._removeConnection (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:277:8)
+      at Pool._purgeConnection (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:258:8)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:101:12)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+
+[2021-02-02T02:43:30.101] [ERROR] default - 
+  Error: connect ETIMEDOUT
+      at PoolConnection.Connection._handleConnectTimeout (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:409:13)
+      at Object.onceWrapper (events.js:275:13)
+      at Socket.emit (events.js:182:13)
+      at Socket._onTimeout (net.js:447:8)
+      at ontimeout (timers.js:427:11)
+      at tryOnTimeout (timers.js:289:5)
+      at listOnTimeout (timers.js:252:5)
+      at Timer.processTimers (timers.js:212:10)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at Protocol.handshake (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:51:23)
+      at PoolConnection.connect (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:116:18)
+      at Pool.getConnection (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:48:16)
+      at Promise (D:\fitmgr\otherweb\workteam\server\pool.js:17:10)
+      at new Promise (<anonymous>)
+      at query (D:\fitmgr\otherweb\workteam\server\pool.js:16:10)
+      at app.use.KoaRouterInterceptor (D:\fitmgr\otherweb\workteam\server\routes\index.js:34:21)
+      at RouterInterceptor (D:\fitmgr\otherweb\workteam\server\node_modules\_koa-router-interceptor@1.0.4@koa-router-interceptor\babel\index.js:17:28)
+      at dispatch (D:\fitmgr\otherweb\workteam\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+
+[2021-02-02T02:43:30.107] [ERROR] default - 
+  Error: connect ETIMEDOUT
+      at PoolConnection.Connection._handleConnectTimeout (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:409:13)
+      at Object.onceWrapper (events.js:275:13)
+      at Socket.emit (events.js:182:13)
+      at Socket._onTimeout (net.js:447:8)
+      at ontimeout (timers.js:427:11)
+      at tryOnTimeout (timers.js:289:5)
+      at listOnTimeout (timers.js:252:5)
+      at Timer.processTimers (timers.js:212:10)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at Protocol.handshake (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:51:23)
+      at PoolConnection.connect (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:116:18)
+      at Pool.getConnection (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:48:16)
+      at Promise (D:\fitmgr\otherweb\workteam\server\pool.js:17:10)
+      at new Promise (<anonymous>)
+      at query (D:\fitmgr\otherweb\workteam\server\pool.js:16:10)
+      at app.use.KoaRouterInterceptor (D:\fitmgr\otherweb\workteam\server\routes\index.js:34:21)
+      at RouterInterceptor (D:\fitmgr\otherweb\workteam\server\node_modules\_koa-router-interceptor@1.0.4@koa-router-interceptor\babel\index.js:17:28)
+      at dispatch (D:\fitmgr\otherweb\workteam\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+
+[2021-02-02T02:43:30.396] [WARN] default - /role/role-menus
+[2021-02-02T02:43:30.405] [WARN] default - /role/list
+[2021-02-02T02:43:33.704] [ERROR] default - 
+  Error: connect ETIMEDOUT
+      at PoolConnection.Connection._handleConnectTimeout (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:409:13)
+      at Object.onceWrapper (events.js:275:13)
+      at Socket.emit (events.js:182:13)
+      at Socket._onTimeout (net.js:447:8)
+      at ontimeout (timers.js:427:11)
+      at tryOnTimeout (timers.js:289:5)
+      at listOnTimeout (timers.js:252:5)
+      at Timer.processTimers (timers.js:212:10)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at Protocol.handshake (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:51:23)
+      at PoolConnection.connect (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:116:18)
+      at Pool.getConnection (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:48:16)
+      at Promise (D:\fitmgr\otherweb\workteam\server\pool.js:17:10)
+      at new Promise (<anonymous>)
+      at query (D:\fitmgr\otherweb\workteam\server\pool.js:16:10)
+      at app.use.KoaRouterInterceptor (D:\fitmgr\otherweb\workteam\server\routes\index.js:34:21)
+      at RouterInterceptor (D:\fitmgr\otherweb\workteam\server\node_modules\_koa-router-interceptor@1.0.4@koa-router-interceptor\babel\index.js:17:28)
+      at dispatch (D:\fitmgr\otherweb\workteam\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+
+[2021-02-02T02:43:33.710] [ERROR] default - 
+  Error: Handshake inactivity timeout
+      at Handshake.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:160:17)
+      at Handshake.emit (events.js:182:13)
+      at Handshake._onTimeout (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:124:8)
+      at Timer._onTimeout (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Timer.js:32:23)
+      at ontimeout (timers.js:427:11)
+      at tryOnTimeout (timers.js:289:5)
+      at listOnTimeout (timers.js:252:5)
+      at Timer.processTimers (timers.js:212:10)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at Protocol.handshake (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:51:23)
+      at PoolConnection.connect (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:116:18)
+      at Pool.getConnection (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:48:16)
+      at Promise (D:\fitmgr\otherweb\workteam\server\pool.js:17:10)
+      at new Promise (<anonymous>)
+      at query (D:\fitmgr\otherweb\workteam\server\pool.js:16:10)
+      at app.use.KoaRouterInterceptor (D:\fitmgr\otherweb\workteam\server\routes\index.js:34:21)
+      at RouterInterceptor (D:\fitmgr\otherweb\workteam\server\node_modules\_koa-router-interceptor@1.0.4@koa-router-interceptor\babel\index.js:17:28)
+      at dispatch (D:\fitmgr\otherweb\workteam\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+
+[2021-02-02T02:43:40.398] [ERROR] default - 
+  Error: Handshake inactivity timeout
+      at Handshake.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:160:17)
+      at Handshake.emit (events.js:182:13)
+      at Handshake._onTimeout (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:124:8)
+      at Timer._onTimeout (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Timer.js:32:23)
+      at ontimeout (timers.js:427:11)
+      at tryOnTimeout (timers.js:289:5)
+      at listOnTimeout (timers.js:252:5)
+      at Timer.processTimers (timers.js:212:10)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at Protocol.handshake (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:51:23)
+      at PoolConnection.connect (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:116:18)
+      at Pool.getConnection (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:48:16)
+      at Promise (D:\fitmgr\otherweb\workteam\server\pool.js:17:10)
+      at new Promise (<anonymous>)
+      at query (D:\fitmgr\otherweb\workteam\server\pool.js:16:10)
+      at app.use.KoaRouterInterceptor (D:\fitmgr\otherweb\workteam\server\routes\index.js:34:21)
+      at RouterInterceptor (D:\fitmgr\otherweb\workteam\server\node_modules\_koa-router-interceptor@1.0.4@koa-router-interceptor\babel\index.js:17:28)
+      at dispatch (D:\fitmgr\otherweb\workteam\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+
+[2021-02-02T02:43:40.408] [ERROR] default - 
+  Error: Handshake inactivity timeout
+      at Handshake.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:160:17)
+      at Handshake.emit (events.js:182:13)
+      at Handshake._onTimeout (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:124:8)
+      at Timer._onTimeout (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Timer.js:32:23)
+      at ontimeout (timers.js:427:11)
+      at tryOnTimeout (timers.js:289:5)
+      at listOnTimeout (timers.js:252:5)
+      at Timer.processTimers (timers.js:212:10)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at Protocol.handshake (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:51:23)
+      at PoolConnection.connect (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:116:18)
+      at Pool.getConnection (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:48:16)
+      at Promise (D:\fitmgr\otherweb\workteam\server\pool.js:17:10)
+      at new Promise (<anonymous>)
+      at query (D:\fitmgr\otherweb\workteam\server\pool.js:16:10)
+      at app.use.KoaRouterInterceptor (D:\fitmgr\otherweb\workteam\server\routes\index.js:34:21)
+      at RouterInterceptor (D:\fitmgr\otherweb\workteam\server\node_modules\_koa-router-interceptor@1.0.4@koa-router-interceptor\babel\index.js:17:28)
+      at dispatch (D:\fitmgr\otherweb\workteam\server\node_modules\_koa-compose@4.1.0@koa-compose\index.js:42:32)
+
+[2021-02-02T02:46:21.586] [WARN] default - /role/role-menus
+[2021-02-02T02:46:21.592] [WARN] default - /role/list
+[2021-02-02T02:46:25.944] [INFO] default - 
+[2021-02-02T02:46:37.802] [WARN] default - /menu/list
+[2021-02-02T02:46:38.055] [WARN] default - /role/get-menus
+[2021-02-02T02:46:40.682] [WARN] default - /menu/list
+[2021-02-02T02:46:41.183] [WARN] default - /role/get-menus
+[2021-02-02T02:46:43.416] [WARN] default - /menu/list
+[2021-02-02T02:46:43.906] [WARN] default - /role/get-menus
+[2021-02-02T02:46:46.686] [WARN] default - /menu/list
+[2021-02-02T02:46:47.174] [WARN] default - /role/get-menus
+[2021-02-02T02:46:49.964] [WARN] default - /menu/list
+[2021-02-02T02:46:50.458] [WARN] default - /role/get-menus
+[2021-02-02T02:47:11.589] [WARN] default - /role/set-menus
+[2021-02-02T02:47:44.329] [WARN] default - /menu/list
+[2021-02-02T02:47:44.582] [WARN] default - /role/get-menus
+[2021-02-02T02:47:59.449] [WARN] default - /role/set-menus
+[2021-02-02T02:48:11.403] [WARN] default - /auth/login
+[2021-02-02T02:48:11.919] [WARN] default - /role/role-menus
+[2021-02-02T02:56:45.555] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T02:56:55.600] [WARN] default - /auth/login
+[2021-02-02T02:56:56.245] [WARN] default - /role/role-menus
+[2021-02-02T02:56:56.252] [WARN] default - /task/list
+[2021-02-02T02:56:56.255] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-02T02:56:56.260] [WARN] default - /task/statistics
+[2021-02-02T03:06:01.861] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T03:06:17.563] [WARN] default - /auth/login
+[2021-02-02T03:06:17.725] [ERROR] default - 登录密码错误===>111111
+[2021-02-02T03:06:21.868] [WARN] default - /auth/login
+[2021-02-02T03:06:22.395] [WARN] default - /role/role-menus
+[2021-02-02T03:06:22.703] [WARN] default - /task/list
+[2021-02-02T03:06:22.705] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-02T03:06:22.713] [WARN] default - /user/list
+[2021-02-02T03:06:22.718] [WARN] default - /task/statistics
+[2021-02-02T03:06:23.250] [WARN] default - /task/list
+[2021-02-02T03:06:23.250] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-02-02T03:06:37.894] [WARN] default - /auth/login
+[2021-02-02T03:06:38.192] [WARN] default - /role/role-menus
+[2021-02-02T03:09:27.599] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T03:11:03.962] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T03:11:16.232] [WARN] default - /auth/login
+[2021-02-02T03:11:16.415] [ERROR] default - 登录密码错误===>1111111
+[2021-02-02T03:11:19.548] [WARN] default - /auth/login
+[2021-02-02T03:11:20.149] [WARN] default - /role/role-menus
+[2021-02-02T03:11:20.154] [WARN] default - /task/list
+[2021-02-02T03:11:20.158] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-02T03:11:20.163] [WARN] default - /task/statistics
+[2021-02-02T03:11:20.166] [WARN] default - /user/list
+[2021-02-02T03:11:20.392] [DEBUG] default - [ RowDataPacket {
+    id: 5,
+    pid: 3,
+    title: '图标库',
+    path: '/work/cloudIcon',
+    icon: '',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-01-30 14:55:47',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 6,
+    pid: null,
+    title: '事件管理',
+    path: '/work/event',
+    icon: 'icon-event',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-01-30 14:56:54',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 10,
+    pid: null,
+    title: '应用管理',
+    path: '/work/store',
+    icon: 'icon-store',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-02-02 00:19:26',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null },
+  RowDataPacket {
+    id: 12,
+    pid: null,
+    title: '知识地图',
+    path: '/work/knowledgeMap',
+    icon: 'icon-knowledgeMap',
+    remark: null,
+    isHide: 0,
+    isWhite: 0,
+    createtime: '2021-02-02 00:20:55',
+    creator: '杨明翔',
+    isDel: 0,
+    order: null } ]
+[2021-02-02T03:11:20.410] [WARN] default - /task/list
+[2021-02-02T03:11:20.411] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-02-02T03:12:36.901] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T03:12:59.277] [WARN] default - /auth/login
+[2021-02-02T03:12:59.454] [ERROR] default - 登录密码错误===>111111
+[2021-02-02T03:13:03.530] [WARN] default - /auth/login
+[2021-02-02T03:13:03.925] [WARN] default - /auth/login
+[2021-02-02T03:13:04.138] [WARN] default - /role/role-menus
+[2021-02-02T03:13:04.142] [WARN] default - /task/list
+[2021-02-02T03:13:04.144] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-02T03:13:04.148] [WARN] default - /user/list
+[2021-02-02T03:13:04.152] [WARN] default - /task/statistics
+[2021-02-02T03:13:04.289] [ERROR] default - Auth faild.
+[2021-02-02T03:13:04.297] [ERROR] default - Auth faild.
+[2021-02-02T03:13:04.303] [ERROR] default - Auth faild.
+[2021-02-02T03:13:04.699] [WARN] default - /task/list
+[2021-02-02T03:13:04.700] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-02-02T03:13:06.593] [WARN] default - /role/list
+[2021-02-02T03:13:06.671] [INFO] default - 
+[2021-02-02T03:13:09.447] [WARN] default - /menu/list
+[2021-02-02T03:13:09.973] [WARN] default - /role/get-menus
+[2021-02-02T03:15:38.886] [WARN] default - /role/list
+[2021-02-02T03:15:38.966] [INFO] default - 
+[2021-02-02T03:16:00.329] [WARN] default - /role/list
+[2021-02-02T03:16:00.408] [INFO] default - 
+[2021-02-02T03:18:40.262] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T03:18:57.619] [WARN] default - /role/role-menus
+[2021-02-02T03:18:57.626] [WARN] default - /role/list
+[2021-02-02T03:18:57.786] [INFO] default - 
+[2021-02-02T03:18:59.207] [WARN] default - /menu/list
+[2021-02-02T03:18:59.410] [WARN] default - /role/get-menus
+[2021-02-02T03:19:01.065] [WARN] default - /role/set-menus
+[2021-02-02T03:19:04.000] [WARN] default - /menu/list
+[2021-02-02T03:19:04.496] [WARN] default - /role/get-menus
+[2021-02-02T03:19:07.938] [WARN] default - /role/set-menus
+[2021-02-02T03:19:10.635] [WARN] default - /menu/list
+[2021-02-02T03:19:10.887] [WARN] default - /role/get-menus
+[2021-02-02T03:19:15.369] [WARN] default - /role/set-menus
+[2021-02-02T03:20:29.096] [INFO] default - Task server success to run,port:4001.
+[2021-02-02T03:20:48.936] [WARN] default - /auth/login
+[2021-02-02T03:20:49.854] [WARN] default - /role/role-menus
+[2021-02-02T03:20:49.863] [WARN] default - /user/list
+[2021-02-02T03:20:49.867] [WARN] default - /task/list
+[2021-02-02T03:20:49.870] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-02T03:20:49.873] [WARN] default - /task/statistics
+[2021-02-02T03:20:50.117] [WARN] default - /task/list
+[2021-02-02T03:20:50.117] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-02-02T03:20:55.825] [WARN] default - /user/list
+[2021-02-02T03:20:55.846] [WARN] default - /doc/list
+[2021-02-02T03:20:55.848] [WARN] default - /project/list
+[2021-02-02T03:20:56.248] [WARN] default - /store/list
+[2021-02-02T03:20:56.808] [WARN] default - /event/list
+[2021-02-02T03:20:56.889] [INFO] default - query event page:select * from event order by createtime desc limit 0, 10,parames:
+[2021-02-02T03:20:58.269] [WARN] default - /store/list
+[2021-02-02T03:20:58.636] [WARN] default - /user/list
+[2021-02-02T03:20:58.943] [WARN] default - /doc/list
+[2021-02-02T03:20:58.947] [WARN] default - /project/list
+[2021-02-02T03:21:02.994] [WARN] default - /user/list
+[2021-02-02T03:21:02.996] [WARN] default - /doc/list
+[2021-02-02T03:21:02.998] [WARN] default - /project/list
+[2021-02-02T03:21:03.450] [WARN] default - /store/list
+[2021-02-02T03:21:04.400] [WARN] default - /event/list
+[2021-02-02T03:21:04.479] [INFO] default - query event page:select * from event order by createtime desc limit 0, 10,parames:
+[2021-02-02T03:23:36.876] [WARN] default - /role/role-menus
+[2021-02-02T03:23:37.069] [WARN] default - /event/list
+[2021-02-02T03:23:46.085] [WARN] default - /doc/list
+[2021-02-02T03:23:46.389] [WARN] default - /project/list
+[2021-02-02T03:23:46.391] [WARN] default - /user/list
+[2021-02-02T03:23:47.143] [INFO] default - query event page:select * from event order by createtime desc limit 0, 10,parames:
+[2021-02-02T03:23:47.529] [WARN] default - /store/list
+[2021-02-02T03:23:48.989] [WARN] default - /event/list
+[2021-02-02T03:23:49.064] [INFO] default - query event page:select * from event order by createtime desc limit 0, 10,parames:
+[2021-02-02T03:23:50.105] [WARN] default - /store/list
+[2021-02-02T03:23:51.513] [WARN] default - /event/list
+[2021-02-02T03:23:51.591] [INFO] default - query event page:select * from event order by createtime desc limit 0, 10,parames:
+[2021-02-02T03:23:57.392] [WARN] default - /store/list
+[2021-02-02T03:23:58.840] [WARN] default - /user/list
+[2021-02-02T03:23:58.851] [WARN] default - /doc/list
+[2021-02-02T03:23:58.854] [WARN] default - /project/list
+[2021-02-02T03:24:01.559] [WARN] default - /user/list
+[2021-02-02T03:24:01.561] [WARN] default - /doc/list
+[2021-02-02T03:24:01.865] [WARN] default - /project/list
+[2021-02-02T03:24:02.719] [WARN] default - /store/list
+[2021-02-02T03:24:03.700] [WARN] default - /event/list
+[2021-02-02T03:24:03.784] [INFO] default - query event page:select * from event order by createtime desc limit 0, 10,parames:
+[2021-02-02T03:24:04.948] [WARN] default - /store/list
+[2021-02-02T03:24:07.191] [WARN] default - /doc/list
+[2021-02-02T03:24:07.499] [WARN] default - /user/list
+[2021-02-02T03:24:07.506] [WARN] default - /project/list
+[2021-02-02T03:24:08.605] [WARN] default - /event/list
+[2021-02-02T03:24:08.684] [INFO] default - query event page:select * from event order by createtime desc limit 0, 10,parames:
+[2021-02-02T03:24:21.681] [WARN] default - /auth/login
+[2021-02-02T03:24:22.308] [WARN] default - /role/role-menus
+[2021-02-02T03:24:22.311] [WARN] default - /task/list
+[2021-02-02T03:24:22.313] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-02T03:24:22.315] [WARN] default - /user/list
+[2021-02-02T03:24:22.316] [WARN] default - /task/statistics
+[2021-02-02T03:24:22.548] [WARN] default - /task/list
+[2021-02-02T03:24:22.548] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-02-02T03:24:22.831] [WARN] default - /menu/list
+[2021-02-02T03:24:26.504] [WARN] default - /event/list
+[2021-02-02T03:24:26.585] [INFO] default - query event page:select * from event order by createtime desc limit 0, 10,parames:
+[2021-02-02T03:24:27.718] [WARN] default - /task/list
+[2021-02-02T03:24:27.719] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-02T03:24:27.723] [WARN] default - /user/list
+[2021-02-02T03:24:27.724] [WARN] default - /task/statistics
+[2021-02-02T03:24:27.956] [WARN] default - /task/list
+[2021-02-02T03:24:27.956] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-02-02T03:24:28.752] [WARN] default - /task/list
+[2021-02-02T03:24:28.753] [INFO] default - query task page:select * from worktask where isDel = 0  order by endTime desc limit 0, 10,parames:
+[2021-02-02T03:24:29.060] [WARN] default - /user/list
+[2021-02-02T03:24:29.981] [WARN] default - /store/list
+[2021-02-02T03:24:30.806] [WARN] default - /user/list
+[2021-02-02T03:24:32.080] [WARN] default - /user/list
+[2021-02-02T03:24:32.095] [WARN] default - /doc/list
+[2021-02-02T03:24:32.096] [WARN] default - /project/list
+[2021-02-02T03:24:32.953] [WARN] default - /role/list
+[2021-02-02T03:24:33.033] [INFO] default - 
+[2021-02-02T03:24:33.909] [WARN] default - /server-config/list
+[2021-02-02T03:24:35.313] [WARN] default - /host/list
+[2021-02-02T03:24:40.746] [WARN] default - /menu/list
+[2021-02-02T03:25:21.313] [WARN] default - /menu/add
+[2021-02-02T03:25:21.890] [WARN] default - /menu/list
+[2021-02-02T03:25:23.776] [WARN] default - /role/role-menus
+[2021-02-02T03:25:23.779] [WARN] default - /menu/list
+[2021-02-02T03:25:32.234] [WARN] default - /role/list
+[2021-02-02T03:25:32.313] [INFO] default - 
+[2021-02-02T03:25:35.880] [WARN] default - /menu/list
+[2021-02-02T03:25:36.075] [WARN] default - /role/get-menus
+[2021-02-02T03:25:52.748] [WARN] default - /role/set-menus
+[2021-02-02T03:25:56.143] [WARN] default - /menu/list
+[2021-02-02T03:25:56.625] [WARN] default - /role/get-menus
+[2021-02-02T03:25:58.896] [WARN] default - /role/set-menus
+[2021-02-02T03:26:01.457] [WARN] default - /menu/list
+[2021-02-02T03:26:01.709] [WARN] default - /role/get-menus
+[2021-02-02T03:26:03.631] [WARN] default - /role/set-menus
+[2021-02-02T03:26:07.033] [WARN] default - /role/role-menus
+[2021-02-02T03:26:07.036] [WARN] default - /role/list
+[2021-02-02T03:26:07.115] [INFO] default - 
+[2021-02-02T03:26:07.340] [WARN] default - /menu/list
+[2021-02-02T03:26:09.846] [WARN] default - /regular/list
+[2021-02-02T03:26:11.590] [WARN] default - /host/list
+[2021-02-02T03:26:14.795] [WARN] default - /menu/list
+[2021-02-02T03:28:26.634] [WARN] default - /role/role-menus
+[2021-02-02T03:28:26.637] [WARN] default - /menu/list
+[2021-02-02T03:28:56.972] [WARN] default - /menu/add
+[2021-02-02T03:28:57.228] [WARN] default - /menu/list
+[2021-02-02T03:29:02.850] [WARN] default - /role/list
+[2021-02-02T03:29:02.927] [INFO] default - 
+[2021-02-02T03:29:04.755] [WARN] default - /menu/list
+[2021-02-02T03:29:05.251] [WARN] default - /role/get-menus
+[2021-02-02T03:29:20.218] [WARN] default - /role/set-menus
+[2021-02-02T03:29:23.489] [WARN] default - /menu/list
+[2021-02-02T03:29:23.741] [WARN] default - /role/get-menus
+[2021-02-02T03:29:28.048] [WARN] default - /role/set-menus
+[2021-02-02T03:29:30.768] [WARN] default - /menu/list
+[2021-02-02T03:29:31.021] [WARN] default - /role/get-menus
+[2021-02-02T03:29:41.544] [WARN] default - /user/list
+[2021-02-02T03:29:43.830] [WARN] default - /user/list
+[2021-02-02T03:29:43.845] [WARN] default - /doc/list
+[2021-02-02T03:29:43.847] [WARN] default - /project/list
+[2021-02-02T03:29:45.467] [WARN] default - /doc/info
+[2021-02-02T03:29:45.594] [WARN] default - /doc/read

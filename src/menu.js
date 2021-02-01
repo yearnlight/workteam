@@ -44,6 +44,14 @@ export default [
     }
   },
   {
+    title: "角色管理",
+    icon: "el-icon-chat-line-square",
+    path: "/work/role",
+    meta: {
+      white: true
+    }
+  },
+  {
     title: "业务管理",
     icon: "el-icon-collection",
     path: "/work/business"
@@ -87,5 +95,10 @@ export default [
         }
       }
     ]
+  },
+  {
+    title: "菜单管理",
+    icon: "",
+    path: "/work/menu"
   }
 ];

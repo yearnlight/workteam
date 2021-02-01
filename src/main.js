@@ -18,6 +18,7 @@ import Dot from "@/components/Dot/index"
 import Level from "@/components/Level/index"
 import Tag from "@/components/Tag/index"
 import './icons' // icon
+import './resource/icon/iconfont.css' // icon
 Vue.component("v-chart", ECharts);
 Vue.component("no-data", NoData);
 Vue.component("dot", Dot);

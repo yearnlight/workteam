@@ -110,5 +110,72 @@ module.exports = {
         "insert into event(uuid,`level`,`title`,`desc`,username,createtime) values ?";
       res = await query(insertStr, [inputParams]);
     }
+  },
+  setUpdateParams(params, whiteFields) {
+    let updateParams = [];
+    let values = [];
+    for (let key in params) {
+      if (!whiteFields || (whiteFields && whiteFields.includes(key))) {
+        updateParams.push(`${key} = ?`);
+        if (Array.isArray(params[key])) {
+          params[key] = params[key].join(",");
+        }
+        values.push(params[key]);
+      }
+    }
+    values.concat(params.id);
+
+    return { sqlParams: updateParams, sqlValues: values };
+  },
+  getSearchParamStr(params) {
+    let res = "";
+    let resParams = [];
+    if (params && JSON.stringify(params) != "{}") {
+      for (let key in params) {
+        resParams.push(`${key} = '${params[key]}'`)
+      }
+      let jointStr = resParams.join(" and ");
+      res = `where ${jointStr}`
+    }
+    return res;
+  },
+  toNestTree(data) {
+    let pos = {};
+    let tree = [];
+    let i = 0;
+    while (data.length != 0) {
+      if (data[i].pid == null) {
+        tree.push({
+          ...data[i],
+          children: []
+        });
+        pos[data[i].id] = [tree.length - 1];
+        data.splice(i, 1);
+        i--;
+      } else {
+        let posArr = pos[data[i].pid];
+        if (posArr != undefined) {
+
+          var obj = tree[posArr[0]];
+          for (var j = 1; j < posArr.length; j++) {
+            obj = obj.children[posArr[j]];
+          }
+
+          obj.children.push({
+            ...data[i],
+            children: []
+          });
+          pos[data[i].id] = posArr.concat([obj.children.length - 1]);
+          data.splice(i, 1);
+          i--;
+        }
+      }
+      i++;
+      if (i > data.length - 1) {
+        i = 0;
+      }
+    }
+    return tree;
+
   }
 };

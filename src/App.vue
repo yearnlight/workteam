@@ -16,6 +16,15 @@ html,
 body {
   height: 100%;
   margin: 0;
+
+  i[class^="icon-"] {
+    font-family: "workicon" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   .el-scrollbar__wrap {
     overflow-x: hidden;
   }

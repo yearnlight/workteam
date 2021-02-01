@@ -39,12 +39,16 @@ router.post("/login", async ctx => {
                 loginTime,
                 userInfo.id
             ]);
+            // 查询登录账号角色信息
+            let roleInfo = await query("select * from role where `enName` = ?", [userInfo.role])
             msg = `账号【${account}】登录成功`
             util.setEvent(ctx, "success", msg);
+            // 屏蔽密码
+            userInfo.pass = "******";
             ctx.response.body = {
                 status: 200,
                 msg: msg,
-                data: Object.assign(userInfo, { token: token })
+                data: Object.assign(userInfo, { token: token, roleId: roleInfo ? roleInfo[0].id : null })
             };
         }
     } else {

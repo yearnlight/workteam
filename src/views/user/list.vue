@@ -7,7 +7,9 @@
         <span class="high">普通用户</span>只能操作自身。
       </div>
       <template #role="slotProps">
-        <span :class="{'warn':slotProps.rowData.role == 'super'}">{{slotProps.rowData.role == "super"?"超级管理员":"普通用户"}}</span>
+        <tag v-if="slotProps.rowData.role == 'super'" type="warning">超级管理员</tag>
+        <tag v-else-if="slotProps.rowData.role == 'member'" type="success">普通用户</tag>
+        <tag v-else>游客</tag>
       </template>
     </v-table>
     <el-dialog title="修改密码" :visible.sync="isUpdatePass">

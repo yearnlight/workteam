@@ -398,8 +398,14 @@ export default {
       let inputParams = {};
       // 查询操作
       if (params) {
-        inputParams = Object.assign(this.inputParams, params);
-        inputParams.page = 1;
+        // 如果配置分页时，拼接分页参数 + searchForm组件中输入的参数
+        if (this.defaultConfig.pagination) {
+          inputParams = Object.assign(this.inputParams, params);
+          inputParams.page = 1;
+        }
+        else {
+          inputParams = params;
+        }
         if (this.defaultConfig.isPublic) {
           Object.keys(inputParams).forEach((item) => {
             if (!(inputParams[item] === 0 || inputParams[item])) {
@@ -423,11 +429,18 @@ export default {
       }
     },
     reset() {
-      // 清理搜索条件
-      this.inputParams = {
-        page: 1,
-        limit: this.defaultConfig.pageSize,
-      };
+      // 分页时清理
+      if (this.defaultConfig.pagination) {
+        // 清理搜索条件
+        this.inputParams = {
+          page: 1,
+          limit: this.defaultConfig.pageSize,
+        };
+      }
+      else {
+        this.inputParams = undefined;
+      }
+
       this.search(this.inputParams);
     },
     sizeChange(size) {

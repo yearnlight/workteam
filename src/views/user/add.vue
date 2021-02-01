@@ -12,12 +12,7 @@
       </el-form-item>
       <el-form-item label="角色" v-if="isAdd" prop="role">
         <el-select v-model="formData.role" placeholder="请选择角色" clearable>
-          <el-option label="超级管理员" value="super"></el-option>
-          <el-option label="普通用户" value="member"></el-option>
-          <el-option label="共享" value="share">
-              <span style="float: left">共享</span>
-              <span style="float: right; color: #8492a6; font-size: 13px">属于共享角色的账号不限制登录</span>
-          </el-option>
+          <el-option :label="item.name" :value="item.enName" v-for="(item,index) in roles" :key="index"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="部门" prop="department">
@@ -30,12 +25,7 @@
         <el-input v-model="formData.team" placeholder="请输入团队" clearable></el-input>
       </el-form-item>
       <el-form-item label="备注" prop="remark">
-        <el-input
-          v-model="formData.remark"
-          type="textarea"
-          placeholder="请输入备注"
-          :autosize="{minRows: 4, maxRows: 4}"
-        ></el-input>
+        <el-input v-model="formData.remark" type="textarea" placeholder="请输入备注" :autosize="{minRows: 4, maxRows: 4}"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submitForm">提交</el-button>
@@ -52,6 +42,7 @@ export default {
   props: [],
   data() {
     return {
+      roles: [],
       isAdd: true,
       formData: {
         name: undefined,
@@ -105,13 +96,21 @@ export default {
   computed: {},
   watch: {},
   created() {
+    this.fetchRoleList();
     if (this.$route.query.id) {
       this.isAdd = false;
       this.getInfo();
     }
   },
-  mounted() {},
+  mounted() { },
   methods: {
+    fetchRoleList() {
+      this.$axios.post("/role/list").then(res => {
+        if (res.status == 200) {
+          this.roles = res.data.records;
+        }
+      })
+    },
     getInfo() {
       this.$axios
         .post("/user/info", { id: this.$route.query.id })

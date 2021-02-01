@@ -16,10 +16,8 @@
         </el-form-item>
       </div>
       <div class="search-operate" v-if="searchConfig.labels && searchConfig.labels.some(s =>s.field) ">
-        <el-button type="primary" @click="search">
-          <icon iconSymbol="search" /> 查询</el-button>
-        <el-button type="default" @click="reset">
-          <icon iconSymbol="reset" /> 重置</el-button>
+        <el-button type="primary" @click="search" icon="el-icon-search">查询</el-button>
+        <el-button type="default" @click="reset">重置</el-button>
       </div>
     </el-form>
   </div>
