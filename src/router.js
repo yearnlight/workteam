@@ -18,6 +18,10 @@ const routes = [
     component: () => import("@/components/md/index.vue")
   },
   {
+    path: "/404",
+    component: () => import("@/components/Null/index.vue")
+  },
+  {
     path: "/work",
     redirect: "/work/panel",
     component: Menu,
@@ -180,17 +184,64 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.meta && to.meta.white) {
-    next();
-  } else {
-    if (sessionStorage.getItem("token")) {
+  let token = sessionStorage.getItem("token");
+  let whitePaths = ['/login', '/404', '/md'];
+  if (token && !whitePaths.includes(to.path)) {
+    // 有token 但不是去 白名单页面 通过
+    let menus = fetchMenus();
+    if (isExistRoutePath(to.path, menus)) {
+      // 有token，并且有菜单权限
       next();
-    } else {
-      next({
-        path: "/login"
-      });
     }
+    else {
+      next('/404')
+    }
+  } else if (token && whitePaths.includes(to.path)) {
+    // 有token 但是去 login页面 不通过 重定向到首页
+    next()
+  } else if (!token && to.path !== '/login') {
+    // 没有token 但不是去 login页面 不通过（未登录不给进入）
+    next('/login')
+  } else {
+    // 剩下最后一种 没有token 但是去 login页面 通过
+    next()
   }
 });
+
+function fetchMenus() {
+  let menusStr = window.sessionStorage.getItem("menus")
+  let menus = [];
+  try {
+    menus = JSON.parse(menusStr)
+  }
+  catch {
+    menus = [];
+  }
+  return menus;
+}
+
+function isExistRoutePath(path, menus) {
+  for (let item of menus) {
+    if (path.includes(item.path)) {
+      return true;
+    }
+    else {
+      if (item.children && item.children.length) {
+        let finded = isExistRoutePath(path, item.children);
+        if (finded) {
+          return true;
+        }
+      }
+    }
+  }
+}
+
+
+//获取原型对象上的push函数
+const originalPush = VueRouter.prototype.push
+//修改原型对象中的push方法
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 
 export default router;

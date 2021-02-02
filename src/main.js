@@ -82,6 +82,66 @@ Vue.use(VueClipboards);
 
 Vue.use(VueRouter);
 Vue.use(mavonEditor);
+
+//组内成员和游客操作限制
+let blackAuths = {
+  "visitor": ["store_delete", "project_delete", "doc_update", "doc_delete", "user_delete", "user_update", "user_updatePass", "task_update", "task_delete"],
+  "member": ["store_delete", "project_delete", "doc_update", "doc_delete", "user_delete", "user_update", "user_updatePass", "task_update", "task_delete"]
+}
+
+// vue自定义指令
+Vue.directive('auth', {
+  // bind [authName,creator]
+  inserted: function (el, bind) {
+    if (bind.value) {
+      let authName = bind.value[0];
+      let creator = bind.value[1];
+      let userName = sessionStorage.getItem("userName")
+      let roleBlackAuths = blackAuths[sessionStorage.getItem("roleEnName")];
+      // 如果是自己创的数据
+      if (userName == creator) {
+        el.style.display = "inline-block";
+      }
+      else {
+        // 不是自己创的数据切没操作权限
+        if (roleBlackAuths.includes(authName)) {
+          el.style.display = "none";
+        }
+        else {
+          el.style.display = "inline-block";
+        }
+      }
+    }
+    else {
+      el.style.display = "inline-block";
+    }
+  },
+  update(el, bind) {
+    if (bind.value) {
+      let authName = bind.value[0];
+      let creator = bind.value[1];
+      let userName = sessionStorage.getItem("userName")
+      let roleBlackAuths = blackAuths[sessionStorage.getItem("roleEnName")];
+      // 如果是自己创的数据
+      if (userName == creator) {
+        el.style.display = "inline-block";
+      }
+      else {
+        if (roleBlackAuths.includes(authName)) {
+          el.style.display = "none";
+        }
+        else {
+          el.style.display = "inline-block";
+        }
+      }
+    }
+    else {
+      el.style.display = "inline-block";
+    }
+  }
+})
+
+
 window.app = new Vue({
   router,
   render: h => h(App)

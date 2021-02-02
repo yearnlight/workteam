@@ -48,20 +48,41 @@ export default {
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
+          this.loading = true;
           this.$axios.post("/auth/login", this.form).then(res => {
             if (res.status == 200) {
               window.sessionStorage.setItem("token", res.data.token);
+              window.sessionStorage.setItem("roleEnName", res.data.role);
+              window.sessionStorage.setItem("userName", res.data.name);
               window.sessionStorage.setItem("userInfo", JSON.stringify(res.data));
-              this.$router.push("/work");
+              this.fetchMenu(res.data.roleId);
             } else {
+              this.loading = false;
               this.$message.error(res.msg);
             }
-          });
+          }).catch(err => {
+            this.loading = false;
+          })
         } else {
           return false;
         }
       });
-    }
+    },
+    fetchMenu(roleId) {
+      this.$axios.post("/role/role-menus", { roleId }).then(res => {
+        this.loading = false;
+        if (res.status == 200) {
+          let leftmenus = res.data.records;
+          window.sessionStorage.setItem("menus", JSON.stringify(leftmenus))
+          if (leftmenus && leftmenus.length) {
+            let firstMenus = leftmenus.filter(m => m.path != 'Layout')
+            this.$router.push(firstMenus[0].path)
+          }
+        }
+      }).catch(err => {
+        this.loading = false;
+      })
+    },
   }
 };
 </script>

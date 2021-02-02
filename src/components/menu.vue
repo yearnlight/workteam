@@ -99,16 +99,9 @@ export default {
     }
   },
   methods: {
-    fetchMenu(roleId) {
-      this.$axios.post("/role/role-menus", { roleId }).then(res => {
-        if (res.status == 200) {
-          this.leftmenus = res.data.records;
-          if (this.leftmenus && this.leftmenus.length) {
-            let firstMenus = this.leftmenus.filter(m => m.path != 'Layout')
-            this.$router.push(firstMenus[0].path)
-          }
-        }
-      })
+    fetchMenu() {
+      let menusStr = sessionStorage.getItem("menus");
+      this.leftmenus = JSON.parse(menusStr);
     },
     setRoute() { },
     handleCommand(command) {

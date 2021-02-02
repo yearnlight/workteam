@@ -2,7 +2,7 @@
   <div class="map">
     <div class="map-project">
       <el-button type="primary" plain icon="el-icon-plus" @click="add">创建项</el-button>
-      <el-button type="danger" plain icon="el-icon-delete" @click="delProject" :disabled="!selectedModel">删除项</el-button>
+      <el-button type="danger" v-auth="['project_delete',selectedModel && selectedModel.creator]" plain icon="el-icon-delete" @click="delProject" :disabled="!selectedModel">删除项</el-button>
       <div id="mountNode"></div>
     </div>
     <div class="map-info">
@@ -38,8 +38,8 @@
               </div>
             </div>
             <div class="docs-item-operate">
-              <span class="el-icon-edit blue" @click="update(item.id)"></span>
-              <span class="el-icon-delete red" @click="del(item.id)"></span>
+              <span v-auth="['doc_update',item.creator]" class="el-icon-edit blue" @click="update(item.id)"></span>
+              <span v-auth="['doc_delete',item.creator]" class="el-icon-delete red" @click="del(item.id)"></span>
             </div>
           </div>
         </el-scrollbar>

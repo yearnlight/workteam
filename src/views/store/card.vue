@@ -17,7 +17,7 @@
         <div class="bottom clearfix">
           <time class="time">{{item.createtime}} {{item.creator}}</time>
           <span>
-            <span class="el-icon-delete red" @click="del(item)"></span>
+            <span v-auth="['store_delete',item.creator]" class="el-icon-delete red" @click="del(item)"></span>
           </span>
         </div>
       </div>

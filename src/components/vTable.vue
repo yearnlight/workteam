@@ -45,11 +45,11 @@
               <span v-if="oItem.isDisplay">
                 <span v-if="(typeof oItem.isDisplay === 'function')?oItem.isDisplay(scope.row):getPermission(name,oItem.isDisplay)">
                   <!-- 没有状态控制，一直启用 -->
-                  <el-button v-if="!oItem.isEnabled" :key="oIndex" type="text" size="small" :title="oItem.title" @click="operate(scope.row,oItem.function,scope.$index)">
+                  <el-button v-auth="oItem.auth?[oItem.auth[0],scope.row[oItem.auth[1]]]:undefined" v-if="!oItem.isEnabled" :key="oIndex" type="text" size="small" :title="oItem.title" @click="operate(scope.row,oItem.function,scope.$index)">
                     <i style="margin-right:3px;" v-if="oItem.icon" :class="oItem.icon" />{{oItem.label}}
                   </el-button>
                   <!-- 状态控制 -->
-                  <el-button type="text" size="small" v-else :disabled="!oItem.isEnabled(scope.row)" :title="oItem.title" @click="operate(scope.row,oItem.function,scope.$index)">
+                  <el-button v-auth="oItem.auth?[oItem.auth[0],scope.row[oItem.auth[1]]]:undefined" type="text" size="small" v-else :disabled="!oItem.isEnabled(scope.row)" :title="oItem.title" @click="operate(scope.row,oItem.function,scope.$index)">
                     <i style="margin-right:3px;" v-if="oItem.icon" :class="oItem.icon" />{{oItem.label}}
                   </el-button>
                   <el-divider direction="vertical" v-if="item.operateFun.length != oIndex + 1"></el-divider>
@@ -57,14 +57,16 @@
               </span>
               <span v-else>
                 <!-- 没有状态控制，一直启用 -->
-                <el-button type="text" size="small" v-if="!oItem.isEnabled" :key="oIndex" :title="oItem.title" @click="operate(scope.row,oItem.function,scope.$index)">
+                <el-button type="text" v-auth="oItem.auth?[oItem.auth[0],scope.row[oItem.auth[1]]]:undefined" size="small" v-if="!oItem.isEnabled" :key="oIndex" :title="oItem.title" @click="operate(scope.row,oItem.function,scope.$index)">
                   <i style="margin-right:3px;" v-if="oItem.icon" :class="oItem.icon" />{{oItem.label}}
                 </el-button>
                 <!-- 状态控制 -->
-                <el-button type="text" size="small" v-else :disabled="!oItem.isEnabled(scope.row)" :title="oItem.title" @click="operate(scope.row,oItem.function,scope.$index)">
+                <el-button type="text" v-auth="oItem.auth?[oItem.auth[0],scope.row[oItem.auth[1]]]:undefined" size="small" v-else :disabled="!oItem.isEnabled(scope.row)" :title="oItem.title" @click="operate(scope.row,oItem.function,scope.$index)">
                   <i style="margin-right:3px;" v-if="oItem.icon" :class="oItem.icon" />{{oItem.label}}
                 </el-button>
-                <el-divider direction="vertical" v-if="item.operateFun.length != oIndex + 1"></el-divider>
+                <span v-auth="oItem.auth?[oItem.auth[0],scope.row[oItem.auth[1]]]:undefined">
+                  <el-divider direction="vertical" v-if="item.operateFun.length != oIndex + 1"></el-divider>
+                </span>
               </span>
             </span>
           </span>

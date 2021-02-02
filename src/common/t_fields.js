@@ -54,43 +54,13 @@ export default {
             label: "编辑",
             function: "edit",
             icon: "el-icon-edit",
-            isDisplay(item) {
-              if (item) {
-                let token = sessionStorage.getItem("token");
-                if (!token) {
-                  return false
-                }
-                let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
-                return (
-                  curUser.role == "super" ||
-                  (item.owner && item.owner.includes(curUser.name))
-                );
-              }
-              else {
-                return true;
-              }
-            }
+            auth:["task_update","owner"],
           },
           {
             label: "删除",
             function: "del",
             icon: "el-icon-delete",
-            isDisplay(item) {
-              if (item) {
-                let token = sessionStorage.getItem("token");
-                if (!token) {
-                  return false
-                }
-                let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
-                return (
-                  curUser.role == "super" ||
-                  (item.owner && item.owner.includes(curUser.name))
-                );
-              }
-              else {
-                return true;
-              }
-            }
+            auth:["task_delete","owner"],
           }
         ]
       }
@@ -173,44 +143,19 @@ export default {
             label: "删除",
             function: "del",
             icon: "el-icon-delete",
-            isDisplay(item) {
-              if (item) {
-                let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
-                return curUser.role == "super" || curUser.key == item.key;
-              }
-              else {
-                return true;
-              }
-            }
+            auth:["user_delete","name"]
           },
           {
             label: "编辑",
             function: "edit",
             icon: "el-icon-edit",
-            isDisplay(item) {
-              if (item) {
-                let curUser = JSON.parse(sessionStorage.getItem("userInfo"));
-                return curUser.role == "super" || curUser.key == item.key;
-              }
-              else {
-                return true;
-              }
-            }
+            auth:["user_update","name"]
           },
           {
             label: "修改密码",
             function: "updatePass",
             icon: "el-icon-key",
-            isDisplay(item) {
-              if (item) {
-                return (
-                  JSON.parse(sessionStorage.getItem("userInfo")).key == item.key
-                );
-              }
-              else {
-                return true;
-              }
-            }
+            auth:["user_updatePass","name"]
           }
         ]
       }
