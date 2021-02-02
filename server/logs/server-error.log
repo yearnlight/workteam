@@ -1286,3 +1286,5 @@ D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has al
       at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
       at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
 
+[2021-02-02T04:15:13.016] [ERROR] error - 登录密码错误===>666666
+[2021-02-02T15:24:05.591] [ERROR] error - 登录密码错误===>111111
