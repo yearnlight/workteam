@@ -1,5 +1,6 @@
 import VueRouter from "vue-router";
 import Menu from "./components/menu.vue";
+import Axios from "axios";
 
 const routes = [
   {
@@ -23,7 +24,7 @@ const routes = [
   },
   {
     path: "/work",
-    redirect: "/work/panel",
+    redirect: "/work/store",
     component: Menu,
     children: [
       // 任务面板
@@ -174,7 +175,12 @@ const routes = [
         path: "/work/role_detail",// 角色管理详情页面
         component: () => import("@/views/role/detail.vue"),
         name: "role_detail",
-      }
+      },
+      {
+        path: "/work/personalCenter",
+        component: () => import("@/views/user/personalCenter.vue"),
+        name: "personalCenter"
+      },
     ]
   }
 ];
@@ -183,12 +189,16 @@ const router = new VueRouter({
   routes
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   let token = sessionStorage.getItem("token");
   let whitePaths = ['/login', '/404', '/md'];
   if (token && !whitePaths.includes(to.path)) {
     // 有token 但不是去 白名单页面 通过
     let menus = fetchMenus();
+    if (!(menus && menus.length)) {
+      await queryMenus()
+      menus = fetchMenus();
+    }
     if (isExistRoutePath(to.path, menus)) {
       // 有token，并且有菜单权限
       next();
@@ -207,6 +217,19 @@ router.beforeEach((to, from, next) => {
     next()
   }
 });
+
+
+// 获取左侧菜单并且放入sessionStorage
+async function queryMenus() {
+  let leftmenus = []
+  let roleId = sessionStorage.getItem("roleId")
+  return Axios.post("/role/role-menus", { roleId }).then(res => {
+    if (res.status == 200) {
+      leftmenus = res.data.records;
+      window.sessionStorage.setItem("menus", JSON.stringify(leftmenus))
+    }
+  })
+}
 
 function fetchMenus() {
   let menusStr = window.sessionStorage.getItem("menus")

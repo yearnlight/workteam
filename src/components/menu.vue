@@ -30,12 +30,12 @@
       <div v-if="token" :class="[{'maxWidth':!isCollapse,'minWidth':isCollapse},'docMenu-content']">
         <el-menu :collapse="isCollapse" :default-active="$route.path" :router="true" background-color="#1e222d" text-color="#bfcbd9" active-text-color="#00a4ff">
 
-          <el-menu-item :index="item.path" v-for="(item,index) in leftmenus.filter(m=>!(m.children && m.children.length))" :key="index">
+          <el-menu-item :index="item.path" v-for="(item,index) in leftmenus.filter(m=>!(m.children && m.children.length) && m.isHide == 0)" :key="index">
             <i :class="item.icon"></i>
             <span slot="title">{{item.title}}</span>
           </el-menu-item>
 
-          <el-submenu v-for="(item,index) in leftmenus.filter(m=>m.children && m.children.length)" :index="item.path" :key="index">
+          <el-submenu v-for="(item,index) in leftmenus.filter(m=>m.children && m.children.length  && m.isHide == 0)" :index="item.path" :key="index">
             <template slot="title">
               <i :class="item.icon"></i>
               <span>{{item.title}}</span>
@@ -55,7 +55,6 @@
 </template>
 
 <script>
-// import menus from "@/menu.js";
 export default {
   data() {
     return {
@@ -110,6 +109,9 @@ export default {
           window.sessionStorage.clear();
           this.$router.push("/login");
         });
+      }
+      else if(command == "userInfo"){
+        this.$router.push("/work/personalCenter")
       }
     },
   },

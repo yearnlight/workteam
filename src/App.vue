@@ -171,6 +171,7 @@ body {
         border-radius: 2px;
       }
     }
+    .el-tag,
     .el-button,
     .el-input__inner,
     .el-textarea__inner {
