@@ -44,7 +44,6 @@ export default {
       },
       treeData: [
         { name: "云管(静态)", key: "base", children: [] },
-        { name: "云管(动态)", key: "fitmgr", children: [] },
       ],
       activeServer: {}
     };
@@ -72,11 +71,38 @@ export default {
         if (res.status == 200) {
           let dyncMenus = res.data.records;
           if (dyncMenus && dyncMenus.length) {
-            let dyncTempMenus = dyncMenus.map(m => { return { key: m.code, ...m } })
-            that.treeData[1].children = dyncTempMenus;
+            let menus = this.groupBy(dyncMenus)
+            menus.forEach(item => {
+              that.treeData.push({ name: item.key, key: item.key, children: item.data })
+            })
+
           }
         }
       })
+    },
+    groupBy(arr) {
+      let map = {},
+        dest = [];
+      for (let i = 0; i < arr.length; i++) {
+        var ai = arr[i];
+        ai = { key: ai.code, ...ai }
+        if (!map[ai.project]) {
+          dest.push({
+            key: ai.project,
+            data: [ai]
+          });
+          map[ai.project] = ai;
+        } else {
+          for (let j = 0; j < dest.length; j++) {
+            var dj = dest[j];
+            if (dj.key == ai.project) {
+              dj.data.push(ai);
+              break;
+            }
+          }
+        }
+      }
+      return dest;
     },
     create() {
       // 创建服务配置
@@ -121,7 +147,7 @@ export default {
         justify-content: space-between;
         flex: 1;
         font-size: 13px;
-        .blue{
+        .blue {
           margin-left: 5px;
         }
         &-icon {
