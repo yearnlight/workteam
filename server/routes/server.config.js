@@ -75,7 +75,7 @@ router.post("/update", async ctx => {
             values.push(params[key]);
         }
     }
-    
+
     let updateStr = `update server_config SET ${updateParams.join(",")} where uuid = ?`;
     let isSuccess = await query(updateStr, values.concat(params.uuid));
     if (isSuccess) {
@@ -245,7 +245,7 @@ function writeFile(filePath, content) {
 // 生成代码
 router.post("/generate", async ctx => {
     let msg = ""
-    let { uuid } = ctx.request.body;
+    let { uuid, project } = ctx.request.body;
     let selectStr = "select * from server_config where isDel = 0 and `uuid` = ?";
     let serverConfigs = await query(selectStr, [uuid]);
     let config = serverConfigs[0];
@@ -278,7 +278,8 @@ router.post("/generate", async ctx => {
         .replace(/mxComponentColumns/g, JSON.stringify(tableConfig.tableColumns))
         .replace(/mxComponentTableConfig/g, JSON.stringify(tableConfig.tableConfig))
         .replace(/mxComponentSearchConfig/g, JSON.stringify(searchConfig))
-        .replace(/mxComponentTableTestData/g, JSON.stringify(tableTestData));
+        .replace(/mxComponentTableTestData/g, JSON.stringify(tableTestData))
+        .replace(/mxComponentProject/g, project);
 
     // 详情内容替换
     let detailContent = detailTemp.replace(/mxComponentName/g, config.code)
@@ -288,7 +289,8 @@ router.post("/generate", async ctx => {
 
     // 详情内容替换
     let routerContent = routerJsTemp.replace(/mxComponentName/g, config.code)
-        .replace(/mxComponentLabel/g, config.name);
+        .replace(/mxComponentLabel/g, config.name)
+        .replace(/mxComponentProject/g, project)
 
     let targetDirPath = path.join(__dirname, `../template/target/${config.code}`);
     let targetFilePath = path.join(__dirname, `../template/target/${config.code}`, 'index.vue');

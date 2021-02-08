@@ -75,7 +75,6 @@ export default {
             menus.forEach(item => {
               that.treeData.push({ name: item.key, key: item.key, children: item.data })
             })
-
           }
         }
       })

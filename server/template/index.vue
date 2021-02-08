@@ -40,7 +40,7 @@ export default {
         edit(item, index) { },
         info(item, index) {
             // 跳入详情
-            this.$router.push({ path: "/work/mxComponentName_detail" })
+            this.$router.push({ path: "/mxComponentProject/mxComponentName_detail" })
         },
     }
 }
