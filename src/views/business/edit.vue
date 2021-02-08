@@ -200,7 +200,7 @@
                     <el-input placeholder="输入条件名称" v-model="item.name" clearable></el-input>
                   </div>
                   <div class="columns-item-node miniWidth">
-                    <el-select placeholder="选择字段" v-model="item.field" clearable filterable>
+                    <el-select @change="changeSearchField(item)" placeholder="选择字段" v-model="item.field" clearable filterable>
                       <el-option :key="findex" :label="fitem.prop" :value="fitem.prop" v-for="(fitem,findex) in setData.tableColumns"></el-option>
                     </el-select>
                   </div>
@@ -231,7 +231,7 @@
                     </el-select>
                   </div>
                   <div class="columns-item-node miniWidth">
-                    <el-select placeholder="展示类型" v-model="item.type" @change="changeSearchType(item)">
+                    <el-select placeholder="展示类型" v-model="item.type" @change="()=>{changeSearchType(item)}">
                       <el-option label="输入框" value="input"></el-option>
                       <el-option label="下拉框" value="select"></el-option>
                     </el-select>
@@ -266,7 +266,7 @@
         </div>
       </div>
 
-      <detail ref="detail" :detailConfig="detailConfig" v-show="setData.type == 'info'" />
+      <detail ref="detail" :detailConfig="detailConfig" :columns="setData.tableColumns" v-show="setData.type == 'info'" />
 
       <div class="base-operate">
         <el-button type="primary" @click="submitForm">提交</el-button>
@@ -642,6 +642,20 @@ export default {
   },
   mounted() { },
   methods: {
+    changeSearchField(item) {
+      item.type = "input";
+    },
+    changeSearchType(item) {
+      let that = this;
+      let columns = that.setData.tableColumns.filter(f => f.prop == item.field && f.isEnum)
+      if (columns && columns.length) {
+        let column = columns[0]
+        that.$set(item, "data", this.objToArr(column.enums, "value"));
+      }
+      else {
+        that.$set(item, "data", undefined);
+      }
+    },
     fetchDetail() {
       this.$axios.post("/server-config/detail", { uuid: this.$route.query.id }).then(res => {
         if (res.status == 200) {
@@ -750,11 +764,18 @@ export default {
       }
       return target;
     },
-    objToArr(obj) {
+    objToArr(obj, fieldName) {
       let target = [];
       for (let key in obj) {
         let item = obj[key];
-        target.push({ label: item.label, type: item.type, component: item.component, key: key })
+        let temp = { label: item.label, type: item.type, component: item.component }
+        if (fieldName) {
+          temp[fieldName] = key;
+        }
+        else {
+          temp["key"] = key;
+        }
+        target.push(temp)
       }
       return target;
     },
@@ -766,17 +787,14 @@ export default {
         this.enumConfigFormData.arrEnums = this.objToArr(this.currentRow.enums);
       }
     },
-    changeSearchType(item) {
-      item.data = undefined;
-    },
     setSearchEnumColumn(row, index) {
       this.isSearchEnumColumn = true;
       this.currentSearchRow = row;
       if (this.currentSearchRow.data) {
         // 回显枚举
-        this.enumConfigSearchData.arrEnums = this.$util.deepCopy(this.currentSearchRow.data);
+        let data = this.$util.deepCopy(this.currentSearchRow.data);
+        this.enumConfigSearchData.arrEnums = data;
       }
-
     },
     saveOperateConfig() {
       //保存表格操作列配置
