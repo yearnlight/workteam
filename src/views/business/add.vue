@@ -151,7 +151,7 @@
                 </div>
 
                 <div class="columns-item-node miniWidth">
-                  <el-switch v-model="item.isEnum"></el-switch>
+                  <el-switch v-model="item.isEnum" @change="changeTableEnumType(item)"></el-switch>
                 </div>
                 <div :class="[{'placeHidden':!item.isEnum,'placeVisible':item.isEnum},'columns-item-node miniWidth']" v-if="isConfigEnum">
                   <el-button size="mini" icon="el-icon-setting" @click="setEnumColumn(item,index)">{{item.enums ?"查看枚举列":"设置枚举列"}}</el-button>
@@ -649,6 +649,11 @@ export default {
   created() { },
   mounted() { },
   methods: {
+    changeTableEnumType(item) {
+      if (!item.isEnum) {
+        item.enums = undefined;
+      }
+    },
     changeSearchField(item) {
       item.type = "input";
     },
