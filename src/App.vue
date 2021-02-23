@@ -17,12 +17,9 @@ body {
   height: 100%;
   margin: 0;
 
-  i[class^="icon-"] {
-    font-family: "workicon" !important;
+  .workteam {
     font-size: 16px;
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    margin-right: 5px;
   }
 
   .el-scrollbar__wrap {

@@ -1,0 +1,160 @@
+#index {
+  * {
+    color: #D3D6DD;
+  }
+
+  background-color: #000000;
+  width: 100%;
+  height: 100%;
+
+  .bg {
+    // padding: 1rem;
+    width:100% !important;
+    height:100% !important;
+  }
+
+  .host-body {
+    padding: 1rem;
+    height: calc(100% - 2rem);
+    .jc-center{
+      height: 3.85rem;
+    }
+    .title {
+      position: relative;
+      width: 500px;
+      text-align: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      .title-text {
+        font-size: 2rem;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translate(-50%);
+      }
+
+      .title-bototm {
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        transform: translate(-50%);
+      }
+    }
+
+    // 平行四边形
+    .react-left {
+      cursor: pointer;
+      font-size: 1.3rem;
+      width: 300px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      transform: skewX(-45deg);
+
+      .react-after {
+        position: absolute;
+        right: -25px;
+        top: 0px;
+        height: 50px;
+        width: 50px;
+        background-color: #0f1325;
+        transform: skewX(45deg);
+      }
+
+      .text {
+        display: inline-block;
+        transform: skewX(45deg);
+      }
+    }
+
+    .react-right {
+      cursor: pointer;
+      font-size: 1.3rem;
+      width: 300px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      transform: skewX(45deg);
+
+      .react-before {
+        position: absolute;
+        left: -25px;
+        top: 0px;
+        height: 50px;
+        width: 50px;
+        background-color: #0f1325;
+        transform: skewX(-45deg);
+
+      }
+
+      .text {
+        display: inline-block;
+        transform: skewX(-45deg);
+      }
+    }
+
+
+    .body-box {
+      height: calc(100% - 4.85rem);
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: row;
+
+      .left{
+        // margin-right: 0.5rem;
+        flex:2;
+        display: flex;
+        flex-direction: column;
+        & > div:not(:last-child){
+          height: 0;
+        }
+        &-top{
+          flex:1;
+        }
+        &-middle{
+          flex:1;
+        }
+        &-bottom{
+          flex:1;
+        }
+      }
+
+      .center{
+        flex:3;
+        display: flex;
+        flex-direction: column;
+        & > div:not(:last-child){
+          height: 0;
+        }
+        &-top{
+          flex:1;
+        }
+        &-middle{
+          flex:1;
+        }
+        &-bottom{
+          flex:1;
+        }
+      }
+
+      .right{
+        flex:2;
+        display: flex;
+        flex-direction: column;
+        & > div:not(:last-child){
+          height: 0;
+        }
+        &-top{
+          flex:1;
+        }
+        &-middle{
+          flex:1;
+        }
+        &-bottom{
+          flex:1;
+        }
+      }
+    }
+  }
+}

@@ -124,6 +124,14 @@ const routes = [
         meta: {
           white: true
         }
+      },      
+      {
+        path: "/work/bigscreen",//大屏管理
+        component: () => import("@/views/bigscreen/index.vue"),
+        name: "bigscreen",
+        meta: {
+          white: true
+        }
       },
       {
         path: "/work/cloudIcon",// 云计算图标库

@@ -31,17 +31,17 @@
         <el-menu :collapse="isCollapse" :default-active="$route.path" :router="true" background-color="#1e222d" text-color="#bfcbd9" active-text-color="#00a4ff">
 
           <el-menu-item :index="item.path" v-for="(item,index) in leftmenus.filter(m=>!(m.children && m.children.length) && m.isHide == 0)" :key="index">
-            <i :class="item.icon"></i>
+            <i :class="['workteam',item.icon]"></i>
             <span slot="title">{{item.title}}</span>
           </el-menu-item>
 
           <el-submenu v-for="(item,index) in leftmenus.filter(m=>m.children && m.children.length  && m.isHide == 0)" :index="item.path" :key="index">
             <template slot="title">
-              <i :class="item.icon"></i>
+              <i :class="['workteam',item.icon]"></i>
               <span>{{item.title}}</span>
             </template>
             <el-menu-item :index="citem.path" v-for="(citem,cindex) in item.children" :key="cindex">
-              <span slot="title"><i :class="citem.icon"></i>{{citem.title}}</span>
+              <span slot="title"><i :class="['workteam',citem.icon]"></i>{{citem.title}}</span>
             </el-menu-item>
           </el-submenu>
         </el-menu>

@@ -19,6 +19,7 @@ import Level from "@/components/Level/index"
 import Tag from "@/components/Tag/index"
 import './icons' // icon
 import './resource/icon/iconfont.css' // icon
+import dataV from '@jiaminghi/data-view'
 Vue.component("v-chart", ECharts);
 Vue.component("no-data", NoData);
 Vue.component("dot", Dot);
@@ -77,6 +78,8 @@ Vue.use(BaiduMap, {
 Vue.use(ElementUI, {
   size: "small"
 });
+
+Vue.use(dataV)
 
 Vue.use(VueClipboards);
 
