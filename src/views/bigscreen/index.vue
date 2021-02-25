@@ -138,19 +138,19 @@ export default {
         },
         {
           title: "图表", children: [
-            { title: "胶囊柱状图", icon: "icon-bar", name: "capsulebar", type: "chart" },
             { title: "Echart柱状图", icon: "icon-bar", name: "echartbar", type: "chart" },
-            { title: "环状图", icon: "icon-loop", name: "loop", type: "chart" },
             { title: "Echart环状图", icon: "icon-loop", name: "echartloop", type: "chart" },
             { title: "Echart折线图", icon: "icon-line", name: "echartline", type: "chart" },
+            { title: "DataV胶囊柱状图", icon: "icon-bar", name: "capsulebar", type: "chart" },
+            { title: "DataV环状图", icon: "icon-loop", name: "loop", type: "chart" },
+            { title: "DataV水位图", icon: "icon-hydrograph", name: "hydrograph", type: "chart" },
+            { title: "DataV进度池", icon: "icon-progresspool", name: "progresspool", type: "chart" },
+            { title: "DataV排名图", icon: "icon-ranking", name: "ranking", type: "chart" },
+            { title: "DataV轮播表格", icon: "icon-carouseltable", name: "carouseltable", type: "chart" },
+            { title: "DataV数字翻牌", icon: "icon-flop", name: "flop", type: "chart" },
+            { title: "DataV锥形图", icon: "icon-cone", name: "cone", type: "chart" },
+            { title: "DataV仪表盘", icon: "icon-dashbord", name: "dashbord", type: "chart" },
             { title: "饼状图", icon: "icon-pie", name: "pie", type: "chart" },
-            { title: "水位图", icon: "icon-hydrograph", name: "hydrograph", type: "chart" },
-            { title: "进度池", icon: "icon-progresspool", name: "progresspool", type: "chart" },
-            { title: "排名图", icon: "icon-ranking", name: "ranking", type: "chart" },
-            { title: "轮播表格", icon: "icon-carouseltable", name: "carouseltable", type: "chart" },
-            { title: "数字翻牌", icon: "icon-flop", name: "flop", type: "chart" },
-            { title: "锥形图", icon: "icon-cone", name: "cone", type: "chart" },
-            { title: "仪表盘", icon: "icon-dashbord", name: "dashbord", type: "chart" },
           ]
         }
       ]

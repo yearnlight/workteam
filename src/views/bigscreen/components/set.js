@@ -163,6 +163,7 @@ export default {
                 align: "left",
                 xData: undefined,
                 yData: undefined,
+                isInterface: 0,
                 interface: undefined,
                 interfaceType: "GET",
                 interfaceBody: undefined

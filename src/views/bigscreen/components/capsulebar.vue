@@ -17,8 +17,8 @@
 
         <el-form-item label="是否对接接口" prop="isInterface">
           <el-radio-group v-model="form.isInterface">
-            <el-radio label="0">否</el-radio>
-            <el-radio label="1">是</el-radio>
+            <el-radio :label="0">否</el-radio>
+            <el-radio :label="1">是</el-radio>
           </el-radio-group>
         </el-form-item>
 
