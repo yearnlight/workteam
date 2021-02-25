@@ -1,56 +1,32 @@
 <template>
-  <div
-    class="panel"
-    v-loading="loading"
-  >
+  <div class="panel" v-loading="loading">
     <div class="panel-backlog">
       <div class="header">待办项</div>
       <el-scrollbar>
         <div class="panel-backlog-items">
-          <div
-            class="item"
-            v-for="(item, index) in backlogList"
-            :key="index"
-          >
+          <div class="item" v-for="(item, index) in backlogList" :key="index">
             <div class="content">
-              <el-tooltip
-                :content="item.name"
-                placement="top"
-                effect="light"
-              >
+              <el-tooltip :content="item.name" placement="top" effect="light">
 
-                <div
-                  :class="['name']"
-                  :style="`border-left: 3px solid ${
+                <div :class="['name']" :style="`border-left: 3px solid ${
             $util.displayEnum($enum.prioritys, item.priority).color
-          };`"
-                  @click="info(item)"
-                >
+          };`" @click="info(item)">
                   {{ item.name }}
                 </div>
               </el-tooltip>
               <div class="tags">
-                <span
-                  class="status"
-                  :style="`background-color: ${
+                <span class="status" :style="`background-color: ${
                   $util.displayEnum($enum.statusList, item.status).color
-                };`"
-                >{{
+                };`">{{
                   $util.displayEnum($enum.statusList, item.status).label
                   }}</span>
-                <span
-                  class="action"
-                  v-if="item.tag"
-                >
+                <span class="action" v-if="item.tag">
                   <span class="label">{{ item.tag }}</span>
                 </span>
               </div>
             </div>
             <div class="floor">
-              <el-button
-                @click="allocate(item)"
-                type="text"
-              >分配</el-button>
+              <el-button @click="allocate(item)" type="text">分配</el-button>
               <div class="duration">预期：{{ item.estimatedTime }}</div>
             </div>
           </div>
@@ -68,60 +44,31 @@
       </div>
       <el-scrollbar>
         <div class="panel-member-items">
-          <div
-            v-if="item && item.tasks && item.tasks.length"
-            class="item"
-            v-for="(item, index) in memberList"
-            :key="index"
-          >
+          <div v-if="item && item.tasks && item.tasks.length" class="item" v-for="(item, index) in memberList" :key="index">
             <span>{{ item.owner }}:</span>
-            <div
-              class="item-progress"
-              v-for="(pitem, pindex) in item.tasks"
-              :key="pindex"
-            >
+            <div class="item-progress" v-for="(pitem, pindex) in item.tasks" :key="pindex">
               <el-col :span="12">
-                <el-progress
-                  :style="`width:${
+                <el-progress :style="`width:${
                   parseInt(pitem.estimatedTime) * 15
-                }px;min-width:80px;max-width:200px;`"
-                  :text-inside="true"
-                  :stroke-width="18"
-                  :percentage="pitem.finished"
-                ></el-progress>
+                }px;min-width:80px;max-width:200px;`" :text-inside="true" :stroke-width="18" :percentage="pitem.finished"></el-progress>
               </el-col>
               <el-col :span="12">
                 <div class="item-operate">
                   <div class="item-sum">
-                    <el-tooltip
-                      :content="pitem.name"
-                      placement="top"
-                      effect="light"
-                    >
-                      <el-button
-                        type="text"
-                        @click="info(pitem)"
-                      >{{
+                    <el-tooltip :content="pitem.name" placement="top" effect="light">
+                      <el-button type="text" @click="info(pitem)">{{
                       pitem.name | strCutOut(6)
                       }}</el-button>
                     </el-tooltip>
                     (预期:{{ pitem.estimatedTime }})
-                    <el-badge
-                      :type="pitem.overtime > 0 ? 'error' : 'warning'"
-                      v-if="pitem.overtime"
-                      :value="`${$util.formatTime(pitem.overtime)}`"
-                      class="item"
-                    >
+                    <el-badge :type="pitem.overtime > 0 ? 'error' : 'warning'" v-if="pitem.overtime" :value="`${$util.formatTime(pitem.overtime)}`" class="item">
                       <span :class="[
                         { red: pitem.overtime > 0, warn: pitem.overtime < 0 },
                         'el-icon-alarm-clock',
                       ]"></span>
                     </el-badge>
                   </div>
-                  <span
-                    class="el-icon-delete red"
-                    @click="remove(pitem, item.owner)"
-                  ></span>
+                  <span class="el-icon-delete red" @click="remove(pitem, item.owner)"></span>
                 </div>
               </el-col>
             </div>
@@ -135,165 +82,72 @@
         <v-chart :options="polar" />
       </div>
     </div>
-    <el-dialog
-      title="分配任务"
-      :visible.sync="isAllocate"
-      custom-class="allocate"
-    >
-      <el-form
-        :model="allocateForm"
-        ref="allocateForm"
-        :rules="rules"
-        label-width="120px"
-      >
+    <el-dialog title="分配任务" :visible.sync="isAllocate" custom-class="allocate">
+      <el-form :model="allocateForm" ref="allocateForm" :rules="rules" label-width="120px">
         <el-form-item label>
           <div class="reminder">
             任务分配时，如果多人承担，请及时修改
             <span class="high">预估时间</span>，暂不支持自动调整。
           </div>
         </el-form-item>
-        <el-form-item
-          label="所有者"
-          prop="owner"
-        >
-          <el-select
-            filterable
-            multiple
-            v-model="allocateForm.owner"
-            placeholder="请选择所有者"
-            clearable
-            :style="{ width: '100%' }"
-          >
-            <el-option
-              v-for="(item, index) in userList"
-              :key="index"
-              :label="item.name"
-              :value="item.name"
-              :disabled="item.disabled"
-            >
+        <el-form-item label="所有者" prop="owner">
+          <el-select filterable multiple v-model="allocateForm.owner" placeholder="请选择所有者" clearable :style="{ width: '100%' }">
+            <el-option v-for="(item, index) in userList" :key="index" :label="item.name" :value="item.name" :disabled="item.disabled">
               <span :style="`padding: 2px 6px !important;color: #fff !important;background-color: #409EFF`">{{ item.name }}</span>
             </el-option>
           </el-select>
         </el-form-item>
         <el-row class="dateTime">
           <div>
-            <el-form-item
-              label="预估开始时间"
-              prop="startDate"
-            >
-              <el-date-picker
-                :picker-options="pickerOptions"
-                v-model="allocateForm.startDate"
-                format="yyyy-MM-dd"
-                value-format="yyyy-MM-dd"
-                type="date"
-                placeholder="开始日期"
-              ></el-date-picker>
+            <el-form-item label="预估开始时间" prop="startDate">
+              <el-date-picker :picker-options="pickerOptions" v-model="allocateForm.startDate" format="yyyy-MM-dd" value-format="yyyy-MM-dd" type="date" placeholder="开始日期"></el-date-picker>
             </el-form-item>
           </div>
           <div>
-            <el-form-item
-              label-width="10px"
-              prop="startSmallTime"
-            >
-              <el-time-select
-                v-model="allocateForm.startSmallTime"
-                :picker-options="{
+            <el-form-item label-width="10px" prop="startSmallTime">
+              <el-time-select v-model="allocateForm.startSmallTime" :picker-options="{
                 start: '09:00',
                 step: '00:60',
                 end: '18:00',
-              }"
-                placeholder="选择时间"
-              ></el-time-select>
+              }" placeholder="选择时间"></el-time-select>
             </el-form-item>
           </div>
         </el-row>
         <el-row class="dateTime">
           <div>
-            <el-form-item
-              label="预估完结时间"
-              prop="endDate"
-            >
-              <el-date-picker
-                :picker-options="pickerOptions"
-                v-model="allocateForm.endDate"
-                format="yyyy-MM-dd"
-                value-format="yyyy-MM-dd"
-                type="date"
-                placeholder="开始日期"
-              ></el-date-picker>
+            <el-form-item label="预估完结时间" prop="endDate">
+              <el-date-picker :picker-options="pickerOptions" v-model="allocateForm.endDate" format="yyyy-MM-dd" value-format="yyyy-MM-dd" type="date" placeholder="开始日期"></el-date-picker>
             </el-form-item>
           </div>
           <div>
-            <el-form-item
-              label-width="10px"
-              prop="endSmallTime"
-            >
-              <el-time-select
-                v-model="allocateForm.endSmallTime"
-                :picker-options="{
+            <el-form-item label-width="10px" prop="endSmallTime">
+              <el-time-select v-model="allocateForm.endSmallTime" :picker-options="{
                 start: '09:00',
                 step: '00:60',
                 end: '18:00',
-              }"
-                placeholder="选择时间"
-              ></el-time-select>
+              }" placeholder="选择时间"></el-time-select>
             </el-form-item>
           </div>
         </el-row>
 
-        <el-form-item
-          label="预估时间"
-          prop="estimatedTime"
-        >
-          <el-input
-            :disabled="true"
-            v-model="allocateForm.estimatedTime"
-            placeholder="请输入预估时间"
-            clearable
-            :style="{ width: '100%' }"
-          ></el-input>
-          <el-popover
-            placement="right"
-            trigger="hover"
-            popper-class="reminder"
-          >
+        <el-form-item label="预估时间" prop="estimatedTime">
+          <el-input :disabled="true" v-model="allocateForm.estimatedTime" placeholder="请输入预估时间" clearable :style="{ width: '100%' }"></el-input>
+          <el-popover placement="right" trigger="hover" popper-class="reminder">
             预估时间：根据预估完结时间 - 预估开始时间 = 预估时间
             <span class="reminder-high">（每天工作时间9小时计算,每周按照6天工作日不计算周天）</span>
-            <el-button
-              class="reminderBtn"
-              type="text"
-              slot="reference"
-              icon="el-icon-question"
-            ></el-button>
+            <el-button class="reminderBtn" type="text" slot="reference" icon="el-icon-question"></el-button>
           </el-popover>
           <div class="reminderInline">
             <span class="reminder-high">周天</span>休息日，不予计算,<span class="reminder-high">管理员角色</span>可以修改预估时间
           </div>
         </el-form-item>
-        <el-form-item
-          label="预估说明"
-          prop="estimatedInfo"
-        >
-          <el-input
-            type="textarea"
-            :autosize="{ minRows: 6, maxRows: 10 }"
-            v-model="allocateForm.estimatedInfo"
-            placeholder="请输入预估时间说明信息"
-            clearable
-            :style="{ width: '100%' }"
-          ></el-input>
+        <el-form-item label="预估说明" prop="estimatedInfo">
+          <el-input type="textarea" :autosize="{ minRows: 6, maxRows: 10 }" v-model="allocateForm.estimatedInfo" placeholder="请输入预估时间说明信息" clearable :style="{ width: '100%' }"></el-input>
         </el-form-item>
       </el-form>
-      <div
-        slot="footer"
-        class="dialog-footer"
-      >
+      <div slot="footer" class="dialog-footer">
         <el-button @click="isAllocate = false">取 消</el-button>
-        <el-button
-          type="primary"
-          @click="saveAllocate('allocateForm')"
-        >确 定</el-button>
+        <el-button type="primary" @click="saveAllocate('allocateForm')">确 定</el-button>
       </div>
     </el-dialog>
   </div>

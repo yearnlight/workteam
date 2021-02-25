@@ -1288,3 +1288,15 @@ D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has al
 
 [2021-02-02T04:15:13.016] [ERROR] error - 登录密码错误===>666666
 [2021-02-02T15:24:05.591] [ERROR] error - 登录密码错误===>111111
+[2021-02-25T14:45:17.833] [ERROR] error - 
+  TypeError: Cannot read property 'type' of undefined
+      at Object.groupByField (D:\fitmgr\otherweb\workteam\server\util.js:196:22)
+      at router.post (D:\fitmgr\otherweb\workteam\server\routes\bigscreen.js:32:25)
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-02-25T14:49:09.506] [ERROR] error - 
+  TypeError: Cannot read property 'project' of undefined
+      at Object.groupByField (D:\fitmgr\otherweb\workteam\server\util.js:196:21)
+      at router.post (D:\fitmgr\otherweb\workteam\server\routes\bigscreen.js:32:25)
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+

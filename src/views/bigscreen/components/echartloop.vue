@@ -1,8 +1,8 @@
 <template>
-  <div class="loop">
+  <div class="echartloop">
     <div class="chartHeader" :style="{justifyContent: config.title.align}">{{config.title.text}}</div>
     <div class="chartContent center">
-      <dv-active-ring-chart v-if="isRefresh" :config="config" style="height:145px;width:145px;" />
+      <v-chart :options="config" autoresize />
     </div>
 
     <el-dialog title="配置环形图" :visible.sync="isOpen" @closed="onClosed">
@@ -71,6 +71,7 @@
 </template>
 
 <script>
+import ECharts from "echarts";
 import setMinxin from "./set.js"
 export default {
   mixins: [setMinxin],
@@ -78,47 +79,79 @@ export default {
     return {
       config: {
         title: {
-          text: "人口基数",
-          align: "left"
+          text: "任务分布",
+          show: false
         },
-        radius: '70%',
-        activeRadius: '75%',
-        color: [],
-        data: [
-          {
-            name: '周口',
-            value: 55
+        tooltip: {
+          trigger: "item",
+          formatter: "{a} <br/>{b} : {c} ({d}%)",
+        },
+        legend: {
+          show: true,
+          bottom: 0,
+          data: ["待办", "需求分析中"],
+          padding: [5, 5],
+          selected: {
+            完结: false,
           },
-          {
-            name: '南阳',
-            value: 120
-          },
-          {
-            name: '西峡',
-            value: 78
-          },
-          {
-            name: '驻马店',
-            value: 66
-          },
-          {
-            name: '新乡',
-            value: 80
+          textStyle: {
+            color: '#ffffff'
           }
-        ],
-        digitalFlopStyle: {
-          fontSize: 20
         },
-        showOriginValue: true
-      }
+        color: [
+          "#409EFF",
+          "#F56C6C",
+          "#909399",
+          "#E6A23C",
+          "#9764e0",
+          "#e06ab7",
+          "#333333",
+          "#67C23A",
+        ],
+        data: undefined,
+        series: [
+          {
+            name: "任务状态",
+            type: "pie",
+            radius: ["35%", "55%"],
+            center: ["50%", "40%"],
+            label: {
+              formatter: "{b} {c}",
+            },
+            data: [{ name: "待办", value: 2 }, { name: "需求分析中", value: 3 }],
+            itemStyle: {
+              emphasis: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: "rgba(0, 0, 0, 0.5)",
+              },
+            },
+          },
+        ],
+      },
+    }
+  },
+  watch: {
+    "config.data": {
+      handler(n, o) {
+        if (n) {
+          this.config.series[0].data = n;
+          this.config.legend.data = n.filter(f => f.name);
+        }
+      },
+      deep: true
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.loop {
-  width: 100%;
+.echartloop {
   height: 100%;
+  width: 100%;
+  .echarts {
+    height: 100%;
+    width: 100%;
+  }
 }
 </style>

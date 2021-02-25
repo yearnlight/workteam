@@ -1,5 +1,8 @@
 <template>
-  <dv-scroll-board :config="config" style="width:calc(100% - 4rem);height:calc(100% - 4rem);margin:2rem;" />
+  <div class="carouseltable">
+    <div class="chartHeader" :style="{justifyContent: config.title.align}">{{config.title.text}}</div>
+    <dv-scroll-board :config="config" class="chartContent mediumWidth" />
+  </div>
 </template>
 
 <script>
@@ -7,7 +10,11 @@ export default {
   data() {
     return {
       config: {
-        header: ['列1', '列2', '列3'],
+        title: {
+          align: "left",
+          text: "异常故障列表"
+        },
+        header: ['告警名称', '等级', '时间'],
         data: [
           ['<span style="color:#37a2da;">行1列1</span>', '行1列2', '行1列3'],
           ['行2列1', '<span style="color:#32c5e9;">行2列2</span>', '行2列3'],
@@ -28,3 +35,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.carouseltable {
+  height: 100%;
+  width: 100%;
+}
+</style>

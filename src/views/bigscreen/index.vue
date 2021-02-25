@@ -90,19 +90,21 @@
 <script>
 const bgSky = require("@/assets/bigscreen/bg-sky.png");
 const bgEarth = require("@/assets/bigscreen/bg-earth.png");
+const bgGallery = require("@/assets/bigscreen/bg-gallery.png");
 import module from "./module";
 export default {
   components: { module },
   data() {
     return {
       loading: false,
-      bgUrl: bgEarth,
+      bgUrl: bgGallery,
       layout: "3-3-3",
       coms: [
         {
           title: "背景图", children: [
             { title: "星空", name: "bg-sky", type: "bg" },
-            { title: "地球", name: "bg-earth", type: "bg" }
+            { title: "地球", name: "bg-earth", type: "bg" },
+            { title: "长廊", name: "bg-gallery", type: "bg" }
           ]
         },
         {
@@ -139,6 +141,7 @@ export default {
             { title: "胶囊柱状图", icon: "icon-bar", name: "capsulebar", type: "chart" },
             { title: "Echart柱状图", icon: "icon-bar", name: "echartbar", type: "chart" },
             { title: "环状图", icon: "icon-loop", name: "loop", type: "chart" },
+            { title: "Echart环状图", icon: "icon-loop", name: "echartloop", type: "chart" },
             { title: "Echart折线图", icon: "icon-line", name: "echartline", type: "chart" },
             { title: "饼状图", icon: "icon-pie", name: "pie", type: "chart" },
             { title: "水位图", icon: "icon-hydrograph", name: "hydrograph", type: "chart" },
@@ -157,13 +160,8 @@ export default {
   methods: {
     app(name, type) {
       if (type == 'bg') {
-        if (name == "bg-sky") {
-          this.bgUrl = bgSky;
-        }
-        else if (name == "bg-earth") {
-          this.bgUrl = bgEarth;
-        }
-
+        let bgs = { "bg-sky": bgSky, "bg-earth": bgEarth, "bg-gallery": bgGallery }
+        this.bgUrl = bgs[name];
       }
       else if (type == 'layout') {
         this.layout = name;

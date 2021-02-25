@@ -4003,3 +4003,63 @@ D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has al
 [2021-02-02T16:31:48.612] [WARN] default - /task/list
 [2021-02-02T16:31:48.614] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
 [2021-02-02T16:32:07.350] [WARN] default - /store/list
+[2021-02-24T11:10:33.784] [INFO] default - Task server success to run,port:4001.
+[2021-02-24T11:11:26.372] [WARN] default - /auth/login
+[2021-02-24T11:11:26.669] [WARN] default - /role/role-menus
+[2021-02-24T11:11:27.015] [WARN] default - /store/list
+[2021-02-24T11:12:20.760] [WARN] default - /bigscreen/event
+[2021-02-24T11:12:45.906] [INFO] default - Task server success to run,port:4001.
+[2021-02-24T11:13:20.284] [WARN] default - /bigscreen/event
+[2021-02-24T11:14:09.532] [WARN] default - /bigscreen/event
+[2021-02-24T11:16:40.947] [WARN] default - /bigscreen/event
+[2021-02-24T11:24:30.876] [WARN] default - /store/list
+[2021-02-24T11:27:52.915] [WARN] default - /bigscreen/event
+[2021-02-25T11:04:51.145] [WARN] default - /auth/login
+[2021-02-25T11:04:51.530] [WARN] default - /role/role-menus
+[2021-02-25T11:04:51.892] [WARN] default - /store/list
+[2021-02-25T14:44:02.884] [INFO] default - Task server success to run,port:4001.
+[2021-02-25T14:44:43.641] [INFO] default - Task server success to run,port:4001.
+[2021-02-25T14:45:17.553] [WARN] default - /bigscreen/server-config
+[2021-02-25T14:45:17.832] [ERROR] default - 
+  TypeError: Cannot read property 'type' of undefined
+      at Object.groupByField (D:\fitmgr\otherweb\workteam\server\util.js:196:22)
+      at router.post (D:\fitmgr\otherweb\workteam\server\routes\bigscreen.js:32:25)
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-02-25T14:47:53.184] [WARN] default - /bigscreen/server-config
+[2021-02-25T14:48:41.780] [INFO] default - Task server success to run,port:4001.
+[2021-02-25T14:49:09.217] [WARN] default - /bigscreen/server-config
+[2021-02-25T14:49:09.505] [ERROR] default - 
+  TypeError: Cannot read property 'project' of undefined
+      at Object.groupByField (D:\fitmgr\otherweb\workteam\server\util.js:196:21)
+      at router.post (D:\fitmgr\otherweb\workteam\server\routes\bigscreen.js:32:25)
+      at process._tickCallback (internal/process/next_tick.js:178:7)
+
+[2021-02-25T15:00:09.391] [INFO] default - Task server success to run,port:4001.
+[2021-02-25T15:01:30.170] [WARN] default - /bigscreen/server-config
+[2021-02-25T15:01:30.438] [DEBUG] default - [ { type: 'fitmgr',
+    data: [ [RowDataPacket], [RowDataPacket], [RowDataPacket] ] },
+  { type: 'logistic',
+    data: 
+     [ [RowDataPacket],
+       [RowDataPacket],
+       [RowDataPacket],
+       [RowDataPacket] ] } ]
+[2021-02-25T15:06:56.523] [INFO] default - Task server success to run,port:4001.
+[2021-02-25T15:07:46.637] [WARN] default - /bigscreen/server-config
+[2021-02-25T15:14:44.644] [INFO] default - Task server success to run,port:4001.
+[2021-02-25T15:15:13.287] [WARN] default - /bigscreen/task
+[2021-02-25T15:17:08.000] [WARN] default - /bigscreen/task
+[2021-02-25T15:55:08.243] [WARN] default - /task/list
+[2021-02-25T15:55:08.246] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-02-25T15:55:08.250] [WARN] default - /user/list
+[2021-02-25T15:55:08.252] [WARN] default - /task/statistics
+[2021-02-25T15:55:08.488] [WARN] default - /task/list
+[2021-02-25T15:55:08.489] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-02-25T16:01:02.815] [WARN] default - /bigscreen/task
+[2021-02-25T16:01:54.508] [WARN] default - /bigscreen/task
+[2021-02-25T17:07:43.776] [WARN] default - /bigscreen/task
+[2021-02-25T17:08:57.826] [WARN] default - /bigscreen/task
+[2021-02-25T17:10:28.694] [WARN] default - /bigscreen/task
+[2021-02-25T17:11:47.576] [WARN] default - /bigscreen/task
+[2021-02-25T17:13:19.971] [WARN] default - /bigscreen/task

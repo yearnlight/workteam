@@ -121,7 +121,7 @@ export default {
     align-items: center;
     justify-content: center;
     color: #ffffff;
-    .header {
+    .chartHeader {
       padding: 10px 20px;
       color: #c3cbde;
       font-size: 16;
@@ -133,6 +133,10 @@ export default {
       width: calc(100% - 4rem);
       height: calc(100% - 6rem);
       margin: 1.5rem 2rem;
+      &.mediumWidth {
+        width: calc(100% - 3rem);
+        margin: 1.5rem 1.5rem;
+      }
       &.center {
         display: flex;
         justify-content: center;

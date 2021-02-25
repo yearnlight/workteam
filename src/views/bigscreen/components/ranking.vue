@@ -1,6 +1,6 @@
 <template>
   <div class="ranking">
-    <div class="header" :style="{justifyContent: config.title.align}">{{config.title.text}}</div>
+    <div class="chartHeader" :style="{justifyContent: config.title.align}">{{config.title.text}}</div>
     <dv-scroll-ranking-board :config="config" v-if="isRefresh" class="chartContent" />
 
     <el-dialog title="配置排名图" :visible.sync="isOpen" @closed="onClosed">

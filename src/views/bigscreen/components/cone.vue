@@ -1,6 +1,6 @@
 <template>
   <div class="cone">
-    <div class="header" :style="{justifyContent: config.title.align}">{{config.title.text}}</div>
+    <div class="chartHeader" :style="{justifyContent: config.title.align}">{{config.title.text}}</div>
     <dv-conical-column-chart v-if="isRefresh" class="chartContent" :config="config"></dv-conical-column-chart>
     <el-dialog title="配置锥形图" :visible.sync="isOpen" @closed="onClosed">
       <el-form :model="form" ref="form" :rules="rules" label-width="140px">

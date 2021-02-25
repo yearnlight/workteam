@@ -177,5 +177,24 @@ module.exports = {
     }
     return tree;
 
+  },
+  groupByField(arr, fieldName,) {
+    let map = {}
+    for (let i = 0; i < arr.length; i++) {
+      let ai = arr[i]
+      if (!map[ai[fieldName]]) {
+        map[ai[fieldName]] = [ai]
+      } else {
+        map[ai[fieldName]].push(ai)
+      }
+    }
+    let res = []
+    Object.keys(map).forEach(key => {
+      res.push({
+        type: key,
+        data: map[key],
+      })
+    })
+    return res;
   }
 };
