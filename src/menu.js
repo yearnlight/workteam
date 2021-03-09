@@ -55,11 +55,16 @@ export default [
     title: "业务管理",
     icon: "el-icon-collection",
     path: "/work/business"
-  },  
+  },
   {
     title: "大屏管理",
     icon: "el-icon-collection",
     path: "/work/bigscreen"
+  },
+  {
+    title: "概览管理",
+    icon: "el-icon-collection",
+    path: "/overview"
   },
   {
     title: "密码规则",

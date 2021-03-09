@@ -23,6 +23,22 @@ const routes = [
     component: () => import("@/components/Null/index.vue")
   },
   {
+    path: "/overview",// 概览配置
+    component: () => import("@/views/overview/form.vue"),
+    name: "overview",
+    meta: {
+      white: true
+    }
+  },
+  {
+    path: "/bigscreen",//大屏管理
+    component: () => import("@/views/bigscreen/index.vue"),
+    name: "bigscreen",
+    meta: {
+      white: true
+    }
+  },
+  {
     path: "/work",
     redirect: "/work/store",
     component: Menu,
@@ -124,14 +140,11 @@ const routes = [
         meta: {
           white: true
         }
-      },      
+      },
       {
-        path: "/work/bigscreen",//大屏管理
-        component: () => import("@/views/bigscreen/index.vue"),
-        name: "bigscreen",
-        meta: {
-          white: true
-        }
+        path: "/work/overview",// 概览管理
+        component: () => import("@/views/overview/index.vue"),
+        name: "overview",
       },
       {
         path: "/work/cloudIcon",// 云计算图标库

@@ -2,7 +2,7 @@
   <div class="bigscreen">
     <!-- 大屏组件 -->
     <div class="bigscreen-components">
-      <el-menu :unique-opened="true" :default-openeds="['3']" class="el-menu-vertical-demo">
+      <el-menu background-color="#333854" text-color="#fff" active-text-color="#ffd04b" :unique-opened="true" :default-openeds="['3']" class="el-menu-vertical-demo">
         <el-submenu :index="String(index)" v-for="(item,index) in coms" :key="index">
           <template slot="title">
             <span>{{item.title}}</span>
@@ -23,6 +23,11 @@
     </div>
     <!-- 大屏演示 -->
     <div class="bigscreen-demo">
+      <div class="bigscreen-demo-operate">
+        <div class="bigscreen-demo-operate-btns">
+          <el-button @click="$router.go(-1)">返回</el-button>
+        </div>
+      </div>
       <div id="index">
         <!-- <dv-screen-container class="bg"> -->
         <div class="bg" :style="{backgroundImage: 'url(' + bgUrl + ')', backgroundSize:'contain'}">
@@ -192,8 +197,11 @@ export default {
   height: 100% !important;
   &-components {
     width: 250px;
-    height: calc(100 - 20px);
+    background-color: #333854;
     overflow-y: auto;
+    .el-menu {
+      border-right: none;
+    }
     .node {
       display: flex;
       justify-content: space-between;
@@ -206,6 +214,19 @@ export default {
 
   &-demo {
     flex: 1;
+    &-operate {
+      display: flex;
+      background-color: #333854;
+      padding: 10px;
+      &-btns {
+        display: inline-block;
+        margin-left: auto;
+        margin-right: 20px;
+      }
+    }
+    #index{
+      height: calc(100% - 38px);
+    }
   }
 }
 </style>

@@ -37,9 +37,12 @@
     <div class="panel-member">
       <div class="header">
         成员任务
+        <span title="下载Excel" @click="download" class="el-icon-download blue"></span>
+
         <span class="header-info">
           <span class="el-icon-alarm-clock red"></span>超时时间
           <span class="el-icon-alarm-clock warn"></span>剩余时间
+
         </span>
       </div>
       <el-scrollbar>
@@ -157,6 +160,7 @@
 import VChart from "vue-echarts/components/ECharts.vue";
 import vTable from "@/components/vTable";
 import ECharts from "echarts";
+import XLSX from "xlsx";
 export default {
   components: { vTable, VChart },
   data() {
@@ -321,6 +325,35 @@ export default {
     },
   },
   methods: {
+    download() {
+      this.generateExcel(this.taskList, "成员任务")
+    },
+    generateExcel(sourceData, title) {
+      let xlsxHeader = [["开发人", "任务名称", "状态", "优先级", "开始时间", "预估时长", "剩余时间", "进度"]];
+      let xlsxData = sourceData.map(item => {
+        return [item.owner, item.name, this.$util.displayEnum(this.$enum.statusList, item.status).label, this.$util.displayEnum(this.$enum.prioritys, item.priority).label, item.startTime, item.estimatedTime, this.$util.formatTime(item.overtime), `${item.finished} %`];
+      })
+      let xlsxAll = xlsxHeader.concat(xlsxData);
+      // 将数组转为sheet
+      let sheet = XLSX.utils.aoa_to_sheet(xlsxAll);
+      sheet["!cols"] = [
+        { 'wch': 20 },
+        { 'wch': 20 },
+        { 'wch': 20 },
+        { 'wch': 20 },
+        { 'wch': 20 },
+        { 'wch': 20 },
+        { 'wch': 20 },
+      ]
+      // 先组装wookbook数据格式
+      let workbook = {
+        SheetNames: [title], // 总表名
+        Sheets: {}, //表名
+      };
+      workbook.Sheets[title] = sheet;
+      // 下载表格
+      XLSX.writeFile(workbook, `${title}.xlsx`);
+    },
     calcDur() {
       if (
         this.allocateForm.endDate &&

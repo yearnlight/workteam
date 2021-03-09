@@ -149,6 +149,7 @@ import SerachForm from "@/components/searchForm";
 import com from "@/utils/common";
 import util from "@/utils/index";
 import t_fields from "@/common/t_fields";
+import XLSX from "xlsx";
 export default {
   components: { SerachForm },
   props: {
@@ -201,7 +202,7 @@ export default {
   data() {
     return {
       defaultConfig: {
-        isDownload: false,//是否下载Excel
+        isDownload: true,//是否下载Excel
         setting: true,
         pagination: true,
         pageSizes: [5, 10, 20, 50, 100],
@@ -272,8 +273,35 @@ export default {
       if (this.$parent.download && typeof this.$parent.download === "function") {
         this.$parent.download(this.name);
       } else {
-        this.$emit("download", this.name);
+        // this.$emit("download", this.name);
+        this.generateExcel(this.data.records, this.defaultConfig.name)
       }
+    },
+    generateExcel(sourceData, title) {
+      let xlsxHeader = [this.activeColumns.map(m => m.label)];
+      let xlsxHeaderProp = this.activeColumns.map(m => m.prop);
+
+      let xlsxData = sourceData.map(item => {
+        let res = [];
+        xlsxHeaderProp.forEach(prop => {
+          res.push(item[prop])
+        })
+        return res;
+      })
+      let xlsxAll = xlsxHeader.concat(xlsxData);
+      // 将数组转为sheet
+      let sheet = XLSX.utils.aoa_to_sheet(xlsxAll);
+      sheet["!cols"] = [
+        this.activeColumns.map(m => { return { wch: parseInt(m.width) || 200 } })
+      ]
+      // 先组装wookbook数据格式
+      let workbook = {
+        SheetNames: [title], // 总表名
+        Sheets: {}, //表名
+      };
+      workbook.Sheets[title] = sheet;
+      // 下载表格
+      XLSX.writeFile(workbook, `${title}.xlsx`);
     },
     setCurrent(row) {
       this.$refs.multipleTable.setCurrentRow(row);

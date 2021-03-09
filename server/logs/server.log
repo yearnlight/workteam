@@ -4063,3 +4063,218 @@ D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has al
 [2021-02-25T17:10:28.694] [WARN] default - /bigscreen/task
 [2021-02-25T17:11:47.576] [WARN] default - /bigscreen/task
 [2021-02-25T17:13:19.971] [WARN] default - /bigscreen/task
+[2021-03-09T16:50:03.016] [INFO] default - Task server success to run,port:4001.
+[2021-03-09T16:52:08.872] [WARN] default - /bigscreen/list
+[2021-03-09T16:52:09.028] [INFO] default - query visual page:select * from visual order by createtime desc,parames:
+[2021-03-09T16:52:15.914] [WARN] default - /bigscreen/list
+[2021-03-09T16:52:15.993] [INFO] default - query visual page:select * from visual order by createtime desc,parames:
+[2021-03-09T16:52:21.014] [WARN] default - /user/list
+[2021-03-09T16:52:31.808] [WARN] default - /bigscreen/list
+[2021-03-09T16:52:31.876] [INFO] default - query visual page:select * from visual order by createtime desc,parames:
+[2021-03-09T16:54:40.358] [WARN] default - /bigscreen/list
+[2021-03-09T16:54:40.427] [INFO] default - query visual page:select * from visual order by createtime desc,parames:
+[2021-03-09T16:56:39.518] [WARN] default - /bigscreen/list
+[2021-03-09T16:56:39.607] [INFO] default - query visual page:select * from visual order by createtime desc,parames:
+[2021-03-09T16:56:53.010] [WARN] default - /bigscreen/list
+[2021-03-09T16:56:53.080] [INFO] default - query visual page:select * from visual order by createtime desc,parames:
+[2021-03-09T16:56:57.229] [WARN] default - /bigscreen/list
+[2021-03-09T16:56:57.297] [INFO] default - query visual page:select * from visual order by createtime desc,parames:
+[2021-03-09T16:56:58.174] [WARN] default - /user/list
+[2021-03-09T16:57:23.758] [WARN] default - /bigscreen/create
+[2021-03-09T16:57:23.897] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-03-09T16:59:10.898] [WARN] default - /bigscreen/list
+[2021-03-09T16:59:11.008] [INFO] default - query visual page:select * from visual order by createtime desc,parames:
+[2021-03-09T16:59:56.492] [INFO] default - Task server success to run,port:4001.
+[2021-03-09T16:59:59.775] [WARN] default - /user/list
+[2021-03-09T17:00:10.995] [WARN] default - /bigscreen/create
+[2021-03-09T17:00:11.146] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-03-09T17:01:15.845] [INFO] default - Task server success to run,port:4001.
+[2021-03-09T17:01:21.410] [WARN] default - /bigscreen/create
+[2021-03-09T17:01:21.646] [ERROR] default - 
+  Error: ER_BAD_FIELD_ERROR: Unknown error 1054
+      at Query.Sequence._packetToError (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:182:13)
+      at addChunk (_stream_readable.js:280:12)
+      --------------------
+      at Protocol._enqueue (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:198:25)
+      at pool.getConnection (D:\fitmgr\otherweb\workteam\server\pool.js:21:20)
+      at Ping.onOperationComplete (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:110:5)
+      at Ping.<anonymous> (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Ping._callback (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:488:16)
+      at Ping.Sequence.end (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:83:24)
+      at Ping.Sequence.OkPacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:92:8)
+      at Protocol._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (D:\fitmgr\otherweb\workteam\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+
+[2021-03-09T17:02:28.537] [WARN] default - /bigscreen/create
+[2021-03-09T17:02:28.787] [WARN] default - /bigscreen/list
+[2021-03-09T17:02:28.858] [INFO] default - query visual page:select * from visual order by createtime desc,parames:
+[2021-03-09T17:03:38.613] [WARN] default - /bigscreen/list
+[2021-03-09T17:03:38.702] [INFO] default - query visual page:select * from visual order by createtime desc,parames:
+[2021-03-09T17:03:40.632] [WARN] default - /user/list
+[2021-03-09T17:03:45.117] [WARN] default - /bigscreen/update
+[2021-03-09T17:03:45.370] [WARN] default - /bigscreen/list
+[2021-03-09T17:03:45.445] [INFO] default - query visual page:select * from visual order by createtime desc,parames:
+[2021-03-09T17:03:53.365] [WARN] default - /user/list
+[2021-03-09T17:03:56.806] [WARN] default - /bigscreen/update
+[2021-03-09T17:03:57.056] [WARN] default - /bigscreen/list
+[2021-03-09T17:03:57.129] [INFO] default - query visual page:select * from visual order by createtime desc,parames:
+[2021-03-09T17:03:59.451] [WARN] default - /user/list
+[2021-03-09T17:04:02.465] [WARN] default - /bigscreen/update
+[2021-03-09T17:04:02.716] [WARN] default - /bigscreen/list
+[2021-03-09T17:04:02.788] [INFO] default - query visual page:select * from visual order by createtime desc,parames:
+[2021-03-09T17:04:05.914] [WARN] default - /user/list
+[2021-03-09T17:04:08.856] [WARN] default - /bigscreen/update
+[2021-03-09T17:04:09.287] [WARN] default - /bigscreen/list
+[2021-03-09T17:04:09.362] [INFO] default - query visual page:select * from visual order by createtime desc,parames:
+[2021-03-09T17:04:19.639] [WARN] default - /bigscreen/delete
+[2021-03-09T17:04:19.893] [WARN] default - /bigscreen/list
+[2021-03-09T17:04:19.968] [INFO] default - query visual page:select * from visual order by createtime desc,parames:
+[2021-03-09T17:04:56.117] [INFO] default - Task server success to run,port:4001.
+[2021-03-09T17:04:59.295] [WARN] default - /bigscreen/list
+[2021-03-09T17:04:59.449] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:05:12.659] [WARN] default - /bigscreen/list
+[2021-03-09T17:05:12.729] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:05:26.194] [WARN] default - /user/list
+[2021-03-09T17:06:39.490] [WARN] default - /user/list
+[2021-03-09T17:07:35.078] [WARN] default - /bigscreen/list
+[2021-03-09T17:07:35.155] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:07:38.417] [WARN] default - /user/list
+[2021-03-09T17:07:52.655] [WARN] default - /bigscreen/create
+[2021-03-09T17:07:53.142] [WARN] default - /bigscreen/list
+[2021-03-09T17:07:53.211] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:09:39.330] [WARN] default - /bigscreen/list
+[2021-03-09T17:09:39.400] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:09:49.397] [WARN] default - /bigscreen/list
+[2021-03-09T17:09:49.473] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:10:19.820] [WARN] default - /user/list
+[2021-03-09T17:10:23.595] [WARN] default - /bigscreen/update
+[2021-03-09T17:10:24.087] [WARN] default - /bigscreen/list
+[2021-03-09T17:10:24.159] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:12:33.172] [INFO] default - Task server success to run,port:4001.
+[2021-03-09T17:12:34.942] [WARN] default - /user/list
+[2021-03-09T17:12:39.406] [WARN] default - /bigscreen/update
+[2021-03-09T17:12:39.907] [WARN] default - /bigscreen/list
+[2021-03-09T17:12:39.974] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:12:43.997] [WARN] default - /user/list
+[2021-03-09T17:13:24.807] [WARN] default - /user/list
+[2021-03-09T17:13:33.288] [WARN] default - /bigscreen/list
+[2021-03-09T17:13:33.357] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:15:01.146] [WARN] default - /bigscreen/list
+[2021-03-09T17:15:01.219] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:15:03.636] [WARN] default - /bigscreen/list
+[2021-03-09T17:15:03.703] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:15:05.667] [WARN] default - /bigscreen/list
+[2021-03-09T17:15:05.734] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc limit 0, 10,parames:
+[2021-03-09T17:15:11.753] [WARN] default - /bigscreen/list
+[2021-03-09T17:15:11.831] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc limit 0, 10,parames:
+[2021-03-09T17:16:32.478] [WARN] default - /bigscreen/list
+[2021-03-09T17:16:32.548] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:21:14.168] [WARN] default - /bigscreen/list
+[2021-03-09T17:21:14.238] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:21:15.519] [WARN] default - /user/list
+[2021-03-09T17:21:35.460] [WARN] default - /bigscreen/create
+[2021-03-09T17:21:35.704] [WARN] default - /bigscreen/list
+[2021-03-09T17:21:35.771] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:21:42.747] [WARN] default - /bigscreen/list
+[2021-03-09T17:21:42.813] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:22:34.288] [WARN] default - /bigscreen/list
+[2021-03-09T17:22:34.354] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:23:51.609] [WARN] default - /bigscreen/list
+[2021-03-09T17:23:51.675] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:23:56.123] [WARN] default - /menu/list
+[2021-03-09T17:24:04.663] [WARN] default - /menu/update
+[2021-03-09T17:24:04.829] [WARN] default - /menu/list
+[2021-03-09T17:24:08.265] [WARN] default - /menu/list
+[2021-03-09T17:24:12.166] [WARN] default - /auth/login
+[2021-03-09T17:24:12.389] [WARN] default - /role/role-menus
+[2021-03-09T17:24:12.721] [WARN] default - /store/list
+[2021-03-09T17:24:17.235] [WARN] default - /bigscreen/list
+[2021-03-09T17:24:17.299] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:24:28.193] [WARN] default - /bigscreen/list
+[2021-03-09T17:24:28.258] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:24:30.804] [WARN] default - /bigscreen/list
+[2021-03-09T17:24:30.873] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:24:39.805] [WARN] default - /menu/list
+[2021-03-09T17:24:53.974] [WARN] default - /menu/update
+[2021-03-09T17:24:54.444] [WARN] default - /menu/list
+[2021-03-09T17:25:05.881] [WARN] default - /menu/update
+[2021-03-09T17:25:06.383] [WARN] default - /menu/list
+[2021-03-09T17:25:13.935] [WARN] default - /menu/list
+[2021-03-09T17:25:20.919] [WARN] default - /auth/login
+[2021-03-09T17:25:21.163] [WARN] default - /role/role-menus
+[2021-03-09T17:25:21.434] [WARN] default - /store/list
+[2021-03-09T17:25:25.132] [WARN] default - /store/list
+[2021-03-09T17:25:27.503] [WARN] default - /bigscreen/list
+[2021-03-09T17:25:27.574] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:27:46.719] [WARN] default - /bigscreen/list
+[2021-03-09T17:27:46.794] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:27:54.515] [WARN] default - /bigscreen/list
+[2021-03-09T17:27:54.591] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:28:07.358] [WARN] default - /bigscreen/list
+[2021-03-09T17:28:07.439] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T17:29:13.152] [WARN] default - /user/list
+[2021-03-09T17:29:17.728] [WARN] default - /user/list
+[2021-03-09T19:21:35.290] [WARN] default - /bigscreen/list
+[2021-03-09T19:21:35.526] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T19:21:37.463] [WARN] default - /user/list
+[2021-03-09T19:49:44.806] [WARN] default - /bigscreen/list
+[2021-03-09T19:49:44.889] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T19:49:50.208] [WARN] default - /bigscreen/list
+[2021-03-09T19:49:50.282] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T19:49:53.954] [WARN] default - /bigscreen/list
+[2021-03-09T19:49:54.024] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
