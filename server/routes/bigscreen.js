@@ -60,6 +60,35 @@ router.post("/create", async ctx => {
     }
 });
 
+// 设置概览配置
+router.post("/set-modules", async ctx => {
+    let msg = "";
+    let params = ctx.request.body;
+    // 清理模块配置
+    let isDeleteSuccess = await query("delete from visual_module where pid = ?", [params.pid]);
+    if (isDeleteSuccess) {
+        if (params.modules && params.modules.length) {
+            for (let item of params.modules) {
+                let id = Uuid.v1();
+                await query(
+                    "insert into visual_module(id,x,y,sizex,sizey,`title`,`link`,linkUrl,componentCode,componentName,apiUrl,apiType,apiParams,pid) values ?",
+                    [[[id, item.x, item.y, item.sizex, item.sizey, item.title, item.link, item.linkUrl, item.componentCode, item.componentName, item.apiUrl, item.apiType, item.apiParams, params.pid]]]
+                );
+            }
+            msg = "配置概览成功"
+            util.setEvent(ctx, "success", msg);
+            ctx.response.body = { status: 200, msg: msg, data: null };
+        }
+    }
+});
+
+// 获取概览配置
+router.post("/get-modules", async ctx => {
+    let { pid } = ctx.request.body;
+    let data = await query(`select * from visual_module where pid = ?`, [pid]);
+    ctx.response.body = { status: 200, msg: "", data: data };
+})
+
 // 更新概览大屏项
 router.post("/update", async ctx => {
     let msg = "";

@@ -196,7 +196,7 @@ export default {
   display: flex;
   height: 100% !important;
   &-components {
-    width: 250px;
+    width: 240px;
     background-color: #333854;
     overflow-y: auto;
     .el-menu {

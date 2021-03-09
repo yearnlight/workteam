@@ -30,7 +30,9 @@ export default {
 
 <style lang="scss" scoped>
 .overview-resource {
+  height: 100%;
   .resourceList {
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
     overflow-y: auto;

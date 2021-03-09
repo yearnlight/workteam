@@ -4278,3 +4278,151 @@ D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has al
 [2021-03-09T19:49:50.282] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
 [2021-03-09T19:49:53.954] [WARN] default - /bigscreen/list
 [2021-03-09T19:49:54.024] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,parames:
+[2021-03-09T23:24:08.741] [INFO] default - Task server success to run,port:4001.
+[2021-03-09T23:24:23.465] [WARN] default - /auth/login
+[2021-03-09T23:24:27.641] [ERROR] default - 
+  Error: ER_ACCESS_DENIED_ERROR: Unknown error 1045
+      at Handshake.Sequence._packetToError (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Handshake.ErrorPacket (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Handshake.js:123:18)
+      at Protocol._parsePacket (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:198:13)
+      at addChunk (_stream_readable.js:288:12)
+      --------------------
+      at Protocol._enqueue (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at Protocol.handshake (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:51:23)
+      at PoolConnection.connect (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:116:18)
+      at Pool.getConnection (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:48:16)
+      at Promise (E:\mxyang\worktask\server\pool.js:17:10)
+      at new Promise (<anonymous>)
+      at query (E:\mxyang\worktask\server\pool.js:16:10)
+      at router.post (E:\mxyang\worktask\server\routes\auth.js:17:17)
+      at dispatch (E:\mxyang\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at next (E:\mxyang\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:45:18)
+
+[2021-03-09T23:25:09.713] [WARN] default - /auth/login
+[2021-03-09T23:25:09.842] [ERROR] default - 
+  Error: ER_ACCESS_DENIED_ERROR: Unknown error 1045
+      at Handshake.Sequence._packetToError (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Handshake.ErrorPacket (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Handshake.js:123:18)
+      at Protocol._parsePacket (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:198:13)
+      at addChunk (_stream_readable.js:288:12)
+      --------------------
+      at Protocol._enqueue (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at Protocol.handshake (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:51:23)
+      at PoolConnection.connect (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:116:18)
+      at Pool.getConnection (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:48:16)
+      at Promise (E:\mxyang\worktask\server\pool.js:17:10)
+      at new Promise (<anonymous>)
+      at query (E:\mxyang\worktask\server\pool.js:16:10)
+      at router.post (E:\mxyang\worktask\server\routes\auth.js:17:17)
+      at dispatch (E:\mxyang\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at next (E:\mxyang\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:45:18)
+
+[2021-03-09T23:25:29.628] [INFO] default - Task server success to run,port:4001.
+[2021-03-09T23:25:38.345] [WARN] default - /auth/login
+[2021-03-09T23:25:38.484] [ERROR] default - 
+  Error: ER_ACCESS_DENIED_ERROR: Unknown error 1045
+      at Handshake.Sequence._packetToError (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Handshake.ErrorPacket (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Handshake.js:123:18)
+      at Protocol._parsePacket (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:198:13)
+      at addChunk (_stream_readable.js:288:12)
+      --------------------
+      at Protocol._enqueue (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at Protocol.handshake (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:51:23)
+      at PoolConnection.connect (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:116:18)
+      at Pool.getConnection (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:48:16)
+      at Promise (E:\mxyang\worktask\server\pool.js:17:10)
+      at new Promise (<anonymous>)
+      at query (E:\mxyang\worktask\server\pool.js:16:10)
+      at router.post (E:\mxyang\worktask\server\routes\auth.js:17:17)
+      at dispatch (E:\mxyang\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at next (E:\mxyang\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:45:18)
+
+[2021-03-09T23:26:53.968] [INFO] default - Task server success to run,port:4001.
+[2021-03-09T23:27:03.630] [WARN] default - /auth/login
+[2021-03-09T23:27:03.763] [ERROR] default - 
+  Error: ER_ACCESS_DENIED_ERROR: Unknown error 1045
+      at Handshake.Sequence._packetToError (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Handshake.ErrorPacket (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\sequences\Handshake.js:123:18)
+      at Protocol._parsePacket (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:526:10)
+      at Socket.emit (events.js:198:13)
+      at addChunk (_stream_readable.js:288:12)
+      --------------------
+      at Protocol._enqueue (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:144:48)
+      at Protocol.handshake (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:51:23)
+      at PoolConnection.connect (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:116:18)
+      at Pool.getConnection (E:\mxyang\worktask\server\node_modules\_mysql@2.18.1@mysql\lib\Pool.js:48:16)
+      at Promise (E:\mxyang\worktask\server\pool.js:17:10)
+      at new Promise (<anonymous>)
+      at query (E:\mxyang\worktask\server\pool.js:16:10)
+      at router.post (E:\mxyang\worktask\server\routes\auth.js:17:17)
+      at dispatch (E:\mxyang\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:44:32)
+      at next (E:\mxyang\worktask\server\node_modules\_koa-compose@3.2.1@koa-compose\index.js:45:18)
+
+[2021-03-09T23:32:13.574] [INFO] default - Task server success to run,port:4001.
+[2021-03-09T23:33:25.489] [WARN] default - /auth/login
+[2021-03-09T23:33:25.875] [WARN] default - /role/role-menus
+[2021-03-09T23:33:33.193] [WARN] default - /auth/login
+[2021-03-09T23:33:33.452] [WARN] default - /role/role-menus
+[2021-03-09T23:33:57.837] [WARN] default - /auth/login
+[2021-03-09T23:33:58.397] [WARN] default - /role/role-menus
+[2021-03-09T23:36:28.756] [INFO] default - Task server success to run,port:4001.
+[2021-03-09T23:36:31.985] [WARN] default - /auth/login
+[2021-03-09T23:36:32.336] [WARN] default - /role/role-menus
+[2021-03-09T23:36:33.255] [WARN] default - /store/list
+[2021-03-09T23:36:38.775] [WARN] default - /bigscreen/list
+[2021-03-09T23:36:38.849] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-09T23:37:42.387] [WARN] default - /bigscreen/list
+[2021-03-09T23:37:42.473] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-09T23:40:13.035] [WARN] default - /bigscreen/list
+[2021-03-09T23:40:13.112] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T00:19:11.397] [INFO] default - Task server success to run,port:4001.
+[2021-03-10T00:20:07.321] [WARN] default - /bigscreen/modules
+[2021-03-10T00:25:15.113] [WARN] default - /bigscreen/get-modules
+[2021-03-10T00:25:21.719] [INFO] default - Task server success to run,port:4001.
+[2021-03-10T00:25:27.292] [WARN] default - /bigscreen/get-modules
+[2021-03-10T00:26:39.560] [WARN] default - /bigscreen/get-modules
+[2021-03-10T00:29:23.196] [WARN] default - /bigscreen/get-modules
+[2021-03-10T00:30:38.656] [WARN] default - /bigscreen/get-modules
+[2021-03-10T00:32:32.114] [WARN] default - /bigscreen/get-modules
+[2021-03-10T00:33:25.106] [WARN] default - /bigscreen/set-modules
+[2021-03-10T00:33:28.038] [WARN] default - /bigscreen/list
+[2021-03-10T00:33:28.118] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T00:33:30.588] [WARN] default - /user/list
+[2021-03-10T00:33:33.851] [WARN] default - /bigscreen/get-modules
+[2021-03-10T00:35:49.431] [WARN] default - /bigscreen/get-modules
+[2021-03-10T00:36:17.293] [WARN] default - /bigscreen/get-modules
+[2021-03-10T00:37:02.796] [WARN] default - /bigscreen/set-modules
+[2021-03-10T00:37:05.208] [WARN] default - /bigscreen/list
+[2021-03-10T00:37:05.277] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T00:37:07.866] [WARN] default - /user/list
+[2021-03-10T00:37:10.892] [WARN] default - /bigscreen/get-modules
+[2021-03-10T00:37:46.400] [WARN] default - /bigscreen/set-modules
+[2021-03-10T00:37:48.446] [WARN] default - /bigscreen/list
+[2021-03-10T00:37:48.514] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T00:37:50.146] [WARN] default - /user/list
+[2021-03-10T00:37:53.426] [WARN] default - /bigscreen/get-modules
+[2021-03-10T00:37:57.137] [WARN] default - /bigscreen/list
+[2021-03-10T00:37:57.222] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:

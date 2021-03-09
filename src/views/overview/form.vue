@@ -25,7 +25,8 @@
       <div class="overview-layout-operate">
         <div class="overview-layout-operate-btns">
           <el-button v-if="!isFixed" @click="createItem">添加</el-button>
-          <el-button @click="save" type="success">{{isFixed?"自定义配置":"预览"}}</el-button>
+          <el-button @click="preview" type="warning">{{isFixed?"自定义配置":"预览"}}</el-button>
+          <el-button v-if="isConfig && isFixed" @click="save" type="success">保存</el-button>
           <el-button v-if="isConfig" @click="$router.go(-1)">返回</el-button>
         </div>
       </div>
@@ -35,7 +36,7 @@
             <span class="tool" v-if="!isFixed">
               <span v-if="item.componentName" @click="clearItem(item)" title="清空" class="el-icon-circle-close red"></span>
               <span @click="deleteItem(index)" title="删除" class="el-icon-delete red"></span>
-              <span @click="configItem(index)" title="配置" class="el-icon-setting green"></span>
+              <span @click="configItem(item,index)" title="配置" class="el-icon-setting green"></span>
             </span>
             <div class="module-title">
               <span class="module-title-text">{{item.title}}</span>
@@ -50,7 +51,7 @@
       </vue-power-drag>
     </div>
 
-    <el-drawer title="添加模块" custom-class="drawer" :visible.sync="drawer" direction="rtl" :before-close="closeModule">
+    <el-drawer :title="isCreate?'添加模块':'配置模块'" custom-class="drawer" :show-close="false" :visible.sync="drawer" direction="rtl" :before-close="closeModule">
       <el-form ref="moduleForm" :model="moduleForm" :rules="rules" label-width="80px">
         <el-form-item label="模块标题" prop="title">
           <el-input v-model="moduleForm.title" placeholder="请输入模块标题"></el-input>
@@ -61,8 +62,27 @@
         <el-form-item label="链接地址" prop="linkUrl">
           <el-input v-model="moduleForm.linkUrl" placeholder="请输入链接地址，用于跳转入口"></el-input>
         </el-form-item>
+        <el-form-item v-if="!isCreate" label="组件名称" prop="componentName">
+          <el-input :disabled="true" v-model="moduleForm.componentName" placeholder="从左侧拖入组件"></el-input>
+        </el-form-item>
+
+        <el-form-item v-if="!isCreate" label="接口Url" prop="apiUrl">
+          <el-input v-model="moduleForm.apiUrl" placeholder="请输入模块接口Url"></el-input>
+        </el-form-item>
+
+        <el-form-item v-if="!isCreate" label="接口类型" prop="apiType">
+          <el-select v-model="moduleForm.apiType" clearable placeholder="请选择接口类型">
+            <el-option v-for="item in interfaceTypes" :key="item.value" :label="item.label" :value="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+
+        <el-form-item v-if="!isCreate" label="接口参数" prop="apiParams">
+          <el-input v-model="moduleForm.apiParams" type="textarea" placeholder="请输入模块接口参数"></el-input>
+        </el-form-item>
+
         <el-form-item>
-          <el-button type="primary" @click="saveCreate('moduleForm')">立即创建</el-button>
+          <el-button type="primary" @click="saveModuleConfigs('moduleForm')">{{isCreate?"立即添加":"保存配置"}}</el-button>
           <el-button @click="drawer = false;">取消</el-button>
         </el-form-item>
       </el-form>
@@ -92,6 +112,8 @@ export default {
   data() {
     return {
       drawer: false,
+      isCreate: true,
+      operateIndex: 0,
       moduleForm: {
         title: undefined,
         link: undefined,
@@ -134,7 +156,13 @@ export default {
           ]
         }
 
-      ]
+      ],
+      interfaceTypes: [
+        { label: "GET", value: "get" },
+        { label: "POST", value: "post" },
+        { label: "PUT", value: "put" },
+        { label: "DELETE", value: "delete" },
+      ],
     }
   },
   computed: {
@@ -144,7 +172,7 @@ export default {
   },
   created() {
     //屏幕适配，使得当前布局能在所有分辨率下适用，示例是在1366*638分辨率下完成
-    let screenWidth = window.innerWidth - 85;
+    let screenWidth = window.innerWidth - 170;
     let screenHeight = window.innerHeight;
     this.baseWidth = 90.8333 * (screenWidth / 1366);
     this.baseHeight = 100 * (screenHeight / 638);
@@ -159,8 +187,16 @@ export default {
   mounted() {
     let gridster = this.$refs['mxGridster']; //获取gridster实例
     gridster.init(); //在适当的时候初始化布局组件
+    this.getModules();
   },
   methods: {
+    getModules() {
+      this.$axios.post("/bigscreen/get-modules", { pid: this.$route.query.id }).then(res => {
+        if (res.status == 200) {
+          this.list = res.data;
+        }
+      })
+    },
     // 从左边的节点库拖出节点
     dragToBoardStart(e) {
       // 设置拖出的数据
@@ -179,9 +215,20 @@ export default {
       let names = content.name.split("_");
       this.$set(item, "componentName", names[1].toLowerCase())
     },
-    save() {
+    preview() {
       this.isFixed = !this.isFixed;
-      console.log(JSON.stringify(this.$refs['mxGridster'].getList()))
+    },
+    save() {
+      // 保存配置
+      let params = { pid: this.$route.query.id, modules: this.$refs['mxGridster'].getList() };
+      this.$axios.post("/bigscreen/set-modules", params).then(res => {
+        if (res.status == 200) {
+          this.$message.success("模块配置保存成功")
+        }
+        else {
+          this.$message.error("模块配置保存失败")
+        }
+      })
     },
     addItemBox(moduleForm) {
       let gridster = this.$refs['mxGridster']; //获取gridster实例
@@ -204,11 +251,18 @@ export default {
         //注意，这里删除布局框并不会删除里面的组件，组件需要自己用v-if来控制销毁，如果是highchart，必须手动调用chartInstance.$destroy()
       })
     },
+    configItem(item, index) {
+      this.moduleForm = this.$util.deepCopy(item);
+      this.operateIndex = index;
+      this.drawer = true;
+      this.isCreate = false;
+    },
     clearItem(item) {
       this.$set(item, "componentName", undefined)
     },
     createItem() {
       this.drawer = true;
+      this.isCreate = true;
     },
     closeModule() {
       this.moduleForm = {
@@ -217,10 +271,15 @@ export default {
         linkUrl: undefined
       }
     },
-    saveCreate(formName) {
+    saveModuleConfigs(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.addItemBox(this.moduleForm);
+          if (this.isCreate) {
+            this.addItemBox(this.moduleForm);
+          }
+          else {
+            this.list[this.operateIndex] = this.moduleForm;
+          }
           this.drawer = false;
         } else {
           return false;

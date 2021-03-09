@@ -88,7 +88,7 @@ export default {
             "component": "tag"
           }
         }
-      }, { "prop": "remark", "label": "备注" }, { "prop": "createtime", "label": "创建时间" }, { "prop": "updatetime", "label": "更新时间" }, { "prop": "creator", "label": "创建者" }, { "prop": "updator", "label": "更新者" }, { "prop": "id", "label": "操作", "isOperate": true, "operateFun": [{ "function": "config", "label": "配置", "icon": "" }, { "prop": "", "label": "编辑", "function": "edit" }, { "prop": "", "label": "删除", "function": "del" }] }],
+      }, { "prop": "remark", "label": "备注" }, { "prop": "createtime", "label": "创建时间" }, { "prop": "updatetime", "label": "更新时间" }, { "prop": "creator", "label": "创建者" }, { "prop": "updator", "label": "更新者" }, { "prop": "id", "label": "操作", "width": 160, "isOperate": true, "operateFun": [{ "function": "config", "label": "配置", "icon": "" }, { "prop": "", "label": "编辑", "function": "edit" }, { "prop": "", "label": "删除", "function": "del" }] }],
       tableConfig: { "setting": true, "pagination": true, "isPublic": true, "pageSize": 10, "type": null },
       searchConfig: { "labels": [{ "name": "概览标题", "field": "title", "value": "", "type": "input", "connector": "0", "hide": false, "placeholder": "请输入概览标题" }], "btns": [{ "name": "查询", "click": "" }], "inputParams": {} }
     }
