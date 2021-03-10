@@ -43,7 +43,7 @@
               <a class="module-title-link">{{item.link}}</a>
             </div>
             <div class="module-content" ondragover="return false" @drop="(e)=>dropToBoard(e,item)">
-              <span v-if="!item.componentName">待填充</span>
+              <span class="module-content-empty" v-if="!item.componentName">待填充</span>
               <component v-else :is="item.componentName" />
             </div>
           </div>
@@ -125,7 +125,7 @@ export default {
         ],
       },
       isFixed: false,
-      list: [{ "x": 7, "y": 1, "sizex": 6, "sizey": 2, "title": "资源容量", "link": "更多" }, { "x": 1, "y": 1, "sizex": 6, "sizey": 2, "title": "热度", "link": "更多" }, { "x": 1, "y": 3, "sizex": 6, "sizey": 1, "title": "CPU TOP5", "link": "更多" }, { "x": 7, "y": 3, "sizex": 6, "sizey": 1, "title": "内存 TOP5", "link": "更多" }],
+      list: undefined,
       baseWidth: 0,
       baseHeight: 0,
       coms: [
@@ -146,7 +146,7 @@ export default {
         {
           title: "组织容量", children: [
             { title: "总用户", icon: "icon-bar", name: "users", type: "chart" },
-            { title: "当前登录用户", icon: "icon-loop", name: "activeUser", type: "chart" }
+            { title: "当前登录用户", icon: "icon-loop", name: "users", type: "chart" }
           ]
         },
         {
@@ -172,7 +172,7 @@ export default {
   },
   created() {
     //屏幕适配，使得当前布局能在所有分辨率下适用，示例是在1366*638分辨率下完成
-    let screenWidth = window.innerWidth - 170;
+    let screenWidth = window.innerWidth - 15;
     let screenHeight = window.innerHeight;
     this.baseWidth = 90.8333 * (screenWidth / 1366);
     this.baseHeight = 100 * (screenHeight / 638);
@@ -191,11 +191,23 @@ export default {
   },
   methods: {
     getModules() {
-      this.$axios.post("/bigscreen/get-modules", { pid: this.$route.query.id }).then(res => {
-        if (res.status == 200) {
-          this.list = res.data;
-        }
-      })
+      let demoData = [{ "x": 1, "y": 1, "sizex": 6, "sizey": 2, "title": "预设模块1", "link": "更多" }, { "x": 7, "y": 1, "sizex": 6, "sizey": 2, "title": "预设模块2", "link": "更多" }, { "x": 1, "y": 3, "sizex": 6, "sizey": 1, "title": "预设模块3", "link": "更多" }, { "x": 7, "y": 3, "sizex": 6, "sizey": 1, "title": "预设模块4", "link": "更多" }]
+      // 编辑模块
+      if (this.$route.query.id) {
+        this.$axios.post("/bigscreen/get-modules", { pid: this.$route.query.id }).then(res => {
+          if (res.status == 200) {
+            if (res.data && res.data.length) {
+              this.list = res.data;
+            }
+            else {
+              this.list = demoData;
+            }
+          }
+        })
+      }
+      else {
+        this.list = demoData;
+      }
     },
     // 从左边的节点库拖出节点
     dragToBoardStart(e) {
@@ -232,11 +244,11 @@ export default {
     },
     addItemBox(moduleForm) {
       let gridster = this.$refs['mxGridster']; //获取gridster实例
-
+      let maxY = Math.max.apply(null, this.list.map(m => m.y))
+      let maxYItem = this.list.filter(l => l.y == maxY)[0];
       gridster.addItemBox({
-        id: 111,
         x: 1,
-        y: 1,
+        y: maxY + maxYItem.sizey,
         sizex: 6,
         sizey: 2,
         title: moduleForm.title || "新增模块(待修改)",
@@ -263,6 +275,7 @@ export default {
     createItem() {
       this.drawer = true;
       this.isCreate = true;
+      this.moduleForm = {}
     },
     closeModule() {
       this.moduleForm = {
@@ -363,7 +376,10 @@ export default {
         height: calc(100% - 20px);
         display: flex;
         justify-content: center;
-        align-items: center;
+        &-empty {
+          color: #8a8e99;
+        }
+        align-items: flex-start;
       }
     }
   }
