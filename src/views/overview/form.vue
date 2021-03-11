@@ -10,7 +10,7 @@
           <el-menu-item :index="`${child.name}`" v-for="(child,cindex) in item.children" :key="cindex">
             <template slot="title">
               <div draggable="true" @dragstart="dragToBoardStart" class="node">
-                <span :title="`${child.type}_${child.name}`">
+                <span :title="child.id?`${child.type}_${child.name}_${child.id}`:`${child.type}_${child.name}`">
                   <i :class="['workteam',child.icon]"></i>
                   <span>{{child.title}}</span>
                 </span>
@@ -42,7 +42,7 @@
               <span class="module-title-text">{{item.title}}</span>
               <a class="module-title-link">{{item.link}}</a>
             </div>
-            <div class="module-content" ondragover="return false" @drop="(e)=>dropToBoard(e,item)">
+            <div class="module-content" ondragover="return false" @drop="(e)=>dropToBoard(e,item,index)">
               <span class="module-content-empty" v-if="!item.componentName">待填充</span>
               <component v-else :is="item.componentName" />
             </div>
@@ -81,8 +81,13 @@
           <el-input v-model="moduleForm.apiParams" type="textarea" placeholder="请输入模块接口参数"></el-input>
         </el-form-item>
 
+        <el-form-item v-if="!isCreate" class="pubDesc" prop="isPub">
+          <el-checkbox v-model="isPub">如果想把当前模块发布成组件，请勾选</el-checkbox>
+        </el-form-item>
+
         <el-form-item>
           <el-button type="primary" @click="saveModuleConfigs('moduleForm')">{{isCreate?"立即添加":"保存配置"}}</el-button>
+          <el-button type="warning" :disabled="!isPub" v-if="!isCreate" @click="pub">发布组件</el-button>
           <el-button @click="drawer = false;">取消</el-button>
         </el-form-item>
       </el-form>
@@ -111,6 +116,7 @@ export default {
   components: screenComponents,
   data() {
     return {
+      isPub: false,
       drawer: false,
       isCreate: true,
       operateIndex: 0,
@@ -154,6 +160,11 @@ export default {
             { title: "CPU使用TOP5", icon: "icon-bar", name: "cpu", type: "chart" },
             { title: "内存使用TOP5", icon: "icon-loop", name: "memory", type: "chart" }
           ]
+        },
+        {
+          title: "组件", type: "component", children: [
+
+          ]
         }
 
       ],
@@ -163,6 +174,7 @@ export default {
         { label: "PUT", value: "put" },
         { label: "DELETE", value: "delete" },
       ],
+      pubComs: []
     }
   },
   computed: {
@@ -171,6 +183,7 @@ export default {
     }
   },
   created() {
+    this.getComponents();
     //屏幕适配，使得当前布局能在所有分辨率下适用，示例是在1366*638分辨率下完成
     let screenWidth = window.innerWidth - 15;
     let screenHeight = window.innerHeight;
@@ -190,6 +203,21 @@ export default {
     this.getModules();
   },
   methods: {
+    getComponents() {
+      this.$axios.post("/bigscreen/get-components").then(res => {
+        if (res.status == 200) {
+          let pubComs = res.data;
+          let components = this.coms.filter(c => c.type == "component");
+          pubComs.forEach(pub => {
+            pub.icon = "icon-loop";
+            pub.type = "chart";
+            pub.isPub = 1;
+          })
+          this.pubComs = pubComs;
+          components[0].children = pubComs;
+        }
+      })
+    },
     getModules() {
       let demoData = [{ "x": 1, "y": 1, "sizex": 6, "sizey": 2, "title": "预设模块1", "link": "更多" }, { "x": 7, "y": 1, "sizex": 6, "sizey": 2, "title": "预设模块2", "link": "更多" }, { "x": 1, "y": 3, "sizex": 6, "sizey": 1, "title": "预设模块3", "link": "更多" }, { "x": 7, "y": 3, "sizex": 6, "sizey": 1, "title": "预设模块4", "link": "更多" }]
       // 编辑模块
@@ -221,14 +249,35 @@ export default {
       e.dataTransfer.effectAllowed = "copy"; // 设置拖的操作为复制操作
       // window.
     },
-    dropToBoard(e, item) {
+    dropToBoard(e, item, index) {
       const content = JSON.parse(e.dataTransfer.getData("text/plain")); // 接收来自拖出的内容,并还原为对象
       const date = new Date();
       let names = content.name.split("_");
       this.$set(item, "componentName", names[1].toLowerCase())
+      // id存在说明已经发布过，已经发布的组件
+      if (names[2]) {
+        let componentItems = this.pubComs.filter(p => p.id == names[2])
+        this.$set(this.list, index, componentItems[0])
+      }
     },
     preview() {
       this.isFixed = !this.isFixed;
+    },
+    pub() {
+      let params = this.moduleForm;
+      this.$confirm(`你确定将模块【${params.title}】发布成组件 ?`).then(() => {
+        this.$axios.post("/bigscreen/pub-module", params).then(res => {
+          if (res.status == 200) {
+            this.$message.success("发布组件成功")
+            this.getComponents();
+          }
+          else {
+            this.$message.error(res.msg || "发布组件失败")
+          }
+        })
+      })
+
+
     },
     save() {
       // 保存配置
@@ -261,6 +310,7 @@ export default {
 
         gridster.removeItem(index); //此时会在this.myList的index位置将item置为{}，目的是为了不让vue重新渲染整个v-for。
         //注意，这里删除布局框并不会删除里面的组件，组件需要自己用v-if来控制销毁，如果是highchart，必须手动调用chartInstance.$destroy()
+        this.list.splice(index, 1);
       })
     },
     configItem(item, index) {
@@ -268,6 +318,7 @@ export default {
       this.operateIndex = index;
       this.drawer = true;
       this.isCreate = false;
+      this.isPub = false;
     },
     clearItem(item) {
       this.$set(item, "componentName", undefined)
@@ -387,6 +438,12 @@ export default {
 .drawer {
   .el-form {
     padding: 10px 40px;
+    .pubDesc {
+      .el-checkbox__label {
+        font-size: 12px;
+        color: #999;
+      }
+    }
   }
 }
 </style>

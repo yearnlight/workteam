@@ -71,8 +71,8 @@ router.post("/set-modules", async ctx => {
             for (let item of params.modules) {
                 let id = Uuid.v1();
                 await query(
-                    "insert into visual_module(id,x,y,sizex,sizey,`title`,`link`,linkUrl,componentCode,componentName,apiUrl,apiType,apiParams,pid,isApi) values ?",
-                    [[[id, item.x, item.y, item.sizex, item.sizey, item.title, item.link, item.linkUrl, item.componentCode, item.componentName, item.apiUrl, item.apiType, item.apiParams, params.pid, item.isApi || 1]]]
+                    "insert into visual_module(id,x,y,sizex,sizey,`title`,`link`,linkUrl,componentCode,componentName,apiUrl,apiType,apiParams,pid,isApi,screenBorder,screenBg) values ?",
+                    [[[id, item.x, item.y, item.sizex, item.sizey, item.title, item.link, item.linkUrl, item.componentCode, item.componentName, item.apiUrl, item.apiType, item.apiParams, params.pid, item.isApi || 1, params.screenBorder, params.screenBg]]]
                 );
             }
             msg = "配置概览成功"
@@ -81,6 +81,48 @@ router.post("/set-modules", async ctx => {
         }
     }
 });
+
+// 发布组件
+router.post("/pub-module", async ctx => {
+    let msg = "";
+    let item = ctx.request.body;
+    let repeatRes = await query("select * from visual_public where title = ?", [item.title])
+    if (repeatRes && repeatRes.length) {
+        msg = "组件标题已经存在，请修改模块标题"
+        ctx.response.body = { status: 409, msg: msg, data: null };
+    }
+    else {
+        let id = Uuid.v1();
+        let isInserted = await query(
+            "insert into visual_public(id,x,y,sizex,sizey,`title`,`link`,linkUrl,componentCode,componentName,apiUrl,apiType,apiParams,pid,isApi,screenBorder,screenBg) values ?",
+            [[[id, item.x, item.y, item.sizex, item.sizey, item.title, item.link, item.linkUrl, item.componentCode, item.componentName, item.apiUrl, item.apiType, item.apiParams, null, item.isApi || 1, null, null]]]
+        );
+        if (isInserted) {
+            ctx.response.body = { status: 200, msg: msg, data: null };
+        }
+    }
+})
+
+// 删除组件
+router.post("/delete-component", async ctx => {
+    let { id } = ctx.request.body;
+    let isDeleteSuccess = await query("delete * from visual_public where id = ?", [id])
+    if (isDeleteSuccess) {
+        ctx.response.body = { status: 200, msg: "删除组件成功", data: data };
+    }
+    else {
+        ctx.response.body = { status: 500, msg: "删除组件失败", data: data };
+    }
+
+})
+
+// 获取所有发布组件
+router.post("/get-components", async ctx => {
+    let data = await query("select * from visual_public")
+    ctx.response.body = { status: 200, msg: "", data: data };
+})
+
+
 
 // 获取概览配置
 router.post("/get-modules", async ctx => {

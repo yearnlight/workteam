@@ -176,6 +176,7 @@ export default {
       isCreate: true,
       operateIndex: 0,// 当前操作模块序号
       bgUrl: bgGallery,
+      screenBg: "bg-gallery",
       list: undefined,
       baseWidth: 0,
       baseHeight: 0,
@@ -222,6 +223,7 @@ export default {
           ]
         }
       ],
+      bgs: { "bg-sky": bgSky, "bg-earth": bgEarth, "bg-gallery": bgGallery },
       borderName: "dv-border-box-8"
     }
   },
@@ -265,6 +267,7 @@ export default {
       })
     },
     getModules() {
+      let that = this;
       let demoData = [
         { "x": 1, "y": 1, "sizex": 4, "sizey": 2, "title": "预设模块1", isApi: 1, apiType: "get" },
         { "x": 5, "y": 1, "sizex": 4, "sizey": 2, "title": "预设模块2", isApi: 1, apiType: "get" },
@@ -281,7 +284,13 @@ export default {
         this.$axios.post("/bigscreen/get-modules", { pid: this.$route.query.id }).then(res => {
           if (res.status == 200) {
             if (res.data && res.data.length) {
+              let one = res.data[0];
               this.list = res.data;
+              let screenBg = one.screenBg || "bg-gallery"
+              that.bgUrl = that.bgs[screenBg];
+              that.screenBg = screenBg;
+              that.borderName = one.screenBorder || "dv-border-box-8";
+
             }
             else {
               this.list = demoData;
@@ -296,8 +305,8 @@ export default {
     },
     app(name, type) {
       if (type == 'bg') {
-        let bgs = { "bg-sky": bgSky, "bg-earth": bgEarth, "bg-gallery": bgGallery }
-        this.bgUrl = bgs[name];
+        this.screenBg = name;
+        this.bgUrl = this.bgs[name];
       }
       else if (type == 'layout') {
         this.layout = name;
@@ -320,7 +329,7 @@ export default {
     },
     save() {
       // 保存配置
-      let params = { pid: this.$route.query.id, modules: this.$refs['mxScreenGridster'].getList() };
+      let params = { pid: this.$route.query.id, screenBorder: this.borderName, screenBg: this.screenBg, modules: this.$refs['mxScreenGridster'].getList() };
       this.$axios.post("/bigscreen/set-modules", params).then(res => {
         if (res.status == 200) {
           this.$message.success("模块配置保存成功")
