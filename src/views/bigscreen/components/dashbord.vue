@@ -1,5 +1,10 @@
 <template>
-  <dv-charts :option="config" />
+  <div>
+    <slot />
+    <div class="chartContent center">
+      <dv-charts :option="config" />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -8,7 +13,7 @@ export default {
     return {
       config: {
         title: {
-          text: '剩余油量表',
+          text: 'CPU使用',
           style: {
             fill: '#fff'
           }
@@ -37,3 +42,18 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.chartContent {
+  .echarts {
+    height: 100%;
+  }
+  width: 100%;
+  height: calc(100% - 31px);
+  &.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+</style>

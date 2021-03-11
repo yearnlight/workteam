@@ -1,5 +1,10 @@
 <template>
-  <v-chart :options="options" autoresize v-if="isShow" />
+  <div>
+    <slot></slot>
+    <div class="chartContent">
+      <v-chart :options="options" autoresize v-if="isShow" />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -11,17 +16,18 @@ export default {
   },
   methods: {
     render() {
-      this.options.title.text = "卸料平台";
-      this.options.yAxis.name = "%";
+      this.options.title.text = "Echart柱状图";
+      this.options.title.show = false;
+      this.options.yAxis.name = "人";
       this.options.legend.data.push(["压强"]);
       this.options.xAxis.data = [
-        "2020-8-12",
-        "2020-8-13",
-        "2020-8-14",
-        "2020-8-15",
+        "08-12",
+        "08-13",
+        "08-14",
+        "08-15",
       ];
       this.options.series.push({
-        name: "电量",
+        name: "人数",
         type: "bar",
         barMaxWidth: 30,
         itemStyle: {
@@ -96,7 +102,8 @@ export default {
           },
         },
         legend: {
-          data: ["电量"],
+          show: false,
+          data: ["活跃人数"],
           top: 30,
           textStyle: {
             color: "#ffffff",
@@ -126,8 +133,8 @@ export default {
         ],
         animationDuration: 100,
         grid: {
-          top: 80,
           containLabel: true,
+          bottom: 10
         },
       },
     };
@@ -135,9 +142,18 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.echarts {
-  height: 100%;
+<style lang="scss" scoped>
+.chartContent {
+  .echarts {
+    height: 100%;
+    width: 100%;
+  }
   width: 100%;
+  height: calc(100% - 31px);
+  &.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 </style>

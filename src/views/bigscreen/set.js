@@ -1,15 +1,4 @@
 export default {
-    props: {
-        isSet: {
-            type: Boolean,
-            default: false
-        }
-    },
-    watch: {
-        isSet(n) {
-            this.isOpen = n;
-        }
-    },
     data() {
         var validateArrayStr = (rule, value, callback) => {
             if (!value) {
@@ -31,23 +20,23 @@ export default {
             }
         };
         return {
+            isSet: false,
             isRefresh: true,
-            isOpen: false,
-            form: {
+            moduleForm: {
                 title: undefined,
-                align: "left",
-                isInterface: 0,
+                isApi: 1,
                 xData: undefined,
                 yData: undefined,
-                interface: undefined,
-                interfaceType: "GET",
-                interfaceBody: undefined
+                apiUrl: undefined,
+                apiType: "get",
+                apiParams: undefined
             },
             rules: {
                 title: [{ required: true, message: "请输入模块标题", trigger: 'blur' }],
                 xData: [{ required: true, message: "请输入xData", trigger: 'blur' }, { validator: validateArrayStr, trigger: 'blur' }],
                 yData: [{ required: true, message: "请输入yData", trigger: 'blur' }, { validator: validateArrayStr, trigger: 'blur' }],
-                interface: [{ required: true, message: "请输入接口", trigger: 'blur' }],
+                apiUrl: [{ required: true, message: "请输入接口Url", trigger: 'blur' }],
+                apiType: [{ required: true, message: "请选择接口类型", trigger: 'change' }],
             },
             interfaceTypes: [
                 { label: "GET", value: "get" },
@@ -63,65 +52,17 @@ export default {
         }
     },
     methods: {
-        save(formName) {
-            let that = this;
-            this.$refs[formName].validate((valid) => {
-                if (valid) {
-                    try {
-
-                        // 自定义颜色组
-                        if (that.form.colors) {
-                            that.config.color = that.form.colors.map(m => m.value);
-                        }
-
-                        // 接口配置
-                        if (that.form.isInterface == 1) {
-                            // 设置服务对应接口
-                            that.config.interface = that.form.interface;
-                            that.config.interfaceType = that.form.interfaceType;
-                            that.config.interfaceBody = that.form.interfaceBody;
-                            that.fetchBackendData(that.config);
-                        }
-                        else {
-                            let temp = []
-                            let xData = JSON.parse(that.form.xData)
-                            let yData = JSON.parse(that.form.yData)
-                            xData.forEach((x, xindex) => {
-                                yData.forEach((y, yindex) => {
-                                    if (xindex == yindex) {
-                                        temp.push({ name: x, value: y })
-                                    }
-                                })
-                            })
-                            that.config.data = temp;
-                            that.refreshModule();
-                        }
-
-                        that.config.title.text = that.form.title;
-                        that.config.title.align = that.form.align;
-
-                    }
-                    catch {
-
-                    }
-                    that.isOpen = false;
-
-                } else {
-                    return false;
-                }
-            });
-        },
         fetchBackendData(config) {
             let that = this;
-            let apiConfigs = { url: config.interface, method: config.interfaceType || "get" };
-            if (config.interfaceBody) {
+            let apiConfigs = { url: config.apiUrl, method: config.apiType || "get" };
+            if (config.apiParams) {
                 try {
-                    let interfaceBody = JSON.parse(config.interfaceBody);
-                    if (config.interfaceType == "get") {
-                        apiConfigs = Object.assign(apiConfigs, { params: interfaceBody })
+                    let apiParams = JSON.parse(config.apiParams);
+                    if (config.apiType == "get") {
+                        apiConfigs = Object.assign(apiConfigs, { params: apiParams })
                     }
                     else {
-                        apiConfigs = Object.assign(apiConfigs, { data: interfaceBody })
+                        apiConfigs = Object.assign(apiConfigs, { data: apiParams })
                     }
                 }
                 catch {
@@ -158,17 +99,15 @@ export default {
         onClosed() {
             let that = this;
             that.isSet = false;
-            that.form = {
+            that.moduleForm = {
                 title: undefined,
-                align: "left",
+                isApi: 1,
                 xData: undefined,
                 yData: undefined,
-                isInterface: 0,
-                interface: undefined,
-                interfaceType: "GET",
-                interfaceBody: undefined
+                apiUrl: undefined,
+                apiType: "get",
+                apiParams: undefined
             }
-            that.$emit("cloudSet", false);
         }
     }
 }

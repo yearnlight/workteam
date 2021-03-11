@@ -1,42 +1,18 @@
 <template>
   <div class="ranking">
-    <div class="chartHeader" :style="{justifyContent: config.title.align}">{{config.title.text}}</div>
+    <slot />
     <dv-scroll-ranking-board :config="config" v-if="isRefresh" class="chartContent" />
-
-    <el-dialog title="配置排名图" :visible.sync="isOpen" @closed="onClosed">
-      <el-form :model="form" ref="form" :rules="rules" label-width="140px">
-        <el-form-item label="模块标题" prop="title">
-          <el-input v-model="form.title" placeholder="请输入标题" autocomplete="off"></el-input>
-        </el-form-item>
-
-        <el-form-item label="模块标题位置" prop="align">
-          <el-radio-group v-model="form.align">
-            <el-radio label="left">居左</el-radio>
-            <el-radio label="center">居中</el-radio>
-          </el-radio-group>
-        </el-form-item>
-
-        <el-form-item label="X轴数据" prop="xData">
-          <el-input v-model="form.xData" placeholder="数组类型，例如：['北京','西安','武汉','南京']" type="textarea" autocomplete="off"></el-input>
-        </el-form-item>
-
-        <el-form-item label="Y轴数据" prop="yData">
-          <el-input v-model="form.yData" placeholder="数组类型，例如：[126,69,78,79]" type="textarea" autocomplete="off"></el-input>
-        </el-form-item>
-
-      </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button @click="isOpen = false">取 消</el-button>
-        <el-button type="primary" @click="save('form')">确 定</el-button>
-      </div>
-    </el-dialog>
   </div>
 </template>
 
 <script>
-import setMinxin from "./set.js"
 export default {
-  mixins: [setMinxin],
+  props: {
+    isRefresh: {
+      type: Boolean,
+      default: true
+    }
+  },
   data() {
     return {
       config: {
@@ -72,7 +48,6 @@ export default {
         ],
         unit: '单位',
         valueFormatter({ value }) {
-          console.warn(arguments)
           const reverseNumber = (value + '').split('').reverse()
           let valueStr = ''
 
@@ -92,9 +67,17 @@ export default {
 
 
 <style lang="scss" scoped>
-.ranking {
+.chartContent {
+  .echarts {
+    height: 100%;
+  }
   width: 100%;
-  height: 100%;
+  height: calc(100% - 31px);
+  &.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 </style>
 

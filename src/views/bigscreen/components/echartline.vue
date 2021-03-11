@@ -1,5 +1,9 @@
 <template>
-  <v-chart :options="options" autoresize />
+  <div>
+    <slot />
+    <v-chart :options="options" autoresize class="chartContent" />
+  </div>
+
 </template>
 
 <script>
@@ -18,7 +22,8 @@ export default {
   },
   methods: {
     render(source) {
-      this.options.title.text = "环境监测曲线图";
+      this.options.title.text = "Echart 折线图";
+      this.options.title.show = false;
       this.options.yAxis.name = "μg/m³";
       this.options.xAxis.data = source.map((m) => m.date);
       this.options.series.push({
@@ -144,8 +149,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.echarts {
-  height: 100%;
+.chartContent {
+  .echarts {
+    height: 100%;
+  }
   width: 100%;
+  height: calc(100% - 31px);
+  &.center {
+    display: flex;
+    justify-content: center;
+  }
 }
 </style>

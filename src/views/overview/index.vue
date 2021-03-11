@@ -147,10 +147,10 @@ export default {
     },
     config(item, index) {
       if (item.type == "overview") {
-        this.$router.push({ path: "/overview", query: { id: item.id } })
+        this.$router.push({ path: "/overview", query: { id: item.id, title: item.title } })
       }
       else {
-        this.$router.push({ path: "/bigscreen", query: { id: item.id } })
+        this.$router.push({ path: "/bigscreen", query: { id: item.id, title: item.title } })
       }
 
     },

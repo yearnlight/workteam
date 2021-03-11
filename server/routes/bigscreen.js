@@ -71,8 +71,8 @@ router.post("/set-modules", async ctx => {
             for (let item of params.modules) {
                 let id = Uuid.v1();
                 await query(
-                    "insert into visual_module(id,x,y,sizex,sizey,`title`,`link`,linkUrl,componentCode,componentName,apiUrl,apiType,apiParams,pid) values ?",
-                    [[[id, item.x, item.y, item.sizex, item.sizey, item.title, item.link, item.linkUrl, item.componentCode, item.componentName, item.apiUrl, item.apiType, item.apiParams, params.pid]]]
+                    "insert into visual_module(id,x,y,sizex,sizey,`title`,`link`,linkUrl,componentCode,componentName,apiUrl,apiType,apiParams,pid,isApi) values ?",
+                    [[[id, item.x, item.y, item.sizex, item.sizey, item.title, item.link, item.linkUrl, item.componentCode, item.componentName, item.apiUrl, item.apiType, item.apiParams, params.pid, item.isApi || 1]]]
                 );
             }
             msg = "配置概览成功"

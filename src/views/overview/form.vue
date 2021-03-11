@@ -2,7 +2,7 @@
   <div class="overview">
     <!-- 概览组件模块 -->
     <div class="overview-module">
-      <el-menu background-color="#333854" text-color="#fff" active-text-color="#ffd04b" :unique-opened="false" :default-openeds="['0','1','2','3']" class="el-menu-vertical-demo">
+      <el-menu background-color="#1e222d" text-color="#fff" active-text-color="#ffd04b" :unique-opened="false" :default-openeds="['0','1','2','3']" class="el-menu-vertical-demo">
         <el-submenu :index="String(index)" v-for="(item,index) in coms" :key="index">
           <template slot="title">
             <span>{{item.title}}</span>
@@ -313,7 +313,7 @@ export default {
   &-module {
     width: 200px;
     overflow-y: auto;
-    background-color: #333854;
+    background-color: #1e222d;
     .el-menu {
       border-right: none;
     }
@@ -323,7 +323,7 @@ export default {
     overflow-y: auto;
     &-operate {
       display: flex;
-      background-color: #333854;
+      background-color: #1e222d;
       padding: 10px;
       &-btns {
         display: inline-block;

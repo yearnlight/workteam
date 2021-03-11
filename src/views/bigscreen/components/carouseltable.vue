@@ -1,6 +1,6 @@
 <template>
   <div class="carouseltable">
-    <div class="chartHeader" :style="{justifyContent: config.title.align}">{{config.title.text}}</div>
+    <slot />
     <dv-scroll-board :config="config" class="chartContent mediumWidth" />
   </div>
 </template>
@@ -23,9 +23,6 @@ export default {
           ['<span style="color:#ffdb5c;">行5列1</span>', '行5列2', '行5列3'],
           ['行6列1', '<span style="color:#ff9f7f;">行6列2</span>', '行6列3'],
           ['行7列1', '行7列2', '<span style="color:#fb7293;">行7列3</span>'],
-          ['行8列1', '<span style="color:#e062ae;">行8列2</span>', '行8列3'],
-          ['<span style="color:#e690d1;">行9列1</span>', '行9列2', '行9列3'],
-          ['行10列1', '<span style="color:#e7bcf3;">行10列2</span>', '行10列3']
         ],
         index: true,
         columnWidth: [50],
@@ -37,8 +34,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.carouseltable {
-  height: 100%;
+.chartContent {
+  .echarts {
+    height: 100%;
+  }
   width: 100%;
+  height: calc(100% - 31px);
+  &.center {
+    display: flex;
+    justify-content: center;
+  }
 }
 </style>

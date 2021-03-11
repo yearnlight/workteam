@@ -4426,3 +4426,455 @@ D:\fitmgr\otherweb\worktask\server\template\target\conversation\index.vue has al
 [2021-03-10T00:37:53.426] [WARN] default - /bigscreen/get-modules
 [2021-03-10T00:37:57.137] [WARN] default - /bigscreen/list
 [2021-03-10T00:37:57.222] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T09:06:23.089] [INFO] default - Task server success to run,port:4001.
+[2021-03-10T09:06:26.959] [WARN] default - /bigscreen/get-modules
+[2021-03-10T09:06:27.115] [ERROR] default - Auth faild.
+[2021-03-10T09:07:41.686] [WARN] default - /bigscreen/get-modules
+[2021-03-10T09:07:41.764] [ERROR] default - Auth faild.
+[2021-03-10T09:57:01.177] [WARN] default - /bigscreen/list
+[2021-03-10T09:57:01.356] [ERROR] default - Auth faild.
+[2021-03-10T09:57:01.358] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T09:58:41.567] [WARN] default - /user/list
+[2021-03-10T09:58:41.648] [ERROR] default - Auth faild.
+[2021-03-10T09:59:13.845] [WARN] default - /bigscreen/create
+[2021-03-10T09:59:13.942] [ERROR] default - Auth faild.
+[2021-03-10T09:59:14.446] [WARN] default - /bigscreen/list
+[2021-03-10T09:59:14.519] [ERROR] default - Auth faild.
+[2021-03-10T09:59:14.521] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T09:59:27.503] [WARN] default - /bigscreen/get-modules
+[2021-03-10T09:59:27.574] [ERROR] default - Auth faild.
+[2021-03-10T09:59:32.332] [WARN] default - /bigscreen/get-modules
+[2021-03-10T09:59:32.410] [ERROR] default - Auth faild.
+[2021-03-10T09:59:43.849] [WARN] default - /bigscreen/list
+[2021-03-10T09:59:43.935] [ERROR] default - Auth faild.
+[2021-03-10T09:59:43.936] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T09:59:48.210] [WARN] default - /bigscreen/get-modules
+[2021-03-10T09:59:48.283] [ERROR] default - Auth faild.
+[2021-03-10T10:02:30.470] [WARN] default - /bigscreen/set-modules
+[2021-03-10T10:02:30.548] [ERROR] default - Auth faild.
+[2021-03-10T10:02:33.734] [WARN] default - /bigscreen/list
+[2021-03-10T10:02:33.804] [ERROR] default - Auth faild.
+[2021-03-10T10:02:33.805] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:02:36.477] [WARN] default - /user/list
+[2021-03-10T10:02:36.549] [ERROR] default - Auth faild.
+[2021-03-10T10:02:38.766] [WARN] default - /bigscreen/get-modules
+[2021-03-10T10:02:38.835] [ERROR] default - Auth faild.
+[2021-03-10T10:02:44.328] [WARN] default - /bigscreen/list
+[2021-03-10T10:02:44.400] [ERROR] default - Auth faild.
+[2021-03-10T10:02:44.402] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:04:34.751] [WARN] default - /user/list
+[2021-03-10T10:04:34.833] [ERROR] default - Auth faild.
+[2021-03-10T10:06:17.959] [WARN] default - /bigscreen/list
+[2021-03-10T10:06:18.028] [ERROR] default - Auth faild.
+[2021-03-10T10:06:18.030] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:06:45.259] [WARN] default - /bigscreen/get-modules
+[2021-03-10T10:06:45.329] [ERROR] default - Auth faild.
+[2021-03-10T10:06:48.747] [WARN] default - /bigscreen/list
+[2021-03-10T10:06:48.818] [ERROR] default - Auth faild.
+[2021-03-10T10:06:48.822] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:06:56.116] [WARN] default - /user/list
+[2021-03-10T10:06:56.184] [ERROR] default - Auth faild.
+[2021-03-10T10:06:59.470] [WARN] default - /bigscreen/get-modules
+[2021-03-10T10:06:59.543] [ERROR] default - Auth faild.
+[2021-03-10T10:10:31.659] [WARN] default - /bigscreen/list
+[2021-03-10T10:10:31.733] [ERROR] default - Auth faild.
+[2021-03-10T10:10:31.734] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:12:51.359] [WARN] default - /user/list
+[2021-03-10T10:12:51.429] [ERROR] default - Auth faild.
+[2021-03-10T10:13:13.896] [WARN] default - /bigscreen/get-modules
+[2021-03-10T10:13:13.969] [ERROR] default - Auth faild.
+[2021-03-10T10:14:19.793] [WARN] default - /bigscreen/list
+[2021-03-10T10:14:19.865] [ERROR] default - Auth faild.
+[2021-03-10T10:14:19.866] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:14:30.563] [WARN] default - /bigscreen/get-modules
+[2021-03-10T10:14:30.640] [ERROR] default - Auth faild.
+[2021-03-10T10:16:58.030] [WARN] default - /bigscreen/list
+[2021-03-10T10:16:58.103] [ERROR] default - Auth faild.
+[2021-03-10T10:16:58.105] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:17:47.290] [WARN] default - /bigscreen/list
+[2021-03-10T10:17:47.360] [ERROR] default - Auth faild.
+[2021-03-10T10:17:47.361] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:18:12.620] [WARN] default - /bigscreen/list
+[2021-03-10T10:18:12.698] [ERROR] default - Auth faild.
+[2021-03-10T10:18:12.700] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:18:44.593] [WARN] default - /bigscreen/list
+[2021-03-10T10:18:44.668] [ERROR] default - Auth faild.
+[2021-03-10T10:18:44.672] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:18:46.425] [WARN] default - /bigscreen/get-modules
+[2021-03-10T10:18:46.495] [ERROR] default - Auth faild.
+[2021-03-10T10:18:56.728] [WARN] default - /bigscreen/list
+[2021-03-10T10:18:56.795] [ERROR] default - Auth faild.
+[2021-03-10T10:18:56.797] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:19:10.859] [WARN] default - /bigscreen/get-modules
+[2021-03-10T10:19:10.928] [ERROR] default - Auth faild.
+[2021-03-10T10:20:25.383] [WARN] default - /bigscreen/set-modules
+[2021-03-10T10:20:25.450] [ERROR] default - Auth faild.
+[2021-03-10T10:21:36.505] [WARN] default - /bigscreen/list
+[2021-03-10T10:21:36.581] [ERROR] default - Auth faild.
+[2021-03-10T10:21:36.583] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:22:10.571] [WARN] default - /bigscreen/get-modules
+[2021-03-10T10:22:10.644] [ERROR] default - Auth faild.
+[2021-03-10T10:23:28.243] [WARN] default - /bigscreen/list
+[2021-03-10T10:23:28.312] [ERROR] default - Auth faild.
+[2021-03-10T10:23:28.314] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:24:07.104] [WARN] default - /bigscreen/get-modules
+[2021-03-10T10:24:07.179] [ERROR] default - Auth faild.
+[2021-03-10T10:26:18.478] [WARN] default - /bigscreen/list
+[2021-03-10T10:26:18.546] [ERROR] default - Auth faild.
+[2021-03-10T10:26:18.548] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:26:32.526] [WARN] default - /bigscreen/get-modules
+[2021-03-10T10:26:32.600] [ERROR] default - Auth faild.
+[2021-03-10T10:29:26.043] [WARN] default - /bigscreen/list
+[2021-03-10T10:29:26.115] [ERROR] default - Auth faild.
+[2021-03-10T10:29:26.119] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:29:30.106] [WARN] default - /bigscreen/list
+[2021-03-10T10:29:30.175] [ERROR] default - Auth faild.
+[2021-03-10T10:29:30.177] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:29:31.538] [WARN] default - /bigscreen/get-modules
+[2021-03-10T10:29:31.609] [ERROR] default - Auth faild.
+[2021-03-10T10:29:33.721] [WARN] default - /bigscreen/list
+[2021-03-10T10:29:33.788] [ERROR] default - Auth faild.
+[2021-03-10T10:29:33.790] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:31:11.772] [WARN] default - /bigscreen/get-modules
+[2021-03-10T10:31:11.846] [ERROR] default - Auth faild.
+[2021-03-10T10:46:29.544] [WARN] default - /bigscreen/list
+[2021-03-10T10:46:29.612] [ERROR] default - Auth faild.
+[2021-03-10T10:46:29.613] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:46:56.428] [WARN] default - /bigscreen/get-modules
+[2021-03-10T10:46:56.496] [ERROR] default - Auth faild.
+[2021-03-10T10:46:59.106] [WARN] default - /bigscreen/list
+[2021-03-10T10:46:59.176] [ERROR] default - Auth faild.
+[2021-03-10T10:46:59.178] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:47:01.038] [WARN] default - /bigscreen/get-modules
+[2021-03-10T10:47:01.109] [ERROR] default - Auth faild.
+[2021-03-10T10:49:16.222] [WARN] default - /bigscreen/set-modules
+[2021-03-10T10:49:16.291] [ERROR] default - Auth faild.
+[2021-03-10T10:49:18.435] [WARN] default - /bigscreen/list
+[2021-03-10T10:49:18.512] [ERROR] default - Auth faild.
+[2021-03-10T10:49:18.513] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:49:34.795] [WARN] default - /bigscreen/get-modules
+[2021-03-10T10:49:34.863] [ERROR] default - Auth faild.
+[2021-03-10T10:52:01.993] [WARN] default - /bigscreen/list
+[2021-03-10T10:52:02.071] [ERROR] default - Auth faild.
+[2021-03-10T10:52:02.072] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:55:39.085] [WARN] default - /bigscreen/list
+[2021-03-10T10:55:39.158] [ERROR] default - Auth faild.
+[2021-03-10T10:55:39.160] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:56:24.476] [WARN] default - /bigscreen/get-modules
+[2021-03-10T10:56:24.551] [ERROR] default - Auth faild.
+[2021-03-10T10:57:29.222] [WARN] default - /bigscreen/list
+[2021-03-10T10:57:29.290] [ERROR] default - Auth faild.
+[2021-03-10T10:57:29.293] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T10:58:16.162] [WARN] default - /server-config/list
+[2021-03-10T10:58:16.232] [ERROR] default - Auth faild.
+[2021-03-10T11:00:04.169] [WARN] default - /server-config/list
+[2021-03-10T11:00:04.237] [ERROR] default - Auth faild.
+[2021-03-10T11:00:05.480] [WARN] default - /bigscreen/list
+[2021-03-10T11:00:05.559] [ERROR] default - Auth faild.
+[2021-03-10T11:00:05.560] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T11:00:20.791] [WARN] default - /server-config/list
+[2021-03-10T11:00:20.862] [ERROR] default - Auth faild.
+[2021-03-10T11:01:10.377] [WARN] default - /server-config/list
+[2021-03-10T11:01:10.445] [ERROR] default - Auth faild.
+[2021-03-10T11:01:13.637] [WARN] default - /task/list
+[2021-03-10T11:01:13.640] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?) order by endTime desc,parames:waitAssign,shelve
+[2021-03-10T11:01:13.765] [WARN] default - /user/list
+[2021-03-10T11:01:13.905] [ERROR] default - Auth faild.
+[2021-03-10T11:01:13.947] [WARN] default - /task/statistics
+[2021-03-10T11:01:13.990] [WARN] default - /task/list
+[2021-03-10T11:01:13.992] [INFO] default - query task page:select * from worktask where isDel = 0 and  status in (?,?,?,?,?) order by endTime desc,parames:backlog,demanding,designing,coding,testing
+[2021-03-10T11:01:14.021] [ERROR] default - Auth faild.
+[2021-03-10T11:01:15.569] [WARN] default - /store/list
+[2021-03-10T11:01:15.639] [ERROR] default - Auth faild.
+[2021-03-10T11:01:16.452] [WARN] default - /task/list
+[2021-03-10T11:01:16.453] [INFO] default - query task page:select * from worktask where isDel = 0  order by endTime desc limit 0, 10,parames:
+[2021-03-10T11:01:16.761] [WARN] default - /user/list
+[2021-03-10T11:01:16.830] [ERROR] default - Auth faild.
+[2021-03-10T11:01:17.456] [WARN] default - /server-config/list
+[2021-03-10T11:01:17.527] [ERROR] default - Auth faild.
+[2021-03-10T11:01:19.929] [WARN] default - /event/list
+[2021-03-10T11:01:19.998] [ERROR] default - Auth faild.
+[2021-03-10T11:01:20.000] [INFO] default - query event page:select * from event order by createtime desc limit 0, 10,parames:
+[2021-03-10T11:01:22.888] [WARN] default - /demand/list
+[2021-03-10T11:01:22.959] [ERROR] default - Auth faild.
+[2021-03-10T11:01:22.961] [INFO] default - query demand page:select * from demand where isDel = 0  order by createtime desc limit 0, 10,parames:
+[2021-03-10T11:01:23.196] [WARN] default - /user/list
+[2021-03-10T11:01:23.263] [ERROR] default - Auth faild.
+[2021-03-10T11:01:24.142] [WARN] default - /menu/list
+[2021-03-10T11:01:24.210] [ERROR] default - Auth faild.
+[2021-03-10T11:01:25.194] [WARN] default - /user/list
+[2021-03-10T11:01:25.266] [ERROR] default - Auth faild.
+[2021-03-10T11:01:26.685] [WARN] default - /role/list
+[2021-03-10T11:01:26.766] [ERROR] default - Auth faild.
+[2021-03-10T11:01:26.768] [INFO] default - 
+[2021-03-10T11:01:29.153] [WARN] default - /host/list
+[2021-03-10T11:01:29.228] [ERROR] default - Auth faild.
+[2021-03-10T11:01:47.456] [WARN] default - /regular/list
+[2021-03-10T11:01:57.745] [WARN] default - /regular/list
+[2021-03-10T11:02:00.635] [WARN] default - /bigscreen/get-modules
+[2021-03-10T11:02:00.703] [ERROR] default - Auth faild.
+[2021-03-10T11:02:02.464] [WARN] default - /regular/list
+[2021-03-10T11:02:23.297] [WARN] default - /bigscreen/list
+[2021-03-10T11:02:23.368] [ERROR] default - Auth faild.
+[2021-03-10T11:02:23.369] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T11:04:23.110] [WARN] default - /bigscreen/list
+[2021-03-10T11:04:23.180] [ERROR] default - Auth faild.
+[2021-03-10T11:04:23.182] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T11:05:59.741] [WARN] default - /bigscreen/get-modules
+[2021-03-10T11:05:59.820] [ERROR] default - Auth faild.
+[2021-03-10T11:09:57.586] [WARN] default - /bigscreen/list
+[2021-03-10T11:09:57.657] [ERROR] default - Auth faild.
+[2021-03-10T11:09:57.660] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T11:11:09.847] [WARN] default - /bigscreen/get-modules
+[2021-03-10T11:11:09.916] [ERROR] default - Auth faild.
+[2021-03-10T14:12:38.449] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:12:38.663] [ERROR] default - Auth faild.
+[2021-03-10T14:14:52.412] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:14:52.487] [ERROR] default - Auth faild.
+[2021-03-10T14:17:19.510] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:17:19.591] [ERROR] default - Auth faild.
+[2021-03-10T14:17:31.065] [WARN] default - /bigscreen/list
+[2021-03-10T14:17:31.136] [ERROR] default - Auth faild.
+[2021-03-10T14:17:31.138] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T14:17:33.753] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:17:33.827] [ERROR] default - Auth faild.
+[2021-03-10T14:17:42.579] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:17:42.651] [ERROR] default - Auth faild.
+[2021-03-10T14:18:48.712] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:18:48.818] [ERROR] default - Auth faild.
+[2021-03-10T14:21:10.072] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:21:10.144] [ERROR] default - Auth faild.
+[2021-03-10T14:21:24.875] [WARN] default - /bigscreen/list
+[2021-03-10T14:21:24.945] [ERROR] default - Auth faild.
+[2021-03-10T14:21:24.947] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T14:21:26.786] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:21:26.855] [ERROR] default - Auth faild.
+[2021-03-10T14:21:42.566] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:21:42.637] [ERROR] default - Auth faild.
+[2021-03-10T14:21:55.351] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:21:55.430] [ERROR] default - Auth faild.
+[2021-03-10T14:22:01.302] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:22:01.391] [ERROR] default - Auth faild.
+[2021-03-10T14:22:51.052] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:22:51.126] [ERROR] default - Auth faild.
+[2021-03-10T14:23:04.524] [WARN] default - /bigscreen/set-modules
+[2021-03-10T14:23:04.599] [ERROR] default - Auth faild.
+[2021-03-10T14:23:06.532] [WARN] default - /bigscreen/list
+[2021-03-10T14:23:06.618] [ERROR] default - Auth faild.
+[2021-03-10T14:23:06.619] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T14:23:11.755] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:23:11.826] [ERROR] default - Auth faild.
+[2021-03-10T14:23:34.088] [WARN] default - /bigscreen/list
+[2021-03-10T14:23:34.161] [ERROR] default - Auth faild.
+[2021-03-10T14:23:34.162] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T14:23:35.938] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:23:36.011] [ERROR] default - Auth faild.
+[2021-03-10T14:24:25.635] [WARN] default - /bigscreen/list
+[2021-03-10T14:24:25.709] [ERROR] default - Auth faild.
+[2021-03-10T14:24:25.710] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T14:24:27.759] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:24:27.828] [ERROR] default - Auth faild.
+[2021-03-10T14:25:00.535] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:25:00.610] [ERROR] default - Auth faild.
+[2021-03-10T14:25:46.420] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:25:46.496] [ERROR] default - Auth faild.
+[2021-03-10T14:25:59.568] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:25:59.637] [ERROR] default - Auth faild.
+[2021-03-10T14:26:22.908] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:26:22.977] [ERROR] default - Auth faild.
+[2021-03-10T14:26:59.504] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:26:59.577] [ERROR] default - Auth faild.
+[2021-03-10T14:34:33.620] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:34:33.692] [ERROR] default - Auth faild.
+[2021-03-10T14:34:43.914] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:34:43.986] [ERROR] default - Auth faild.
+[2021-03-10T14:35:09.789] [WARN] default - /bigscreen/list
+[2021-03-10T14:35:09.861] [ERROR] default - Auth faild.
+[2021-03-10T14:35:09.863] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T14:35:11.781] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:35:11.852] [ERROR] default - Auth faild.
+[2021-03-10T14:45:12.215] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:45:12.288] [ERROR] default - Auth faild.
+[2021-03-10T14:45:50.462] [WARN] default - /bigscreen/list
+[2021-03-10T14:45:50.533] [ERROR] default - Auth faild.
+[2021-03-10T14:45:50.534] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T14:45:51.920] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:45:51.990] [ERROR] default - Auth faild.
+[2021-03-10T14:51:34.571] [WARN] default - /bigscreen/list
+[2021-03-10T14:51:34.641] [ERROR] default - Auth faild.
+[2021-03-10T14:51:34.643] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T14:51:35.816] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:51:35.898] [ERROR] default - Auth faild.
+[2021-03-10T14:51:47.700] [WARN] default - /bigscreen/set-modules
+[2021-03-10T14:51:47.777] [ERROR] default - Auth faild.
+[2021-03-10T14:54:22.510] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:54:22.598] [ERROR] default - Auth faild.
+[2021-03-10T14:54:56.426] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:54:56.499] [ERROR] default - Auth faild.
+[2021-03-10T14:55:08.754] [WARN] default - /bigscreen/list
+[2021-03-10T14:55:08.830] [ERROR] default - Auth faild.
+[2021-03-10T14:55:08.832] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T14:55:09.882] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:55:09.951] [ERROR] default - Auth faild.
+[2021-03-10T14:56:43.829] [WARN] default - /bigscreen/list
+[2021-03-10T14:56:43.899] [ERROR] default - Auth faild.
+[2021-03-10T14:56:43.900] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T14:56:45.974] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:56:46.045] [ERROR] default - Auth faild.
+[2021-03-10T14:56:52.675] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:56:52.746] [ERROR] default - Auth faild.
+[2021-03-10T14:57:29.562] [WARN] default - /bigscreen/list
+[2021-03-10T14:57:29.643] [ERROR] default - Auth faild.
+[2021-03-10T14:57:29.645] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T14:57:31.612] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:57:31.683] [ERROR] default - Auth faild.
+[2021-03-10T14:57:54.746] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:57:54.819] [ERROR] default - Auth faild.
+[2021-03-10T14:59:07.202] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:59:07.275] [ERROR] default - Auth faild.
+[2021-03-10T14:59:51.726] [WARN] default - /bigscreen/list
+[2021-03-10T14:59:51.829] [ERROR] default - Auth faild.
+[2021-03-10T14:59:51.831] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T14:59:53.566] [WARN] default - /bigscreen/get-modules
+[2021-03-10T14:59:53.651] [ERROR] default - Auth faild.
+[2021-03-10T15:00:51.285] [WARN] default - /bigscreen/get-modules
+[2021-03-10T15:00:51.358] [ERROR] default - Auth faild.
+[2021-03-10T15:01:22.185] [WARN] default - /bigscreen/get-modules
+[2021-03-10T15:01:22.288] [ERROR] default - Auth faild.
+[2021-03-10T15:01:36.348] [WARN] default - /bigscreen/list
+[2021-03-10T15:01:36.423] [ERROR] default - Auth faild.
+[2021-03-10T15:01:36.425] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T15:01:38.482] [WARN] default - /bigscreen/get-modules
+[2021-03-10T15:01:38.553] [ERROR] default - Auth faild.
+[2021-03-10T15:02:59.117] [WARN] default - /bigscreen/get-modules
+[2021-03-10T15:02:59.188] [ERROR] default - Auth faild.
+[2021-03-10T15:03:33.206] [WARN] default - /bigscreen/get-modules
+[2021-03-10T15:03:33.281] [ERROR] default - Auth faild.
+[2021-03-10T15:03:43.023] [WARN] default - /bigscreen/list
+[2021-03-10T15:03:43.094] [ERROR] default - Auth faild.
+[2021-03-10T15:03:43.096] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T15:03:44.575] [WARN] default - /bigscreen/get-modules
+[2021-03-10T15:03:44.643] [ERROR] default - Auth faild.
+[2021-03-10T15:18:47.340] [WARN] default - /bigscreen/list
+[2021-03-10T15:18:47.408] [ERROR] default - Auth faild.
+[2021-03-10T15:18:47.409] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T15:18:49.654] [WARN] default - /bigscreen/get-modules
+[2021-03-10T15:18:49.730] [ERROR] default - Auth faild.
+[2021-03-10T15:18:51.524] [WARN] default - /bigscreen/list
+[2021-03-10T15:18:51.600] [ERROR] default - Auth faild.
+[2021-03-10T15:18:51.602] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T15:21:44.027] [WARN] default - /bigscreen/list
+[2021-03-10T15:21:44.097] [ERROR] default - Auth faild.
+[2021-03-10T15:21:44.099] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T15:21:47.939] [WARN] default - /bigscreen/get-modules
+[2021-03-10T15:21:48.007] [ERROR] default - Auth faild.
+[2021-03-10T15:25:32.290] [WARN] default - /bigscreen/get-modules
+[2021-03-10T15:25:32.359] [ERROR] default - Auth faild.
+[2021-03-10T15:25:57.575] [WARN] default - /bigscreen/get-modules
+[2021-03-10T15:25:57.646] [ERROR] default - Auth faild.
+[2021-03-10T15:32:58.432] [WARN] default - /bigscreen/get-modules
+[2021-03-10T15:32:58.504] [ERROR] default - Auth faild.
+[2021-03-10T15:33:02.311] [WARN] default - /bigscreen/get-modules
+[2021-03-10T15:33:02.382] [ERROR] default - Auth faild.
+[2021-03-10T17:30:28.364] [WARN] default - /bigscreen/set-modules
+[2021-03-10T17:30:28.551] [ERROR] default - Auth faild.
+[2021-03-10T17:30:34.630] [WARN] default - /bigscreen/list
+[2021-03-10T17:30:34.702] [ERROR] default - Auth faild.
+[2021-03-10T17:30:34.704] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T17:30:36.214] [WARN] default - /bigscreen/get-modules
+[2021-03-10T17:30:36.289] [ERROR] default - Auth faild.
+[2021-03-10T17:42:59.384] [WARN] default - /bigscreen/set-modules
+[2021-03-10T17:42:59.456] [ERROR] default - Auth faild.
+[2021-03-10T17:45:53.408] [WARN] default - /bigscreen/get-modules
+[2021-03-10T17:45:53.487] [ERROR] default - Auth faild.
+[2021-03-10T17:46:23.511] [WARN] default - /bigscreen/get-modules
+[2021-03-10T17:46:23.593] [ERROR] default - Auth faild.
+[2021-03-10T17:46:38.169] [WARN] default - /bigscreen/get-modules
+[2021-03-10T17:46:38.252] [ERROR] default - Auth faild.
+[2021-03-10T17:49:56.870] [WARN] default - /bigscreen/get-modules
+[2021-03-10T17:49:56.944] [ERROR] default - Auth faild.
+[2021-03-10T17:57:19.943] [WARN] default - /bigscreen/list
+[2021-03-10T17:57:20.014] [ERROR] default - Auth faild.
+[2021-03-10T17:57:20.016] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T17:58:22.530] [WARN] default - /bigscreen/list
+[2021-03-10T17:58:22.601] [ERROR] default - Auth faild.
+[2021-03-10T17:58:22.603] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T17:58:25.432] [WARN] default - /bigscreen/get-modules
+[2021-03-10T17:58:25.504] [ERROR] default - Auth faild.
+[2021-03-10T17:59:20.673] [WARN] default - /bigscreen/list
+[2021-03-10T17:59:20.745] [ERROR] default - Auth faild.
+[2021-03-10T17:59:20.746] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T21:14:05.672] [WARN] default - /bigscreen/get-modules
+[2021-03-10T21:14:09.882] [ERROR] default - Auth faild.
+[2021-03-10T21:14:22.534] [WARN] default - /bigscreen/get-modules
+[2021-03-10T21:14:22.624] [ERROR] default - Auth faild.
+[2021-03-10T21:17:47.773] [WARN] default - /bigscreen/list
+[2021-03-10T21:17:47.860] [ERROR] default - Auth faild.
+[2021-03-10T21:17:47.864] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T21:18:07.534] [WARN] default - /user/list
+[2021-03-10T21:18:07.616] [ERROR] default - Auth faild.
+[2021-03-10T21:18:14.088] [WARN] default - /bigscreen/update
+[2021-03-10T21:18:14.175] [ERROR] default - Auth faild.
+[2021-03-10T21:18:14.506] [WARN] default - /bigscreen/list
+[2021-03-10T21:18:14.702] [ERROR] default - Auth faild.
+[2021-03-10T21:18:14.707] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T21:20:38.329] [WARN] default - /bigscreen/list
+[2021-03-10T21:20:38.419] [ERROR] default - Auth faild.
+[2021-03-10T21:20:38.423] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T21:20:43.572] [WARN] default - /bigscreen/list
+[2021-03-10T21:20:43.655] [ERROR] default - Auth faild.
+[2021-03-10T21:20:43.659] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-10T21:21:08.081] [WARN] default - /bigscreen/list
+[2021-03-10T21:21:08.165] [ERROR] default - Auth faild.
+[2021-03-10T21:21:08.168] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-11T14:46:40.670] [WARN] default - /bigscreen/list
+[2021-03-11T14:46:40.823] [ERROR] default - Auth faild.
+[2021-03-11T14:46:40.827] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-11T14:46:42.746] [WARN] default - /bigscreen/get-modules
+[2021-03-11T14:46:42.813] [ERROR] default - Auth faild.
+[2021-03-11T14:46:45.922] [WARN] default - /bigscreen/get-modules
+[2021-03-11T14:46:45.990] [ERROR] default - Auth faild.
+[2021-03-11T14:46:59.413] [WARN] default - /bigscreen/list
+[2021-03-11T14:46:59.489] [ERROR] default - Auth faild.
+[2021-03-11T14:46:59.489] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-11T19:46:29.873] [WARN] default - /bigscreen/get-modules
+[2021-03-11T19:46:30.050] [ERROR] default - Auth faild.
+[2021-03-11T19:46:36.544] [WARN] default - /bigscreen/get-modules
+[2021-03-11T19:46:36.611] [ERROR] default - Auth faild.
+[2021-03-11T19:47:53.142] [WARN] default - /bigscreen/get-modules
+[2021-03-11T19:47:53.214] [ERROR] default - Auth faild.
+[2021-03-11T19:47:56.085] [WARN] default - /bigscreen/get-modules
+[2021-03-11T19:47:56.154] [ERROR] default - Auth faild.
+[2021-03-11T19:48:51.205] [WARN] default - /bigscreen/get-modules
+[2021-03-11T19:48:51.274] [ERROR] default - Auth faild.
+[2021-03-11T19:49:48.961] [WARN] default - /bigscreen/get-modules
+[2021-03-11T19:49:49.031] [ERROR] default - Auth faild.
+[2021-03-11T19:50:16.545] [WARN] default - /bigscreen/get-modules
+[2021-03-11T19:50:16.616] [ERROR] default - Auth faild.
+[2021-03-11T19:50:59.038] [WARN] default - /bigscreen/get-modules
+[2021-03-11T19:50:59.115] [ERROR] default - Auth faild.
+[2021-03-11T19:53:11.226] [WARN] default - /bigscreen/get-modules
+[2021-03-11T19:53:11.296] [ERROR] default - Auth faild.
+[2021-03-11T19:53:19.915] [INFO] default - Task server success to run,port:4001.
+[2021-03-11T19:53:46.950] [WARN] default - /bigscreen/set-modules
+[2021-03-11T19:53:47.091] [ERROR] default - Auth faild.
+[2021-03-11T19:53:50.236] [WARN] default - /bigscreen/list
+[2021-03-11T19:53:50.308] [ERROR] default - Auth faild.
+[2021-03-11T19:53:50.310] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-11T19:53:51.854] [WARN] default - /bigscreen/get-modules
+[2021-03-11T19:53:51.918] [ERROR] default - Auth faild.
+[2021-03-11T19:56:19.192] [WARN] default - /bigscreen/list
+[2021-03-11T19:56:19.257] [ERROR] default - Auth faild.
+[2021-03-11T19:56:19.257] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-11T19:56:20.905] [WARN] default - /bigscreen/get-modules
+[2021-03-11T19:56:20.969] [ERROR] default - Auth faild.
+[2021-03-11T19:58:09.066] [WARN] default - /bigscreen/list
+[2021-03-11T19:58:09.129] [ERROR] default - Auth faild.
+[2021-03-11T19:58:09.131] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-11T19:58:10.701] [WARN] default - /bigscreen/get-modules
+[2021-03-11T19:58:10.764] [ERROR] default - Auth faild.
+[2021-03-11T19:59:37.141] [WARN] default - /bigscreen/list
+[2021-03-11T19:59:37.207] [ERROR] default - Auth faild.
+[2021-03-11T19:59:37.207] [INFO] default - query visual page:select * from visual where isDel = 0 order by createtime desc,params:
+[2021-03-11T19:59:40.130] [WARN] default - /bigscreen/get-modules
+[2021-03-11T19:59:40.198] [ERROR] default - Auth faild.

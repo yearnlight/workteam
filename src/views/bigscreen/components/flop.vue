@@ -1,5 +1,10 @@
 <template>
-  <dv-digital-flop :config="config" style="width:200px;height:50px;" />
+  <div>
+    <slot />
+    <div class="chartContent center">
+      <dv-digital-flop :config="config" style="width:200px;height:50px;" />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -24,3 +29,18 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.chartContent {
+  .echarts {
+    height: 100%;
+  }
+  width: 100%;
+  height: calc(100% - 31px);
+  &.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+</style>

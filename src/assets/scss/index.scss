@@ -11,11 +11,12 @@
     // padding: 1rem;
     width:100% !important;
     height:100% !important;
+    overflow-y: auto;
   }
 
   .host-body {
     padding: 1rem;
-    height: calc(100% - 2rem);
+    height: calc(100%);
     .jc-center{
       height: 3.85rem;
     }
@@ -98,8 +99,8 @@
     .body-box {
       height: calc(100% - 4.85rem);
       margin-top: 1rem;
-      display: flex;
-      flex-direction: row;
+      // display: flex;
+      // flex-direction: row;
 
       .left{
         // margin-right: 0.5rem;
